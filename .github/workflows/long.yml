@@ -1,0 +1,126 @@
+name: long
+on:
+  schedule:
+    # Mon/Wed/Fri 15:05 UTC (16:05 London in winter, 11:05 New York): one 10-15 min documentary (Andrii, Oct 27: 3 a week).
+    # Proposal: change only with Andrii's OK.
+    - cron: "5 15 * * 1,3,5"
+  workflow_dispatch:
+    inputs:
+      dry_run:
+        description: "Test: make the video but do NOT upload (download it from the run's Artifacts)"
+        type: boolean
+        default: true
+      story:
+        description: "A ready story file, e.g. stories/long/indianapolis.json (empty = the next by priority)"
+        type: string
+        default: ""
+      publish_run:
+        description: "Upload the reviewed test video of this run id (from its 'long-video' artifact; no new render)"
+        type: string
+        default: ""
+permissions:
+  contents: write
+  actions: read
+concurrency:
+  group: long
+  cancel-in-progress: false
+jobs:
+  run:
+    runs-on: ubuntu-latest          # the repo is PUBLIC: Actions minutes are free and unlimited
+    timeout-minutes: 120
+    steps:
+      - name: publish only from main
+        if: ${{ github.ref != 'refs/heads/main' && !inputs.dry_run }}
+        run: echo "Uploads only from main. Use dry_run on other branches." && exit 1
+      - uses: actions/checkout@v4
+        with:
+          ref: ${{ github.ref }}
+      - name: music and sound effects     # Mixkit files are not redistributed in this PUBLIC repo: they come from
+        uses: actions/checkout@v4          # Andrii's private ww2-bot (fine-grained token, read-only contents)
+        with:
+          repository: ${{ github.repository_owner }}/ww2-bot
+          token: ${{ secrets.ASSETS_TOKEN }}
+          path: _assets
+          sparse-checkout: |
+            music
+            sfx
+      - run: cp -r _assets/music _assets/sfx . && rm -rf _assets && ls music/jurgen sfx | head -5
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+          cache: pip
+      - name: apt packages cache
+        uses: actions/cache@v4
+        with:
+          path: ~/aptcache
+          key: apt-ffmpeg-ubuntu24-v1
+      - name: film cache                 # archive films are 300+ MB each: downloaded once
+        uses: actions/cache@v4
+        with:
+          path: work/films
+          key: films-${{ hashFiles('stories/long/*.json') }}
+          restore-keys: films-
+      - name: ffmpeg
+        run: |
+          mkdir -p ~/aptcache/partial
+          sudo rm -f /var/lib/man-db/auto-update
+          A="-y -qq --no-install-recommends -o Dir::Cache::Archives=$HOME/aptcache"
+          sudo apt-get install $A ffmpeg libasound2t64 fonts-dejavu-core >/dev/null \
+            || (sudo apt-get update -qq && sudo apt-get install $A ffmpeg libasound2t64 fonts-dejavu-core >/dev/null)
+          sudo chown -R "$USER" ~/aptcache
+          ffmpeg -hide_banner -filters | grep -q " ass " && echo "ffmpeg ok: $(ffmpeg -version | head -1)"
+      - run: pip install -q -r requirements.txt
+      - name: reviewed test video
+        if: ${{ inputs.publish_run != '' }}
+        uses: actions/download-artifact@v4
+        with:
+          name: long-video
+          path: work
+          run-id: ${{ inputs.publish_run }}
+          github-token: ${{ github.token }}
+      - name: make the video
+        run: |
+          set -o pipefail
+          python -u longform.py 2>&1 | tee run.log
+        env:
+          GEMINI_API_KEY: ${{ secrets.GEMINI_API_KEY }}             # optional: translated titles
+          YT_CLIENT_ID: ${{ secrets.YT_CLIENT_ID }}                 # the NEW channel's OAuth (auth.py)
+          YT_CLIENT_SECRET: ${{ secrets.YT_CLIENT_SECRET }}
+          YT_REFRESH_TOKEN: ${{ secrets.YT_REFRESH_TOKEN }}
+          AZURE_SPEECH_KEY: ${{ secrets.AZURE_SPEECH_KEY }}         # optional: the same Ryan voice when Edge fails
+          AZURE_SPEECH_REGION: ${{ secrets.AZURE_SPEECH_REGION }}
+          DRY_RUN: ${{ (github.event_name == 'workflow_dispatch' && inputs.dry_run && inputs.publish_run == '') && '1' || '0' }}
+          L_STORY: ${{ inputs.story }}
+          L_PUBLISH: ${{ inputs.publish_run != '' && '1' || '0' }}
+          L_PRESET: "veryfast"
+          L_WORKERS: "4"
+      - name: test video
+        if: ${{ !cancelled() && inputs.dry_run && inputs.publish_run == '' }}
+        uses: actions/upload-artifact@v4
+        with:
+          name: long-video
+          path: |
+            work/final.mp4
+            work/cover.png
+            work/metadata.json
+            work/captions.srt
+          retention-days: 7
+      - name: log
+        if: ${{ failure() || (!cancelled() && inputs.dry_run) }}
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: |
+          [ -f run.log ] || exit 0
+          rm -rf /tmp/l && mkdir -p /tmp/l
+          tail -n 400 run.log | sed -E 's/(key=)[A-Za-z0-9_-]+/\1***/g; s/AIza[0-9A-Za-z_-]{20,}/***/g; s#1//[0-9A-Za-z_-]{20,}#***#g' > /tmp/l/run.log
+          cd /tmp/l && git init -q -b logs && git add . \
+            && git -c user.name=bot -c user.email=bot@users.noreply.github.com commit -qm "run ${GITHUB_RUN_ID}" \
+            && git push -f "https://x-access-token:${GH_TOKEN}@github.com/${GITHUB_REPOSITORY}.git" logs
+      - name: save state
+        if: ${{ !cancelled() && (!inputs.dry_run || inputs.publish_run != '') }}
+        run: |
+          git config user.name "bot"
+          git config user.email "bot@users.noreply.github.com"
+          git add used.json stats.json 2>/dev/null || true
+          git diff --cached --quiet || (git commit -qm "long: state after run ${GITHUB_RUN_ID}" && \
+            for i in 1 2 3; do git pull -q --rebase && git push -q && break; sleep 5; done)

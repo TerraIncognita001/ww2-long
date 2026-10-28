@@ -1,0 +1,10 @@
+__pycache__/
+work/
+
+.venv/
+client_secret.json
+sources/
+music/
+sfx/
+_assets/
+*.part

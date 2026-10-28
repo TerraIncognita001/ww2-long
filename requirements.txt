@@ -1,0 +1,9 @@
+edge-tts
+requests
+google-api-python-client
+google-auth-oauthlib
+Pillow
+kokoro-onnx==0.6.1
+azure-cognitiveservices-speech
+numpy
+onnxruntime

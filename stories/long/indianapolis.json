@@ -1,0 +1,1615 @@
+{
+ "priority": 1,
+ "topic": "USS Indianapolis (CA-35)",
+ "sources": [
+  "Charles B. McVay III",
+  "Mochitsura Hashimoto",
+  "Japanese submarine I-58 (1943)"
+ ],
+ "title": "USS Indianapolis: The Ship That Delivered the Bomb, Then Was Forgotten",
+ "thumb": {
+  "file": "USS_Indianapolis_(CA-35)_off_the_Mare_Island_Naval_Shipyard_on_10_July_1945_(19-N-86911).jpg",
+  "text": [
+   "4 DAYS",
+   "NOBODY CAME"
+  ],
+  "flags": [
+   "us"
+  ],
+  "x": 0.5,
+  "y": 0.5
+ },
+ "question": "Was McVay to blame, or was he the Navy's scapegoat?",
+ "summary": "In July 1945 the heavy cruiser USS Indianapolis carried the uranium and parts of Little Boy, the first atomic bomb used in war, to Tinian. Four days after the delivery, on 30 July, the Japanese submarine I-58 under Mochitsura Hashimoto sank her in 12 minutes. About 300 of her 1,195 men went down with the ship; the rest were left in the Philippine Sea for almost four days, because nobody reported her missing. Only 316 survived thirst, exposure and sharks. Her captain, Charles B. McVay III, became the only US Navy captain court-martialed for losing his ship in combat in World War II; Congress exonerated him in 2000.",
+ "tags": [
+  "USS Indianapolis",
+  "Charles B. McVay III",
+  "Mochitsura Hashimoto",
+  "I-58",
+  "Little Boy",
+  "Tinian",
+  "atomic bomb",
+  "shark attack",
+  "court-martial",
+  "Philippine Sea",
+  "PBY Catalina",
+  "Robert Adrian Marks",
+  "World War II",
+  "WW2 documentary",
+  "US Navy history",
+  "Pacific War"
+ ],
+ "pronounce": {},
+ "films": {
+  "iwo": {
+   "url": "https://archive.org/download/NPC-8708/NPC-8708.mov",
+   "credit": "USS Indianapolis (CA-35), Iwo Jima, 1945: Naval Photographic Center film 8708, US National Archives (public domain, via Internet Archive)"
+  },
+  "guam": {
+   "url": "https://archive.org/download/NPC-4888/NPC-4888.mov",
+   "crop": "996:560:142:0",
+   "credit": "Bombardment of Guam and Tinian, 1944: Naval Photographic Center film 4888, US National Archives (public domain, via Internet Archive)"
+  },
+  "pby": {
+   "url": "https://archive.org/download/NPC-16243/NPC-16243.mov",
+   "credit": "WWII PBY on patrol, 1942: Naval Photographic Center film 16243, US National Archives (public domain, via Internet Archive)"
+  }
+ },
+ "chapters": [
+  {
+   "title": "",
+   "mode": "action",
+   "sentences": [
+    "Just after midnight on 30 July 1945, two torpedoes struck the American heavy cruiser USS Indianapolis.",
+    "Twelve minutes later, she rolled over and sank into the dark Philippine Sea.",
+    "About 300 men went down with her.",
+    "The rest were left floating in the open ocean, with few lifeboats and almost no food or water.",
+    "Only days earlier, this same ship had delivered the heart of the first atomic bomb used in war.",
+    "And yet, for almost four days, nobody in the Navy noticed that she was gone.",
+    "This is the story of the men in the water, the submarine that found them, and the captain who was blamed for all of it."
+   ],
+   "shots": [
+    {
+     "s": 1,
+     "film": "guam",
+     "from": 351,
+     "to": 354.5,
+     "sfx": "tank_gun",
+     "label": "PHILIPPINE SEA · 30 JULY 1945"
+    },
+    {
+     "s": 1,
+     "film": "guam",
+     "from": 71,
+     "to": 76.5,
+     "sfx": "explosion_massive"
+    },
+    {
+     "s": 2,
+     "film": "iwo",
+     "from": 236,
+     "to": 244,
+     "sfx": "sea",
+     "punch": true
+    },
+    {
+     "s": 2,
+     "file": "USS_Indianapolis_(CA-35)_underway_at_sea,_in_1943-1944_(NH_124466).jpg"
+    },
+    {
+     "s": 3,
+     "file": "Group_Photograph_Taken_on_the_USS_Indianapolis_(CA-35)_-_DPLA_-_18f9a1bd0f33bcb6b7ec04b3fbe5e1a5.jpg",
+     "sfx": "low_rumble"
+    },
+    {
+     "s": 4,
+     "file": "Loss_of_USS_Indianapolis_(CA-35),_July_1945_(survivors).tif",
+     "y": 0.4
+    },
+    {
+     "s": 5,
+     "file": "Atombombe_Little_Boy.jpg"
+    },
+    {
+     "s": 6,
+     "file": "USS_Indianapolis-last_voyage_chart.jpg",
+     "y": 0.6
+    },
+    {
+     "s": 7,
+     "file": "Charles_B_McVay_III_portrait.jpg",
+     "y": 0.3
+    },
+    {
+     "s": 7,
+     "file": "Mochitsura_Hashimoto.jpg",
+     "y": 0.3
+    }
+   ]
+  },
+  {
+   "title": "The Flagship",
+   "mode": "action",
+   "sentences": [
+    "Indianapolis was launched in 1931, a Portland-class heavy cruiser named after the city of Indianapolis, Indiana.",
+    "She carried nine big guns in three turrets, and two catapults for her own aircraft.",
+    "From 1943 to 1945, she was the flagship of Admiral Raymond Spruance, who commanded the Fifth Fleet across the Central Pacific.",
+    "She shelled the beaches of Saipan, and in February 1945 she covered the landings on Iwo Jima.",
+    "On 31 March 1945, off Okinawa, a Japanese fighter dived straight at her bridge.",
+    "The pilot released his bomb from just 25 feet, then crashed into the sea.",
+    "The bomb went down through the deck, the mess hall and the fuel tanks, and exploded under the keel, killing nine crewmen.",
+    "Badly damaged, Indianapolis steamed under her own power all the way to the Mare Island Naval Shipyard in California.",
+    "It was there, freshly repaired, that she received the most secret orders of the war."
+   ],
+   "shots": [
+    {
+     "s": 1,
+     "file": "USS_Indianapolis_(CA-35)_underway_in_1939.jpg"
+    },
+    {
+     "s": 1,
+     "file": "USS_Indianapolis_(CA-35)_at_Pearl_Harbor,_circa_in_1937_(NH_53230).jpg"
+    },
+    {
+     "s": 2,
+     "file": "USS_Indianapolis_(CA-35)_inboard_and_outboard_profiles_c1944.png",
+     "card": true
+    },
+    {
+     "s": 2,
+     "film": "guam",
+     "from": 375,
+     "to": 381,
+     "sfx": "tank_gun"
+    },
+    {
+     "s": 3,
+     "file": "Admiral_Raymond_A._Spruance,_Vice_Admiral_Marc_Mitscher,_Fleet_Admiral_Chester_W._Nimitz_and_Vice_Admiral_Willis_A._Lee_aboard_USS_Indianapolis_(CA-35),_in_February_1945_(NH_49705).jpg",
+     "y": 0.35
+    },
+    {
+     "s": 3,
+     "film": "iwo",
+     "from": 320,
+     "to": 332
+    },
+    {
+     "s": 4,
+     "file": "USS_Indianapolis_(CA-35)_shelling_Saipan_in_June_1944.jpg",
+     "sfx": "artillery",
+     "label": "SAIPAN · JUNE 1944"
+    },
+    {
+     "s": 4,
+     "film": "iwo",
+     "from": 64,
+     "to": 72,
+     "sfx": "artillery",
+     "label": "IWO JIMA · FEBRUARY 1945"
+    },
+    {
+     "s": 4,
+     "film": "guam",
+     "from": 380,
+     "to": 387,
+     "sfx": "explosion_far"
+    },
+    {
+     "s": 5,
+     "file": "USS_Indianapolis_(CA-35)_in_a_Pacific_harbour,_circa_May-October_1944_(NH_53231).jpg",
+     "sfx": "plane_flyby",
+     "label": "OKINAWA · 31 MARCH 1945"
+    },
+    {
+     "s": 6,
+     "film": "guam",
+     "from": 438,
+     "to": 444,
+     "sfx": "bomb_drop"
+    },
+    {
+     "s": 7,
+     "film": "guam",
+     "from": 445,
+     "to": 450.5,
+     "sfx": "explosion_close"
+    },
+    {
+     "s": 7,
+     "file": "USS_Indianapolis_(CA-35)_at_anchor_in_1944.jpg"
+    },
+    {
+     "s": 8,
+     "file": "USS_Indianapolis_(CA-35)_-_19-N-29298.jpg",
+     "label": "MARE ISLAND · CALIFORNIA"
+    },
+    {
+     "s": 9,
+     "file": "USS_Indianapolis_(CA-35)_off_the_Mare_Island_Naval_Shipyard_on_10_July_1945_(19-N-86911).jpg",
+     "label": "MARE ISLAND · 10 JULY 1945"
+    }
+   ]
+  },
+  {
+   "title": "The Secret Cargo",
+   "mode": "people",
+   "sentences": [
+    "Her captain was Charles B. McVay III, the son of an admiral, who had commanded her since November 1944.",
+    "Earlier in the war, he had been awarded the Silver Star for courage under fire.",
+    "Now his orders were to carry a critical shipment to Tinian Island.",
+    "In the hold were the non-nuclear parts of Little Boy, the first atomic bomb used in combat.",
+    "The uranium itself sat in a lead-lined steel container, bolted and chained to the floor of McVay's own quarters.",
+    "Two men from the Manhattan Project travelled with it incognito, Major Robert Furman and Dr. James Nolan.",
+    "Nolan was seasick for much of the journey, and used it as an excuse to check on the container in secret.",
+    "On 16 July, she left San Francisco, within hours of the Trinity test in New Mexico.",
+    "She raced to Pearl Harbor in a record 74 and a half hours, and then raced on unaccompanied.",
+    "On 26 July, she delivered her cargo to Tinian.",
+    "That cargo became the bomb dropped on Hiroshima on the morning of 6 August.",
+    "Among the messages the ground crews wrote on it, one read: Greetings to the Emperor from the men of the Indianapolis.",
+    "By then, most of the men it named were already dead.",
+    "Later, General Groves learned that she had been a very poor choice for the job.",
+    "She had no underwater sound equipment, and was so designed that a single torpedo could sink her quickly."
+   ],
+   "shots": [
+    {
+     "s": 1,
+     "file": "Charles_B_McVay_III_portrait.jpg",
+     "y": 0.3,
+     "name": "CHARLES B. McVAY III",
+     "role": "CAPTAIN, USS INDIANAPOLIS"
+    },
+    {
+     "s": 2,
+     "file": "Charles_B_McVay_III_portrait.jpg",
+     "y": 0.25,
+     "zoom": 1.3
+    },
+    {
+     "s": 3,
+     "file": "USS_Indianapolis_(CA-35)_off_San_Francisco_on_1_May_1944_(NH_83607).jpg"
+    },
+    {
+     "s": 4,
+     "file": "Atombombe_Little_Boy.jpg",
+     "name": "LITTLE BOY",
+     "role": "THE FIRST ATOMIC BOMB USED IN COMBAT"
+    },
+    {
+     "s": 5,
+     "file": "Photograph_of_Atomic_Bomb_Preparations_at_Tinian_Island_-_DPLA_-_d200ecfb73d118ee3b6ee223f37d2fca.jpg"
+    },
+    {
+     "s": 6,
+     "file": "James_F._Nolan_Los_Alamos_ID.jpg",
+     "y": 0.35,
+     "name": "DR. JAMES F. NOLAN",
+     "role": "MANHATTAN PROJECT"
+    },
+    {
+     "s": 7,
+     "film": "pby",
+     "from": 80,
+     "to": 95,
+     "sfx": "sea"
+    },
+    {
+     "s": 8,
+     "file": "Trinity_Test_Fireball_16ms.jpg",
+     "label": "NEW MEXICO · 16 JULY 1945"
+    },
+    {
+     "s": 9,
+     "file": "USS_Indianapolis_(CA-35)_underway_in_1944_(stbd).jpg",
+     "sfx": "sea"
+    },
+    {
+     "s": 9,
+     "film": "guam",
+     "from": 15,
+     "to": 24,
+     "sfx": "sea"
+    },
+    {
+     "s": 10,
+     "file": "Photograph_of_Atomic_Bomb_Preparations_at_Tinian_Island_-_DPLA_-_d200ecfb73d118ee3b6ee223f37d2fca.jpg",
+     "zoom": 1.3,
+     "label": "TINIAN · 26 JULY 1945"
+    },
+    {
+     "s": 11,
+     "file": "Atomic_cloud_over_Hiroshima.jpg",
+     "y": 0.4,
+     "label": "HIROSHIMA · 6 AUGUST 1945"
+    },
+    {
+     "s": 12,
+     "file": "Loading_of_the_Little_Boy_nuclear_bomb_into_the_Boeing_B-29_on_Tinian,_Mariana_Island,_5_August_1945_(76048611).jpg"
+    },
+    {
+     "s": 13,
+     "file": "USS_Indianapolis_(CA-35)_underway_at_sea,_in_1943-1944_(NH_124466).jpg"
+    },
+    {
+     "s": 14,
+     "file": "USS_Indianapolis_(CA-35)_in_a_Pacific_harbour,_circa_May-October_1944_(NH_53231).jpg"
+    },
+    {
+     "s": 15,
+     "file": "USS_Indianapolis_(CA-35)_underway_in_1944_(port).jpg"
+    }
+   ]
+  },
+  {
+   "title": "The Hunter",
+   "mode": "people",
+   "sentences": [
+    "Far to the north, in Kure, a Japanese submarine was getting ready for another patrol.",
+    "She was I-58, and her captain was Lieutenant Commander Mochitsura Hashimoto.",
+    "Hashimoto was born in Kyoto, the son of a Shinto priest.",
+    "In 1941, he had been aboard the submarine I-24 during the attack on Pearl Harbor.",
+    "Now his boat was one of only four large submarines Japan had left.",
+    "She was equipped to carry kaiten, manned torpedoes, as well as ordinary ones.",
+    "On 27 July, Hashimoto reached the shipping lane between Guam and Leyte.",
+    "Indianapolis left Guam the next day, heading for Leyte along that same lane.",
+    "McVay had asked for a destroyer escort, but his request was denied.",
+    "Just six days earlier, Japanese submarines had sunk the destroyer Underhill in that area, yet McVay was never told.",
+    "He was warned that Japanese submarines might be there, but not of any confirmed activity.",
+    "His orders were to zigzag at his discretion, weather permitting.",
+    "That night, with no escort, she was steaming at 17 knots in poor visibility."
+   ],
+   "shots": [
+    {
+     "s": 1,
+     "file": "NH_94884_Japanese_Ships_at_Kure.jpg",
+     "label": "KURE · JAPAN"
+    },
+    {
+     "s": 2,
+     "file": "IJN_SS_I-58(II)_on_trial_run_in_1944.jpg",
+     "name": "I-58",
+     "role": "IMPERIAL JAPANESE NAVY SUBMARINE"
+    },
+    {
+     "s": 2,
+     "file": "Mochitsura_Hashimoto.jpg",
+     "y": 0.3,
+     "name": "MOCHITSURA HASHIMOTO",
+     "role": "CAPTAIN, I-58"
+    },
+    {
+     "s": 3,
+     "file": "Mochitsura_Hashimoto.jpg",
+     "y": 0.25,
+     "zoom": 1.35
+    },
+    {
+     "s": 4,
+     "file": "80-G-351895_I-58_(Japanese_Submarine,_1944-1946)_I-53_(Japanese_Submarine,_1943-1946).jpg"
+    },
+    {
+     "s": 5,
+     "file": "80-G-351895_I-58_(Japanese_Submarine,_1944-1946)_I-53_(Japanese_Submarine,_1943-1946).jpg",
+     "zoom": 1.4,
+     "x": 0.4
+    },
+    {
+     "s": 6,
+     "file": "I-58TorpedoRoom.jpg"
+    },
+    {
+     "s": 7,
+     "file": "USS_Indianapolis-last_voyage_chart.jpg",
+     "y": 0.5,
+     "label": "GUAM - LEYTE · 27 JULY 1945"
+    },
+    {
+     "s": 8,
+     "file": "USS_Indianapolis_(CA-35)_underway_in_1944_(stbd).jpg",
+     "zoom": 1.25
+    },
+    {
+     "s": 9,
+     "file": "Charles_B_McVay_III_portrait.jpg",
+     "y": 0.3
+    },
+    {
+     "s": 10,
+     "file": "USS_Underhill_(DE-682)_underway,_circa_in_1945_(80-G-382857).jpg",
+     "name": "USS UNDERHILL",
+     "role": "SUNK 24 JULY 1945"
+    },
+    {
+     "s": 11,
+     "file": "Charles_B_McVay_III_portrait.jpg",
+     "y": 0.25,
+     "zoom": 1.3
+    },
+    {
+     "s": 12,
+     "film": "iwo",
+     "from": 80,
+     "to": 98,
+     "sfx": "sea"
+    },
+    {
+     "s": 13,
+     "film": "iwo",
+     "from": 236,
+     "to": 251,
+     "sfx": "storm_wind",
+     "punch": true
+    }
+   ]
+  },
+  {
+   "title": "Twelve Minutes",
+   "mode": "action",
+   "sentences": [
+    "At 23:35 on 29 July, Hashimoto spotted a large ship heading towards him.",
+    "With the moon behind him, he took her for an Idaho-class battleship.",
+    "He dived, let her come closer, and fired six torpedoes.",
+    "Minutes later, two of them struck her starboard side, one in the bow and one amidships.",
+    "The first tore away more than forty feet of her bow, and the second hit below the bridge.",
+    "Top-heavy from all the guns added during the war, she listed hard and settled by the bow.",
+    "Her radio operators keyed distress calls as she went down.",
+    "Twelve minutes after the torpedoes hit, Indianapolis rolled completely over, lifted her stern into the air, and sank.",
+    "Of the 1,195 men aboard, some 300 went down with her.",
+    "McVay was one of the last to abandon ship.",
+    "Hashimoto dived deep to reload, and when he came back up an hour later, she was gone.",
+    "He radioed his headquarters that the ship had been destroyed, and turned for home."
+   ],
+   "shots": [
+    {
+     "s": 1,
+     "file": "IJN_SS_I-58(II)_on_trial_run_in_1944.jpg",
+     "zoom": 1.3,
+     "label": "PHILIPPINE SEA · 29 JULY 1945"
+    },
+    {
+     "s": 1,
+     "film": "guam",
+     "from": 83,
+     "to": 91,
+     "punch": true
+    },
+    {
+     "s": 2,
+     "file": "Mochitsura_Hashimoto.jpg",
+     "y": 0.3
+    },
+    {
+     "s": 2,
+     "film": "guam",
+     "from": 62,
+     "to": 64.5,
+     "punch": true
+    },
+    {
+     "s": 3,
+     "file": "I-58TorpedoRoom.jpg",
+     "zoom": 1.3,
+     "sfx": "submarine_hit"
+    },
+    {
+     "s": 4,
+     "film": "guam",
+     "from": 71,
+     "to": 76.5,
+     "sfx": "explosion_massive"
+    },
+    {
+     "s": 4,
+     "film": "guam",
+     "from": 438,
+     "to": 444,
+     "sfx": "explosion_battle"
+    },
+    {
+     "s": 5,
+     "film": "guam",
+     "from": 445,
+     "to": 450.5,
+     "sfx": "explosion_close"
+    },
+    {
+     "s": 6,
+     "film": "iwo",
+     "from": 244,
+     "to": 251,
+     "sfx": "storm_wind",
+     "punch": true
+    },
+    {
+     "s": 7,
+     "film": "pby",
+     "from": 120,
+     "to": 131,
+     "sfx": "radio_static"
+    },
+    {
+     "s": 8,
+     "film": "iwo",
+     "from": 236,
+     "to": 244,
+     "sfx": "sea",
+     "punch": true
+    },
+    {
+     "s": 8,
+     "file": "USS_Indianapolis_(CA-35)_underway_in_1944_(port).jpg",
+     "zoom": 1.3
+    },
+    {
+     "s": 9,
+     "file": "Group_Photograph_Taken_on_the_USS_Indianapolis_(CA-35)_-_DPLA_-_18f9a1bd0f33bcb6b7ec04b3fbe5e1a5.jpg"
+    },
+    {
+     "s": 10,
+     "file": "Charles_B_McVay_III_portrait.jpg",
+     "y": 0.3
+    },
+    {
+     "s": 11,
+     "file": "80-G-351895_I-58_(Japanese_Submarine,_1944-1946)_I-53_(Japanese_Submarine,_1943-1946).jpg",
+     "x": 0.4
+    },
+    {
+     "s": 12,
+     "film": "pby",
+     "from": 135,
+     "to": 150,
+     "sfx": "radio_static"
+    }
+   ]
+  },
+  {
+   "title": "Nobody Is Coming",
+   "mode": "people",
+   "sentences": [
+    "The Navy's headquarters on Guam and on Leyte plotted the positions of every ship on large boards.",
+    "But ships as large as Indianapolis were assumed to arrive on time, so their positions were predictions, not reports.",
+    "On 31 July, when she should have reached Leyte, she was simply taken off the board on Guam.",
+    "On Leyte, she was even recorded as having arrived.",
+    "At Tacloban, Lieutenant Stuart Gibson knew at once that she had not come in.",
+    "He did not look into it, and made no report to his superiors.",
+    "Expected ships often failed to arrive, and no rule said he had to report it.",
+    "Her distress calls had not simply vanished, either.",
+    "Records declassified years later showed that three stations received them.",
+    "One commander was drunk, another had ordered his men not to disturb him, and a third thought it was a Japanese trap.",
+    "None of them acted.",
+    "And so, out in the Philippine Sea, hundreds of men waited for a rescue that nobody had ordered."
+   ],
+   "shots": [
+    {
+     "s": 1,
+     "film": "pby",
+     "from": 185,
+     "to": 200
+    },
+    {
+     "s": 2,
+     "film": "pby",
+     "from": 200,
+     "to": 215
+    },
+    {
+     "s": 3,
+     "file": "USS_Indianapolis_(CA-35)_at_anchor_in_1944.jpg",
+     "label": "GUAM · 31 JULY 1945"
+    },
+    {
+     "s": 4,
+     "file": "Leyte_Provincial_Capitol_in_Tacloban,_Philippines,_in_1945.jpg",
+     "label": "TACLOBAN · LEYTE"
+    },
+    {
+     "s": 5,
+     "file": "Leyte_Provincial_Capitol_in_Tacloban,_Philippines,_in_1945.jpg",
+     "zoom": 1.3
+    },
+    {
+     "s": 6,
+     "film": "iwo",
+     "from": 252,
+     "to": 262
+    },
+    {
+     "s": 7,
+     "film": "iwo",
+     "from": 216,
+     "to": 224
+    },
+    {
+     "s": 8,
+     "film": "pby",
+     "from": 135,
+     "to": 150,
+     "sfx": "radio_static"
+    },
+    {
+     "s": 9,
+     "file": "USS_Cecil_J._Doyle_(DE-368)_war_diary,_1-5_August_1945_(83573581).png",
+     "card": true,
+     "sfx": "typewriter"
+    },
+    {
+     "s": 10,
+     "film": "iwo",
+     "from": 160,
+     "to": 170
+    },
+    {
+     "s": 11,
+     "film": "iwo",
+     "from": 172,
+     "to": 179
+    },
+    {
+     "s": 12,
+     "film": "iwo",
+     "from": 236,
+     "to": 251,
+     "sfx": "sea",
+     "punch": true
+    }
+   ]
+  },
+  {
+   "title": "Four Days in the Water",
+   "mode": "people",
+   "sentences": [
+    "There were few lifeboats, and many of the men had no life jackets at all.",
+    "By day, the hot sun burned them, and at night they shook with cold.",
+    "Salt water and fuel oil burned and peeled their skin.",
+    "Some found Spam and crackers floating among the wreckage, but there was almost no fresh water.",
+    "Men who drank sea water became delirious, and some began to see things that were not there.",
+    "Then came the sharks.",
+    "Hundreds of them were drawn to the wreck, and they began attacking the survivors.",
+    "Estimates of the men killed by sharks run from a few dozen to 150.",
+    "One documentary called it the most shark attacks on humans in history.",
+    "Yet most of those who died were killed by exposure, salt water and thirst."
+   ],
+   "shots": [
+    {
+     "s": 1,
+     "file": "Loss_of_USS_Indianapolis_(CA-35),_July_1945_(survivors).tif",
+     "y": 0.4
+    },
+    {
+     "s": 2,
+     "film": "guam",
+     "from": 15,
+     "to": 24,
+     "sfx": "sea"
+    },
+    {
+     "s": 3,
+     "file": "Photograph_of_Survivors_of_the_USS_Indianapolis_(CA-35)_-_DPLA_-_afb9af5f32306086c6e6ce5c017f4abb.jpg",
+     "y": 0.35
+    },
+    {
+     "s": 4,
+     "film": "iwo",
+     "from": 244,
+     "to": 251,
+     "sfx": "sea",
+     "punch": true
+    },
+    {
+     "s": 5,
+     "file": "Photograph_of_Survivors_of_the_USS_Indianapolis_(CA-35)_-_DPLA_-_035456602bcd6329871b0dc09e391bbc.jpg"
+    },
+    {
+     "s": 6,
+     "film": "guam",
+     "from": 15,
+     "to": 24,
+     "sfx": "low_rumble",
+     "punch": true
+    },
+    {
+     "s": 7,
+     "film": "iwo",
+     "from": 244,
+     "to": 251,
+     "sfx": "storm_wind",
+     "punch": true
+    },
+    {
+     "s": 8,
+     "file": "Survivors_of_the_USS_Indianapolis_(BUMED_09-7927-4),_U.S._Navy_BUMED_Library_and_Archives_(5833635532).jpg"
+    },
+    {
+     "s": 9,
+     "film": "guam",
+     "from": 15,
+     "to": 24,
+     "punch": true
+    },
+    {
+     "s": 10,
+     "file": "Loss_of_USS_Indianapolis_(CA-35),_July_1945_(survivors).tif",
+     "y": 0.3,
+     "zoom": 1.3
+    }
+   ]
+  },
+  {
+   "title": "The Rescue",
+   "mode": "action",
+   "sentences": [
+    "On the morning of 2 August, a Navy PV-1 Ventura was flying a routine patrol over the area.",
+    "Its pilot, Lieutenant Wilbur Gwinn, looked down and spotted men adrift in the water.",
+    "He radioed his base on Peleliu and dropped a life raft and a radio, and every unit that could help was sent at once.",
+    "His commanding officer, Lieutenant Richard Atteberry, flew out to circle the area and guide the others in.",
+    "Next came a PBY Catalina flying boat, flown by Lieutenant Commander Robert Adrian Marks.",
+    "Standing orders forbade landing in the open ocean.",
+    "Marks took a vote of his crew, and they decided to land anyway, in twelve-foot swells.",
+    "He was able to manoeuvre his aircraft to pick up 56 survivors.",
+    "When there was no more room inside, he had men lashed to the wings with parachute cord.",
+    "The landing left the plane unable to fly.",
+    "After nightfall, the destroyer escort Cecil J. Doyle arrived, and used its searchlight as a beacon.",
+    "For the men still in the water, it was the first sign of hope.",
+    "Doyle and six other ships picked up the remaining survivors.",
+    "Of the 890 men who had been set adrift, only 316 survived.",
+    "No American warship sunk at sea has ever lost more sailors."
+   ],
+   "shots": [
+    {
+     "s": 1,
+     "file": "Lockheed_PV-1_Ventura_in_flight,_circa_in_late_1943_(NH_94917).jpg",
+     "sfx": "plane_vintage",
+     "label": "2 AUGUST 1945"
+    },
+    {
+     "s": 2,
+     "film": "pby",
+     "from": 250,
+     "to": 262,
+     "sfx": "plane_vintage"
+    },
+    {
+     "s": 2,
+     "file": "Lockheed_PV-1_Ventura_at_Naval_Air_Station_Port_Lyautey,_French_Morocco,_in_May_1945_(80-G-K-5245).jpg"
+    },
+    {
+     "s": 3,
+     "film": "pby",
+     "from": 120,
+     "to": 131,
+     "sfx": "radio_static"
+    },
+    {
+     "s": 4,
+     "file": "Lockheed_PV-1_Ventura_in_flight,_circa_in_late_1943_(NH_94917).jpg",
+     "zoom": 1.3,
+     "sfx": "plane_vintage"
+    },
+    {
+     "s": 5,
+     "file": "PBY_on_patrol_during_WWII.jpeg",
+     "sfx": "plane_vintage",
+     "name": "PBY CATALINA",
+     "role": "FLYING BOAT"
+    },
+    {
+     "s": 6,
+     "file": "PBY_OA-10A_off_Keesler_Field_1944.jpg"
+    },
+    {
+     "s": 7,
+     "film": "pby",
+     "from": 285,
+     "to": 300,
+     "sfx": "plane_vintage"
+    },
+    {
+     "s": 7,
+     "file": "PBY_OA-10A_off_Keesler_Field_1944.jpg",
+     "zoom": 1.3,
+     "sfx": "sea"
+    },
+    {
+     "s": 8,
+     "file": "Photograph_of_Survivors_of_the_USS_Indianapolis_(CA-35)_-_DPLA_-_afb9af5f32306086c6e6ce5c017f4abb.jpg",
+     "y": 0.4
+    },
+    {
+     "s": 9,
+     "film": "pby",
+     "from": 352,
+     "to": 366,
+     "sfx": "storm_wind"
+    },
+    {
+     "s": 10,
+     "file": "PBY_OA-10A_off_Keesler_Field_1944.jpg",
+     "x": 0.6
+    },
+    {
+     "s": 11,
+     "file": "USS_Cecil_J._Doyle_(DE-368),_circa_in_1945.jpg",
+     "name": "USS CECIL J. DOYLE",
+     "role": "DESTROYER ESCORT"
+    },
+    {
+     "s": 12,
+     "file": "USS_Cecil_J._Doyle_(DE-368),_circa_in_1945.jpg",
+     "zoom": 1.3
+    },
+    {
+     "s": 13,
+     "file": "USS_Tranquillity_(AH-14)_arrives_at_Guam_in_August_1945.jpg",
+     "label": "GUAM · AUGUST 1945"
+    },
+    {
+     "s": 13,
+     "file": "Photograph_of_Survivors_of_the_USS_Indianapolis_(CA-35)_Lined_Up_on_Side_of_USS_Tranquillity_(AH-14)_as_She_Docks_at_Guam_-_DPLA_-_fc8c5dad554a3afd3e655bc3ae615029.jpg",
+     "y": 0.4
+    },
+    {
+     "s": 14,
+     "file": "Survivors_of_USS_Indianapolis_(CA-35)_arrive_at_Guam_in_August_1945.jpg",
+     "y": 0.4
+    },
+    {
+     "s": 14,
+     "file": "Ambulances_on_Guam_pier_for_survivors_of_USS_Inianapolis_(CA-35)_in_August_1945.jpg"
+    },
+    {
+     "s": 15,
+     "file": "USS_Indianapolis-survivors_on_Guam.jpg"
+    }
+   ]
+  },
+  {
+   "title": "The Scapegoat",
+   "mode": "people",
+   "sentences": [
+    "Many came to believe that the Navy needed someone to blame.",
+    "A Navy Court of Inquiry recommended a court-martial, but Admiral Nimitz disagreed, and gave McVay only a letter of reprimand.",
+    "Admiral Ernest King overturned Nimitz's decision.",
+    "In November 1945, McVay was court-martialed, and convicted of hazarding his ship by failing to zigzag.",
+    "Knowledge of the Japanese submarines in the area was withheld from the court.",
+    "And the prosecution called a surprising witness: Mochitsura Hashimoto, the man who had sunk his ship.",
+    "Hashimoto testified that zigzagging would not have made a difference, and that he would have sunk her anyway.",
+    "American submarine experts said much the same, and still the court held McVay responsible.",
+    "About 380 ships of the Navy were lost in combat in the war, and he was the only captain court-martialed for the loss of his ship.",
+    "Nimitz later had the sentence remitted, and McVay retired in 1949 as a rear admiral.",
+    "But some families of the men who died blamed him.",
+    "One piece of mail read: Merry Christmas! Our family's holiday would be a lot merrier if you hadn't killed my son.",
+    "In 1968, at the age of 70, McVay took his own life.",
+    "Decades later, a sixth-grade student named Hunter Scott chose the sinking for a class history project.",
+    "His research, and the survivors who testified before the Senate, brought the case back.",
+    "In October 2000, Congress passed a resolution that McVay was exonerated for the loss of Indianapolis.",
+    "Hashimoto, who had become a Shinto priest, died five days before.",
+    "In 2017, a search team financed by Paul Allen found the wreck, 18,000 feet down in the Philippine Sea.",
+    "She lies there still, with the men who never left her.",
+    "So was McVay a captain who failed his crew, or a scapegoat for the Navy's mistakes? Tell me what you think in the comments."
+   ],
+   "shots": [
+    {
+     "s": 1,
+     "file": "Charles_B_McVay_III_portrait.jpg",
+     "y": 0.3
+    },
+    {
+     "s": 2,
+     "file": "Admiral_Raymond_A._Spruance,_Vice_Admiral_Marc_Mitscher,_Fleet_Admiral_Chester_W._Nimitz_and_Vice_Admiral_Willis_A._Lee_aboard_USS_Indianapolis_(CA-35),_in_February_1945_(NH_49705).jpg",
+     "y": 0.35,
+     "zoom": 1.2
+    },
+    {
+     "s": 3,
+     "film": "iwo",
+     "from": 320,
+     "to": 332
+    },
+    {
+     "s": 4,
+     "file": "Charles_B_McVay_III_portrait.jpg",
+     "y": 0.25,
+     "zoom": 1.3,
+     "label": "WASHINGTON · NOVEMBER 1945",
+     "sfx": "typewriter"
+    },
+    {
+     "s": 5,
+     "file": "USS_Indianapolis-last_voyage_chart.jpg",
+     "y": 0.5
+    },
+    {
+     "s": 6,
+     "file": "Mochitsura_Hashimoto.jpg",
+     "y": 0.3
+    },
+    {
+     "s": 7,
+     "file": "Mochitsura_Hashimoto.jpg",
+     "y": 0.25,
+     "zoom": 1.35
+    },
+    {
+     "s": 8,
+     "file": "IJN_SS_I-58(II)_on_trial_run_in_1944.jpg"
+    },
+    {
+     "s": 9,
+     "file": "USS_Indianapolis_(CA-35)_underway_at_sea,_in_1943-1944_(NH_124466).jpg"
+    },
+    {
+     "s": 10,
+     "file": "Charles_B_McVay_III_portrait.jpg",
+     "y": 0.3
+    },
+    {
+     "s": 11,
+     "file": "Survivors_of_USS_Indianapolis_(CA-35)_arrive_at_Guam_in_August_1945.jpg",
+     "y": 0.4
+    },
+    {
+     "s": 12,
+     "file": "Group_Photograph_Taken_on_the_USS_Indianapolis_(CA-35)_-_DPLA_-_18f9a1bd0f33bcb6b7ec04b3fbe5e1a5.jpg",
+     "zoom": 1.3
+    },
+    {
+     "s": 13,
+     "file": "Charles_B_McVay_III_portrait.jpg",
+     "y": 0.25,
+     "zoom": 1.2
+    },
+    {
+     "s": 14,
+     "file": "USS_Indianapolis_(CA-35)_underway_in_1939.jpg"
+    },
+    {
+     "s": 15,
+     "file": "USS_Indianapolis-survivors_on_Guam.jpg"
+    },
+    {
+     "s": 16,
+     "file": "Charles_B_McVay_III_portrait.jpg",
+     "y": 0.3,
+     "label": "OCTOBER 2000"
+    },
+    {
+     "s": 17,
+     "file": "Mochitsura_Hashimoto.jpg",
+     "y": 0.3
+    },
+    {
+     "s": 18,
+     "film": "guam",
+     "from": 15,
+     "to": 24,
+     "sfx": "sea",
+     "punch": true,
+     "label": "PHILIPPINE SEA · 18,000 FEET"
+    },
+    {
+     "s": 19,
+     "file": "USS_Indianapolis_(CA-35)_off_the_Mare_Island_Naval_Shipyard_on_10_July_1945_(19-N-86911).jpg"
+    },
+    {
+     "s": 20,
+     "file": "USS_Indianapolis_(CA-35)_off_the_Mare_Island_Naval_Shipyard_on_10_July_1945_(19-N-86911).jpg",
+     "zoom": 1.25
+    }
+   ]
+  }
+ ],
+ "whole": [
+  "Charles_B_McVay_III_portrait.jpg"
+ ],
+ "trims": {
+  "Charles_B_McVay_III_portrait.jpg": [
+   0,
+   0,
+   0,
+   0.42
+  ]
+ },
+ "thumbs_more": [
+  {
+   "style": "headline",
+   "note": "Infographics: stakes in 3 words over the survivors",
+   "file": "Photograph_of_Survivors_of_the_USS_Indianapolis_(CA-35)_-_DPLA_-_afb9af5f32306086c6e6ce5c017f4abb.jpg",
+   "x": 0.5,
+   "y": 0.3,
+   "text": "4 DAYS ADRIFT",
+   "key": "ADRIFT",
+   "size": 180,
+   "flags": [
+    "us"
+   ]
+  },
+  {
+   "style": "glow",
+   "note": "Fern rim light: McVay lit red, Hashimoto huge in the dark",
+   "bg": {
+    "file": "USS_Indianapolis_(CA-35)_underway_at_sea,_in_1943-1944_(NH_124466).jpg",
+    "x": 0.5,
+    "y": 0.5
+   },
+   "tint": [
+    15,
+    35,
+    70
+   ],
+   "subject": {
+    "file": "Charles_B_McVay_III_portrait.jpg",
+    "trim": [
+     0,
+     0,
+     0,
+     0.42
+    ],
+    "color": "tone",
+    "x": 0.3,
+    "h": 0.98
+   },
+   "shadow": {
+    "file": "Mochitsura_Hashimoto.jpg",
+    "x": 0.8,
+    "h": 1.25,
+    "alpha": 0.6
+   },
+   "tag": "SCAPEGOAT?",
+   "tag_x": 0.04,
+   "tag_y": 0.09,
+   "tag_size": 104
+  },
+  {
+   "style": "case",
+   "note": "Fern case board on a 1945 file; GUILTY is a fact (convicted Nov 1945)",
+   "label": "USS INDIANAPOLIS - JULY 1945",
+   "items": [
+    {
+     "file": "USS_Indianapolis_(CA-35)_off_the_Mare_Island_Naval_Shipyard_on_10_July_1945_(19-N-86911).jpg",
+     "x": 0.2,
+     "y": 0.6,
+     "w": 470,
+     "angle": -7,
+     "caption": "USS INDIANAPOLIS"
+    },
+    {
+     "file": "Charles_B_McVay_III_portrait.jpg",
+     "trim": [
+      0,
+      0,
+      0,
+      0.42
+     ],
+     "color": "tone",
+     "x": 0.52,
+     "y": 0.55,
+     "w": 480,
+     "angle": 3,
+     "ratio": 0.95,
+     "caption": "CAPT. McVAY",
+     "stamp": "GUILTY",
+     "stamp_size": 150
+    },
+    {
+     "file": "Mochitsura_Hashimoto.jpg",
+     "color": "tone",
+     "x": 0.83,
+     "y": 0.6,
+     "w": 390,
+     "angle": -5,
+     "ratio": 1.1,
+     "caption": "I-58"
+    }
+   ]
+  },
+  {
+   "style": "arrow",
+   "note": "Dark Docs: the survivors, colorized, red circle + arrow on the face",
+   "file": "Photograph_of_Survivors_of_the_USS_Indianapolis_(CA-35)_-_DPLA_-_afb9af5f32306086c6e6ce5c017f4abb.jpg",
+   "x": 0.5,
+   "y": 0.3,
+   "circle": [
+    0.6,
+    0.42,
+    0.13,
+    0.25
+   ],
+   "arrow": [
+    0.18,
+    0.85,
+    0.44,
+    0.55
+   ]
+  },
+  {
+   "style": "tag",
+   "note": "Yarnhub machine + History Hustle tag",
+   "file": "USS_Indianapolis_(CA-35)_off_the_Mare_Island_Naval_Shipyard_on_10_July_1945_(19-N-86911).jpg",
+   "x": 0.55,
+   "y": 0.5,
+   "zoom": 1.2,
+   "tag": "NOBODY CAME",
+   "tag_x": 0.04,
+   "tag_y": 0.09,
+   "flags": [
+    "us"
+   ]
+  },
+  {
+   "style": "split",
+   "note": "Felton: captain | hunter, colorized faces, no text",
+   "panels": [
+    {
+     "file": "Charles_B_McVay_III_portrait.jpg",
+     "trim": [
+      0,
+      0,
+      0,
+      0.42
+     ],
+     "portrait": false,
+     "x": 0.45,
+     "y": 0.5,
+     "color": "tone",
+     "contrast": 1.2,
+     "saturation": 1.2
+    },
+    {
+     "file": "Mochitsura_Hashimoto.jpg",
+     "portrait": false,
+     "x": 0.5,
+     "y": 0.35,
+     "zoom": 1.0,
+     "contrast": 1.2,
+     "saturation": 1.2,
+     "color": "tone"
+    }
+   ]
+  },
+  {
+   "style": "mystery",
+   "note": "Barely Sociable: the ship in a pool of light, a handwritten question",
+   "file": "USS_Indianapolis_(CA-35)_underway_at_sea,_in_1943-1944_(NH_124466).jpg",
+   "x": 0.5,
+   "y": 0.5,
+   "light": [
+    0.62,
+    0.64,
+    0.6
+   ],
+   "bright": 1.35,
+   "text": [
+    "Why did",
+    "nobody come?"
+   ],
+   "red": [
+    1
+   ],
+   "text_x": 0.04,
+   "text_y": 0.08,
+   "size": 100
+  }
+ ],
+ "thumbs_case": [
+  {
+   "style": "case",
+   "board": "cork",
+   "note": "1 Fern's corkboard, same three photos",
+   "label": "USS INDIANAPOLIS - JULY 1945",
+   "items": [
+    {
+     "file": "USS_Indianapolis_(CA-35)_off_the_Mare_Island_Naval_Shipyard_on_10_July_1945_(19-N-86911).jpg",
+     "caption": "USS INDIANAPOLIS",
+     "x": 0.2,
+     "y": 0.6,
+     "w": 470,
+     "angle": -7
+    },
+    {
+     "file": "Charles_B_McVay_III_portrait.jpg",
+     "trim": [
+      0,
+      0,
+      0,
+      0.42
+     ],
+     "color": "tone",
+     "ratio": 0.95,
+     "caption": "CAPT. McVAY",
+     "x": 0.52,
+     "y": 0.55,
+     "w": 480,
+     "angle": 3,
+     "stamp": "GUILTY",
+     "stamp_size": 150
+    },
+    {
+     "file": "Mochitsura_Hashimoto.jpg",
+     "color": "tone",
+     "ratio": 1.1,
+     "caption": "I-58",
+     "x": 0.83,
+     "y": 0.6,
+     "w": 390,
+     "angle": -5
+    }
+   ]
+  },
+  {
+   "style": "case",
+   "note": "2 the twist: GUILTY struck out, 'EXONERATED 2000' in marker (both true)",
+   "label": "USS INDIANAPOLIS - JULY 1945",
+   "items": [
+    {
+     "file": "USS_Indianapolis_(CA-35)_off_the_Mare_Island_Naval_Shipyard_on_10_July_1945_(19-N-86911).jpg",
+     "caption": "USS INDIANAPOLIS",
+     "x": 0.2,
+     "y": 0.6,
+     "w": 450,
+     "angle": -7
+    },
+    {
+     "file": "Charles_B_McVay_III_portrait.jpg",
+     "trim": [
+      0,
+      0,
+      0,
+      0.42
+     ],
+     "color": "tone",
+     "ratio": 0.95,
+     "caption": "CAPT. McVAY",
+     "x": 0.52,
+     "y": 0.57,
+     "w": 480,
+     "angle": 3,
+     "stamp": "GUILTY",
+     "stamp_size": 150
+    },
+    {
+     "file": "Mochitsura_Hashimoto.jpg",
+     "color": "tone",
+     "ratio": 1.1,
+     "caption": "I-58",
+     "x": 0.83,
+     "y": 0.6,
+     "w": 380,
+     "angle": -5
+    }
+   ],
+   "strikes": [
+    [
+     0.36,
+     0.69,
+     0.69,
+     0.52
+    ]
+   ],
+   "notes": [
+    {
+     "text": "EXONERATED 2000",
+     "x": 0.7,
+     "y": 0.11,
+     "size": 64,
+     "angle": 4,
+     "stroke": 3
+    }
+   ],
+   "arrows": [
+    [
+     0.66,
+     0.17,
+     0.58,
+     0.4,
+     -0.25
+    ]
+   ]
+  },
+  {
+   "style": "case",
+   "board": "desk",
+   "note": "3 night desk, 4 photos, Hashimoto circled: McVay was never warned",
+   "items": [
+    {
+     "file": "USS_Indianapolis_(CA-35)_off_the_Mare_Island_Naval_Shipyard_on_10_July_1945_(19-N-86911).jpg",
+     "caption": "USS INDIANAPOLIS",
+     "x": 0.17,
+     "y": 0.36,
+     "w": 330,
+     "angle": -8
+    },
+    {
+     "file": "Photograph_of_Survivors_of_the_USS_Indianapolis_(CA-35)_-_DPLA_-_afb9af5f32306086c6e6ce5c017f4abb.jpg",
+     "caption": "SURVIVORS",
+     "x_crop": 0.55,
+     "y_crop": 0.25,
+     "ratio": 0.82,
+     "x": 0.19,
+     "y": 0.77,
+     "w": 320,
+     "angle": 5
+    },
+    {
+     "file": "Charles_B_McVay_III_portrait.jpg",
+     "trim": [
+      0,
+      0,
+      0,
+      0.42
+     ],
+     "color": "tone",
+     "ratio": 0.95,
+     "caption": "CAPT. McVAY",
+     "x": 0.5,
+     "y": 0.53,
+     "w": 470,
+     "angle": 2,
+     "stamp": "GUILTY",
+     "stamp_size": 140
+    },
+    {
+     "file": "Mochitsura_Hashimoto.jpg",
+     "color": "tone",
+     "ratio": 1.1,
+     "caption": "I-58",
+     "x": 0.83,
+     "y": 0.47,
+     "w": 370,
+     "angle": 6
+    }
+   ],
+   "links": [
+    [
+     0,
+     2
+    ],
+    [
+     1,
+     2
+    ],
+    [
+     2,
+     3
+    ]
+   ],
+   "circles": [
+    [
+     0.7,
+     0.13,
+     0.97,
+     0.86
+    ]
+   ],
+   "notes": [
+    {
+     "text": "NO WARNING",
+     "x": 0.8,
+     "y": 0.92,
+     "size": 58,
+     "angle": -4,
+     "stroke": 3
+    }
+   ]
+  },
+  {
+   "style": "case",
+   "board": "cork",
+   "note": "4 web of blame: McVay in the middle, the Navy, the sub, the men",
+   "items": [
+    {
+     "file": "USS_Indianapolis_(CA-35)_off_the_Mare_Island_Naval_Shipyard_on_10_July_1945_(19-N-86911).jpg",
+     "caption": "USS INDIANAPOLIS",
+     "x": 0.15,
+     "y": 0.26,
+     "w": 290,
+     "angle": -8
+    },
+    {
+     "file": "Admiral_Raymond_A._Spruance,_Vice_Admiral_Marc_Mitscher,_Fleet_Admiral_Chester_W._Nimitz_and_Vice_Admiral_Willis_A._Lee_aboard_USS_Indianapolis_(CA-35),_in_February_1945_(NH_49705).jpg",
+     "caption": "THE NAVY",
+     "x": 0.15,
+     "y": 0.6,
+     "w": 270,
+     "angle": 6,
+     "x_crop": 0.45,
+     "y_crop": 0.3,
+     "ratio": 0.8
+    },
+    {
+     "file": "Charles_B_McVay_III_portrait.jpg",
+     "trim": [
+      0,
+      0,
+      0,
+      0.42
+     ],
+     "color": "tone",
+     "ratio": 0.95,
+     "caption": "CAPT. McVAY",
+     "x": 0.5,
+     "y": 0.38,
+     "w": 380,
+     "angle": -2,
+     "stamp": "GUILTY",
+     "stamp_size": 130
+    },
+    {
+     "file": "Mochitsura_Hashimoto.jpg",
+     "color": "tone",
+     "ratio": 1.1,
+     "caption": "I-58",
+     "x": 0.85,
+     "y": 0.26,
+     "w": 270,
+     "angle": 7
+    },
+    {
+     "file": "Photograph_of_Survivors_of_the_USS_Indianapolis_(CA-35)_-_DPLA_-_afb9af5f32306086c6e6ce5c017f4abb.jpg",
+     "caption": "SURVIVORS",
+     "x_crop": 0.55,
+     "y_crop": 0.25,
+     "ratio": 0.82,
+     "x": 0.85,
+     "y": 0.6,
+     "w": 280,
+     "angle": -5
+    }
+   ],
+   "links": [
+    [
+     0,
+     2
+    ],
+    [
+     1,
+     2
+    ],
+    [
+     3,
+     2
+    ],
+    [
+     4,
+     2
+    ]
+   ],
+   "headline": {
+    "text": "WHO WAS TO BLAME?",
+    "key": "BLAME",
+    "y": 0.8,
+    "size": 120
+   }
+  },
+  {
+   "style": "case",
+   "note": "5 the man who sank him testified at his trial (true)",
+   "label": "COURT-MARTIAL - NOVEMBER 1945",
+   "items": [
+    {
+     "file": "Charles_B_McVay_III_portrait.jpg",
+     "trim": [
+      0,
+      0,
+      0,
+      0.42
+     ],
+     "color": "tone",
+     "ratio": 0.95,
+     "caption": "CAPT. McVAY",
+     "x": 0.32,
+     "y": 0.56,
+     "w": 560,
+     "angle": -3,
+     "stamp": "GUILTY",
+     "stamp_size": 170
+    },
+    {
+     "file": "Mochitsura_Hashimoto.jpg",
+     "color": "tone",
+     "ratio": 1.1,
+     "caption": "I-58",
+     "x": 0.8,
+     "y": 0.42,
+     "w": 360,
+     "angle": 6
+    }
+   ],
+   "arrows": [
+    [
+     0.72,
+     0.75,
+     0.52,
+     0.8,
+     0.3
+    ]
+   ],
+   "notes": [
+    {
+     "text": "HE TESTIFIED",
+     "x": 0.8,
+     "y": 0.85,
+     "size": 70,
+     "angle": -5,
+     "stroke": 3
+    }
+   ]
+  }
+ ],
+ "case": {
+  "label": "USS INDIANAPOLIS - JULY 1945",
+  "left": {
+   "file": "USS_Indianapolis_(CA-35)_off_the_Mare_Island_Naval_Shipyard_on_10_July_1945_(19-N-86911).jpg",
+   "caption": "USS INDIANAPOLIS"
+  },
+  "center": {
+   "file": "Charles_B_McVay_III_portrait.jpg",
+   "trim": [
+    0,
+    0,
+    0,
+    0.42
+   ],
+   "color": "tone",
+   "caption": "CAPT. McVAY"
+  },
+  "right": {
+   "file": "Mochitsura_Hashimoto.jpg",
+   "color": "tone",
+   "caption": "I-58"
+  },
+  "stamp": "GUILTY",
+  "variants": [
+   {
+    "note": "twist: GUILTY struck out, EXONERATED 2000 (Congress, Oct 2000)",
+    "strikes": [
+     [
+      0.36,
+      0.67,
+      0.69,
+      0.5
+     ]
+    ],
+    "notes": [
+     {
+      "text": "EXONERATED 2000",
+      "x": 0.74,
+      "y": 0.1,
+      "size": 58,
+      "angle": 4,
+      "stroke": 3
+     }
+    ],
+    "arrows": [
+     [
+      0.68,
+      0.16,
+      0.6,
+      0.38,
+      -0.25
+     ]
+    ]
+   },
+   {
+    "note": "NO WARNING: McVay was never told of the submarine",
+    "circles": [
+     [
+      0.69,
+      0.24,
+      0.98,
+      0.97
+     ]
+    ],
+    "notes": [
+     {
+      "text": "NO WARNING",
+      "x": 0.77,
+      "y": 0.11,
+      "size": 66,
+      "angle": -4,
+      "stroke": 3
+     }
+    ]
+   }
+  ]
+ }
+}
