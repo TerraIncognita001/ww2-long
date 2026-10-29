@@ -1,0 +1,32 @@
+long story: stories/long/indianapolis.json
+check: hard [] | soft ["names not in the source: ['Adrian', 'Atteberry', 'Catalina', 'Cecil', 'Christmas', 'Emperor', 'Gibson', 'Greetings', 'Groves', 'Merry', 'Spam', 'Stuart', 'Tacloban', 'Wilbur']"]
+gemini-3.1-flash-lite 403 translate {   "error": {     "code": 403,     "message": "Method doesn't allow unregistered callers (callers without established i
+gemini-flash-lite-latest 403 translate {   "error": {     "code": 403,     "message": "Method doesn't allow unregistered callers (callers without established i
+gemini-2.5-flash-lite 403 translate {   "error": {     "code": 403,     "message": "Method doesn't allow unregistered callers (callers without established i
+gemini-flash-latest 403 translate {   "error": {     "code": 403,     "message": "Method doesn't allow unregistered callers (callers without established i
+gemini-3.5-flash 403 translate {   "error": {     "code": 403,     "message": "Method doesn't allow unregistered callers (callers without established i
+gemini-2.5-flash 403 translate {   "error": {     "code": 403,     "message": "Method doesn't allow unregistered callers (callers without established i
+gemini-3.1-flash-lite 403 translate {   "error": {     "code": 403,     "message": "Method doesn't allow unregistered callers (callers without established i
+gemini-flash-lite-latest 403 translate {   "error": {     "code": 403,     "message": "Method doesn't allow unregistered callers (callers without established i
+gemini-2.5-flash-lite 403 translate {   "error": {     "code": 403,     "message": "Method doesn't allow unregistered callers (callers without established i
+gemini-flash-latest 403 translate {   "error": {     "code": 403,     "message": "Method doesn't allow unregistered callers (callers without established i
+gemini-3.5-flash 403 translate {   "error": {     "code": 403,     "message": "Method doesn't allow unregistered callers (callers without established i
+gemini-2.5-flash 403 translate {   "error": {     "code": 403,     "message": "Method doesn't allow unregistered callers (callers without established i
+translation skipped: SystemExit
+length: 11.2 min | shots: 157 {'film': 41, 'photo': 106, 'card': 8} | average shot 4.3 s
+[0;93m2026-10-29 15:44:48.018660723 [W:onnxruntime:Default, device_discovery.cc:95 GetPciBusId] Skipping pci_bus_id for PCI path at "/sys/devices/LNXSYSTM:00/LNXSYBUS:00/ACPI0004:00/MSFT1000:00/5620e0c7-8062-4dce-aeb7-520c7ef76171" because filename "5620e0c7-8062-4dce-aeb7-520c7ef76171" did not match expected pattern of [0-9a-f]+:[0-9a-f]+:[0-9a-f]+[.][0-9a-f]+[m
+ddcolor: downloading the model
+chapters:
+0:00 Intro
+0:45 The Flagship
+1:50 The Secret Cargo
+3:20 The Hunter
+4:34 Twelve Minutes
+5:41 Nobody Is Coming
+6:46 Four Days in the Water
+7:36 The Rescue
+8:58 The Scapegoat
+DRY RUN: nothing uploaded. Video: work/final.mp4, thumbnail: work/cover.png, work/metadata.json
+
+== timing: voice + pictures 107.1s | shots 352.3s | final render 299.2s | total 887.3s
+== gemini requests: 12 {'translate': 12} | models out for this run: -
