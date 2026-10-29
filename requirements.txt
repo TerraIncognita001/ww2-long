@@ -7,3 +7,4 @@ kokoro-onnx==0.6.1
 azure-cognitiveservices-speech
 numpy
 onnxruntime
+tzdata

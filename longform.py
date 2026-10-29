@@ -824,8 +824,30 @@ def main():
     publish(stats, body, data, d)
 
 
+def publish_at(local=None, zone="America/New_York", lead_min=20):
+    """YouTube's scheduled release (Andrii, Oct 29: every video at 19:00 New York time): today's L_PUBLISH_NY in New
+    York as UTC ISO; None when it is less than `lead_min` minutes away (then the video goes out as it is)."""
+    from datetime import datetime, timedelta, timezone
+    from zoneinfo import ZoneInfo
+    local = local if local is not None else env("L_PUBLISH_NY", "")
+    if not local:
+        return None
+    tz = ZoneInfo(zone)
+    hh, mm = (int(x) for x in local.split(":"))
+    t = datetime.now(tz).replace(hour=hh, minute=mm, second=0, microsecond=0)
+    if t < datetime.now(tz) + timedelta(minutes=lead_min):
+        return None
+    return t.astimezone(timezone.utc).strftime("%Y-%m-%dT%H:%M:%SZ")
+
+
 def publish(stats, body, data, d):
     from datetime import date
+    at = publish_at()
+    if at:                                             # uploaded now as private, YouTube releases it at `at`
+        body["status"] = {**body["status"], "privacyStatus": "private", "publishAt": at}
+        print("scheduled release:", at, "UTC (19:00 New York)" if env("L_PUBLISH_NY") == "19:00" else "UTC")
+    else:
+        body["status"]["privacyStatus"] = env("L_PRIVACY", body["status"].get("privacyStatus", "public"))
     creds = S.credentials()
     yt = S.youtube(creds)
     with stage("upload"):
