@@ -18,6 +18,11 @@ on:
         description: "Upload the reviewed test video of this run id (from its 'long-video' artifact; no new render)"
         type: string
         default: ""
+      privacy:
+        description: "YouTube visibility of a manual upload (scheduled runs are public)"
+        type: choice
+        default: unlisted
+        options: [unlisted, public, private]
 permissions:
   contents: write
   actions: read
@@ -92,6 +97,7 @@ jobs:
           DRY_RUN: ${{ (github.event_name == 'workflow_dispatch' && inputs.dry_run && inputs.publish_run == '') && '1' || '0' }}
           L_STORY: ${{ inputs.story }}
           L_PUBLISH: ${{ inputs.publish_run != '' && '1' || '0' }}
+          L_PRIVACY: ${{ inputs.privacy || 'public' }}
           L_PRESET: "veryfast"
           L_WORKERS: "4"
       - name: test video
