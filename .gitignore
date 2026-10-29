@@ -8,3 +8,4 @@ music/
 sfx/
 _assets/
 *.part
+*.bak.json
