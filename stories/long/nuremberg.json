@@ -1,0 +1,838 @@
+{
+ "priority": 3,
+ "topic": "Hermann Göring",
+ "sources": [
+  "Nuremberg trials",
+  "Nuremberg executions",
+  "John C. Woods"
+ ],
+ "title": "Hermann Göring: How He Cheated the Hangman at Nuremberg",
+ "thumb": {
+  "file": "Hermann_Göring_at_Nuremberg_Trials_November_1945.jpeg"
+ },
+ "question": "How do you think Göring got the poison?",
+ "summary": "Hermann Göring, Hitler's Reichsmarschall and the highest-ranking soldier in Germany, was the leading defendant at the Nuremberg trials. Found guilty on all four counts, he asked to be shot as a soldier; the court refused and sentenced him to hang. On the night before the executions of 16 October 1946 he killed himself with a potassium cyanide capsule, although he was guarded around the clock. Ten others were hanged by Master Sergeant John C. Woods. How Göring got the poison is still debated: a hair cream jar, an American lieutenant he gave his gold watch, or a fountain pen smuggled in by a young guard.",
+ "tags": [
+  "Hermann Göring",
+  "Nuremberg trials",
+  "Nuremberg executions",
+  "John C. Woods",
+  "Robert H. Jackson",
+  "Rudolf Hess",
+  "Wilhelm Keitel",
+  "Joachim von Ribbentrop",
+  "Luftwaffe",
+  "war crimes",
+  "World War II",
+  "WW2 documentary",
+  "1946"
+ ],
+ "pronounce": {},
+ "films": {
+  "adc": {
+   "url": "https://archive.org/download/ADC-9927/ADC-9927.mov",
+   "credit": "Nuremberg Trials, 21 November 1945: US Army film ADC-9927, US National Archives (public domain, via Internet Archive)"
+  },
+  "open45": {
+   "url": "https://archive.org/download/1945-11-29_Nuremberg_War_Crimes_Trials_Open/1945-11-29_Nuremberg_War_Crimes_Trials_Open.mp4",
+   "credit": "Universal Newsreel: Nuremberg War Crimes Trials Open, 29 November 1945 (public domain, via Internet Archive)"
+  },
+  "end46": {
+   "url": "https://archive.org/download/September301946Newsreel-EndOfTheNuremburgTrial/September301946Newsreel-EndOfTheNuremburgTrial.mp4",
+   "credit": "Newsreel: End of the Nuremberg Trial, 30 September 1946 (public domain, via Internet Archive)"
+  }
+ },
+ "case": {
+  "label": "NUREMBERG - OCTOBER 1946",
+  "left": {
+   "file": "Palace_of_Justice,_Nuremberg_17_November_1945.jpg",
+   "caption": "PALACE OF JUSTICE"
+  },
+  "center": {
+   "file": "Hermann_Göring_at_Nuremberg_Trials_November_1945.jpeg",
+   "color": "tone",
+   "caption": "H. GÖRING"
+  },
+  "right": {
+   "file": "Robert_H_Jackson,_Nuremberg_Trail_(20_November_1945).jpg",
+   "color": "tone",
+   "caption": "THE PROSECUTOR"
+  },
+  "stamp": "SENTENCED",
+  "variants": [
+   {
+    "note": "he cheated the hangman (true: suicide the night before)",
+    "notes": [
+     {
+      "text": "CHEATED THE ROPE",
+      "x": 0.72,
+      "y": 0.1,
+      "size": 58,
+      "angle": 4,
+      "stroke": 3
+     }
+    ],
+    "arrows": [
+     [
+      0.66,
+      0.16,
+      0.58,
+      0.38,
+      -0.25
+     ]
+    ]
+   },
+   {
+    "note": "guarded around the clock (true)",
+    "notes": [
+     {
+      "text": "GUARDED 24/7?",
+      "x": 0.75,
+      "y": 0.11,
+      "size": 64,
+      "angle": -4,
+      "stroke": 3
+     }
+    ],
+    "circles": [
+     [
+      0.36,
+      0.2,
+      0.69,
+      0.92
+     ]
+    ]
+   }
+  ]
+ },
+ "chapters": [
+  {
+   "title": "",
+   "mode": "action",
+   "sentences": [
+    "On the night of 15 October 1946, guards in Nuremberg prison peered into the cell of Hermann Göring.",
+    "The man who had once been second only to Hitler was twisting in convulsions.",
+    "A doctor was quickly summoned, but Göring was dead within five minutes.",
+    "In a few hours, he was due to be hanged.",
+    "He was guarded around the clock, and yet he had a potassium cyanide capsule.",
+    "This is the story of the trial of the century, of the ten men who did hang, and of the poison nobody can fully explain."
+   ],
+   "shots": [
+    {
+     "s": 1,
+     "film": "end46",
+     "from": 21,
+     "to": 24,
+     "sfx": "low_rumble",
+     "label": "NUREMBERG · 15 OCTOBER 1946"
+    },
+    {
+     "s": 1,
+     "film": "end46",
+     "from": 24,
+     "to": 30
+    },
+    {
+     "s": 2,
+     "file": "Hermann_Göring_at_Nuremberg_Trials_November_1945.jpeg",
+     "y": 0.3
+    },
+    {
+     "s": 3,
+     "film": "end46",
+     "from": 147,
+     "to": 152
+    },
+    {
+     "s": 4,
+     "file": "Palace_of_Justice,_Nuremberg_17_November_1945.jpg"
+    },
+    {
+     "s": 5,
+     "film": "end46",
+     "from": 51,
+     "to": 56
+    },
+    {
+     "s": 5,
+     "file": "Hermann_Göring_on_trial_at_Nuremberg_1946.jpeg"
+    },
+    {
+     "s": 6,
+     "film": "adc",
+     "from": 114,
+     "to": 128
+    },
+    {
+     "s": 6,
+     "file": "Defendants_in_the_dock_at_the_Nuremberg_Trials.jpg"
+    }
+   ]
+  },
+  {
+   "title": "The Second Man of the Reich",
+   "mode": "people",
+   "sentences": [
+    "Hermann Göring had been one of the most powerful figures in the Nazi Party.",
+    "Born in Rosenheim, in Bavaria, he had been a fighter ace in the First World War, and the last commander of the wing once led by Manfred von Richthofen.",
+    "Wounded in Hitler's failed Beer Hall Putsch in 1923, he developed an addiction to morphine while receiving treatment.",
+    "He was Supreme Commander of the Air Force, the Luftwaffe, a position he held until the final days of the regime.",
+    "In 1940, Hitler promoted him to Reichsmarschall, a specially created rank, and he became the highest-ranking soldier in Germany.",
+    "By 1941, he was at the peak of his power and influence.",
+    "But his standing declined when the Luftwaffe proved incapable of preventing the Allied bombing of Germany's cities.",
+    "He increasingly withdrew from military affairs, to collect property and artwork, much of it stolen from Jewish victims of the Holocaust.",
+    "In April 1945, he sent Hitler a telegram asking to take over the leadership of the Reich.",
+    "In his last will and testament, Hitler expelled Göring from the party, and rescinded the decree that made him his successor."
+   ],
+   "shots": [
+    {
+     "s": 1,
+     "file": "Hermann_Göring_-_Röhr_(3x4_cropped).jpg",
+     "y": 0.3,
+     "name": "HERMANN GÖRING",
+     "role": "REICHSMARSCHALL"
+    },
+    {
+     "s": 2,
+     "file": "Hermann_Göring_-_Röhr_(3x4_cropped).jpg",
+     "y": 0.3,
+     "zoom": 1.1
+    },
+    {
+     "s": 3,
+     "file": "Bundesarchiv_Bild_183-1983-0331-500,_Hermann_Göring_und_Adolf_Hitler_bei_Truppenbesuch.jpg",
+     "x": 0.35
+    },
+    {
+     "s": 4,
+     "file": "Bundesarchiv_Bild_183-1983-0331-500,_Hermann_Göring_und_Adolf_Hitler_bei_Truppenbesuch.jpg"
+    },
+    {
+     "s": 5,
+     "file": "Hermann_Göring_-_Röhr_(3x4_cropped).jpg",
+     "y": 0.25,
+     "zoom": 1.3
+    },
+    {
+     "s": 6,
+     "file": "Bundesarchiv_Bild_183-1983-0331-500,_Hermann_Göring_und_Adolf_Hitler_bei_Truppenbesuch.jpg",
+     "zoom": 1.3
+    },
+    {
+     "s": 7,
+     "file": "Hermann_Göring_-_Röhr_(3x4_cropped).jpg",
+     "y": 0.3,
+     "zoom": 1.15
+    },
+    {
+     "s": 8,
+     "file": "Field_Marshal_Goering,_Nuremberg_War_Crimes_Trials,_1945_-_Edward_T._Vebell_-_2003_435_7.800x800.jpg",
+     "card": true
+    },
+    {
+     "s": 9,
+     "file": "Bundesarchiv_Bild_183-1983-0331-500,_Hermann_Göring_und_Adolf_Hitler_bei_Truppenbesuch.jpg",
+     "x": 0.4
+    },
+    {
+     "s": 10,
+     "file": "Hermann_Göring_-_Röhr_(3x4_cropped).jpg",
+     "y": 0.25,
+     "zoom": 1.4
+    }
+   ]
+  },
+  {
+   "title": "The Trial of the Century",
+   "mode": "action",
+   "sentences": [
+    "After the war, Göring was flown to a prisoner-of-war camp in the Palace Hotel at Mondorf-les-Bains, in Luxembourg.",
+    "There he was weaned off a mild morphine derivative, put on a strict diet, and lost 60 pounds.",
+    "His IQ was tested while he was in custody, and found to be 138.",
+    "In mid-1945, France, the Soviet Union, the United Kingdom and the United States agreed to convene a joint tribunal in Nuremberg.",
+    "For the first time, individuals, not states, would be held responsible for breaches of international law.",
+    "By early 1946, there were a thousand employees from the four delegations in Nuremberg, about two thirds of them from the United States.",
+    "Each of the four powers appointed a prosecution team and two judges.",
+    "Of the 24 men indicted, Martin Bormann was tried in absentia, Gustav Krupp was too ill to stand trial, and Robert Ley had died by suicide.",
+    "On 20 November 1945, the trial began in the Palace of Justice, and all the defendants pleaded not guilty.",
+    "The next day, the American chief prosecutor, Robert H. Jackson, gave the opening speech.",
+    "When asked for his plea, Göring tried to read a lengthy statement, but the presiding judge, Sir Geoffrey Lawrence, told him simply to plead guilty or not guilty.",
+    "He was the second highest-ranking official on trial, behind the former admiral Karl Dönitz.",
+    "The charges against Göring included the plundering and removal to Germany of works of art and other property.",
+    "Göring then declared himself, in the sense of the indictment, not guilty.",
+    "He described the fact that the defeated Nazis received a trial as one of the most significant tributes that Power has ever paid to Reason.",
+    "It was the first use of simultaneous interpretation, and every defendant followed the trial through headphones.",
+    "Göring sat in the front row of the dock."
+   ],
+   "shots": [
+    {
+     "s": 1,
+     "file": "Hermann_Göring_on_trial_at_Nuremberg_1946.jpeg",
+     "label": "LUXEMBOURG · 1945"
+    },
+    {
+     "s": 2,
+     "file": "Hermann_Göring_-_Röhr_(3x4_cropped).jpg",
+     "y": 0.3,
+     "zoom": 1.2
+    },
+    {
+     "s": 3,
+     "file": "Hermann_Göring_at_Nuremberg_Trials_November_1945.jpeg",
+     "y": 0.25,
+     "zoom": 1.3
+    },
+    {
+     "s": 4,
+     "film": "open45",
+     "from": 6,
+     "to": 11,
+     "label": "NUREMBERG · NOVEMBER 1945"
+    },
+    {
+     "s": 4,
+     "file": "The_Palace_of_Justice_in_Nurnberg.jpg"
+    },
+    {
+     "s": 5,
+     "film": "adc",
+     "from": 279,
+     "to": 287
+    },
+    {
+     "s": 6,
+     "file": "Palace_of_Justice,_Nuremberg_17_November_1945.jpg",
+     "zoom": 1.2
+    },
+    {
+     "s": 7,
+     "film": "end46",
+     "from": 57,
+     "to": 60
+    },
+    {
+     "s": 8,
+     "file": "Nuremberg_Trials._Looking_down_on_defendants_dock,_circa_1945-1946._-_NARA_-_540127.jpg"
+    },
+    {
+     "s": 8,
+     "film": "adc",
+     "from": 201,
+     "to": 210
+    },
+    {
+     "s": 9,
+     "film": "open45",
+     "from": 12,
+     "to": 15,
+     "sfx": "typewriter"
+    },
+    {
+     "s": 9,
+     "film": "adc",
+     "from": 6,
+     "to": 14
+    },
+    {
+     "s": 10,
+     "file": "Robert_H_Jackson,_Nuremberg_Trail_(20_November_1945).jpg",
+     "y": 0.3,
+     "name": "ROBERT H. JACKSON",
+     "role": "US CHIEF PROSECUTOR"
+    },
+    {
+     "s": 11,
+     "file": "Hermann_Göring_at_Nuremberg_Trials_November_1945.jpeg",
+     "y": 0.3
+    },
+    {
+     "s": 12,
+     "file": "Hermann_Göring_at_Nuremberg_Trials_November_1945.jpeg",
+     "y": 0.3,
+     "zoom": 1.2
+    },
+    {
+     "s": 13,
+     "file": "Field_Marshal_Goering,_Nuremberg_War_Crimes_Trials,_1945_-_Edward_T._Vebell_-_2003_435_7.800x800.jpg",
+     "card": true
+    },
+    {
+     "s": 14,
+     "film": "adc",
+     "from": 162,
+     "to": 170
+    },
+    {
+     "s": 15,
+     "film": "adc",
+     "from": 138,
+     "to": 146
+    },
+    {
+     "s": 16,
+     "film": "adc",
+     "from": 48,
+     "to": 60
+    },
+    {
+     "s": 17,
+     "film": "adc",
+     "from": 150,
+     "to": 162
+    }
+   ]
+  },
+  {
+   "title": "Göring in the Dock",
+   "mode": "people",
+   "sentences": [
+    "The trial lasted 218 days.",
+    "Forced to remain silent in the dock, Göring communicated his opinions using gestures, shaking his head, or laughing.",
+    "He constantly took notes, whispered with the other defendants, and tried to control the erratic behaviour of Rudolf Hess, who was seated beside him.",
+    "During breaks, he tried to dominate the other defendants.",
+    "The defendants tried to blame their crimes on Hitler, who was mentioned 12,000 times during the trial.",
+    "On 29 November, the prosecution screened a film compiled from footage of the liberation of the Nazi concentration camps.",
+    "The film shocked both the defendants and the judges, who adjourned the trial.",
+    "In all, 249 journalists were accredited to cover the trial.",
+    "They also blamed other absent and dead men, including Himmler, Heydrich, Eichmann and Bormann.",
+    "Göring's own defence, the first to be presented, lasted from 8 to 22 March 1946.",
+    "On 31 August, closing arguments were presented."
+   ],
+   "shots": [
+    {
+     "s": 1,
+     "film": "adc",
+     "from": 162,
+     "to": 176
+    },
+    {
+     "s": 2,
+     "file": "Hermann_Göring_on_trial_at_Nuremberg_1946.jpeg",
+     "label": "NUREMBERG · 1946"
+    },
+    {
+     "s": 3,
+     "file": "Defendants_Göring,_Dönitz,_and_Hess_conferring_Nuremberg_Trials.jpeg"
+    },
+    {
+     "s": 3,
+     "film": "open45",
+     "from": 45,
+     "to": 50
+    },
+    {
+     "s": 4,
+     "file": "Proces_Neurenberg._Uiterst_links_Herman_Goering,_naast_hem_Rudolf_Hess,_Bestanddeelnr_901-1885.jpg"
+    },
+    {
+     "s": 5,
+     "file": "Defendants_in_the_dock_at_the_Nuremberg_Trials.jpg"
+    },
+    {
+     "s": 6,
+     "film": "adc",
+     "from": 114,
+     "to": 122,
+     "punch": true
+    },
+    {
+     "s": 7,
+     "file": "Defendants_in_the_dock_at_the_Nuremberg_Trials.jpg",
+     "zoom": 1.3
+    },
+    {
+     "s": 8,
+     "film": "adc",
+     "from": 279,
+     "to": 287
+    },
+    {
+     "s": 9,
+     "film": "adc",
+     "from": 216,
+     "to": 230
+    },
+    {
+     "s": 10,
+     "file": "Göring_in_the_dock_at_the_Nuremberg_Trials_(cropped).jpg",
+     "y": 0.3
+    },
+    {
+     "s": 11,
+     "film": "end46",
+     "from": 57,
+     "to": 60
+    }
+   ]
+  },
+  {
+   "title": "The Verdict",
+   "mode": "people",
+   "sentences": [
+    "The sentences were read on 30 September 1946.",
+    "Göring was found guilty on all four counts, and sentenced to death by hanging.",
+    "Twelve defendants were sentenced to death, Bormann among them.",
+    "In fact, Bormann had died on 2 May 1945, trying to escape from Berlin.",
+    "Seven, including Hess and Albert Speer, were sent to Spandau Prison to serve their sentences.",
+    "Three were acquitted.",
+    "Göring made an appeal, asking to be shot as a soldier instead of hanged as a common criminal.",
+    "The court refused.",
+    "The ten men who were hanged went to the gallows in the early morning of 16 October, a little more than two weeks later."
+   ],
+   "shots": [
+    {
+     "s": 1,
+     "film": "end46",
+     "from": 30,
+     "to": 33,
+     "label": "NUREMBERG · 30 SEPTEMBER 1946"
+    },
+    {
+     "s": 1,
+     "film": "end46",
+     "from": 132,
+     "to": 135
+    },
+    {
+     "s": 2,
+     "film": "end46",
+     "from": 147,
+     "to": 153
+    },
+    {
+     "s": 3,
+     "file": "Proces_Neurenberg._Op_de_voorgrond_Keitel,_Ribbentrop,_Rudolf_Hess,_Herman_Goeri,_Bestanddeelnr_901-1882.jpg"
+    },
+    {
+     "s": 4,
+     "file": "Bundesarchiv_Bild_183-R14128A,_Martin_Bormann_(3x4_cropped)_(2).jpg",
+     "y": 0.3,
+     "name": "MARTIN BORMANN"
+    },
+    {
+     "s": 5,
+     "file": "Rudolf_Hess_at_Nuremberg_prison.jpg",
+     "y": 0.3,
+     "name": "RUDOLF HESS"
+    },
+    {
+     "s": 6,
+     "film": "end46",
+     "from": 156,
+     "to": 166
+    },
+    {
+     "s": 7,
+     "file": "Hermann_Göring_at_Nuremberg_Trials_November_1945.jpeg",
+     "y": 0.3,
+     "zoom": 1.2
+    },
+    {
+     "s": 8,
+     "film": "end46",
+     "from": 168,
+     "to": 172
+    },
+    {
+     "s": 9,
+     "film": "end46",
+     "from": 6,
+     "to": 11
+    }
+   ]
+  },
+  {
+   "title": "The Last Night",
+   "mode": "people",
+   "sentences": [
+    "Göring asked for Lutheran last rites, but that was refused.",
+    "The executions were set for the early morning of 16 October.",
+    "The night before he was to be hanged, Göring committed suicide with a potassium cyanide capsule.",
+    "His death was slow and painful.",
+    "As the guards peered into his cell shortly before the execution, they saw him twisting in convulsions.",
+    "A doctor was quickly summoned, but Göring was dead within five minutes.",
+    "In his suicide note, he claimed to have possessed the capsule since he was imprisoned.",
+    "Since he was guarded around the clock, it was not clear how he had obtained the poison."
+   ],
+   "shots": [
+    {
+     "s": 1,
+     "file": "Göring_in_the_dock_at_the_Nuremberg_Trials_(cropped).jpg",
+     "y": 0.3
+    },
+    {
+     "s": 2,
+     "film": "end46",
+     "from": 21,
+     "to": 24
+    },
+    {
+     "s": 3,
+     "file": "Hermann_Göring_-_Röhr_(3x4_cropped).jpg",
+     "y": 0.25,
+     "zoom": 1.3
+    },
+    {
+     "s": 4,
+     "film": "end46",
+     "from": 147,
+     "to": 152,
+     "punch": true
+    },
+    {
+     "s": 5,
+     "film": "end46",
+     "from": 24,
+     "to": 30
+    },
+    {
+     "s": 6,
+     "file": "Hermann_Göring_on_trial_at_Nuremberg_1946.jpeg",
+     "zoom": 1.3
+    },
+    {
+     "s": 7,
+     "file": "Hermann_Göring_at_Nuremberg_Trials_November_1945.jpeg",
+     "y": 0.25,
+     "zoom": 1.35,
+     "sfx": "typewriter"
+    },
+    {
+     "s": 8,
+     "film": "end46",
+     "from": 24,
+     "to": 30
+    }
+   ]
+  },
+  {
+   "title": "Ten Ropes",
+   "mode": "people",
+   "sentences": [
+    "For their last meal, the condemned men were served sausage and cold cuts, potato salad and black bread, with tea to drink.",
+    "Starting at about 1:10 in the morning, the ten condemned men were led one at a time to the execution chamber.",
+    "The first was the former foreign minister, Joachim von Ribbentrop, followed by Field Marshal Wilhelm Keitel.",
+    "The death sentences were carried out by the United States Army.",
+    "Three temporary gallows had been built in the gymnasium of Nuremberg Prison.",
+    "The executioners were Master Sergeant John C. Woods and his assistant, military policeman Joseph Malta.",
+    "Woods used the standard drop method, and some of the men did not die quickly, but strangled slowly.",
+    "Joseph Kingsbury-Smith of the International News Service wrote an eyewitness account of the hangings.",
+    "The Army denied claims that the drop had been too short.",
+    "The bodies were cremated in Munich, and their ashes scattered over the river Isar."
+   ],
+   "shots": [
+    {
+     "s": 1,
+     "file": "The_Palace_of_Justice_in_Nurnberg.jpg"
+    },
+    {
+     "s": 2,
+     "file": "Palace_of_Justice,_Nuremberg_17_November_1945.jpg",
+     "zoom": 1.3,
+     "label": "NUREMBERG PRISON · 16 OCTOBER 1946"
+    },
+    {
+     "s": 3,
+     "file": "Joachim_von_Ribbentrop_in_his_cell_Nuremberg_Trials_1945.jpeg",
+     "y": 0.3,
+     "name": "JOACHIM VON RIBBENTROP"
+    },
+    {
+     "s": 3,
+     "file": "Wilhelm_Keitel_at_Nuremberg_Trials_November_1945.jpeg",
+     "y": 0.3,
+     "name": "WILHELM KEITEL"
+    },
+    {
+     "s": 4,
+     "film": "end46",
+     "from": 21,
+     "to": 24
+    },
+    {
+     "s": 5,
+     "film": "end46",
+     "from": 12,
+     "to": 15
+    },
+    {
+     "s": 6,
+     "file": "John_C._Woods.jpg",
+     "card": true,
+     "name": "JOHN C. WOODS",
+     "role": "US ARMY EXECUTIONER"
+    },
+    {
+     "s": 7,
+     "film": "end46",
+     "from": 24,
+     "to": 30,
+     "punch": true
+    },
+    {
+     "s": 8,
+     "film": "end46",
+     "from": 12,
+     "to": 15,
+     "sfx": "typewriter"
+    },
+    {
+     "s": 9,
+     "film": "end46",
+     "from": 156,
+     "to": 162
+    },
+    {
+     "s": 10,
+     "film": "end46",
+     "from": 6,
+     "to": 11
+    }
+   ]
+  },
+  {
+   "title": "The Hangman",
+   "mode": "people",
+   "sentences": [
+    "John Clarence Woods was born in Wichita, Kansas.",
+    "When the Army looked for a volunteer hangman in 1944, he falsely claimed previous experience in Texas and Oklahoma.",
+    "There is no evidence that the Army made any attempt to verify it.",
+    "Both states had switched to the electric chair long before.",
+    "Woods hanged 34 American soldiers in France, and Army reports suggest he took part in at least 11 bungled hangings.",
+    "After Nuremberg, he told reporters that he had hanged those ten Nazis, and that he was proud of it.",
+    "Time magazine credited him with 347 executions in a 15-year career.",
+    "He died just four years after Nuremberg, in 1950."
+   ],
+   "shots": [
+    {
+     "s": 1,
+     "file": "John_C._Woods.jpg",
+     "card": true
+    },
+    {
+     "s": 2,
+     "film": "end46",
+     "from": 24,
+     "to": 27
+    },
+    {
+     "s": 3,
+     "file": "The_Palace_of_Justice_in_Nurnberg.jpg"
+    },
+    {
+     "s": 4,
+     "film": "adc",
+     "from": 114,
+     "to": 122
+    },
+    {
+     "s": 5,
+     "file": "John_C._Woods.jpg",
+     "card": true,
+     "zoom": 1.2
+    },
+    {
+     "s": 6,
+     "film": "end46",
+     "from": 12,
+     "to": 15
+    },
+    {
+     "s": 7,
+     "file": "Palace_of_Justice,_Nuremberg_17_November_1945.jpg",
+     "zoom": 1.2
+    },
+    {
+     "s": 8,
+     "file": "John_C._Woods.jpg",
+     "card": true,
+     "zoom": 1.3
+    }
+   ]
+  },
+  {
+   "title": "The Poison",
+   "mode": "people",
+   "sentences": [
+    "To this day, nobody knows for certain how Göring got the poison.",
+    "At the time, speculation centred on a jar of his hair cream, where another cyanide capsule was later found.",
+    "Decades later, another theory focused on a US Army lieutenant, Jack G. Wheelis, who had been stationed at the trials.",
+    "Göring had given Wheelis his gold watch, his pen and his cigarette case.",
+    "Wheelis had since died, and it was theorised that he had retrieved the capsules for Göring.",
+    "Then, in 2005, a former US Army private, Herbert Lee Stivers, came forward.",
+    "He said he had given Göring medicine hidden inside a fountain pen, which a young German woman named Mona had asked him to smuggle into the prison.",
+    "He said he decided to speak out 60 years later, after his daughter convinced him.",
+    "He said he did not know what was in it until after Göring's suicide.",
+    "The prison psychiatrist, Douglas Kelley, called Göring's suicide an admirably defiant act against the prison authorities.",
+    "The man who had asked to be shot as a soldier had chosen his own death, a few hours before the rope.",
+    "So how do you think Göring got the poison? Tell me what you think in the comments."
+   ],
+   "shots": [
+    {
+     "s": 1,
+     "file": "Hermann_Göring_at_Nuremberg_Trials_November_1945.jpeg",
+     "y": 0.3,
+     "label": "NUREMBERG · 1946"
+    },
+    {
+     "s": 2,
+     "film": "adc",
+     "from": 162,
+     "to": 172
+    },
+    {
+     "s": 3,
+     "file": "Nuremberg_Trials._Looking_down_on_defendants_dock,_circa_1945-1946._-_NARA_-_540127.jpg"
+    },
+    {
+     "s": 4,
+     "file": "Defendants_Göring,_Dönitz,_and_Hess_conferring_Nuremberg_Trials.jpeg"
+    },
+    {
+     "s": 5,
+     "file": "Defendants_Göring,_Dönitz,_and_Hess_conferring_Nuremberg_Trials.jpeg",
+     "zoom": 1.3
+    },
+    {
+     "s": 6,
+     "film": "end46",
+     "from": 24,
+     "to": 30
+    },
+    {
+     "s": 7,
+     "file": "Hermann_Göring_on_trial_at_Nuremberg_1946.jpeg"
+    },
+    {
+     "s": 8,
+     "film": "end46",
+     "from": 156,
+     "to": 162
+    },
+    {
+     "s": 9,
+     "film": "end46",
+     "from": 51,
+     "to": 56
+    },
+    {
+     "s": 10,
+     "file": "Göring_in_the_dock_at_the_Nuremberg_Trials_(cropped).jpg",
+     "y": 0.3
+    },
+    {
+     "s": 11,
+     "film": "end46",
+     "from": 147,
+     "to": 153
+    },
+    {
+     "s": 12,
+     "file": "Hermann_Göring_at_Nuremberg_Trials_November_1945.jpeg",
+     "y": 0.25,
+     "zoom": 1.2
+    }
+   ]
+  }
+ ]
+}

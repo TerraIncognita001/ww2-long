@@ -786,6 +786,8 @@ def load_topic(d):
 def main():
     stats = S.load_stats()
     S.set_category("events")
+    if not S.DRY_RUN:
+        pending_comments(stats)
     if env("L_PUBLISH") == "1":                        # the reviewed dry run (its artifact unpacked into work/)
         meta = json.loads((W / "metadata.json").read_text(encoding="utf-8"))
         d = json.loads(pathlib.Path(meta["story"]).read_text(encoding="utf-8"))
@@ -865,7 +867,29 @@ def publish(stats, body, data, d):
         S.PLAYLIST = env("L_PLAYLIST", "WW2 Documentaries")
         S.add_to_playlist(yt, vid)
         S.upload_captions(yt, vid)
-        S.post_comment(yt, vid, data)
+        if at:                                         # YouTube refuses comments on a private (scheduled) video:
+            stats["videos"][-1]["comment_due"] = {"at": at, "q": plain(data.get("question", ""))}  # next run posts it
+        else:
+            S.post_comment(yt, vid, data)
+    S.save_stats(stats)
+
+
+def pending_comments(stats):
+    """The pinned question of scheduled videos, posted by the first run after their release (Oct 29: a scheduled
+    video is private until publishAt and YouTube refuses comments on it with 403)."""
+    from datetime import datetime, timezone
+    due = [v for v in stats["videos"] if v.get("comment_due")
+           and v["comment_due"]["at"] <= datetime.now(timezone.utc).strftime("%Y-%m-%dT%H:%M:%SZ")]
+    if not due:
+        return
+    try:
+        yt = S.youtube(S.credentials())
+    except Exception as e:
+        print("pending comments skipped:", type(e).__name__)
+        return
+    for v in due:
+        S.post_comment(yt, v["id"], {"question": v["comment_due"]["q"]})
+        v.pop("comment_due")
     S.save_stats(stats)
 
 

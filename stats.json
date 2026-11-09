@@ -9,7 +9,11 @@
    "seconds": 674.0,
    "words": 1662,
    "tts": null,
-   "thumb": "ok"
+   "thumb": "ok",
+   "comment_due": {
+    "at": "2026-10-29T23:00:00Z",
+    "q": "Was McVay to blame, or was he the Navy's scapegoat?"
+   }
   },
   {
    "id": "5ZzERzxmmuo",
@@ -20,7 +24,11 @@
    "seconds": 626.3,
    "words": 1537,
    "tts": "edge",
-   "thumb": "ok"
+   "thumb": "ok",
+   "comment_due": {
+    "at": "2026-10-29T23:00:00Z",
+    "q": "Why did Stalin lie about Hitler's death?"
+   }
   }
  ],
  "metrics": {},
