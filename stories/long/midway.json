@@ -1,0 +1,924 @@
+{
+ "priority": 4,
+ "topic": "Battle of Midway",
+ "sources": [
+  "Joseph Rochefort",
+  "Wade McClusky",
+  "USS Yorktown (CV-5)",
+  "Japanese aircraft carrier Akagi"
+ ],
+ "title": "Battle of Midway: How One Decoded Message Sank Four Japanese Carriers",
+ "thumb": {
+  "file": "Japanese_aircraft_carrier_Hiryu_burning_on_5_June_1942_(NH_73064).jpg"
+ },
+ "question": "Was Midway won by codebreakers or by luck?",
+ "summary": "In June 1942 Admiral Isoroku Yamamoto planned to lure the US Pacific Fleet into a trap at Midway Atoll. But US code breakers at Station HYPO under Joseph Rochefort had partially broken the Japanese naval code; a fake message about Midway's water supply confirmed that the target 'AF' was Midway. Admiral Chester Nimitz set an ambush. On 4 June, after every American torpedo squadron was shot to pieces, dive bombers led by Wade McClusky found the Japanese carriers with their hangars full of fuelled and armed planes. In six minutes Kaga, Akagi and Soryu were ablaze; Hiryu followed that afternoon. Yorktown was lost, but Japan's carrier force never recovered.",
+ "tags": [
+  "Battle of Midway",
+  "Midway 1942",
+  "Joseph Rochefort",
+  "Station HYPO",
+  "JN-25",
+  "Isoroku Yamamoto",
+  "Chester Nimitz",
+  "Wade McClusky",
+  "Akagi",
+  "Kaga",
+  "Hiryu",
+  "USS Yorktown",
+  "SBD Dauntless",
+  "Pacific War",
+  "World War II",
+  "WW2 documentary"
+ ],
+ "pronounce": {
+  "Soryu": "so-ryoo",
+  "Hiryu": "hee-ryoo",
+  "Kaga": "kah-gah",
+  "Akagi": "ah-kah-gee"
+ },
+ "films": {
+  "ford": {
+   "url": "https://archive.org/download/USAF-16985/USAF-16985.mov",
+   "mono": true,
+   "credit": "The Battle of Midway (John Ford, 1942): Official US Navy film, US National Archives (public domain, via Internet Archive)"
+  }
+ },
+ "case": {
+  "label": "MIDWAY - 4 JUNE 1942",
+  "left": {
+   "file": "Japanese_aircraft_carrier_Hiryu_burning_on_5_June_1942_(NH_73064).jpg",
+   "caption": "HIRYU"
+  },
+  "center": {
+   "file": "Admiral_Isoroku_Yamamoto.jpg",
+   "color": "tone",
+   "caption": "ADM. YAMAMOTO"
+  },
+  "right": {
+   "file": "Joseph_rochefort.jpg",
+   "color": "tone",
+   "caption": "THE CODEBREAKER"
+  },
+  "stamp": "DECODED",
+  "variants": [
+   {
+    "note": "four carriers sunk (true)",
+    "notes": [
+     {
+      "text": "4 CARRIERS SUNK",
+      "x": 0.72,
+      "y": 0.1,
+      "size": 58,
+      "angle": 4,
+      "stroke": 3
+     }
+    ],
+    "arrows": [
+     [
+      0.66,
+      0.16,
+      0.24,
+      0.42,
+      0.25
+     ]
+    ]
+   },
+   {
+    "note": "'AF is short on water' (true)",
+    "notes": [
+     {
+      "text": "\"AF IS SHORT ON WATER\"",
+      "x": 0.73,
+      "y": 0.1,
+      "size": 48,
+      "angle": -3,
+      "stroke": 3
+     }
+    ],
+    "circles": [
+     [
+      0.69,
+      0.24,
+      0.98,
+      0.97
+     ]
+    ]
+   }
+  ]
+ },
+ "chapters": [
+  {
+   "title": "",
+   "mode": "action",
+   "sentences": [
+    "At 10:22 on the morning of 4 June 1942, American dive bombers came down out of the sun over the Japanese fleet.",
+    "Within six minutes, two of Japan's greatest aircraft carriers were ablaze from stem to stern.",
+    "By the next morning, all four of the carriers that had attacked Pearl Harbor were gone.",
+    "It was one of the most decisive naval battles in history.",
+    "And it had been decided weeks earlier, in a basement office in Hawaii, by men who could read the enemy's mail.",
+    "This is the story of the Battle of Midway, and of the message that gave it away."
+   ],
+   "shots": [
+    {
+     "s": 1,
+     "film": "ford",
+     "from": 600,
+     "to": 604,
+     "sfx": "plane_flyby",
+     "label": "MIDWAY · 4 JUNE 1942"
+    },
+    {
+     "s": 1,
+     "film": "ford",
+     "from": 612,
+     "to": 616,
+     "sfx": "plane_vintage"
+    },
+    {
+     "s": 2,
+     "file": "Japanese_aircraft_carrier_Hiryu_burning_on_5_June_1942_(NH_73064).jpg",
+     "sfx": "explosion_massive"
+    },
+    {
+     "s": 2,
+     "film": "ford",
+     "from": 504,
+     "to": 512,
+     "sfx": "explosion_far"
+    },
+    {
+     "s": 3,
+     "file": "Japanese_aircraft_carrier_Hiryu_adrift_and_burning_on_5_June_1942_(NH_73065).jpg"
+    },
+    {
+     "s": 4,
+     "file": "G17056_Oil_tanks_burn_at_Midway_after_japanese_attack_4_june_1942.jpg"
+    },
+    {
+     "s": 5,
+     "file": "Joseph_rochefort.jpg",
+     "y": 0.3
+    },
+    {
+     "s": 5,
+     "film": "ford",
+     "from": 640,
+     "to": 646,
+     "sfx": "sea"
+    },
+    {
+     "s": 6,
+     "film": "ford",
+     "from": 616,
+     "to": 624,
+     "sfx": "artillery"
+    }
+   ]
+  },
+  {
+   "title": "The Trap",
+   "mode": "people",
+   "sentences": [
+    "Six months after Pearl Harbor, Japan wanted to extend its defensive perimeter in the Pacific.",
+    "The Doolittle air raid on Tokyo in April 1942 had made the need even more urgent.",
+    "The commander of the Combined Fleet, Admiral Isoroku Yamamoto, selected Midway, a tiny atoll at the northwest end of the Hawaiian Island chain.",
+    "Midway was not especially important in itself, but the Japanese felt the Americans would consider it a vital outpost, and would defend it.",
+    "Yamamoto's plan was to lure the American carriers into a trap, and destroy them.",
+    "He believed that only two of them, Enterprise and Hornet, were available.",
+    "His plan was exceedingly complex, and it dispersed his forces across hundreds of miles of open sea.",
+    "His supporting battleships and cruisers trailed the carrier force by several hundred miles.",
+    "The strike force, four fleet carriers under Vice Admiral Chuichi Nagumo, was called the Kido Butai."
+   ],
+   "shots": [
+    {
+     "s": 1,
+     "file": "Japanese_aircraft_carrier_Akagi,December_24,_1941.jpg",
+     "label": "PACIFIC · 1942"
+    },
+    {
+     "s": 2,
+     "file": "Zero_Akagi_Dec1941.jpg"
+    },
+    {
+     "s": 3,
+     "file": "H78628_Isoroku_Yamamoto.jpg",
+     "y": 0.35,
+     "name": "ISOROKU YAMAMOTO",
+     "role": "COMBINED FLEET"
+    },
+    {
+     "s": 3,
+     "file": "Aerial_photograph_of_Midway_Atoll_on_24_November_1941_(80-G-451086).jpg",
+     "label": "MIDWAY ATOLL"
+    },
+    {
+     "s": 4,
+     "file": "Aerial_photograph_of_Midway_Atoll_on_24_November_1941_(80-G-451086).jpg",
+     "zoom": 1.3
+    },
+    {
+     "s": 4,
+     "film": "ford",
+     "from": 64,
+     "to": 72,
+     "sfx": "sea"
+    },
+    {
+     "s": 5,
+     "file": "Admiral_Isoroku_Yamamoto.jpg",
+     "y": 0.3
+    },
+    {
+     "s": 6,
+     "film": "ford",
+     "from": 600,
+     "to": 604
+    },
+    {
+     "s": 7,
+     "file": "Japanese_Navy_Aircraft_Carrier_Kaga_1928.jpg"
+    },
+    {
+     "s": 8,
+     "film": "ford",
+     "from": 1000,
+     "to": 1008,
+     "sfx": "sea"
+    },
+    {
+     "s": 9,
+     "file": "Chuichi_Nagumo.jpg",
+     "y": 0.3,
+     "name": "CHUICHI NAGUMO",
+     "role": "STRIKE FORCE"
+    },
+    {
+     "s": 9,
+     "file": "Japanese_aircraft_carrier_Akagi,December_24,_1941.jpg",
+     "zoom": 1.25
+    }
+   ]
+  },
+  {
+   "title": "Station HYPO",
+   "mode": "people",
+   "sentences": [
+    "Yamamoto did not know that the Americans had partially broken the Japanese Navy's main code, which they called JN-25.",
+    "Since early 1942, they had been decoding messages about a coming operation against an objective called AF.",
+    "But nobody knew where AF was.",
+    "Commander Joseph Rochefort and his team at Station HYPO, in Hawaii, believed it was Midway.",
+    "So Captain Wilfred Holmes devised a ruse.",
+    "Midway was told, by a secure undersea cable, to broadcast an uncoded radio message saying that its water purification system had broken down.",
+    "Within 24 hours, the code breakers picked up a Japanese message: AF was short on water.",
+    "HYPO was also able to work out the date of the attack, as either 4 or 5 June, and to give Nimitz the complete Japanese order of battle.",
+    "Japan had a new codebook, but its introduction had been delayed, and by the time it came into use, the important breaks had already been made."
+   ],
+   "shots": [
+    {
+     "s": 1,
+     "file": "H78628_Isoroku_Yamamoto.jpg",
+     "y": 0.3,
+     "zoom": 1.25,
+     "sfx": "typewriter"
+    },
+    {
+     "s": 2,
+     "file": "Joseph_rochefort.jpg",
+     "y": 0.3
+    },
+    {
+     "s": 3,
+     "film": "ford",
+     "from": 168,
+     "to": 176
+    },
+    {
+     "s": 4,
+     "file": "Joseph_rochefort.jpg",
+     "y": 0.3,
+     "name": "JOSEPH ROCHEFORT",
+     "role": "STATION HYPO"
+    },
+    {
+     "s": 5,
+     "film": "ford",
+     "from": 176,
+     "to": 184
+    },
+    {
+     "s": 6,
+     "file": "Aerial_photograph_of_Midway_Atoll_on_24_November_1941_(80-G-451086).jpg",
+     "zoom": 1.2,
+     "sfx": "radio_static"
+    },
+    {
+     "s": 7,
+     "file": "Joseph_rochefort.jpg",
+     "y": 0.25,
+     "zoom": 1.3,
+     "sfx": "typewriter"
+    },
+    {
+     "s": 8,
+     "file": "Fleet_Admiral_Chester_W._Nimitz_portrait.jpg",
+     "y": 0.3,
+     "name": "CHESTER W. NIMITZ",
+     "role": "PACIFIC FLEET"
+    },
+    {
+     "s": 9,
+     "film": "ford",
+     "from": 184,
+     "to": 192
+    }
+   ]
+  },
+  {
+   "title": "The Ambush",
+   "mode": "people",
+   "sentences": [
+    "Admiral Chester Nimitz needed every flight deck he could find.",
+    "Yorktown had been damaged in the Battle of the Coral Sea a month earlier, and repairs were expected to take several months.",
+    "The Pearl Harbor Naval Shipyard worked around the clock, and in 72 hours she was restored to a battle-ready state.",
+    "Admiral William Halsey was stricken with shingles, and had to be replaced by Rear Admiral Raymond Spruance.",
+    "The American carriers reached their assembly point northeast of Midway, known as Point Luck, without being detected.",
+    "On the atoll itself, the Americans packed in squadrons of patrol planes, Marine fighters and dive bombers, and Army B-17 bombers.",
+    "Now, Nimitz knew where, when, and in what strength the Japanese would appear."
+   ],
+   "shots": [
+    {
+     "s": 1,
+     "file": "Fleet_Admiral_Chester_W._Nimitz_portrait.jpg",
+     "y": 0.3,
+     "zoom": 1.2
+    },
+    {
+     "s": 2,
+     "file": "Flight_deck_of_USS_Yorktown_(CV-5)_after_damage_at_Midway_1942.jpg"
+    },
+    {
+     "s": 3,
+     "film": "ford",
+     "from": 80,
+     "to": 88
+    },
+    {
+     "s": 4,
+     "file": "Ray_Spruance.jpg",
+     "y": 0.3,
+     "name": "RAYMOND SPRUANCE",
+     "role": "TASK FORCE 16"
+    },
+    {
+     "s": 5,
+     "film": "ford",
+     "from": 640,
+     "to": 646,
+     "sfx": "sea"
+    },
+    {
+     "s": 6,
+     "film": "ford",
+     "from": 208,
+     "to": 216,
+     "sfx": "plane_vintage"
+    },
+    {
+     "s": 6,
+     "film": "ford",
+     "from": 296,
+     "to": 304,
+     "sfx": "plane_flyby"
+    },
+    {
+     "s": 7,
+     "film": "ford",
+     "from": 160,
+     "to": 168
+    }
+   ]
+  },
+  {
+   "title": "The Morning Attack",
+   "mode": "action",
+   "sentences": [
+    "At 04:30 on 4 June, Nagumo launched his first attack on Midway.",
+    "Midway's radar picked up the Japanese planes, and its fighters scrambled to meet them.",
+    "The bombs hit the island's oil tanks, hangars and buildings.",
+    "The film director John Ford, then a Navy Reserve commander, was at the island's power plant during the attack, and filmed it.",
+    "But the attack failed to put Midway out of action, and the American bombers based there struck back at the Japanese carriers.",
+    "One B-26 bomber flew directly down the length of Akagi, under fire from the ship and from fighters.",
+    "None of their bombs or torpedoes hit.",
+    "Then, at 07:15, Nagumo ordered his reserve planes to be re-armed with bombs, for a second attack on the island.",
+    "Thirty minutes later, a scout plane from the cruiser Tone signalled that it had sighted American ships."
+   ],
+   "shots": [
+    {
+     "s": 1,
+     "file": "Chuichi_Nagumo.jpg",
+     "y": 0.3,
+     "zoom": 1.2,
+     "label": "KIDO BUTAI · 04:30"
+    },
+    {
+     "s": 2,
+     "film": "ford",
+     "from": 400,
+     "to": 404,
+     "sfx": "plane_flyby"
+    },
+    {
+     "s": 2,
+     "film": "ford",
+     "from": 404,
+     "to": 408
+    },
+    {
+     "s": 3,
+     "film": "ford",
+     "from": 410,
+     "to": 416,
+     "sfx": "explosion_close"
+    },
+    {
+     "s": 3,
+     "film": "ford",
+     "from": 422,
+     "to": 428,
+     "sfx": "explosion_far"
+    },
+    {
+     "s": 3,
+     "file": "Burning_oil_tank_on_Midway_1942.jpg"
+    },
+    {
+     "s": 4,
+     "film": "ford",
+     "from": 442,
+     "to": 446
+    },
+    {
+     "s": 4,
+     "film": "ford",
+     "from": 446,
+     "to": 452,
+     "sfx": "low_rumble"
+    },
+    {
+     "s": 5,
+     "film": "ford",
+     "from": 504,
+     "to": 512,
+     "sfx": "explosion_far"
+    },
+    {
+     "s": 5,
+     "film": "ford",
+     "from": 296,
+     "to": 304,
+     "sfx": "plane_vintage"
+    },
+    {
+     "s": 6,
+     "film": "ford",
+     "from": 304,
+     "to": 312,
+     "sfx": "plane_flyby"
+    },
+    {
+     "s": 7,
+     "film": "ford",
+     "from": 454,
+     "to": 458,
+     "sfx": "artillery"
+    },
+    {
+     "s": 8,
+     "file": "Japanese_aircraft_carrier_Akagi,December_24,_1941.jpg",
+     "zoom": 1.3
+    },
+    {
+     "s": 9,
+     "file": "Chuichi_Nagumo.jpg",
+     "y": 0.25,
+     "zoom": 1.35,
+     "sfx": "radio_static"
+    }
+   ]
+  },
+  {
+   "title": "Nagumo's Dilemma",
+   "mode": "people",
+   "sentences": [
+    "Nagumo swiftly reversed his order, and demanded to know what kind of ships the Americans had.",
+    "Another 20 to 40 minutes went by before the scout finally reported a single carrier.",
+    "Rear Admiral Tamon Yamaguchi urged him to strike at once with what he had.",
+    "But Nagumo's strike force was coming back from Midway, and it needed to land, or it would have to ditch into the sea.",
+    "Japanese doctrine preferred a fully constituted strike, so Nagumo decided to wait, land his planes, and arm the reserve with torpedoes.",
+    "On the hangar decks, fuel hoses snaked across the floors, and bombs and torpedoes were stacked around the hangars instead of being stowed safely in the magazines.",
+    "The carriers had wooden flooring, timber beams and highly flammable fuel lines, which allowed fires to spread rapidly.",
+    "The American carrier planes were already on their way."
+   ],
+   "shots": [
+    {
+     "s": 1,
+     "file": "Chuichi_Nagumo.jpg",
+     "y": 0.3
+    },
+    {
+     "s": 2,
+     "film": "ford",
+     "from": 168,
+     "to": 176,
+     "sfx": "radio_static"
+    },
+    {
+     "s": 3,
+     "file": "Japanese_Navy_Aircraft_Carrier_Kaga_1928.jpg",
+     "zoom": 1.2
+    },
+    {
+     "s": 4,
+     "file": "Zero_Akagi_Dec1941.jpg"
+    },
+    {
+     "s": 5,
+     "file": "Japanese_aircraft_carrier_Akagi,December_24,_1941.jpg"
+    },
+    {
+     "s": 6,
+     "file": "Zero_Akagi_Dec1941.jpg",
+     "zoom": 1.3
+    },
+    {
+     "s": 7,
+     "file": "Zero_Akagi_Dec1941.jpg",
+     "zoom": 1.2
+    },
+    {
+     "s": 8,
+     "film": "ford",
+     "from": 600,
+     "to": 606,
+     "sfx": "plane_flyby"
+    }
+   ]
+  },
+  {
+   "title": "Torpedo Squadron 8",
+   "mode": "action",
+   "sentences": [
+    "Spruance had launched his planes at extreme range, at about seven in the morning.",
+    "The American squadrons went in piecemeal, in several different groups.",
+    "The strike from Hornet followed the wrong heading, and its dive bombers missed the Japanese carriers completely.",
+    "But Torpedo Squadron 8, led by Lieutenant Commander John C. Waldron, broke formation and followed the correct heading.",
+    "At 09:20, they found the carriers and attacked, with no fighter escort.",
+    "All 15 of their slow Devastator torpedo bombers were shot down, without inflicting any damage.",
+    "Ensign George Gay was the only survivor of the 30 aircrew of the squadron.",
+    "Two more torpedo squadrons followed, and most of their planes were shot down too, with no hits.",
+    "Yet their sacrifice had pulled the Japanese fighters down to sea level, out of position, and low on fuel and ammunition."
+   ],
+   "shots": [
+    {
+     "s": 1,
+     "file": "Douglas_TBD-1_Devastators_of_VT-6_are_spotted_for_launch_aboard_USS_Enterprise_(CV-6)_on_4_June_1942_(80-G-41686).jpg",
+     "label": "USS ENTERPRISE · 4 JUNE 1942"
+    },
+    {
+     "s": 1,
+     "film": "ford",
+     "from": 604,
+     "to": 608,
+     "sfx": "plane_vintage"
+    },
+    {
+     "s": 2,
+     "film": "ford",
+     "from": 620,
+     "to": 624,
+     "sfx": "plane_flyby"
+    },
+    {
+     "s": 3,
+     "file": "TBD-1_Devastators_of_VT-6_in_flight_c1941.jpeg"
+    },
+    {
+     "s": 4,
+     "file": "John_C_Waldron.jpg",
+     "card": true,
+     "name": "JOHN C. WALDRON",
+     "role": "TORPEDO SQUADRON 8"
+    },
+    {
+     "s": 5,
+     "film": "ford",
+     "from": 624,
+     "to": 630,
+     "sfx": "artillery"
+    },
+    {
+     "s": 6,
+     "film": "ford",
+     "from": 646,
+     "to": 650,
+     "sfx": "explosion_far"
+    },
+    {
+     "s": 6,
+     "film": "ford",
+     "from": 616,
+     "to": 622,
+     "sfx": "artillery"
+    },
+    {
+     "s": 7,
+     "file": "TBD-1_Devastators_of_VT-6_in_flight_c1941.jpeg",
+     "zoom": 1.3
+    },
+    {
+     "s": 8,
+     "film": "ford",
+     "from": 638,
+     "to": 642,
+     "sfx": "artillery"
+    },
+    {
+     "s": 9,
+     "film": "ford",
+     "from": 652,
+     "to": 658,
+     "sfx": "sea"
+    }
+   ]
+  },
+  {
+   "title": "Six Minutes",
+   "mode": "action",
+   "sentences": [
+    "The dive bombers from Enterprise were running low on fuel, after a long search for the Japanese ships.",
+    "Their air group commander, C. Wade McClusky, decided to keep searching.",
+    "By good fortune, he spotted the wake of a lone Japanese destroyer, racing to rejoin Nagumo's carriers.",
+    "He followed it.",
+    "Nimitz later said that McClusky's decision decided the fate of the battle.",
+    "Three squadrons of American dive bombers arrived almost at the same moment, from different directions, at the perfect altitude.",
+    "Beginning at 10:22, they dived.",
+    "Kaga took several direct hits, and one bomb killed her captain and most of her senior officers on the bridge.",
+    "Lieutenant Richard Best put a single bomb into Akagi, and it exploded among the armed and fuelled planes in her hangar.",
+    "Mitsuo Fuchida, the aviator who had led the attack on Pearl Harbor, was on Akagi when she was hit.",
+    "Yorktown's bombers hit Soryu at least three times.",
+    "Within six minutes, Soryu and Kaga were ablaze from stem to stern.",
+    "Akagi took longer to burn, but she too was eventually consumed by flames, and abandoned."
+   ],
+   "shots": [
+    {
+     "s": 1,
+     "film": "ford",
+     "from": 612,
+     "to": 616,
+     "sfx": "plane_vintage"
+    },
+    {
+     "s": 2,
+     "file": "NH_93187_CDR_C._Wade_McClusky.jpg",
+     "y": 0.3,
+     "name": "C. WADE McCLUSKY",
+     "role": "ENTERPRISE AIR GROUP"
+    },
+    {
+     "s": 3,
+     "film": "ford",
+     "from": 652,
+     "to": 658,
+     "sfx": "sea"
+    },
+    {
+     "s": 4,
+     "film": "ford",
+     "from": 596,
+     "to": 600,
+     "sfx": "plane_flyby"
+    },
+    {
+     "s": 5,
+     "file": "Fleet_Admiral_Chester_W._Nimitz_portrait.jpg",
+     "y": 0.25,
+     "zoom": 1.3
+    },
+    {
+     "s": 6,
+     "film": "ford",
+     "from": 600,
+     "to": 604,
+     "sfx": "plane_flyby"
+    },
+    {
+     "s": 7,
+     "film": "ford",
+     "from": 616,
+     "to": 622,
+     "sfx": "bomb_drop"
+    },
+    {
+     "s": 8,
+     "file": "Japanese_Navy_Aircraft_Carrier_Kaga_1928.jpg",
+     "sfx": "explosion_massive"
+    },
+    {
+     "s": 8,
+     "film": "ford",
+     "from": 504,
+     "to": 512,
+     "sfx": "explosion_far"
+    },
+    {
+     "s": 9,
+     "file": "Richard_Halsey_Best.jpg",
+     "card": true,
+     "name": "RICHARD HALSEY BEST",
+     "role": "DIVE BOMBER PILOT"
+    },
+    {
+     "s": 9,
+     "file": "Japanese_aircraft_carrier_Akagi,December_24,_1941.jpg",
+     "sfx": "explosion_close"
+    },
+    {
+     "s": 10,
+     "film": "ford",
+     "from": 526,
+     "to": 532,
+     "sfx": "low_rumble"
+    },
+    {
+     "s": 11,
+     "film": "ford",
+     "from": 512,
+     "to": 520,
+     "sfx": "explosion_massive"
+    },
+    {
+     "s": 12,
+     "file": "Japanese_aircraft_carrier_Hiryu_adrift_and_burning_on_5_June_1942_(NH_73065).jpg",
+     "sfx": "low_rumble"
+    },
+    {
+     "s": 13,
+     "film": "ford",
+     "from": 520,
+     "to": 528,
+     "sfx": "low_rumble"
+    }
+   ]
+  },
+  {
+   "title": "Yorktown",
+   "mode": "action",
+   "sentences": [
+    "Hiryu, the one Japanese carrier still afloat, wasted little time in counterattacking.",
+    "Her dive bombers followed the American planes home, and hit Yorktown with three bombs.",
+    "Captain Elliott Buckmaster had his signalmen hoist a new American flag from the foremast.",
+    "Damage control parties patched the flight deck and restored power within an hour.",
+    "The repairs were so effective that the second Japanese wave thought Yorktown was a different, undamaged carrier.",
+    "They crippled her with two torpedoes, and she lost all power.",
+    "Late that afternoon, American dive bombers found Hiryu, and four or five bombs left her ablaze.",
+    "Her admiral, Tamon Yamaguchi, and her captain chose to go down with the ship.",
+    "A third torpedo from the same salvo struck the destroyer Hammann, which broke in two and sank with the loss of 80 lives.",
+    "Salvage efforts on Yorktown were encouraging, but on 6 June she was struck by two torpedoes from the Japanese submarine I-168, and sank the next day."
+   ],
+   "shots": [
+    {
+     "s": 1,
+     "file": "Japanese_aircraft_carrier_Hiryu_adrift_and_burning_on_5_June_1942_(NH_73065).jpg",
+     "zoom": 1.2
+    },
+    {
+     "s": 2,
+     "file": "Japanese_dive_bombers_attack_USS_Yorktown_(CV-5)_at_Midway_1942.jpg",
+     "sfx": "plane_flyby"
+    },
+    {
+     "s": 2,
+     "file": "USS_Yorktown_(CV-5)_burning_after_first_Japanese_attack_at_Midway_1942.jpg",
+     "sfx": "explosion_far"
+    },
+    {
+     "s": 3,
+     "file": "US_Flag_on_Midway_1942.jpg"
+    },
+    {
+     "s": 4,
+     "file": "Flight_deck_of_USS_Yorktown_(CV-5)_after_damage_at_Midway_1942.jpg"
+    },
+    {
+     "s": 5,
+     "file": "Elliott_Buckmaster.jpg",
+     "y": 0.3,
+     "name": "ELLIOTT BUCKMASTER",
+     "role": "CAPTAIN, USS YORKTOWN"
+    },
+    {
+     "s": 6,
+     "file": "USS_Yorktown_(CV-5)_is_hit_by_a_torpedo_on_4_June_1942.jpg",
+     "sfx": "explosion_massive"
+    },
+    {
+     "s": 7,
+     "file": "Japanese_aircraft_carrier_Hiryu_burning_on_5_June_1942_(NH_73064).jpg",
+     "sfx": "low_rumble"
+    },
+    {
+     "s": 8,
+     "file": "Japanese_aircraft_carrier_Hiryu_adrift_and_burning_on_5_June_1942_(NH_73065).jpg",
+     "zoom": 1.35
+    },
+    {
+     "s": 9,
+     "file": "USS_Yorktown_(CV-5)_burning_after_first_Japanese_attack_at_Midway_1942.jpg",
+     "zoom": 1.3
+    },
+    {
+     "s": 10,
+     "film": "ford",
+     "from": 1024,
+     "to": 1032,
+     "sfx": "sea"
+    }
+   ]
+  },
+  {
+   "title": "The Turning Point",
+   "mode": "people",
+   "sentences": [
+    "Yamamoto ordered a general withdrawal to the west.",
+    "In the days that followed, American planes also sank the heavy cruiser Mikuma.",
+    "Japan had lost four fleet carriers, and many of its most experienced aircrews and mechanics.",
+    "On the return of the Japanese fleet, the wounded were isolated as secret patients, to keep the defeat secret.",
+    "The Battle of Midway is widely considered a turning point in the Pacific War.",
+    "After it, Japan's ability to replace its losses quickly became insufficient, while American industry grew stronger every month.",
+    "And it had all begun with a fake message about drinking water on a tiny island.",
+    "He was wounded in the arm during the filming, and his film, The Battle of Midway, won the Academy Award for Best Documentary.",
+    "So was Midway won by the codebreakers, or by pure luck? Tell me what you think in the comments."
+   ],
+   "shots": [
+    {
+     "s": 1,
+     "file": "Admiral_Isoroku_Yamamoto.jpg",
+     "y": 0.3,
+     "zoom": 1.2
+    },
+    {
+     "s": 2,
+     "file": "SBD-3_Dauntless_bombers_of_VS-8_over_the_burning_Japanese_cruiser_Mikuma_on_6_June_1942.jpg",
+     "label": "6 JUNE 1942"
+    },
+    {
+     "s": 3,
+     "file": "Japanese_aircraft_carrier_Hiryu_burning_on_5_June_1942_(NH_73064).jpg"
+    },
+    {
+     "s": 4,
+     "film": "ford",
+     "from": 1024,
+     "to": 1032,
+     "sfx": "sea"
+    },
+    {
+     "s": 5,
+     "film": "ford",
+     "from": 960,
+     "to": 968
+    },
+    {
+     "s": 6,
+     "film": "ford",
+     "from": 1000,
+     "to": 1008,
+     "sfx": "sea"
+    },
+    {
+     "s": 7,
+     "file": "Aerial_photograph_of_Midway_Atoll_on_24_November_1941_(80-G-451086).jpg"
+    },
+    {
+     "s": 8,
+     "film": "ford",
+     "from": 448,
+     "to": 452
+    },
+    {
+     "s": 9,
+     "file": "Joseph_rochefort.jpg",
+     "y": 0.3,
+     "zoom": 1.2
+    },
+    {
+     "s": 9,
+     "film": "ford",
+     "from": 448,
+     "to": 452
+    }
+   ]
+  }
+ ]
+}

@@ -269,7 +269,7 @@ def media(s, films, got):
         return {"kind": "film", "path": f["path"], "ss": float(s["from"]), "to": float(s["to"]), "crop": f.get("crop"),
                 "x": float(s.get("x", 0.5)), "y": float(s.get("y", 0.5)), "zoom": float(s.get("zoom", 1.0)),
                 "sfx": s.get("sfx"), "punch": bool(s.get("punch")), "name": s.get("name"), "role": s.get("role"),
-                "label": s.get("label"), "credit": f["credit"]}
+                "label": s.get("label"), "credit": f["credit"], "mono": bool(f.get("mono"))}
     g = got.get(str(s.get("file")))
     if not g:
         return None
@@ -299,7 +299,7 @@ def render_film(m, d, k):
         size = f"scale={w}:{h}:force_original_aspect_ratio=increase:flags=bicubic,"
     fc = (f"[0:v]{pre}fps=30{hold},{size}"
           f"crop={SIZE[0]}:{SIZE[1]}:(iw-ow)*{m['x']:.2f}:(ih-oh)*{m['y']:.2f},"
-          f"{PUNCH + ',' if m.get('punch') else ''}{GRADE},setsar=1,format=yuv420p{',' + WHIP if k else ''}[v]")
+          f"{'hue=s=0,' if m.get('mono') else ''}{PUNCH + ',' if m.get('punch') else ''}{GRADE},setsar=1,format=yuv420p{',' + WHIP if k else ''}[v]")
     ff("-ss", f"{m['ss']:.2f}", "-t", f"{avail + 0.3:.2f}", "-i", str(m["path"]), "-filter_complex", fc,
        "-map", "[v]", "-t", f"{d:.3f}", *ENC, out.name)
     return out
