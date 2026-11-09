@@ -1,0 +1,819 @@
+{
+ "priority": 5,
+ "topic": "Japanese battleship Yamato",
+ "sources": [
+  "Operation Ten-Go",
+  "Seiichi Itō",
+  "Kōsaku Aruga"
+ ],
+ "title": "Yamato: The Biggest Battleship Ever Built Sent on a One-Way Mission",
+ "thumb": {
+  "file": "Japanese_battleship_Yamato_explodes,_7_April_1945_(NH_62579).jpg"
+ },
+ "question": "Was Yamato's last mission courage or a waste?",
+ "summary": "Yamato and her sister Musashi were the heaviest and most powerfully armed battleships ever built, with nine 46 cm guns, the largest ever fitted to a warship. Built in extreme secrecy, Yamato fired her main guns at enemy ships only once, off Samar in October 1944. In April 1945, with Japan's fleet crippled by fuel shortages, she was sent on Operation Ten-Go: a one-way mission to Okinawa, to beach herself and fight until destroyed. The Americans had decoded the plan. On 7 April about 280 carrier aircraft struck; hit by at least 11 torpedoes and 6 bombs, Yamato capsized and exploded, with the loss of an estimated 3,055 of her 3,332 crew, including Vice Admiral Seiichi Ito.",
+ "tags": [
+  "Yamato",
+  "battleship Yamato",
+  "Operation Ten-Go",
+  "Seiichi Ito",
+  "Musashi",
+  "Battle off Samar",
+  "Okinawa 1945",
+  "East China Sea",
+  "largest battleship",
+  "Imperial Japanese Navy",
+  "Pacific War",
+  "World War II",
+  "WW2 documentary"
+ ],
+ "pronounce": {
+  "Yahagi": "yah-hah-gee",
+  "Tokuyama": "toh-koo-yah-mah",
+  "Kure": "koo-reh"
+ },
+ "films": {
+  "kam": {
+   "url": "https://archive.org/download/NPC-11213/NPC-11213.mov",
+   "credit": "Japanese Kamikaze Attack on Aircraft Carriers, March 1945: Naval Photographic Center film 11213, US National Archives (public domain, via Internet Archive)"
+  },
+  "ford": {
+   "url": "https://archive.org/download/USAF-16985/USAF-16985.mov",
+   "mono": true,
+   "credit": "The Battle of Midway (John Ford, 1942): Official US Navy film, US National Archives (public domain, via Internet Archive)"
+  }
+ },
+ "case": {
+  "label": "YAMATO - 7 APRIL 1945",
+  "left": {
+   "file": "Japanese_battleship_Yamato_running_trials_in_Sukumo_Bay,_30_October_1941_(80-G-704702).jpg",
+   "caption": "YAMATO"
+  },
+  "center": {
+   "file": "Vice_Admiral_Seiichi_Ito.png",
+   "color": "tone",
+   "caption": "V.ADM. ITO"
+  },
+  "right": {
+   "file": "Japanese_battleship_Yamato_explodes,_7_April_1945_(NH_62579).jpg",
+   "caption": "7 APRIL 1945"
+  },
+  "stamp": "SUNK",
+  "variants": [
+   {
+    "note": "one-way mission (true)",
+    "notes": [
+     {
+      "text": "ONE-WAY MISSION",
+      "x": 0.72,
+      "y": 0.1,
+      "size": 58,
+      "angle": 4,
+      "stroke": 3
+     }
+    ],
+    "arrows": [
+     [
+      0.66,
+      0.16,
+      0.24,
+      0.42,
+      0.25
+     ]
+    ]
+   },
+   {
+    "note": "3,055 of 3,332 lost (true)",
+    "notes": [
+     {
+      "text": "3,055 LOST",
+      "x": 0.8,
+      "y": 0.11,
+      "size": 66,
+      "angle": -4,
+      "stroke": 3
+     }
+    ],
+    "circles": [
+     [
+      0.69,
+      0.24,
+      0.98,
+      0.97
+     ]
+    ]
+   }
+  ]
+ },
+ "chapters": [
+  {
+   "title": "",
+   "mode": "action",
+   "sentences": [
+    "At 14:23 on 7 April 1945, in the East China Sea, the largest battleship ever built rolled over and blew apart.",
+    "The explosion of her magazine was seen far away, and a column of smoke rose high into the sky.",
+    "Of the more than three thousand men on board, only a few hundred survived.",
+    "She had been sent on a mission with no way back: to sail to Okinawa, run herself aground, and fight until she was destroyed.",
+    "Her own admiral had called the plan futile and wasteful.",
+    "This is the story of Yamato, the ship built to win the war, and of her last voyage."
+   ],
+   "shots": [
+    {
+     "s": 1,
+     "file": "Japanese_battleship_Yamato_explodes,_7_April_1945_(NH_62579).jpg",
+     "sfx": "explosion_massive",
+     "label": "EAST CHINA SEA · 7 APRIL 1945"
+    },
+    {
+     "s": 1,
+     "file": "Explosion_of_the_Japanese_battleship_Yamato_on_7_April_1945_(80-G-413914).jpg",
+     "sfx": "explosion_far"
+    },
+    {
+     "s": 2,
+     "file": "Explosion_of_the_Japanese_battleship_Yamato,_on_7_April_1945_(NH_62582).jpg",
+     "sfx": "low_rumble"
+    },
+    {
+     "s": 3,
+     "file": "Damaged_Japanese_battleship_Yamato_underway_on_7_April_1945_(NH_62580).jpg"
+    },
+    {
+     "s": 4,
+     "file": "Japanese_battleship_Yamato_and_her_escorts_steam_towards_Okinawa_on_7_April_1945_(NNAM.1983.046.010.124).jpg",
+     "sfx": "sea"
+    },
+    {
+     "s": 4,
+     "file": "Japanese_battleship_Yamato_underway_with_four_destroyers_on_7_April_1945_(L42-09.06.04).jpg"
+    },
+    {
+     "s": 5,
+     "file": "Vice_Admiral_Seiichi_Ito.png",
+     "y": 0.3
+    },
+    {
+     "s": 6,
+     "file": "Japanese_battleship_Yamato_running_trials_in_Sukumo_Bay,_30_October_1941_(80-G-704702).jpg",
+     "sfx": "sea"
+    }
+   ]
+  },
+  {
+   "title": "The Secret Giant",
+   "mode": "people",
+   "sentences": [
+    "In the 1930s, Japan withdrew from the Washington Naval Treaty, which limited the size and power of battleships.",
+    "Its navy then designed a new class of heavy battleships, to counter the larger battleship fleet of the United States.",
+    "The keel of Yamato was laid down at the Kure Naval Arsenal on 4 November 1937, in a dockyard that had to be adapted for her enormous hull.",
+    "Extreme secrecy was maintained, and a canopy was even put up over part of the dry dock to screen the ship from view.",
+    "She and her sister ship Musashi were the heaviest and most powerfully armed battleships ever constructed, displacing nearly 72,000 tonnes at full load.",
+    "Her nine main guns were the largest ever fitted to a warship.",
+    "Each gun was more than 21 metres long, and could fire a shell 42 kilometres.",
+    "She carried thick armour protection, and was built to outfight any battleship in the American fleet.",
+    "During trials in late 1941, she reached her maximum speed of 27 knots.",
+    "On 16 December 1941, a week after the attack on Pearl Harbor, she was formally commissioned at Kure, months ahead of schedule."
+   ],
+   "shots": [
+    {
+     "s": 1,
+     "file": "Builders_plans_for_the_Japanese_battleship_Yamato_(NH_111711).png",
+     "card": true
+    },
+    {
+     "s": 2,
+     "file": "Builders_plans_for_the_Japanese_battleship_Yamato_(NH_111711).png",
+     "card": true,
+     "zoom": 1.4,
+     "x": 0.3
+    },
+    {
+     "s": 3,
+     "file": "Japanese_battleship_Yamato_fitting_out_at_the_Kure_Naval_Base,_Japan,_20_September_1941_(NH_63433).jpg",
+     "label": "KURE · 1941"
+    },
+    {
+     "s": 4,
+     "file": "Japanese_battleship_Yamato_fitting_out_at_the_Kure_Naval_Base,_Japan,_20_September_1941_(NH_63433).jpg",
+     "zoom": 1.3
+    },
+    {
+     "s": 5,
+     "file": "Japanese_battleships_Yamato_and_Musashi_moored_in_Truk_Lagoon,_in_1943_(L42-08.06.02).jpg",
+     "name": "YAMATO AND MUSASHI",
+     "role": "THE HEAVIEST BATTLESHIPS EVER BUILT"
+    },
+    {
+     "s": 6,
+     "file": "Yamato's_main_battery_guns_18.1″L45_Type_94.jpg"
+    },
+    {
+     "s": 7,
+     "file": "Yamato's_main_battery_guns_18.1″L45_Type_94.jpg",
+     "zoom": 1.3,
+     "sfx": "tank_gun"
+    },
+    {
+     "s": 8,
+     "file": "Yamato's_main_battery_guns_18.1″L45_Type_94.jpg",
+     "zoom": 1.2
+    },
+    {
+     "s": 9,
+     "file": "Japanese_battleship_Yamato_running_trials_in_Sukumo_Bay,_30_October_1941_(80-G-704702).jpg",
+     "sfx": "sea"
+    },
+    {
+     "s": 10,
+     "file": "Yamato_during_Trial_Service.jpg",
+     "sfx": "sea"
+    }
+   ]
+  },
+  {
+   "title": "Yamamoto's Flagship",
+   "mode": "people",
+   "sentences": [
+    "In February 1942, Yamato became the flagship of Admiral Isoroku Yamamoto's Combined Fleet.",
+    "In June 1942, Yamamoto directed the Battle of Midway from her bridge.",
+    "It was a disaster for Japan, and Yamato never came within range of the American fleet.",
+    "She spent most of the next year at the great base at Truk.",
+    "Because of her thick armour and huge storage space, she was even used to ferry troops and equipment.",
+    "On 25 December 1943, an American submarine hit her with a torpedo, and she went back to Kure for repairs.",
+    "There, her anti-aircraft guns were increased again and again, as American aircraft took control of the skies."
+   ],
+   "shots": [
+    {
+     "s": 1,
+     "file": "Admiral_Isoroku_Yamamoto.jpg",
+     "y": 0.3,
+     "name": "ISOROKU YAMAMOTO",
+     "role": "COMBINED FLEET"
+    },
+    {
+     "s": 2,
+     "file": "Japanese_battleship_Yamato_running_trials_in_Sukumo_Bay,_30_October_1941_(80-G-704702).jpg",
+     "zoom": 1.3
+    },
+    {
+     "s": 3,
+     "film": "ford",
+     "from": 504,
+     "to": 512,
+     "sfx": "explosion_far"
+    },
+    {
+     "s": 4,
+     "file": "Japanese_battleships_Yamato_and_Musashi_moored_in_Truk_Lagoon,_in_1943_(L42-08.06.02).jpg",
+     "label": "TRUK LAGOON · 1943"
+    },
+    {
+     "s": 5,
+     "file": "Japanese_battleships_Yamato_and_Musashi_moored_in_Truk_Lagoon,_in_1943_(L42-08.06.02).jpg",
+     "zoom": 1.35,
+     "x": 0.3
+    },
+    {
+     "s": 6,
+     "file": "Yamato_during_Trial_Service.jpg",
+     "zoom": 1.3,
+     "sfx": "submarine_hit"
+    },
+    {
+     "s": 7,
+     "film": "kam",
+     "from": 40,
+     "to": 52,
+     "sfx": "artillery"
+    }
+   ]
+  },
+  {
+   "title": "The Only Battle",
+   "mode": "action",
+   "sentences": [
+    "In October 1944, Yamato was sent to attack the American forces invading the Philippines, in the Battle of Leyte Gulf.",
+    "On 24 October, in the Sibuyan Sea, American carrier aircraft struck her with two armour-piercing bombs.",
+    "Her sister Musashi was sunk that day.",
+    "The next morning, off the island of Samar, the Japanese fleet ran into a group of American escort carriers.",
+    "For the only time in her life, Yamato fired her main guns at enemy ships.",
+    "Her shells hit the destroyer Johnston, and she sank or helped to sink the escort carrier Gambier Bay.",
+    "But relentless air attacks sank three Japanese heavy cruisers, and the fleet turned back.",
+    "The Japanese navy would never recover."
+   ],
+   "shots": [
+    {
+     "s": 1,
+     "file": "Japanese_battleships_at_Brunei,_Borneo,_in_October_1944_(NH_73090).jpg",
+     "label": "BRUNEI · OCTOBER 1944"
+    },
+    {
+     "s": 2,
+     "file": "Japanese_battleship_Yamato_is_hit_by_a_bomb_during_the_Battle_of_the_Sibuyan_Sea,_24_October_1944_(80-G-325952).jpg",
+     "sfx": "explosion_close"
+    },
+    {
+     "s": 3,
+     "file": "Japanese_battleship_Yamato_is_hit_by_a_bomb_during_the_Battle_of_the_Sibuyan_Sea,_24_October_1944_(80-G-325952).jpg",
+     "zoom": 1.3
+    },
+    {
+     "s": 4,
+     "file": "Japanese_fleet_underway_off_Samar,_Philippines,_25_October_1944_(80-G-46989).jpg",
+     "label": "OFF SAMAR · 25 OCTOBER 1944"
+    },
+    {
+     "s": 5,
+     "file": "Japanese_battleship_Yamato_underway_during_the_Battle_off_Samar,_25_October_1944_(80-G-48888).jpg",
+     "sfx": "tank_gun"
+    },
+    {
+     "s": 6,
+     "file": "LeyteGambierBayStraddle.jpg",
+     "sfx": "explosion_far"
+    },
+    {
+     "s": 7,
+     "film": "kam",
+     "from": 60,
+     "to": 72,
+     "sfx": "explosion_massive"
+    },
+    {
+     "s": 8,
+     "file": "Japanese_battleship_Yamato_underway_during_the_Battle_off_Samar,_25_October_1944_(80-G-48888).jpg",
+     "zoom": 1.3
+    }
+   ]
+  },
+  {
+   "title": "No Fuel, No Planes",
+   "mode": "people",
+   "sentences": [
+    "By early 1945, Japan's fleet was badly depleted, and crippled by critical fuel shortages in the home islands.",
+    "On 19 March, American carrier aircraft attacked the harbour at Kure.",
+    "On 1 April 1945, the Allies invaded Okinawa, the final step before an invasion of the Japanese mainland.",
+    "When the emperor was told of the army's plans for Okinawa, he reportedly asked what the navy was doing, and whether it had no more ships.",
+    "The answer was Operation Ten-Go.",
+    "Yamato and nine escorts, the cruiser Yahagi and eight destroyers, would sail to Okinawa and attack the Allied fleet.",
+    "Then Yamato would be beached, to act as an unsinkable gun emplacement, and fight until destroyed.",
+    "Her surviving crew were supposed to go ashore, and fight on as infantry.",
+    "The plan was drafted under Admiral Soemu Toyoda, the commander-in-chief of the Combined Fleet."
+   ],
+   "shots": [
+    {
+     "s": 1,
+     "file": "Japanese_battleship_Yamato_under_air_attack_off_Kure_on_19_March_1945_(80-G-309662).jpg"
+    },
+    {
+     "s": 2,
+     "file": "Japanese_battleship_Yamato_under_air_attack_off_Kure_on_19_March_1945_(80-G-309662).jpg",
+     "zoom": 1.3,
+     "sfx": "plane_flyby",
+     "label": "KURE · 19 MARCH 1945"
+    },
+    {
+     "s": 3,
+     "film": "kam",
+     "from": 136,
+     "to": 148,
+     "sfx": "sea"
+    },
+    {
+     "s": 4,
+     "file": "Emperor_Hirohito_1945.jpg",
+     "y": 0.3,
+     "name": "EMPEROR HIROHITO"
+    },
+    {
+     "s": 5,
+     "file": "Japanese_battleship_Yamato_and_her_escorts_steam_towards_Okinawa_on_7_April_1945_(NNAM.1983.046.010.124).jpg",
+     "sfx": "war_drums"
+    },
+    {
+     "s": 6,
+     "file": "Japanese_battleship_Yamato_underway_with_four_destroyers_on_7_April_1945_(L42-09.06.04).jpg"
+    },
+    {
+     "s": 7,
+     "file": "Japanese_battleship_Yamato_and_her_escorts_steam_towards_Okinawa_on_7_April_1945_(NNAM.1983.046.010.124).jpg",
+     "zoom": 1.3
+    },
+    {
+     "s": 8,
+     "file": "Vice_Admiral_Seiichi_Ito.png",
+     "y": 0.3,
+     "zoom": 1.2
+    },
+    {
+     "s": 9,
+     "file": "Japanese_battleship_Yamato_and_her_escorts_steam_towards_Okinawa_on_7_April_1945_(NNAM.1983.046.010.124).jpg",
+     "zoom": 1.2
+    }
+   ]
+  },
+  {
+   "title": "The Admiral Who Said No",
+   "mode": "people",
+   "sentences": [
+    "The fleet commander was Vice Admiral Seiichi Ito.",
+    "Like Yamamoto, he had known the strength of the United States, and had argued for keeping good relations with it.",
+    "Ito opposed the mission, which he saw as futile and wasteful.",
+    "On 5 April, Vice Admiral Ryunosuke Kusaka flew in to persuade him, and the commanders and captains unanimously joined Ito in rejecting it.",
+    "Then Kusaka told them that Japan's leaders, including the emperor, expected the navy to make its best effort at Okinawa.",
+    "The commanders relented.",
+    "The crews were told what the mission was, and given the chance to stay behind; none did.",
+    "But 67 young naval cadets, who had come aboard just three days earlier, were ordered off the ship.",
+    "On the evening before they sailed, the executive officer held a party for the crew, and many of the men drank heavily.",
+    "The ships were meant to receive only enough fuel for a one-way voyage, but the men at the base secretly gave them almost all the fuel they had left."
+   ],
+   "shots": [
+    {
+     "s": 1,
+     "file": "Vice_Admiral_Seiichi_Ito.png",
+     "y": 0.3,
+     "name": "SEIICHI ITO",
+     "role": "VICE ADMIRAL, 2ND FLEET"
+    },
+    {
+     "s": 2,
+     "file": "Admiral_Isoroku_Yamamoto.jpg",
+     "y": 0.3,
+     "zoom": 1.2
+    },
+    {
+     "s": 3,
+     "file": "Vice_Admiral_Seiichi_Ito.png",
+     "y": 0.25,
+     "zoom": 1.3
+    },
+    {
+     "s": 4,
+     "file": "Japanese_battleships_Yamato_and_Musashi_moored_in_Truk_Lagoon,_in_1943_(L42-08.06.02).jpg",
+     "zoom": 1.2
+    },
+    {
+     "s": 5,
+     "file": "Emperor_Hirohito_1945.jpg",
+     "y": 0.25,
+     "zoom": 1.3
+    },
+    {
+     "s": 6,
+     "file": "Vice_Admiral_Seiichi_Ito.png",
+     "y": 0.3,
+     "zoom": 1.15
+    },
+    {
+     "s": 7,
+     "file": "Yamato_during_Trial_Service.jpg"
+    },
+    {
+     "s": 8,
+     "file": "Japanese_battleship_Yamato_fitting_out_at_the_Kure_Naval_Base,_Japan,_20_September_1941_(NH_63433).jpg",
+     "zoom": 1.2
+    },
+    {
+     "s": 9,
+     "file": "Yamato_during_Trial_Service.jpg",
+     "zoom": 1.2
+    },
+    {
+     "s": 10,
+     "file": "Japanese_battleship_Yamato_and_her_escorts_steam_towards_Okinawa_on_7_April_1945_(NNAM.1983.046.010.124).jpg",
+     "zoom": 1.2,
+     "sfx": "sea"
+    }
+   ]
+  },
+  {
+   "title": "Decoded Again",
+   "mode": "action",
+   "sentences": [
+    "At 15:20 on 6 April, Yamato and her escorts left Tokuyama.",
+    "Once again, the Americans had intercepted and decoded their radio messages, and knew the details of the operation.",
+    "That evening, two American submarines spotted the force in the Bungo Strait, and reported its position.",
+    "The Japanese ships were steaming at high speed and zigzagging, so neither submarine could attack.",
+    "Admiral Raymond Spruance first ordered six battleships to prepare for a surface battle.",
+    "Instead, the job went to the aircraft carriers of Admiral Marc Mitscher.",
+    "Shortly after noon on 7 April, around 280 bombers and torpedo bombers arrived over the Japanese ships.",
+    "There was no Japanese air cover at all."
+   ],
+   "shots": [
+    {
+     "s": 1,
+     "file": "Japanese_battleship_Yamato_underway_with_four_destroyers_on_7_April_1945_(L42-09.06.04).jpg",
+     "label": "TOKUYAMA · 6 APRIL 1945"
+    },
+    {
+     "s": 2,
+     "file": "Japanese_battleship_Yamato_running_trials_in_Sukumo_Bay,_30_October_1941_(80-G-704702).jpg",
+     "zoom": 1.2,
+     "sfx": "radio_static"
+    },
+    {
+     "s": 3,
+     "film": "kam",
+     "from": 136,
+     "to": 144,
+     "sfx": "sea"
+    },
+    {
+     "s": 4,
+     "film": "kam",
+     "from": 136,
+     "to": 148,
+     "sfx": "sea"
+    },
+    {
+     "s": 5,
+     "file": "Ray_Spruance.jpg",
+     "y": 0.3,
+     "name": "RAYMOND SPRUANCE",
+     "role": "FIFTH FLEET"
+    },
+    {
+     "s": 6,
+     "file": "Marc_Mitscher_coming_aboard_Enterprise.jpg",
+     "y": 0.3,
+     "name": "MARC MITSCHER",
+     "role": "FAST CARRIER FORCE"
+    },
+    {
+     "s": 6,
+     "film": "kam",
+     "from": 120,
+     "to": 132,
+     "sfx": "sea"
+    },
+    {
+     "s": 7,
+     "film": "kam",
+     "from": 76,
+     "to": 82,
+     "sfx": "plane_flyby",
+     "label": "7 APRIL 1945 · 12:30"
+    },
+    {
+     "s": 7,
+     "film": "ford",
+     "from": 600,
+     "to": 606,
+     "sfx": "plane_flyby"
+    },
+    {
+     "s": 8,
+     "file": "Japanese_battleship_Yamato_seen_from_an_attacking_aircraft,_7_April_1945_(80-G-320642).jpg",
+     "sfx": "plane_vintage"
+    }
+   ]
+  },
+  {
+   "title": "Two Hours",
+   "mode": "action",
+   "sentences": [
+    "The first planes swooped in a few minutes later, and the destroyers began circling Yamato.",
+    "Within minutes, two bombs destroyed some of her anti-aircraft guns and blew a hole in the deck.",
+    "Torpedoes struck her port side, one after another.",
+    "In the second attack, dive bombers came in from high overhead, while torpedo bombers approached from every direction just above the sea.",
+    "Her main guns fired special anti-aircraft shells, but they had little effect.",
+    "Yamato took on a heavy list to port, and her main guns could no longer fire.",
+    "In the third and most damaging attack, at least four bombs hit her superstructure, and four more torpedoes struck her.",
+    "Her steering was knocked out, and she was stuck in a turn.",
+    "Just after two in the afternoon, Ito cancelled the mission, and ordered the crew to abandon ship.",
+    "Minutes later, the cruiser Yahagi sank, hit by twelve bombs and seven torpedoes."
+   ],
+   "shots": [
+    {
+     "s": 1,
+     "file": "Japanese_battleship_Yamato_under_attack_in_the_East_China_Sea_on_7_April_1945_(L42-09.06.05).jpg",
+     "sfx": "plane_flyby"
+    },
+    {
+     "s": 1,
+     "file": "Japanese_battleship_Yamato_and_a_destroyer_in_action_with_U.S._Navy_carrier_planes_north_of_Okinawa_on_7_April_1945_(80-G-313714).jpg"
+    },
+    {
+     "s": 2,
+     "file": "Japanese_battleship_Yamato_is_hit_on_7_April_1945_(L42-09.06.02).jpg",
+     "sfx": "explosion_close"
+    },
+    {
+     "s": 3,
+     "file": "Japanese_battleship_Yamato_maneuvers_while_under_attack_by_U.S._Navy_carrier_planes_north_of_Okinawa,_7_April_1945_(NH_62581).jpg",
+     "sfx": "explosion_far"
+    },
+    {
+     "s": 4,
+     "film": "kam",
+     "from": 44,
+     "to": 52,
+     "sfx": "plane_flyby"
+    },
+    {
+     "s": 4,
+     "file": "Japanese_battleship_Yamato_seen_from_an_attacking_aircraft,_7_April_1945_(80-G-320642).jpg",
+     "zoom": 1.3
+    },
+    {
+     "s": 5,
+     "film": "kam",
+     "from": 64,
+     "to": 72,
+     "sfx": "artillery"
+    },
+    {
+     "s": 6,
+     "file": "Damaged_Japanese_battleship_Yamato_underway_on_7_April_1945_(NH_62580).jpg"
+    },
+    {
+     "s": 7,
+     "file": "Japanese_battleship_Yamato_is_hit_on_7_April_1945_(L42-09.06.02).jpg",
+     "zoom": 1.3,
+     "sfx": "explosion_massive"
+    },
+    {
+     "s": 8,
+     "file": "Japanese_battleship_Yamato_maneuvers_while_under_attack_by_U.S._Navy_carrier_planes_north_of_Okinawa,_7_April_1945_(NH_62581).jpg",
+     "zoom": 1.3
+    },
+    {
+     "s": 9,
+     "file": "Vice_Admiral_Seiichi_Ito.png",
+     "y": 0.3,
+     "sfx": "radio_static"
+    },
+    {
+     "s": 10,
+     "file": "Japanese_light_cruiser_Yahagi_is_hit_on_7_April_1945_(NH_62574).jpg",
+     "sfx": "explosion_far"
+    },
+    {
+     "s": 10,
+     "file": "Japanese_light_cruiser_Yahagi_sinking_on_7_April_1945_(80-G-316086).jpg"
+    }
+   ]
+  },
+  {
+   "title": "The Last Explosion",
+   "mode": "action",
+   "sentences": [
+    "A final flight of torpedo bombers attacked from the starboard side.",
+    "Yamato was listing so badly that their torpedoes struck the bottom of her hull.",
+    "At 14:20, the power went out.",
+    "As she rolled, the suction drew swimming crewmen back toward the ship.",
+    "Three minutes later, she capsized.",
+    "When the roll reached about 120 degrees, one of her forward magazines detonated in a tremendous explosion.",
+    "From the first attack to the explosion, she had been hit by at least eleven torpedoes and six bombs.",
+    "An estimated 3,055 of her 3,332 crew were lost.",
+    "According to one account, Aruga tied himself to the binnacle on the bridge, and Ito withdrew to his cabin.",
+    "Vice Admiral Ito, and her captain, Kosaku Aruga, both chose to go down with the ship.",
+    "A survivor, Yoshida Matsuro, later wrote about the sinking in a book known in English as Requiem for Battleship Yamato.",
+    "The Americans lost ten aircraft, and twelve men."
+   ],
+   "shots": [
+    {
+     "s": 1,
+     "file": "Japanese_battleship_Yamato_seen_from_an_attacking_aircraft,_7_April_1945_(80-G-320642).jpg",
+     "zoom": 1.2,
+     "sfx": "plane_vintage"
+    },
+    {
+     "s": 2,
+     "file": "Damaged_Japanese_battleship_Yamato_underway_on_7_April_1945_(NH_62580).jpg",
+     "zoom": 1.3
+    },
+    {
+     "s": 3,
+     "film": "kam",
+     "from": 316,
+     "to": 324,
+     "sfx": "low_rumble"
+    },
+    {
+     "s": 4,
+     "file": "Damaged_Japanese_battleship_Yamato_underway_on_7_April_1945_(NH_62580).jpg",
+     "zoom": 1.2
+    },
+    {
+     "s": 5,
+     "file": "Japanese_battleship_Yamato_maneuvers_while_under_attack_by_U.S._Navy_carrier_planes_north_of_Okinawa,_7_April_1945_(NH_62581).jpg",
+     "zoom": 1.4
+    },
+    {
+     "s": 6,
+     "file": "Japanese_battleship_Yamato_explodes,_7_April_1945_(NH_62579).jpg",
+     "sfx": "explosion_massive"
+    },
+    {
+     "s": 6,
+     "file": "Explosion_of_the_Japanese_battleship_Yamato_on_7_April_1945_(80-G-413914).jpg",
+     "sfx": "explosion_far"
+    },
+    {
+     "s": 7,
+     "file": "Explosion_of_the_Japanese_battleship_Yamato,_on_7_April_1945_(NH_62582).jpg",
+     "sfx": "low_rumble"
+    },
+    {
+     "s": 8,
+     "film": "kam",
+     "from": 320,
+     "to": 330,
+     "punch": true
+    },
+    {
+     "s": 9,
+     "file": "Vice_Admiral_Seiichi_Ito.png",
+     "y": 0.3,
+     "zoom": 1.35
+    },
+    {
+     "s": 10,
+     "file": "Vice_Admiral_Seiichi_Ito.png",
+     "y": 0.25,
+     "zoom": 1.3
+    },
+    {
+     "s": 11,
+     "film": "kam",
+     "from": 352,
+     "to": 368,
+     "sfx": "sea"
+    },
+    {
+     "s": 12,
+     "film": "kam",
+     "from": 120,
+     "to": 132,
+     "sfx": "sea"
+    }
+   ]
+  },
+  {
+   "title": "The Wreck",
+   "mode": "people",
+   "sentences": [
+    "The few survivors were picked up by the four destroyers that were still afloat, and taken back to Japan.",
+    "Of the ten Japanese ships that had set out, six were sunk.",
+    "The destroyer Suzutsuki made it back to port with her bow blown off, steaming in reverse the entire way.",
+    "Operation Ten-Go was the last major Japanese naval operation of the war.",
+    "Yamato's wreck lies 290 kilometres southwest of Kyushu, under 340 metres of water, in two main pieces.",
+    "An expedition in 1982 found wreckage, and a second expedition two years later identified Yamato's last resting place.",
+    "Her name was an old poetic name for Japan itself, and after the war it became a symbol of the end of the empire.",
+    "Today, a museum near the old shipyard at Kure keeps her memory.",
+    "So was Yamato's last mission an act of courage, or a waste of three thousand lives? Tell me what you think in the comments."
+   ],
+   "shots": [
+    {
+     "s": 1,
+     "file": "Japanese_battleship_Yamato_underway_with_four_destroyers_on_7_April_1945_(L42-09.06.04).jpg",
+     "zoom": 1.3
+    },
+    {
+     "s": 2,
+     "file": "Floating_survivors_and_wreckage_of_the_Japanese_light_cruiser_Yahagi,_7_April_1945_(NH_62577).jpg"
+    },
+    {
+     "s": 3,
+     "film": "kam",
+     "from": 352,
+     "to": 360,
+     "sfx": "sea"
+    },
+    {
+     "s": 4,
+     "film": "kam",
+     "from": 352,
+     "to": 368,
+     "sfx": "sea"
+    },
+    {
+     "s": 5,
+     "file": "Builders_plans_for_the_Japanese_battleship_Yamato_(NH_111711).png",
+     "card": true,
+     "label": "EAST CHINA SEA · 340 METRES"
+    },
+    {
+     "s": 6,
+     "file": "Japanese_battleship_Yamato_running_trials_in_Sukumo_Bay,_30_October_1941_(80-G-704702).jpg",
+     "zoom": 1.3
+    },
+    {
+     "s": 7,
+     "file": "Japanese_battleship_Yamato_running_trials_in_Sukumo_Bay,_30_October_1941_(80-G-704702).jpg"
+    },
+    {
+     "s": 8,
+     "file": "Japanese_battleship_Yamato_fitting_out_at_the_Kure_Naval_Base,_Japan,_20_September_1941_(NH_63433).jpg",
+     "label": "KURE"
+    },
+    {
+     "s": 9,
+     "file": "Yamato_during_Trial_Service.jpg",
+     "zoom": 1.2
+    }
+   ]
+  }
+ ]
+}
