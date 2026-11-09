@@ -9,11 +9,7 @@
    "seconds": 674.0,
    "words": 1662,
    "tts": null,
-   "thumb": "ok",
-   "comment_due": {
-    "at": "2026-10-29T23:00:00Z",
-    "q": "Was McVay to blame, or was he the Navy's scapegoat?"
-   }
+   "thumb": "ok"
   },
   {
    "id": "5ZzERzxmmuo",
@@ -24,10 +20,21 @@
    "seconds": 626.3,
    "words": 1537,
    "tts": "edge",
+   "thumb": "ok"
+  },
+  {
+   "id": "YH8vVS2NOCs",
+   "date": "2026-11-09",
+   "format": "long",
+   "title": "Hermann Göring: How He Cheated the Hangman at Nuremberg",
+   "topic": "Hermann Göring",
+   "seconds": 586.4,
+   "words": 1415,
+   "tts": "edge",
    "thumb": "ok",
    "comment_due": {
-    "at": "2026-10-29T23:00:00Z",
-    "q": "Why did Stalin lie about Hitler's death?"
+    "at": "2026-11-10T00:00:00Z",
+    "q": "How do you think Göring got the poison?"
    }
   }
  ],
