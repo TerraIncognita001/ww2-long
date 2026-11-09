@@ -8,7 +8,7 @@
  ],
  "title": "Yamato: The Biggest Battleship Ever Built Sent on a One-Way Mission",
  "thumb": {
-  "file": "Japanese_battleship_Yamato_explodes,_7_April_1945_(NH_62579).jpg"
+  "file": "Explosion_of_the_Japanese_battleship_Yamato,_on_7_April_1945_(NH_62582).jpg"
  },
  "question": "Was Yamato's last mission courage or a waste?",
  "summary": "Yamato and her sister Musashi were the heaviest and most powerfully armed battleships ever built, with nine 46 cm guns, the largest ever fitted to a warship. Built in extreme secrecy, Yamato fired her main guns at enemy ships only once, off Samar in October 1944. In April 1945, with Japan's fleet crippled by fuel shortages, she was sent on Operation Ten-Go: a one-way mission to Okinawa, to beach herself and fight until destroyed. The Americans had decoded the plan. On 7 April about 280 carrier aircraft struck; hit by at least 11 torpedoes and 6 bombs, Yamato capsized and exploded, with the loss of an estimated 3,055 of her 3,332 crew, including Vice Admiral Seiichi Ito.",
@@ -55,7 +55,7 @@
    "caption": "V.ADM. ITO"
   },
   "right": {
-   "file": "Japanese_battleship_Yamato_explodes,_7_April_1945_(NH_62579).jpg",
+   "file": "Explosion_of_the_Japanese_battleship_Yamato,_on_7_April_1945_(NH_62582).jpg",
    "caption": "7 APRIL 1945"
   },
   "stamp": "SUNK",
@@ -205,18 +205,22 @@
     },
     {
      "s": 6,
-     "file": "Yamato's_main_battery_guns_18.1″L45_Type_94.jpg"
+     "file": "Japanese_battleship_Yamato_fitting_out_at_the_Kure_Naval_Base,_Japan,_20_September_1941_(NH_63433).jpg",
+     "zoom": 1.35,
+     "x": 0.35
     },
     {
      "s": 7,
-     "file": "Yamato's_main_battery_guns_18.1″L45_Type_94.jpg",
-     "zoom": 1.3,
-     "sfx": "tank_gun"
+     "file": "Japanese_battleship_Yamato_fitting_out_at_the_Kure_Naval_Base,_Japan,_20_September_1941_(NH_63433).jpg",
+     "zoom": 1.35,
+     "sfx": "tank_gun",
+     "x": 0.35
     },
     {
      "s": 8,
-     "file": "Yamato's_main_battery_guns_18.1″L45_Type_94.jpg",
-     "zoom": 1.2
+     "file": "Japanese_battleship_Yamato_fitting_out_at_the_Kure_Naval_Base,_Japan,_20_September_1941_(NH_63433).jpg",
+     "zoom": 1.35,
+     "x": 0.35
     },
     {
      "s": 9,
