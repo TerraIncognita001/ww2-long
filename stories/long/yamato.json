@@ -56,7 +56,8 @@
   },
   "right": {
    "file": "Explosion_of_the_Japanese_battleship_Yamato,_on_7_April_1945_(NH_62582).jpg",
-   "caption": "7 APRIL 1945"
+   "caption": "7 APRIL 1945",
+   "color": "tone"
   },
   "stamp": "SUNK",
   "variants": [
