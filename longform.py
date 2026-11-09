@@ -799,6 +799,9 @@ def main():
         print("publishing the reviewed video:", meta["upload"]["snippet"]["title"])
         return publish(stats, meta["upload"], {**d, "headline": all_sentences(d)[0]}, d)
     story = env("L_STORY") or ready_story()
+    if not story and env("L_AUTO", "1") == "1":       # Andrii, Nov 9: the queue is empty -> the bot writes one
+        import autostory
+        story = autostory.make()
     if not story:
         raise SystemExit("no ready long story")
     print("long story:", story)

@@ -78,6 +78,23 @@ chapters = pastrak pacing (film 2-4 s, SFX up, music down). Story field `mode: "
 - Local Windows test: ffmpeg 9 (-/filter_complex instead of -filter_complex_script: picked by version), Edge TTS
   works here (Oct 27), fonts/BebasNeue-Regular.ttf (OFL).
 
+## QUEUE, RELEASE, AUTO STORY (Nov 9)
+- Channel: TheWarStoryTeller (UCU0uYGfqYM33oRS4g2_aLag), OAuth via the shorts' Google Cloud project ww2p-510823
+  (the new project ww2-long's uploads risked 'Private (locked)'); tools/auth_secrets.py sets YT_* secrets.
+- Released: Indianapolis (y3sS2sn4dXU, Oct 29), Hitler (5ZzERzxmmuo, Oct 30), Nuremberg/Göring (YH8vVS2NOCs, Nov 9).
+  Queue: midway (Wed Nov 11), yamato (Fri Nov 13). Nov 2-6 runs FAILED: 'no ready long story' (queue empty).
+- Release time: every video at 19:00 New York (L_PUBLISH_NY; publish_at() handles DST): uploaded private with
+  publishAt. YouTube refuses comments on it until then -> stats `comment_due`, pending_comments() at the next run.
+- Story writing: Andrii (Nov 9) 'write the ready stories yourself; when they run out the bot writes its own'.
+  Claude writes priority-ordered stories by hand (check against the full articles, local render, look at the
+  sheet). Empty queue -> autostory.py (L_AUTO=1): topic = most-viewed unused SEED, Gemini script from the article,
+  longform.check() + editor rounds, Commons pictures + jurgen.match_pictures, house case file, no film; saved as
+  stories/long/auto-*.json (committed). NEEDS the GEMINI_API_KEY secret (not set on Nov 9: also translations
+  are skipped); a separate free key from another Google project keeps the Shorts' quota.
+- Films: story `films.<key>.mono: true` = black-and-white (Ford's 1942 Midway colour film is faded blue).
+- Hand stories so far use: NARA NPC-8708/4888/16243 (Indianapolis), Wochenschau 755 + 111-ADC-4990 + Eva Braun
+  reel 2 (Hitler), ADC-9927 + 1945/1946 newsreels (Nuremberg), USAF-16985 Ford (Midway), NPC-11213 (Yamato).
+
 ## THE THUMBNAIL STANDARD (Andrii, Oct 28: 'all thumbnails in this style') - HARD RULE
 Every video's thumbnail = the house CASE FILE (thumbs.py HOUSE / house_case, the approved Indianapolis cover):
 manila 1945 paper, typed label strip top left ('<SUBJECT> - <MONTH YEAR>', <= 32 chars), three pinned polaroids
