@@ -36,6 +36,7 @@ SEEDS = [   # exact English Wikipedia titles
 ]
 J_KEYS = ('{"title": "...", "question": "...", "summary": "...", "tags": ["..."], '
           '"cover": {"text": ["line 1", "line 2"], "key": ["NAME"]}, '
+          '"shorts": [{"chapter": 0, "from": 1, "to": 5, "title": "...", "key": ["NAME"], "name": "..."}, ...], '
           '"chapters": [{"title": "", "mode": "action", "sentences": ["..."], "visuals": ["..."]}, ...]}')
 
 
@@ -77,6 +78,12 @@ def rules(topic):
         "story that makes the viewer ask why/how, max 5 words in 1-2 lines, not the title's words again (like "
         "'NOBODY CAME FOR INDIANAPOLIS', 'STALIN HID HITLER'S BODY', 'GÖRING CHEATED THE ROPE', 'YAMATO: NO FUEL, "
         "NO PLANES'); key = the name word(s) exactly as written in text (shown on red).\n"
+        "SHORTS (2 YouTube Shorts cut from the video, released the same day): each = ONE chapter's sentences "
+        "from..to (chapter index 0 = the cold open, sentences 1-based), 60-140 words, ending on a CLIFFHANGER just "
+        "before the answer or payoff (the Short then says 'full video on the channel'). Short 1 = the cold open "
+        "without its last sentence; Short 2 = the most dramatic run of another chapter. title = 2-5 words on top "
+        "of the Short with the topic's NAME (key = the name word(s)); name = the Short's YouTube title, max 80 "
+        "characters, a fact of the story.\n"
         "question = the debate question (max 8 words); summary = 3-5 factual sentences for the description; tags = "
         "12-15 search tags.\nReturn JSON " + J_KEYS)
 
@@ -130,6 +137,28 @@ def pictures(d, topic):
     return files, subj, cover
 
 
+def shorts_of(d, got, cover):
+    """Gemini's 2 Shorts -> story `clips` (checked: one chapter, in range, 50-150 words); the cold open (without its
+    'This is the story of' line) when Gemini's are missing or wrong."""
+    chs, out = d["chapters"], []
+    for s in got if isinstance(got, list) else []:
+        try:
+            c, a, b = int(s["chapter"]), int(s["from"]), int(s["to"])
+            part = chs[c]["sentences"][a - 1:b]
+            key = s.get("key") or []
+            key = [key] if isinstance(key, str) else key
+            if 1 <= a <= b <= len(chs[c]["sentences"]) and 50 <= len(" ".join(part).split()) <= 150 and s.get("title"):
+                out.append({"from": [c, a], "to": [c, b], "title": str(s["title"]).upper()[:40],
+                            "key": [str(k).upper().strip("?!.,\":") for k in key],
+                            "name": plain(str(s.get("name") or d["title"]))[:90]})
+        except (KeyError, IndexError, TypeError, ValueError):
+            continue
+    if not out and len(chs[0]["sentences"]) >= 3:
+        out.append({"from": [0, 1], "to": [0, len(chs[0]["sentences"]) - 1], "title": " ".join(cover["text"]),
+                    "key": cover["key"], "name": plain(d["title"])[:90]})
+    return out[:2]
+
+
 def make():
     topic = pick()
     if not topic:
@@ -160,6 +189,7 @@ def make():
     key = [key] if isinstance(key, str) else key
     d["cover"] = {"file": left, "text": [str(x).upper() for x in lines][:2],
                   "key": [str(x).upper().strip("?!.,\":") for x in key]}
+    d["clips"] = shorts_of(d, d.pop("shorts", None), d["cover"])
     d.update({"priority": 99, "topic": title, "sources": [], "thumb": {"file": left}, "pronounce": {},
               "films": {}, "auto": True})
     path = STORIES / (slug(title) + ".json")

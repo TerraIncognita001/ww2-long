@@ -770,5 +770,37 @@
     }
    ]
   }
+ ],
+ "clips": [
+  {
+   "from": [
+    0,
+    1
+   ],
+   "to": [
+    0,
+    5
+   ],
+   "title": "YAMATO'S LAST MISSION",
+   "key": [
+    "YAMATO'S"
+   ],
+   "name": "The Largest Battleship Ever Built Was Sent on a Mission With No Way Back"
+  },
+  {
+   "from": [
+    7,
+    1
+   ],
+   "to": [
+    7,
+    8
+   ],
+   "title": "280 PLANES VS YAMATO",
+   "key": [
+    "YAMATO"
+   ],
+   "name": "280 American Planes Against the Largest Battleship Ever Built"
+  }
  ]
 }

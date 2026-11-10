@@ -28,6 +28,10 @@ on:
         description: "Release time, New York (HH:MM): uploaded private, YouTube makes it public then. Empty = now"
         type: string
         default: "19:00"
+      clips_for:
+        description: "Only the 2 Shorts of an uploaded long video: its YouTube id (+ story). Released +30 min / +3 h"
+        type: string
+        default: ""
 permissions:
   contents: write
   actions: read
@@ -104,6 +108,7 @@ jobs:
           L_PUBLISH: ${{ inputs.publish_run != '' && '1' || '0' }}
           L_PRIVACY: ${{ inputs.privacy || 'public' }}
           L_PUBLISH_NY: ${{ github.event_name == 'schedule' && '19:00' || inputs.publish_ny }}
+          L_CLIPS_FOR: ${{ inputs.clips_for }}
           L_PRESET: "veryfast"
           L_WORKERS: "4"
       - name: test video
@@ -116,6 +121,8 @@ jobs:
             work/cover.png
             work/metadata.json
             work/captions.srt
+            work/clip_*.mp4
+            work/clips.json
           retention-days: 7
       - name: log
         if: ${{ failure() || (!cancelled() && inputs.dry_run) }}

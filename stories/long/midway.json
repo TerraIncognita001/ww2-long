@@ -870,5 +870,37 @@
     }
    ]
   }
+ ],
+ "clips": [
+  {
+   "from": [
+    0,
+    1
+   ],
+   "to": [
+    0,
+    5
+   ],
+   "title": "HOW MIDWAY WAS WON",
+   "key": [
+    "MIDWAY"
+   ],
+   "name": "Midway Was Decided Weeks Before the First Bomb Fell"
+  },
+  {
+   "from": [
+    2,
+    1
+   ],
+   "to": [
+    2,
+    6
+   ],
+   "title": "THE TRICK THAT WON MIDWAY",
+   "key": [
+    "MIDWAY"
+   ],
+   "name": "The Fake Message That Gave Away Japan's Plan at Midway"
+  }
  ]
 }

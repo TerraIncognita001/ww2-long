@@ -111,6 +111,23 @@ subject; A/B the words. The case file (Oct 28 - Nov 10, `case` / house_case) was
 the label showed, on a phone the captions and label were unreadable. Old styles stay in thumbs.py, not used.
 The 4 videos released with the case file keep it on YouTube unless the new cover is set by hand in Studio.
 
+## SHORTS FROM EVERY LONG VIDEO (Andrii, Nov 10: 'the Yamato examples are ideal, keep this') - HARD RULE
+On the day a long video is released, 2 Shorts about it go out on the same channel: released +30 min and +3 h after
+the long video (19:30 and 22:00 New York). clips.py cuts them from the rendered final.mp4 at the sentence times of
+captions.srt (same voice, music, SFX): 1080x1920, the whole 16:9 frame in the middle on a blurred copy of itself,
+2-5 words on top with the topic's NAME on red (Bebas), burned captions of up to 3 words under the picture, cut at a
+CLIFFHANGER (sentence end just before the payoff), then 3.2 s of the last frame frozen, blurred and dark with
+'FULL VIDEO / ON THE CHANNEL' and a low rumble; -14 LUFS. Story field (each clip inside ONE chapter, 50-150 words):
+  "clips": [{"from": [chapter, sentence], "to": [chapter, sentence], "title": "YAMATO'S LAST MISSION",
+             "key": ["YAMATO'S"], "name": "the Short's YouTube title (a fact)"}]
+Short 1 = the cold open without 'This is the story of'; Short 2 = the most dramatic run of another chapter.
+Yamato: cold open 1-5 (ends 'futile and wasteful'), 'Two Hours' 1-8 (ends 'stuck in a turn'); Midway: cold open
+1-5, 'Station HYPO' 1-6 (ends before 'AF was short on water'). autostory: Gemini picks them ('shorts').
+The upload: description = first sentence + 'Full video: <title>' + its link, #shorts; stats format 'short' with
+'long': <id>. YouTube's 'Related video' link (Short -> long video) is NOT in the Data API: set it by hand in Studio.
+Workflow input clips_for=<long video id> + story = only the Shorts of a long video already uploaded.
+`python clips.py story.json` = local test from work/final.mp4 + captions.srt of THAT story.
+
 ## THUMBNAILS (research Oct 28: top 12 + 4 weakest long videos of 10 WW2 channels, yt-dlp lists + i.ytimg.com)
 Channels: Mark Felton 2.4M subs (top 10M), Yarnhub 3.4M (33M), Simple History 5.1M, The Operations Room 1.45M
 (14M), Dark Docs 1.2M (9.1M), Baz Battles 725k, History Hustle 313k, Kings and Generals, The History Guy, WW2TV.

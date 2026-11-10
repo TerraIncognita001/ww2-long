@@ -101,6 +101,24 @@ def check(d, text, facts_hard=True):
             soft.append(f"cover text '{t}': no key word (the topic's name on red)")
         if len(t.split()) > 5:
             soft.append(f"cover text '{t}': over 5 words")
+    chs_ = chapters(d)                                 # Andrii, Nov 10: 2 Shorts per long video (clips.py)
+    if not d.get("clips"):
+        soft.append("no `clips`: the 2 Shorts of the release day (clips.py)")
+    for n, cl in enumerate(d.get("clips") or [], 1):
+        try:
+            (c0, s0), (c1, s1) = cl["from"], cl["to"]
+            part = chs_[c0]["sentences"][s0 - 1:s1]
+            ok_ = c0 == c1 and 1 <= s0 <= s1 <= len(chs_[c0]["sentences"])
+        except (KeyError, IndexError, TypeError, ValueError):
+            ok_, part = False, []
+        if not ok_:
+            hard.append(f"clip {n}: from/to must be [chapter, sentence] inside one chapter, in order")
+            continue
+        w = len(" ".join(plain(s) for s in part).split())
+        if not 50 <= w <= 150:
+            soft.append(f"clip {n}: {w} words (~{w / 2.33:.0f} s): keep 50-150 (Shorts of 25-60 s)")
+        if not cl.get("title") or not set(x.strip("?!.,\":") for x in cl["title"].split()) & set(cl.get("key") or []):
+            soft.append(f"clip {n}: top words without the key (the topic's name on red)")
     long = [i + 1 for i, s in enumerate(ss) if len(s.split()) > 30]
     if long:
         soft.append(f"sentences over 30 words: {long}")
@@ -808,6 +826,8 @@ def main():
         d["seconds"] = round(probe_duration(W / "final.mp4"), 1)
         print("publishing the reviewed video:", meta["upload"]["snippet"]["title"])
         return publish(stats, meta["upload"], {**d, "headline": all_sentences(d)[0]}, d)
+    if env("L_CLIPS_FOR"):                             # Shorts for a long video already on YouTube
+        return clips_only(stats, env("L_CLIPS_FOR"), env("L_STORY"))
     story = env("L_STORY") or ready_story()
     if not story and env("L_AUTO", "1") == "1":       # Andrii, Nov 9: the queue is empty -> the bot writes one
         import autostory
@@ -828,6 +848,10 @@ def main():
                                  plain(d.get("summary", "")), "")
         credits, marks, cover = make_video(d)
         body = metadata(d, topic, credits, marks, translations.result())
+    if d.get("clips"):                                 # Andrii, Nov 10: 2 Shorts from every long video
+        import clips
+        with stage("shorts"):
+            clips.make(story)
     (W / "metadata.json").write_text(json.dumps({"upload": body, "story": story, "chapters": marks,
                                                  "tts": S.TTS_USED[0] if S.TTS_USED else None,
                                                  "shot_list": d.get("shot_list")},
@@ -884,6 +908,34 @@ def publish(stats, body, data, d):
             stats["videos"][-1]["comment_due"] = {"at": at, "q": plain(data.get("question", ""))}  # next run posts it
         else:
             S.post_comment(yt, vid, data)
+    S.save_stats(stats)
+    if d.get("clips") and (W / "clips.json").exists():  # the same day: release + 30 min and + 3 h
+        import clips
+        from datetime import datetime, timezone
+        rel = datetime.fromisoformat(at.replace("Z", "+00:00")) if at else datetime.now(timezone.utc)
+        with stage("shorts upload"):
+            clips.upload_all(yt, d, vid, stats, release=rel)
+        S.save_stats(stats)
+
+
+def clips_only(stats, long_id, story):
+    """workflow input clips_for: render the story again (no long upload), cut its Shorts and schedule them after
+    that long video's release (read from YouTube)."""
+    import clips
+    if not story:
+        raise SystemExit("clips_for needs the story file (input story)")
+    d = json.loads(pathlib.Path(story).read_text(encoding="utf-8"))
+    if not d.get("clips"):
+        raise SystemExit(f"{story}: no `clips` in the story")
+    make_video(d)
+    with stage("shorts"):
+        clips.make(story)
+    if S.DRY_RUN:
+        print("DRY RUN: Shorts not uploaded: work/clip_*.mp4")
+        return
+    yt = S.youtube(S.credentials())
+    with stage("shorts upload"):
+        clips.upload_all(yt, d, long_id, stats)
     S.save_stats(stats)
 
 
