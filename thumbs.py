@@ -5,6 +5,8 @@ CLAUDE.md '## CLICKBAIT'); none of them is used by the big WW2 channels yet:
             the other side of the story huge and dark behind, a short question on a red box.
 - mystery:  Barely Sociable (4-13M): near-black, one object in a pool of light, a handwritten question.
 - headline: The Infographics Show ('23,000 FEET DOWN', 'NO ESCAPE'): 2-3 words of stakes, huge, over a vivid picture.
+- photo:    THE CHANNEL'S THUMBNAIL since Nov 10 (story `cover`): one picture full-bleed + the topic's name on red and
+            one concrete fact in the top third ('NOBODY CAME FOR INDIANAPOLIS', 'STALIN HID HITLER'S BODY').
 Honest rule (YouTube's Test & compare picks by WATCH TIME, so a promise the video does not keep loses): every word
 and stamp must be a fact of the story (McVay WAS convicted: 'GUILTY' is true). No fake documents, no censor bars."""
 import pathlib, random
@@ -338,7 +340,7 @@ def headline_style(v, got):
     return im
 
 
-# THE CHANNEL'S THUMBNAIL (Andrii, Oct 28: 'all thumbnails in this style'): the 1945 case file on manila paper,
+# OLD channel thumbnail (Oct 28 - Nov 10, replaced by `photo` below): the 1945 case file on manila paper,
 # typed label top left, three pinned polaroids joined by red string: LEFT the machine or place, CENTRE the main
 # person (biggest, the stamp across him), RIGHT the other side of the story; one rubber-stamp word that is a FACT
 # of the story. Positions, sizes and angles below are the approved Indianapolis cover; story field `case`.
@@ -364,7 +366,52 @@ def house_case(c, extra=None):
     return spec
 
 
-STYLES = {"case": case, "glow": glow, "mystery": mystery, "headline": headline_style}
+def words(im, lines, key=(), x=0.045, y=0.05, size=140, maxw=0.92, gap=0.98):
+    """Big Bebas lines top left, white with a black edge; the `key` words (the topic's name) on a red box."""
+    d = ImageDraw.Draw(im)
+    yy = TH * y
+    for line in lines:
+        f = font(BEBAS, size)
+        while f.getlength(line) > TW * maxw and f.size > 50:
+            f = font(BEBAS, f.size - 6)
+        xx = TW * x
+        for word in line.split(" "):
+            ww = f.getlength(word)
+            if word.strip("?!.,\":") in key:
+                d.rectangle((xx - 12, yy + f.size * 0.06, xx + ww + 12, yy + f.size * 1.0), fill=RED)
+                d.text((xx, yy), word, font=f, fill="white")
+            else:
+                d.text((xx, yy), word, font=f, fill="white", stroke_width=8, stroke_fill="black")
+            xx += ww + f.getlength(" ")
+        yy += f.size * gap
+
+
+def photo(v, got):
+    """THE CHANNEL'S THUMBNAIL (Andrii, Nov 10): one picture full-bleed, vivid, darkened at the top, 1-2 lines of
+    words in the top third (TV shows only the top half): the topic's NAME on red + one concrete fact."""
+    pic = prepared(got[v["file"]][0], v)
+    z = float(v.get("zoom", 1))
+    if z != 1:
+        pic = pic.resize((round(pic.width * z), round(pic.height * z)), Image.LANCZOS)
+    im = ImageOps.fit(pic, (TW, TH), centering=(v.get("x", 0.5), v.get("y", 0.5)))
+    shade = Image.linear_gradient("L").resize((TW, TH)).point(lambda a: int(190 * max(0, 1 - a / 150) ** 1.6))
+    im = Image.composite(Image.new("RGB", (TW, TH), "black"), im, shade)
+    yy, xx = np.mgrid[0:TH, 0:TW]
+    r = np.hypot((xx - TW / 2) / (TW / 2), (yy - TH / 2) / (TH / 2))
+    m = np.clip(1 - 0.5 * np.clip(r - 0.55, 0, None) ** 1.4, 0, 1)
+    im = Image.fromarray((np.asarray(im, np.float32) * m[..., None]).astype(np.uint8))
+    words(im, v["text"], v.get("key") or [], size=v.get("size", 140))
+    return im
+
+
+def house_photo(c, extra=None):
+    """story `cover` {file, x, y, zoom, color, text: [lines], key: [name words]} (+ a Test & compare variant's
+    overrides, e.g. other text/key) -> a full 'photo' spec."""
+    return {"style": "photo", "note": c.get("note", "house photo"), **{k: v for k, v in c.items() if k != "variants"},
+            **(extra or {})}
+
+
+STYLES = {"case": case, "glow": glow, "mystery": mystery, "headline": headline_style, "photo": photo}
 
 
 def render(v, got, out):

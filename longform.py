@@ -89,13 +89,18 @@ def check(d, text, facts_hard=True):
             hard.append(f"chapter {k}: no title (it is the chapter card and the YouTube chapter)")
     if not (d.get("thumb") or {}).get("file"):
         hard.append("no thumbnail picture")
-    c = d.get("case") or {}                            # Andrii, Oct 28: every thumbnail is the house case file
-    if not all((c.get(s) or {}).get("file") for s in ("left", "center", "right")):
-        hard.append("no house thumbnail: story `case` needs left/center/right pictures (thumbs.py HOUSE)")
-    if c and not c.get("stamp"):
-        soft.append("case without a stamp word (one true word: GUILTY, SUNK, EXECUTED, MISSING...)")
-    if len((c.get("label") or "")) > 32:
-        soft.append("case label over 32 characters (it must fit the typed strip)")
+    c = d.get("cover") or {}                           # Andrii, Nov 10: one photo + the topic's name + a fact
+    if not c.get("file") or not c.get("text"):
+        hard.append("no house thumbnail: story `cover` needs file + text (thumbs.py photo)")
+    for v in [c] + list(c.get("variants") or []):
+        if not v.get("text"):
+            continue
+        t = v["text"] if isinstance(v["text"], str) else " ".join(v["text"])
+        key = v.get("key") or c.get("key") or []
+        if not set(w.strip("?!.,\":") for w in t.split()) & set([key] if isinstance(key, str) else key):
+            soft.append(f"cover text '{t}': no key word (the topic's name on red)")
+        if len(t.split()) > 5:
+            soft.append(f"cover text '{t}': over 5 words")
     long = [i + 1 for i, s in enumerate(ss) if len(s.split()) > 30]
     if long:
         soft.append(f"sentences over 30 words: {long}")
@@ -643,10 +648,13 @@ def thumb_variant(v, got, k):
 
 
 def thumb_specs(d, more=False):
-    """The 3 thumbnails of the video (Test & compare takes 3): the house case file (story `case`) + up to 2 variants
-    of it (`case.variants`); more=True adds `thumbs_more` (old candidates, review only)."""
+    """The 3 thumbnails of the video (Test & compare takes 3): the house photo (story `cover`) + up to 2 variants of
+    it (`cover.variants`: other words); old stories: the case file (`case`); more=True adds `thumbs_more`."""
     import thumbs
-    if d.get("case"):
+    if d.get("cover"):
+        c = d["cover"]
+        main = [thumbs.house_photo(c)] + [thumbs.house_photo(c, v) for v in c.get("variants") or []]
+    elif d.get("case"):
         c = {k: v for k, v in d["case"].items() if k != "variants"}
         main = [thumbs.house_case(c)] + [thumbs.house_case(c, v) for v in d["case"].get("variants") or []]
     else:

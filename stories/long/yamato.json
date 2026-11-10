@@ -43,68 +43,18 @@
    "credit": "The Battle of Midway (John Ford, 1942): Official US Navy film, US National Archives (public domain, via Internet Archive)"
   }
  },
- "case": {
-  "label": "YAMATO - 7 APRIL 1945",
-  "left": {
-   "file": "Japanese_battleship_Yamato_running_trials_in_Sukumo_Bay,_30_October_1941_(80-G-704702).jpg",
-   "caption": "YAMATO"
-  },
-  "center": {
-   "file": "Vice_Admiral_Seiichi_Ito.png",
-   "color": "tone",
-   "caption": "V.ADM. ITO"
-  },
-  "right": {
-   "file": "Explosion_of_the_Japanese_battleship_Yamato,_on_7_April_1945_(NH_62582).jpg",
-   "caption": "7 APRIL 1945",
-   "color": "tone"
-  },
-  "stamp": "SUNK",
-  "variants": [
-   {
-    "note": "one-way mission (true)",
-    "notes": [
-     {
-      "text": "ONE-WAY MISSION",
-      "x": 0.72,
-      "y": 0.1,
-      "size": 58,
-      "angle": 4,
-      "stroke": 3
-     }
-    ],
-    "arrows": [
-     [
-      0.66,
-      0.16,
-      0.24,
-      0.42,
-      0.25
-     ]
-    ]
-   },
-   {
-    "note": "3,055 of 3,332 lost (true)",
-    "notes": [
-     {
-      "text": "3,055 LOST",
-      "x": 0.8,
-      "y": 0.11,
-      "size": 66,
-      "angle": -4,
-      "stroke": 3
-     }
-    ],
-    "circles": [
-     [
-      0.69,
-      0.24,
-      0.98,
-      0.97
-     ]
-    ]
-   }
-  ]
+ "cover": {
+  "file": "Japanese_battleship_Yamato_under_attack_in_the_East_China_Sea_on_7_April_1945_(L42-09.06.05).jpg",
+  "color": "tone",
+  "y": 0.62,
+  "text": [
+   "YAMATO:",
+   "NO FUEL, NO PLANES"
+  ],
+  "key": [
+   "YAMATO"
+  ],
+  "note": "fuel shortages, no air cover (true: chapter 'No Fuel, No Planes')"
  },
  "chapters": [
   {

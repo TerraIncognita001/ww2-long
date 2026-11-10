@@ -8,13 +8,12 @@ from Wikimedia Commons, then longform.py renders it like a hand-made one.
   an editor round; hard problems after the last round -> exit 3 (no video, nothing published).
 - Pictures: the subject's own Commons category + one Commons search per sentence (Gemini's 'visual'), then one
   Gemini look at all of them (jurgen.match_pictures: which sentence each shows, wrong era, watermarks, bodies).
-- Thumbnail: the house case file (left = the subject's best picture, centre = the main person's portrait,
-  right = the other side's portrait; stamp = one true word chosen by Gemini).
+- Thumbnail: the house photo (one picture full-bleed: the cover Gemini's picture look chose, else the subject's
+  best; words by Gemini: the topic's name + one concrete fact, max 5 words, the name on red).
 - No archive film (picking film seconds needs a person); photos only. The story file is saved under
   stories/long/auto-*.json (committed by the workflow) so it can be reviewed and fixed by hand later.
 Gemini quota: ~4-6 requests (script, 1-2 editor rounds, pictures, translations)."""
 import json, pathlib, re
-from urllib.parse import unquote
 
 import sys
 sys.path.insert(0, str(pathlib.Path(__file__).resolve().parent / "lib"))  # shorts/jurgen/pastrak from ww2-bot
@@ -36,8 +35,7 @@ SEEDS = [   # exact English Wikipedia titles
     "Michael Wittmann", "Otto Skorzeny", "Joachim Peiper", "Hermann Fegelein", "Wernher von Braun",
 ]
 J_KEYS = ('{"title": "...", "question": "...", "summary": "...", "tags": ["..."], '
-          '"case": {"label": "...", "stamp": "...", "left_caption": "...", "center_person": "Wikipedia title", '
-          '"center_caption": "...", "right_person": "Wikipedia title", "right_caption": "..."}, '
+          '"cover": {"text": ["line 1", "line 2"], "key": ["NAME"]}, '
           '"chapters": [{"title": "", "mode": "action", "sentences": ["..."], "visuals": ["..."]}, ...]}')
 
 
@@ -75,11 +73,10 @@ def rules(topic):
         "exactly that sentence (a person's full name, a ship's name, a place + year), same order as the sentences.\n"
         "TITLE: the famous name first, then a colon and the promise or fate, max 70 characters (like 'Hermann Göring: "
         "How He Cheated the Hangman at Nuremberg').\n"
-        "CASE (the thumbnail, a 1945 case file with three pinned photos): label = 'SUBJECT - MONTH YEAR' (max 30 "
-        "characters, capitals); stamp = ONE true word for the centre photo (GUILTY, SUNK, EXECUTED, MISSING, SUICIDE, "
-        "SHOT DOWN, DECODED...); left_caption = the place or machine; center_person = the Wikipedia title of the "
-        "main person; right_person = the Wikipedia title of the other side of the story; captions max 18 "
-        "characters.\n"
+        "COVER (the thumbnail words over one photo, capitals): the topic's short NAME + ONE concrete fact of the "
+        "story that makes the viewer ask why/how, max 5 words in 1-2 lines, not the title's words again (like "
+        "'NOBODY CAME FOR INDIANAPOLIS', 'STALIN HID HITLER'S BODY', 'GÖRING CHEATED THE ROPE', 'YAMATO: NO FUEL, "
+        "NO PLANES'); key = the name word(s) exactly as written in text (shown on red).\n"
         "question = the debate question (max 8 words); summary = 3-5 factual sentences for the description; tags = "
         "12-15 search tags.\nReturn JSON " + J_KEYS)
 
@@ -87,7 +84,7 @@ def rules(topic):
 def ok(d):
     return isinstance(d, dict) and isinstance(d.get("chapters"), list) and len(d["chapters"]) >= 6 and \
         all(isinstance(c, dict) and isinstance(c.get("sentences"), list) and c["sentences"] for c in d["chapters"]) \
-        and isinstance(d.get("case"), dict) and d.get("title")
+        and isinstance(d.get("cover"), dict) and d.get("cover", {}).get("text") and d.get("title")
 
 
 def write(topic, text):
@@ -95,29 +92,21 @@ def write(topic, text):
     art = text[:24000]
     d = S.gemini(rules(topic) + "\n\nARTICLE:\n" + art, ok, purpose="long script")
     for rnd in range(2):
-        hard, soft = L.check({**d, "thumb": {"file": "x"}, "case": {"left": {"file": "x"}, "center": {"file": "x"},
-                                                                    "right": {"file": "x"}, "stamp": "x"}}, text)
+        hard, soft = L.check({**d, "thumb": {"file": "x"}, "cover": {**d["cover"], "file": "x"}}, text)
         print(f"auto script round {rnd + 1}: hard {hard} | soft {soft[:4]}")
         if not hard and len(soft) <= 2:
             return d
         d = S.gemini(rules(topic) + "\n\nARTICLE:\n" + art + "\n\nYOUR DRAFT:\n" + json.dumps(d, ensure_ascii=False)
                      + "\n\nFIX THESE PROBLEMS (remove or rewrite every fact that is not in the article; keep the "
                      "length): " + "; ".join(hard + soft), ok, purpose="long editor")
-    hard, _ = L.check({**d, "thumb": {"file": "x"}, "case": {"left": {"file": "x"}, "center": {"file": "x"},
-                                                             "right": {"file": "x"}, "stamp": "x"}}, text)
+    hard, _ = L.check({**d, "thumb": {"file": "x"}, "cover": {**d["cover"], "file": "x"}}, text)
     if hard:
         raise SystemExit(f"auto story check failed: {hard}")
     return d
 
 
-def file_of(url):
-    """Commons file name from an upload URL (thumb or original)."""
-    parts = unquote(url.split("?")[0]).split("/")
-    return parts[-2] if "/thumb/" in url else parts[-1]
-
-
 def pictures(d, topic):
-    """{(chapter, sentence): [file names]}, subject files, cover file -> the story's shots and case."""
+    """{(chapter, sentence): [file names]}, subject files, cover file -> the story's shots and cover."""
     sents, where = [], []
     for k, c in enumerate(d["chapters"]):
         for i, s in enumerate(c["sentences"]):
@@ -164,20 +153,13 @@ def make():
                 shots.append({"s": i + 1, "file": f})
         c["shots"] = shots
         c.pop("visuals", None)
-    cs = d.pop("case")
-
-    def portrait(t):
-        got = J.lead_image(t) if t else None
-        return file_of(got[0]) if got else None
-    center, right = portrait(cs.get("center_person")), portrait(cs.get("right_person"))
+    cs = d.pop("cover")
     left = cover or subj[0]
-    d["case"] = {"label": str(cs.get("label", title))[:32].upper(),
-                 "left": {"file": left, "caption": str(cs.get("left_caption", ""))[:18].upper()},
-                 "center": {"file": center or subj[min(1, len(subj) - 1)], "color": "tone",
-                            "caption": str(cs.get("center_caption", ""))[:18].upper()},
-                 "right": {"file": right or subj[-1], "color": "tone",
-                           "caption": str(cs.get("right_caption", ""))[:18].upper()},
-                 "stamp": str(cs.get("stamp", "CLASSIFIED")).upper()[:12]}
+    lines, key = cs.get("text") or [title], cs.get("key") or []
+    lines = [lines] if isinstance(lines, str) else lines
+    key = [key] if isinstance(key, str) else key
+    d["cover"] = {"file": left, "text": [str(x).upper() for x in lines][:2],
+                  "key": [str(x).upper().strip("?!.,\":") for x in key]}
     d.update({"priority": 99, "topic": title, "sources": [], "thumb": {"file": left}, "pronounce": {},
               "films": {}, "auto": True})
     path = STORIES / (slug(title) + ".json")

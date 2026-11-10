@@ -95,19 +95,21 @@ chapters = pastrak pacing (film 2-4 s, SFX up, music down). Story field `mode: "
 - Hand stories so far use: NARA NPC-8708/4888/16243 (Indianapolis), Wochenschau 755 + 111-ADC-4990 + Eva Braun
   reel 2 (Hitler), ADC-9927 + 1945/1946 newsreels (Nuremberg), USAF-16985 Ford (Midway), NPC-11213 (Yamato).
 
-## THE THUMBNAIL STANDARD (Andrii, Oct 28: 'all thumbnails in this style') - HARD RULE
-Every video's thumbnail = the house CASE FILE (thumbs.py HOUSE / house_case, the approved Indianapolis cover):
-manila 1945 paper, typed label strip top left ('<SUBJECT> - <MONTH YEAR>', <= 32 chars), three pinned polaroids
-joined by red string - LEFT the machine or place, CENTRE the main person (biggest, the rubber stamp across him),
-RIGHT the other side of the story - marker captions under each; ONE stamp word that is a fact of the story
-(GUILTY, SUNK, EXECUTED, MISSING, SURRENDERED...). Story field:
-  "case": {"label", "left": {file, caption, trim?, color?, x_crop?, y_crop?}, "center": {...}, "right": {...},
-           "stamp": "GUILTY", "variants": [<= 2 overrides for Test & compare, same layout: notes (marker words),
-           circles, arrows, strikes, stamp]}
-check() blocks a story without left/center/right pictures. cover.png = the case; cover_2/cover_3 = the variants.
-Indianapolis variants: 'EXONERATED 2000' over the struck-out GUILTY; I-58 circled 'NO WARNING'. Portraits that
-DDColor can't colour get color 'tone'. Older styles (circle/arrow, tag, split, glow, mystery, headline) stay in
-thumbs.py and the story's `thumbs_more`, not used.
+## THE THUMBNAIL STANDARD (Andrii, Nov 10: 'format 2, text 3') - HARD RULE
+Every video's thumbnail = ONE PHOTO + WORDS (thumbs.py `photo` / house_photo): the story's most dramatic picture
+full-bleed (colorized, or color 'tone' when DDColor gives odd colours), darkened at the top, vignette; 1-2 lines of
+Bebas Neue in the top third, white with a black edge, the topic's NAME on a red box. The words = the NAME + ONE
+concrete fact of the story that makes the viewer ask why/how, <= 5 words, not the title again:
+'NOBODY CAME FOR INDIANAPOLIS', 'STALIN HID HITLER'S BODY', 'GÖRING CHEATED THE ROPE', 'THE CODE THAT WON MIDWAY',
+'YAMATO: NO FUEL, NO PLANES'. Story field:
+  "cover": {"file", "x", "y", "zoom", "color", "text": ["line 1", "line 2"], "key": ["NAME"], "note" (the fact),
+            "variants": [<= 2 overrides for Test & compare: other text/key on the same picture]}
+check(): hard without cover file + text; soft when no key word is in the text or > 5 words.
+Why (video 'thumbnail notes', Nov 10): TV shows only the TOP HALF of a thumbnail in the feed (the 50% test);
+titles shrink next to thumbnails, so the thumbnail must make the viewer ask/feel on its own; no clutter; one main
+subject; A/B the words. The case file (Oct 28 - Nov 10, `case` / house_case) was dropped: on TV only paper and
+the label showed, on a phone the captions and label were unreadable. Old styles stay in thumbs.py, not used.
+The 4 videos released with the case file keep it on YouTube unless the new cover is set by hand in Studio.
 
 ## THUMBNAILS (research Oct 28: top 12 + 4 weakest long videos of 10 WW2 channels, yt-dlp lists + i.ytimg.com)
 Channels: Mark Felton 2.4M subs (top 10M), Yarnhub 3.4M (33M), Simple History 5.1M, The Operations Room 1.45M

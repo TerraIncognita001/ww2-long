@@ -1535,81 +1535,16 @@
    ]
   }
  ],
- "case": {
-  "label": "USS INDIANAPOLIS - JULY 1945",
-  "left": {
-   "file": "USS_Indianapolis_(CA-35)_off_the_Mare_Island_Naval_Shipyard_on_10_July_1945_(19-N-86911).jpg",
-   "caption": "USS INDIANAPOLIS"
-  },
-  "center": {
-   "file": "Charles_B_McVay_III_portrait.jpg",
-   "trim": [
-    0,
-    0,
-    0,
-    0.42
-   ],
-   "color": "tone",
-   "caption": "CAPT. McVAY"
-  },
-  "right": {
-   "file": "Mochitsura_Hashimoto.jpg",
-   "color": "tone",
-   "caption": "I-58"
-  },
-  "stamp": "GUILTY",
-  "variants": [
-   {
-    "note": "twist: GUILTY struck out, EXONERATED 2000 (Congress, Oct 2000)",
-    "strikes": [
-     [
-      0.36,
-      0.67,
-      0.69,
-      0.5
-     ]
-    ],
-    "notes": [
-     {
-      "text": "EXONERATED 2000",
-      "x": 0.74,
-      "y": 0.1,
-      "size": 58,
-      "angle": 4,
-      "stroke": 3
-     }
-    ],
-    "arrows": [
-     [
-      0.68,
-      0.16,
-      0.6,
-      0.38,
-      -0.25
-     ]
-    ]
-   },
-   {
-    "note": "NO WARNING: McVay was never told of the submarine",
-    "circles": [
-     [
-      0.69,
-      0.24,
-      0.98,
-      0.97
-     ]
-    ],
-    "notes": [
-     {
-      "text": "NO WARNING",
-      "x": 0.77,
-      "y": 0.11,
-      "size": 66,
-      "angle": -4,
-      "stroke": 3
-     }
-    ]
-   }
-  ]
+ "cover": {
+  "file": "Photograph_of_Survivors_of_the_USS_Indianapolis_(CA-35)_-_DPLA_-_afb9af5f32306086c6e6ce5c017f4abb.jpg",
+  "y": 0.12,
+  "text": [
+   "NOBODY CAME FOR",
+   "INDIANAPOLIS"
+  ],
+  "key": [
+   "INDIANAPOLIS"
+  ],
+  "note": "nobody reported her missing for almost four days (true)"
  }
 }

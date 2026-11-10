@@ -47,68 +47,17 @@
    "credit": "Eva Braun's home movies, reel 2, US National Archives 242-EB (public domain, via Wikimedia Commons)"
   }
  },
- "case": {
-  "label": "FÜHRERBUNKER - APRIL 1945",
-  "left": {
-   "file": "Bundesarchiv_Bild_183-M1204-319,_Berlin,_Reichskanzlei,_gesprengter_Führerbunker.jpg",
-   "caption": "THE BUNKER"
-  },
-  "center": {
-   "file": "Hitler_portrait_crop.jpg",
-   "color": "tone",
-   "caption": "A. HITLER"
-  },
-  "right": {
-   "file": "Joseph_Stalin_1945.jpg",
-   "color": "tone",
-   "caption": "STALIN"
-  },
-  "stamp": "SUICIDE",
-  "variants": [
-   {
-    "note": "Stalin said he had escaped (true)",
-    "notes": [
-     {
-      "text": "\"HE ESCAPED\"",
-      "x": 0.78,
-      "y": 0.11,
-      "size": 64,
-      "angle": -4,
-      "stroke": 3
-     }
-    ],
-    "circles": [
-     [
-      0.69,
-      0.24,
-      0.98,
-      0.97
-     ]
-    ]
-   },
-   {
-    "note": "only his teeth were found (true)",
-    "notes": [
-     {
-      "text": "ONLY THE TEETH",
-      "x": 0.72,
-      "y": 0.1,
-      "size": 60,
-      "angle": 4,
-      "stroke": 3
-     }
-    ],
-    "arrows": [
-     [
-      0.66,
-      0.16,
-      0.58,
-      0.38,
-      -0.25
-     ]
-    ]
-   }
-  ]
+ "cover": {
+  "file": "Bundesarchiv_Bild_183-M1204-319,_Berlin,_Reichskanzlei,_gesprengter_Führerbunker.jpg",
+  "y": 0.6,
+  "text": [
+   "STALIN HID",
+   "HITLER'S BODY"
+  ],
+  "key": [
+   "HITLER'S"
+  ],
+  "note": "Soviets found the remains, Stalin said he had escaped (true)"
  },
  "chapters": [
   {

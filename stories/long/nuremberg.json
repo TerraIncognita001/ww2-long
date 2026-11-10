@@ -42,68 +42,16 @@
    "credit": "Newsreel: End of the Nuremberg Trial, 30 September 1946 (public domain, via Internet Archive)"
   }
  },
- "case": {
-  "label": "NUREMBERG - OCTOBER 1946",
-  "left": {
-   "file": "Palace_of_Justice,_Nuremberg_17_November_1945.jpg",
-   "caption": "PALACE OF JUSTICE"
-  },
-  "center": {
-   "file": "Hermann_Göring_at_Nuremberg_Trials_November_1945.jpeg",
-   "color": "tone",
-   "caption": "H. GÖRING"
-  },
-  "right": {
-   "file": "Robert_H_Jackson,_Nuremberg_Trail_(20_November_1945).jpg",
-   "color": "tone",
-   "caption": "THE PROSECUTOR"
-  },
-  "stamp": "SENTENCED",
-  "variants": [
-   {
-    "note": "he cheated the hangman (true: suicide the night before)",
-    "notes": [
-     {
-      "text": "CHEATED THE ROPE",
-      "x": 0.72,
-      "y": 0.1,
-      "size": 58,
-      "angle": 4,
-      "stroke": 3
-     }
-    ],
-    "arrows": [
-     [
-      0.66,
-      0.16,
-      0.58,
-      0.38,
-      -0.25
-     ]
-    ]
-   },
-   {
-    "note": "guarded around the clock (true)",
-    "notes": [
-     {
-      "text": "GUARDED 24/7?",
-      "x": 0.75,
-      "y": 0.11,
-      "size": 64,
-      "angle": -4,
-      "stroke": 3
-     }
-    ],
-    "circles": [
-     [
-      0.36,
-      0.2,
-      0.69,
-      0.92
-     ]
-    ]
-   }
-  ]
+ "cover": {
+  "file": "Göring_in_the_dock_at_the_Nuremberg_Trials_(cropped).jpg",
+  "y": 0.3,
+  "text": [
+   "GÖRING CHEATED THE ROPE"
+  ],
+  "key": [
+   "GÖRING"
+  ],
+  "note": "sentenced to hang, cyanide the night before (true)"
  },
  "chapters": [
   {

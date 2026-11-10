@@ -44,68 +44,18 @@
    "credit": "The Battle of Midway (John Ford, 1942): Official US Navy film, US National Archives (public domain, via Internet Archive)"
   }
  },
- "case": {
-  "label": "MIDWAY - 4 JUNE 1942",
-  "left": {
-   "file": "Japanese_aircraft_carrier_Hiryu_burning_on_5_June_1942_(NH_73064).jpg",
-   "caption": "HIRYU"
-  },
-  "center": {
-   "file": "Admiral_Isoroku_Yamamoto.jpg",
-   "color": "tone",
-   "caption": "ADM. YAMAMOTO"
-  },
-  "right": {
-   "file": "Joseph_rochefort.jpg",
-   "color": "tone",
-   "caption": "THE CODEBREAKER"
-  },
-  "stamp": "DECODED",
-  "variants": [
-   {
-    "note": "four carriers sunk (true)",
-    "notes": [
-     {
-      "text": "4 CARRIERS SUNK",
-      "x": 0.72,
-      "y": 0.1,
-      "size": 58,
-      "angle": 4,
-      "stroke": 3
-     }
-    ],
-    "arrows": [
-     [
-      0.66,
-      0.16,
-      0.24,
-      0.42,
-      0.25
-     ]
-    ]
-   },
-   {
-    "note": "'AF is short on water' (true)",
-    "notes": [
-     {
-      "text": "\"AF IS SHORT ON WATER\"",
-      "x": 0.73,
-      "y": 0.1,
-      "size": 48,
-      "angle": -3,
-      "stroke": 3
-     }
-    ],
-    "circles": [
-     [
-      0.69,
-      0.24,
-      0.98,
-      0.97
-     ]
-    ]
-   }
-  ]
+ "cover": {
+  "file": "Japanese_aircraft_carrier_Hiryu_burning_on_5_June_1942_(NH_73064).jpg",
+  "color": "tone",
+  "y": 0.5,
+  "text": [
+   "THE CODE THAT WON",
+   "MIDWAY"
+  ],
+  "key": [
+   "MIDWAY"
+  ],
+  "note": "Station HYPO decoded the plan (true)"
  },
  "chapters": [
   {
