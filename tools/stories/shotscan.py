@@ -4,7 +4,7 @@ no dead bodies (Andrii, Oct 27: a body lay in a trench clip), no scene change, t
 Films are downloaded once into /tmp/story_tools/films (the same files prender.py uses)."""
 import json, os, pathlib, subprocess, sys
 ROOT = pathlib.Path(__file__).resolve().parents[2]
-os.chdir(ROOT); sys.path.insert(0, str(ROOT))
+os.chdir(ROOT); sys.path.insert(0, str(ROOT / "lib"))
 FILMS = pathlib.Path("/tmp/story_tools/films"); FILMS.mkdir(parents=True, exist_ok=True)
 os.environ.setdefault("DRY_RUN", "1")
 import pastrak as P

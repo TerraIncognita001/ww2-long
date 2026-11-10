@@ -17,6 +17,8 @@ import json, math, pathlib, random, re, subprocess, sys
 
 import requests
 
+import sys
+sys.path.insert(0, str(pathlib.Path(__file__).resolve().parent / "lib"))  # shorts/jurgen/pastrak from ww2-bot
 import shorts as S
 import jurgen as J
 import pastrak as P

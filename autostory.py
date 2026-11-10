@@ -16,6 +16,8 @@ Gemini quota: ~4-6 requests (script, 1-2 editor rounds, pictures, translations).
 import json, pathlib, re
 from urllib.parse import unquote
 
+import sys
+sys.path.insert(0, str(pathlib.Path(__file__).resolve().parent / "lib"))  # shorts/jurgen/pastrak from ww2-bot
 import shorts as S
 import jurgen as J
 from shorts import W, env, plain, pmap

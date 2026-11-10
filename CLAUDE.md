@@ -43,7 +43,7 @@ chapters = pastrak pacing (film 2-4 s, SFX up, music down). Story field `mode: "
   >= 1 different picture per 10 s, no bodies (shotscan sheet looked at by a person).
 
 ## BUILT (Oct 27, v0.01, not on GitHub yet)
-- `longform.py` imports the Shorts bot's code as libraries (shorts.py = S, jurgen.py = J, pastrak.py = P, copied
+- `longform.py` imports the Shorts bot's code as libraries from lib/ (shorts.py = S, jurgen.py = J, pastrak.py = P, copied
   unchanged from ww2-bot v2.06): voice (S.speak + S.respell + pronounce.json, J.calm_pauses), Commons licence
   check (J.free_item), films (P.film_file), flags (P.flag), loudness (P.lufs), upload/captions/comment (S.*).
 - Story file `stories/long/*.json`: topic, sources[], title, thumb{file, text[], flags, x, y}, question, summary,
@@ -169,5 +169,5 @@ Barely Sociable 1.4M (13M), Wendigoon, OverSimplified, The Armchair Historian 2.
    render with Kokoro -> Andrii watches.
 3. Workflow `long.yml`: cron 3x/week, dry_run -> preview branch (video > 100 MB -> Actions artifact instead),
    publish_preview, stats_only.
-4. New channel OAuth (`auth.py`, Andrii runs once), secrets in ww2-long.
+4. New channel OAuth (`tools/auth_secrets.py`, Andrii runs once), secrets in ww2-long.
 5. Daily story task + retention learning after ~10 videos.

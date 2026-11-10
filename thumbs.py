@@ -12,6 +12,8 @@ import pathlib, random
 import numpy as np
 from PIL import Image, ImageDraw, ImageEnhance, ImageFilter, ImageFont, ImageOps
 
+import sys
+sys.path.insert(0, str(pathlib.Path(__file__).resolve().parent / "lib"))  # shorts/jurgen/pastrak from ww2-bot
 import shorts as S
 import pastrak as P
 from shorts import W
