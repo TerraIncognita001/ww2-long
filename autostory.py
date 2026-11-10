@@ -9,8 +9,8 @@ from Wikimedia Commons, then longform.py renders it like a hand-made one.
 - Pictures: the subject's own Commons category + one Commons search per sentence (Gemini's 'visual'), then one
   Gemini look at all of them (jurgen.match_pictures: which sentence each shows, wrong era, watermarks, bodies).
 - Format (Andrii, Nov 10): The Entire War ('The ENTIRE History of X in {N} Minutes', 1,900-2,300 words in the
-  present tense, marker notes of the key names/numbers, 3-5 maps); thumbnail thumbs.py `entire` (the cover picture,
-  the main person's Wikipedia portrait cut out, the NAME in yellow stencil + years).
+  present tense, marker notes of the key names/numbers, 3-5 maps); thumbnail = the house photo (the cover picture)
+  in black and white with the title in 3 lines: 'HISTORY OF THE' / '<NAME>' (on red) / 'IN {N} MINUTES'.
 - No archive film (picking film seconds needs a person); photos only. The story file is saved under
   stories/long/auto-*.json (committed by the workflow) so it can be reviewed and fixed by hand later.
 Gemini quota: ~4-6 requests (script, 1-2 editor rounds, pictures, translations)."""
@@ -36,7 +36,7 @@ SEEDS = [   # exact English Wikipedia titles: whole subjects (The Entire War for
 ]
 J_KEYS = ('{"name": "the Afrika Korps", "title": "The ENTIRE History of the Afrika Korps in {N} Minutes", '
           '"question": "...", "summary": "...", "tags": ["..."], '
-          '"thumb": {"name": ["AFRIKA", "KORPS"], "years": "1941 – 1943", "person": "Wikipedia title"}, '
+          ''
           '"shorts": [{"chapter": 0, "from": 1, "to": 5, "title": "...", "key": ["NAME"], "name": "..."}, ...], '
           '"chapters": [{"title": "", "mode": "action", "sentences": ["..."], "visuals": ["..."], '
           '"notes": ["", "ERWIN ROMMEL", ...], "map": {"sentence": 3, "places": ["Wikipedia title", ...], '
@@ -86,8 +86,7 @@ def rules(topic):
         "TITLE: exactly 'The ENTIRE History of <name> in {N} Minutes' ({N} stays as it is: the bot puts the real "
         "length in), or for a whole war 'The <War> Explained in {N} Minutes'; name = the subject as said in a "
         "sentence ('the Afrika Korps').\n"
-        "THUMB: name = the subject's short NAME in capitals in 1-2 lines; years = 'YYYY – YYYY' of its story; "
-        "person = the English Wikipedia title of the person most tied to it (its commander, designer or hero).\n"
+
         "SHORTS (2 YouTube Shorts cut from the video, released the same day): each = ONE chapter's sentences "
         "from..to (chapter index 0 = the cold open, sentences 1-based), 60-140 words, ending on a CLIFFHANGER just "
         "before the answer or payoff (the Short then says 'full video on the channel'). Short 1 = the cold open "
@@ -101,12 +100,12 @@ def rules(topic):
 def ok(d):
     return isinstance(d, dict) and isinstance(d.get("chapters"), list) and len(d["chapters"]) >= 6 and \
         all(isinstance(c, dict) and isinstance(c.get("sentences"), list) and c["sentences"] for c in d["chapters"]) \
-        and isinstance(d.get("thumb"), dict) and d["thumb"].get("name") and "{N}" in str(d.get("title", ""))
+        and "{N}" in str(d.get("title", ""))
 
 
 def probe(d):
     """The draft as check() sees a finished entire story (the pictures come later)."""
-    return {**d, "format": "entire", "thumb": {"file": "x"}, "thumb_entire": {"bg": {"file": "x"}, "name": ["X"]}}
+    return {**d, "format": "entire", "thumb": {"file": "x"}, "cover": {"file": "x"}}
 
 
 def write(topic, text):
@@ -169,8 +168,8 @@ def shorts_of(d, got, cover):
         except (KeyError, IndexError, TypeError, ValueError):
             continue
     if not out and len(chs[0]["sentences"]) >= 3:
-        out.append({"from": [0, 1], "to": [0, len(chs[0]["sentences"]) - 1], "title": " ".join(cover["name"]),
-                    "key": [w for line in cover["name"] for w in line.split()], "name": plain(chs[0]["sentences"][0])[:90]})
+        out.append({"from": [0, 1], "to": [0, len(chs[0]["sentences"]) - 1], "title": cover["text"][0],
+                    "key": cover["key"], "name": plain(chs[0]["sentences"][0])[:90]})
     return out[:2]
 
 
@@ -220,20 +219,14 @@ def make():
                           and all(isinstance(x, int) and 0 <= x < len(ps) for x in r)]
                 c["shots"].append({"s": at, "map": {"places": ps, "routes": routes}})
                 c["shots"].sort(key=lambda s: s["s"])
-    th = d.pop("thumb")
+    d.pop("thumb", None)
     left = cover or subj[0]
-    person = None
-    if th.get("person"):
-        got = J.lead_image(str(th["person"]))
-        person = unquote(got[0].split("?")[0]).split("/")[-2 if "/thumb/" in got[0] else -1] if got else None
-    name = th.get("name") or [title]
-    name = [name] if isinstance(name, str) else name
+    d.pop("short", None)
     d["format"] = "entire"
-    d["thumb_entire"] = {"bg": {"file": left}, "name": [str(x).upper() for x in name][:2],
-                         "years": str(th.get("years") or "")[:15]}
-    if person:
-        d["thumb_entire"]["person"] = {"file": person, "color": "tone", "x": 0.76, "h": 1.0}
-    d["clips"] = shorts_of(d, d.pop("shorts", None), d["thumb_entire"])
+    d["cover"] = {"file": left}                        # longform.entire_cover writes the words from the title
+    L_ = __import__("longform")
+    L_.entire_cover(d)
+    d["clips"] = shorts_of(d, d.pop("shorts", None), d["cover"])
     d.update({"priority": 99, "topic": title, "sources": [], "thumb": {"file": left}, "pronounce": {},
               "films": {}, "auto": True})
     path = STORIES / (slug(title) + ".json")

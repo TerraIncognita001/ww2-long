@@ -109,16 +109,23 @@ archive film + photos only, no AI pictures).
   the creation to the end; each chapter opens on a re-hook.
 - On screen: the key names and numbers handwritten (Permanent Marker) with a red underline ('ERWIN ROMMEL',
   '130,000 PRISONERS'); simple maps (plain land, red route line) between the archive shots.
-- Thumbnail (thumbs.py `entire`): the scene full-bleed in colour, one person cut out big on the right (face in the
-  top half), the NAME huge in yellow stencil (Black Ops One, OFL) + the years in white under it, top left.
-  Story field "thumb_entire": {bg: {file...}, person: {file...}, name: ["AFRIKA", "KORPS"], years: "1941 – 1943"}.
+- THUMBNAIL (Andrii, Nov 10, 'A1' - after trying the Entire War look, a mix, colours and fonts) - HARD RULE:
+  the house photo (thumbs.py `photo`) in BLACK AND WHITE (`mono`), the title in 3 lines of Bebas, white with a black
+  edge: 'HISTORY OF THE' (96) / '<NAME>' (150, white on a red box) / 'IN {N} MINUTES' (96), top left; the name comes
+  from the title ('The ENTIRE History of the B-29 Superfortress in 13 Minutes' -> 'B-29 SUPERFORTRESS'), {N} = the
+  real minutes (longform.entire_cover + fill_minutes). RULE: the object of the video (the machine, the place) must
+  NOT be under the words: crop the picture (cover x, y, zoom) so it sits below/right of them, and LOOK at it.
+  Story: "cover": {"file", "x", "y", "zoom", "variants": [<= 2 other pictures for Test & compare]}.
+  Tried and dropped: yellow stencil + person cut out (archive portraits cut out badly and hide the object), fact
+  lines, yellow text/boxes, slab/square fonts. thumbs.py `entire` + fonts stay in the code, not used.
 - Shorts (clips.py) stay: 2 per long video on its release day.
 
 ## THE THUMBNAIL STANDARD (Andrii, Nov 10: 'format 2, text 3') - HARD RULE
 Every video's thumbnail = ONE PHOTO + WORDS (thumbs.py `photo` / house_photo): the story's most dramatic picture
 full-bleed (colorized, or color 'tone' when DDColor gives odd colours), darkened at the top, vignette; 1-2 lines of
 Bebas Neue in the top third, white with a black edge, the topic's NAME on a red box. The words = the NAME + ONE
-concrete fact of the story that makes the viewer ask why/how, <= 5 words, not the title again:
+concrete fact of the story that makes the viewer ask why/how, <= 5 words, not the title again (the old
+format); The Entire War stories write the title in short instead ('HISTORY OF B-29 IN 13 MINUTES'):
 'NOBODY CAME FOR INDIANAPOLIS', 'STALIN HID HITLER'S BODY', 'GÖRING CHEATED THE ROPE', 'THE CODE THAT WON MIDWAY',
 'YAMATO: NO FUEL, NO PLANES'. Story field:
   "cover": {"file", "x", "y", "zoom", "color", "text": ["line 1", "line 2"], "key": ["NAME"], "note" (the fact),

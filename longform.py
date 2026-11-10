@@ -90,9 +90,10 @@ def check(d, text, facts_hard=True):
     if not (d.get("thumb") or {}).get("file"):
         hard.append("no thumbnail picture")
     if d.get("format") == "entire":                    # Andrii, Nov 10: The Entire War format
-        te = d.get("thumb_entire") or {}
-        if not (te.get("bg") or {}).get("file") or not te.get("name"):
-            hard.append("entire: `thumb_entire` needs bg.file + name (+ person, years)")
+        entire_cover(d)
+        ct = " ".join((d.get("cover") or {}).get("text") or [])
+        if not re.search(r"^HISTORY OF THE .+ IN \{N\} MINUTES$", ct):
+            soft.append(f"entire: cover text '{ct}': 'HISTORY OF THE' / '<NAME>' / 'IN {{N}} MINUTES' (Andrii, Nov 10)")
         if "{N}" not in d["title"] or not re.search(r"ENTIRE History of|Explained in", d["title"]):
             soft.append("entire: title 'The ENTIRE History of the X in {N} Minutes' / 'The X Explained in {N} Minutes'")
         if words < 1700:
@@ -101,7 +102,7 @@ def check(d, text, facts_hard=True):
         if past > len(ss) * 0.35:
             soft.append(f"entire: {past} of {len(ss)} sentences in the past tense (the format tells it in the present)")
     c = d.get("cover") or {}                           # Andrii, Nov 10: one photo + the topic's name + a fact
-    if d.get("format") != "entire" and (not c.get("file") or not c.get("text")):
+    if not c.get("file") or not c.get("text"):
         hard.append("no house thumbnail: story `cover` needs file + text (thumbs.py photo)")
     for v in [c] + list(c.get("variants") or []):
         if not v.get("text"):
@@ -110,7 +111,7 @@ def check(d, text, facts_hard=True):
         key = v.get("key") or c.get("key") or []
         if not set(w.strip("?!.,\":") for w in t.split()) & set([key] if isinstance(key, str) else key):
             soft.append(f"cover text '{t}': no key word (the topic's name on red)")
-        if len(t.split()) > 5:
+        if len(t.split()) > 5 and d.get("format") != "entire":
             soft.append(f"cover text '{t}': over 5 words")
     chs_ = chapters(d)                                 # Andrii, Nov 10: 2 Shorts per long video (clips.py)
     if not d.get("clips"):
@@ -484,13 +485,12 @@ def build_ass(d, shots, segs):
             ev.append(f"Dialogue: 3,{t(a1)},{t(b1)},Label,,0,0,0,,{{\\pos(96,72)\\fad(250,300)}}{ass_esc(sh['label'])}")
     for g in segs:
         a, b = g["start"], g["start"] + g["dur"]
-        if g["kind"] == "title" and d.get("thumb_entire"):   # 'AFRIKA KORPS' + '1941 – 1943'
-            te = d["thumb_entire"]
-            ev.append(f"Dialogue: 4,{t(a + 0.3)},{t(b - 0.2)},Card,,0,0,0,,{{\\pos(960,500)\\fad(500,400)}}"
-                      f"{ass_esc(' '.join(te['name']).upper())}")
-            if te.get("years"):
-                ev.append(f"Dialogue: 4,{t(a + 0.8)},{t(b - 0.2)},Sub,,0,0,0,,{{\\pos(960,630)\\fad(500,400)}}"
-                          f"{ass_esc(te['years'])}")
+        if g["kind"] == "title" and re.search(r"ENTIRE History of (.+?) in \d+ Minutes", d["title"]):
+            nm = re.search(r"ENTIRE History of (.+?) in \d+ Minutes", d["title"]).group(1)
+            ev.append(f"Dialogue: 4,{t(a + 0.3)},{t(b - 0.2)},Sub,,0,0,0,,{{\\pos(960,400)\\fad(500,400)}}"
+                      "THE ENTIRE HISTORY OF")
+            ev.append(f"Dialogue: 4,{t(a + 0.6)},{t(b - 0.2)},Card,,0,0,0,,{{\\pos(960,530)\\fad(500,400)}}"
+                      f"{ass_esc(nm.upper())}")
         elif g["kind"] == "title":
             name, _, rest = plain(d["title"]).partition(":")
             ev.append(f"Dialogue: 4,{t(a + 0.3)},{t(b - 0.2)},Card,,0,0,0,,{{\\pos(960,500)\\fad(500,400)}}"
@@ -701,10 +701,41 @@ def thumb_variant(v, got, k):
     return out
 
 
+def entire_cover(d):
+    """The Entire War format's thumbnail (Andrii, Nov 10, 'A1'): the house photo in black and white with the title
+    in 3 lines: 'HISTORY OF THE' / '<NAME>' (white on red, biggest) / 'IN {N} MINUTES'; the name comes from the title
+    'The ENTIRE History of <the NAME> in {N} Minutes'. The story's `cover` gives the picture (file, x, y, zoom) and
+    may override any of it. RULE: the object (the machine, the place) must not be under the words: pick the crop."""
+    m = re.search(r"ENTIRE History of (?:the )?(.+?) in (?:\{N\}|\d+) Minutes", d.get("key") or d["title"])
+    c = d.get("cover")
+    if d.get("format") != "entire" or not m or not isinstance(c, dict):
+        return
+    name = m.group(1).upper()
+    c.setdefault("text", ["HISTORY OF THE", name, "IN {N} MINUTES"])
+    c.setdefault("key", name.split())
+    c.setdefault("sizes", [96, 150, 96])
+    c.setdefault("mono", True)
+
+
+def fill_minutes(d, n):
+    """'{N}' in the title's short form on the thumbnail ('HISTORY OF B-29' + 'IN {N} MINUTES') -> the real minutes."""
+    entire_cover(d)                                    # the words first (they come from the title)
+    for c in [d.get("cover") or {}] + list((d.get("cover") or {}).get("variants") or []):
+        if c.get("text"):
+            c["text"] = [str(x).replace("{N}", str(n)) for x in c["text"]]
+
+
+def minutes_guess(d):
+    """The length before a render (the `thumbs` command): ~148 words a minute (B-29: 1,895 words = 13.4 min) + the cards and the outro."""
+    words = len(" ".join(all_sentences(d)).split())
+    return int((words / 148 * 60 + TITLE_S + CARD_S * (len(chapters(d)) - 1) + OUTRO_S) // 60)
+
+
 def thumb_specs(d, more=False):
     """The 3 thumbnails of the video (Test & compare takes 3): the house photo (story `cover`) + up to 2 variants of
     it (`cover.variants`: other words); old stories: the case file (`case`); more=True adds `thumbs_more`."""
     import thumbs
+    entire_cover(d)
     if d.get("thumb_entire"):                          # The Entire War format (Andrii, Nov 10)
         te = d["thumb_entire"]
         main = [{"style": "entire", **{k: v for k, v in te.items() if k != "variants"}}] + \
@@ -799,6 +830,7 @@ def make_video(d):
     if "{N}" in d["title"]:                            # The Entire War: '... in {N} Minutes' = the real length
         d.setdefault("key", d["title"])
         d["title"] = d["title"].replace("{N}", str(int(total // 60)))
+        fill_minutes(d, int(total // 60))
         print("title:", d["title"])
     shots = plan(d, segs, films, got)
     chs = chapters(d)
@@ -1037,6 +1069,7 @@ if __name__ == "__main__":
         check_cli(sys.argv[2], sys.argv[3:])
     elif len(sys.argv) > 2 and sys.argv[1] == "thumbs":     # only the thumbnails (work/cover*.png)
         story = json.loads(pathlib.Path(sys.argv[2]).read_text(encoding="utf-8"))
+        fill_minutes(story, minutes_guess(story))      # a preview: the real minutes come with the render
         if len(sys.argv) > 3:                          # a named list of candidates: work/<key>_1.png ...
             import thumbs
             specs = story[sys.argv[3]]

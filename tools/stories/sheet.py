@@ -1,6 +1,6 @@
 """Contact sheet of Commons files (numbered) -> PNG, for picking pictures by eye."""
 import sys, re, pathlib, subprocess, urllib.parse, html as H, concurrent.futures as cf
-sys.path.insert(0, __file__.rsplit('/',1)[0]); import commons as C
+sys.path.insert(0, str(__import__('pathlib').Path(__file__).resolve().parent)); import commons as C
 from PIL import Image, ImageDraw, ImageFont
 T = pathlib.Path("/tmp/story_tools/thumbs"); T.mkdir(parents=True, exist_ok=True)
 def thumb(f):

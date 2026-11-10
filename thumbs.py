@@ -366,22 +366,26 @@ def house_case(c, extra=None):
     return spec
 
 
-def words(im, lines, key=(), x=0.045, y=0.05, size=140, maxw=0.92, gap=0.98):
-    """Big Bebas lines top left, white with a black edge; the `key` words (the topic's name) on a red box."""
+def words(im, lines, key=(), x=0.045, y=0.05, size=140, maxw=0.92, gap=0.98, fill="white", box=RED,
+          key_fill="white", key_color=None, stroke="black", sizes=None):
+    """Big Bebas lines top left, `fill` with a `stroke` edge; the `key` words (the topic's name) on a `box`
+    (None: no box, the key words in `key_color` instead)."""
     d = ImageDraw.Draw(im)
     yy = TH * y
-    for line in lines:
-        f = font(BEBAS, size)
+    for n, line in enumerate(lines):
+        f = font(BEBAS, (sizes[n] if sizes and n < len(sizes) else size))
         while f.getlength(line) > TW * maxw and f.size > 50:
             f = font(BEBAS, f.size - 6)
         xx = TW * x
         for word in line.split(" "):
             ww = f.getlength(word)
-            if word.strip("?!.,\":") in key:
-                d.rectangle((xx - 12, yy + f.size * 0.06, xx + ww + 12, yy + f.size * 1.0), fill=RED)
-                d.text((xx, yy), word, font=f, fill="white")
+            if word.strip("?!.,\":") in key and box:
+                d.rectangle((xx - 12, yy + f.size * 0.06, xx + ww + 12, yy + f.size * 1.0), fill=tuple(box))
+                d.text((xx, yy), word, font=f, fill=tuple(key_fill) if isinstance(key_fill, list) else key_fill)
             else:
-                d.text((xx, yy), word, font=f, fill="white", stroke_width=8, stroke_fill="black")
+                c = key_color if (key_color and word.strip("?!.,\":") in key) else fill
+                d.text((xx, yy), word, font=f, fill=tuple(c) if isinstance(c, list) else c, stroke_width=8,
+                       stroke_fill=tuple(stroke) if isinstance(stroke, list) else stroke)
             xx += ww + f.getlength(" ")
         yy += f.size * gap
 
@@ -394,13 +398,16 @@ def photo(v, got):
     if z != 1:
         pic = pic.resize((round(pic.width * z), round(pic.height * z)), Image.LANCZOS)
     im = ImageOps.fit(pic, (TW, TH), centering=(v.get("x", 0.5), v.get("y", 0.5)))
+    if v.get("mono"):                                  # black and white (Andrii, Nov 10)
+        im = ImageEnhance.Contrast(ImageOps.grayscale(im).convert("RGB")).enhance(1.1)
     shade = Image.linear_gradient("L").resize((TW, TH)).point(lambda a: int(190 * max(0, 1 - a / 150) ** 1.6))
     im = Image.composite(Image.new("RGB", (TW, TH), "black"), im, shade)
     yy, xx = np.mgrid[0:TH, 0:TW]
     r = np.hypot((xx - TW / 2) / (TW / 2), (yy - TH / 2) / (TH / 2))
     m = np.clip(1 - 0.5 * np.clip(r - 0.55, 0, None) ** 1.4, 0, 1)
     im = Image.fromarray((np.asarray(im, np.float32) * m[..., None]).astype(np.uint8))
-    words(im, v["text"], v.get("key") or [], size=v.get("size", 140))
+    st = {k: v[k] for k in ("fill", "box", "key_fill", "key_color", "stroke", "sizes") if k in v}
+    words(im, v["text"], v.get("key") or [], size=v.get("size", 140), **st)
     return im
 
 
@@ -412,7 +419,44 @@ def house_photo(c, extra=None):
 
 
 STENCIL = FONTS / "BlackOpsOne-Regular.ttf"           # OFL, fonts/OFL-BlackOpsOne.txt
+FONT_OF = {"stencil": STENCIL, "bebas": BEBAS}      # slab/square fonts were tried on Nov 10 and dropped
 YELLOW = (250, 204, 21)
+
+
+def badge(kind, r):
+    """A round side marker next to the name (The Entire War): us star, japan, germany, soviet, uk."""
+    k = 4
+    R = r * k
+    im = Image.new("RGBA", (2 * R + 8 * k, 2 * R + 8 * k), (0, 0, 0, 0))
+    d = ImageDraw.Draw(im)
+    c = (R + 4 * k, R + 4 * k)
+    box = (c[0] - R, c[1] - R, c[0] + R, c[1] + R)
+
+    def star(cx, cy, ro, col, ri=None):
+        ri = ri or ro * 0.382
+        pts = [(cx + (ro if i % 2 == 0 else ri) * np.sin(np.pi * i / 5), cy - (ro if i % 2 == 0 else ri) * np.cos(np.pi * i / 5))
+               for i in range(10)]
+        d.polygon(pts, fill=col)
+    if kind == "japan":
+        d.ellipse(box, fill="white", outline="black", width=3 * k)
+        d.ellipse((c[0] - R * 0.55, c[1] - R * 0.55, c[0] + R * 0.55, c[1] + R * 0.55), fill=(200, 16, 46))
+    elif kind == "uk":
+        for f, col in ((1.0, (1, 33, 105)), (0.66, "white"), (0.33, (200, 16, 46))):
+            d.ellipse((c[0] - R * f, c[1] - R * f, c[0] + R * f, c[1] + R * f), fill=col)
+        d.ellipse(box, outline="black", width=3 * k)
+    elif kind == "germany":
+        d.ellipse(box, fill="white", outline="black", width=3 * k)
+        w, h = R * 0.95, R * 0.28
+        d.rectangle((c[0] - w, c[1] - h, c[0] + w, c[1] + h), fill="black")
+        d.rectangle((c[0] - h, c[1] - w, c[0] + h, c[1] + w), fill="black")
+    elif kind == "soviet":
+        d.ellipse(box, fill="white", outline="black", width=3 * k)
+        star(c[0], c[1] + R * 0.05, R * 0.82, (200, 16, 46))
+    else:                                              # us: olive drab disc, white ring, white star
+        d.ellipse(box, fill=(84, 86, 52), outline="black", width=3 * k)
+        d.ellipse((c[0] - R * 0.86, c[1] - R * 0.86, c[0] + R * 0.86, c[1] + R * 0.86), outline="white", width=3 * k)
+        star(c[0], c[1] + R * 0.05, R * 0.72, "white")
+    return im.resize((im.width // k, im.height // k), Image.LANCZOS)
 
 
 def entire(v, got):
@@ -435,6 +479,10 @@ def entire(v, got):
         h = round(TH * s.get("h", 1.0))
         pic = pic.resize((round(pic.width * h / pic.height), h), Image.LANCZOS)
         m = cutout_mask(pic)
+        if s.get("feather", v.get("align") == "right"):   # a portrait whose background the cut-out keeps: fade
+            g = np.clip((1 - np.linspace(0, 1, pic.width)) / 0.35, 0, 1)[None, :] ** 1.2  # its far side out
+            g = g if v.get("align") == "right" else g[:, ::-1]
+            m = Image.fromarray((np.asarray(m, np.float32) * g).astype(np.uint8))
         x0, y0 = round(TW * s.get("x", 0.75) - pic.width / 2), TH - h + round(TH * s.get("drop", 0.0))
         sh = Image.new("RGBA", pic.size, (0, 0, 0, 0))
         sh.putalpha(m.filter(ImageFilter.MaxFilter(9)).filter(ImageFilter.GaussianBlur(18)).point(lambda a: a * 0.7))
@@ -447,15 +495,40 @@ def entire(v, got):
     y = TH * v.get("text_y", 0.04)
     x = TW * v.get("text_x", 0.035)
     size = v.get("size", 150)
+    right = v.get("align") == "right"                 # The Entire War: the person left, the words top right
+    if right:
+        x = TW * (1 - v.get("text_x", 0.035))
+    nf = FONT_OF.get(v.get("name_font", "stencil"), STENCIL)
+    col = lambda c, dflt: tuple(c) if isinstance(c, list) else (c or dflt)
     for line in v["name"]:
-        f = font(STENCIL, size)
+        f = font(nf, size)
         while f.getlength(line) > TW * v.get("maxw", 0.6) and f.size > 60:
-            f = font(STENCIL, f.size - 6)
-        d.text((x, y), line, font=f, fill=YELLOW, stroke_width=9, stroke_fill="black")
-        y += f.size * 0.98
-    if v.get("years"):
-        f = font(STENCIL, v.get("years_size", 84))
-        d.text((x + 4, y + 6), v["years"], font=f, fill="white", stroke_width=7, stroke_fill="black")
+            f = font(nf, f.size - 6)
+        bw = 0
+        if right and v.get("badge") and line == v["name"][-1]:      # the side marker after the last name line
+            bd = badge(v["badge"], round(f.size * 0.3))
+            bw = bd.width + 10
+            im.paste(bd, (round(x - bd.width), round(y + f.size * 0.62 - bd.height / 2)), bd)
+            d = ImageDraw.Draw(im)
+        lx = x - bw - f.getlength(line) if right else x
+        d.text((lx, y), line, font=f, fill=col(v.get("name_fill"), YELLOW), stroke_width=v.get("name_stroke_w", 9),
+               stroke_fill=col(v.get("name_stroke"), "black"))
+        y += f.size * v.get("name_gap", 0.98)
+    if v.get("fact"):                                  # the combined cover (Nov 10): one fact of the story on red
+        y += 14
+        for line in v["fact"]:
+            f = font(BEBAS, v.get("fact_size", 104))
+            while f.getlength(line) > TW * v.get("maxw", 0.6) and f.size > 50:
+                f = font(BEBAS, f.size - 4)
+            tw = f.getlength(line)
+            d.rectangle((x - 6, y + f.size * 0.04, x + tw + 22, y + f.size * 0.98), fill=RED)
+            d.text((x + 8, y - f.size * 0.02), line, font=f, fill="white")
+            y += f.size * 1.02
+    elif v.get("years"):
+        f = font(FONT_OF.get(v.get("years_font", "stencil"), STENCIL), v.get("years_size", 84))
+        yx = x - f.getlength(v["years"]) - TW * v.get("years_in", 0.0) if right else x + 4
+        d.text((yx, y + 6), v["years"], font=f, fill=col(v.get("years_fill"), "white"), stroke_width=7,
+               stroke_fill="black")
     return im
 
 

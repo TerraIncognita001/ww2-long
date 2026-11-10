@@ -1,5 +1,5 @@
 import sys, json, concurrent.futures as cf
-sys.path.insert(0, __file__.rsplit('/',1)[0]); import commons as C
+sys.path.insert(0, str(__import__('pathlib').Path(__file__).resolve().parent)); import commons as C
 fs=[l.strip().removeprefix('File:') for l in sys.stdin if l.strip().startswith('File:') or (l.strip() and not l.startswith('SUBS'))]
 fs=[f for f in fs if not f.lower().endswith(('.ogg','.svg','.pdf','.webm','.ogv','.tif','.djvu','.wav','.mp3'))]
 with cf.ThreadPoolExecutor(3) as ex:

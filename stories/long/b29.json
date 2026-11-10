@@ -1,0 +1,1299 @@
+{
+ "priority": 6,
+ "format": "entire",
+ "topic": "Boeing B-29 Superfortress",
+ "sources": [
+  "Operation Meetinghouse",
+  "Air raids on Japan"
+ ],
+ "title": "The ENTIRE History of the B-29 Superfortress in {N} Minutes",
+ "thumb": {
+  "file": "B-29_Bomber_on_a_long_range_mission_in_late_1945.jpg"
+ },
+ "cover": {
+  "file": "B-29s_19th_Bomb_Group_over_Korea_1950.jpg",
+  "color": false,
+  "x": 0.6,
+  "y": 0.0,
+  "note": "A1 (Andrii, Nov 10): black and white, the B-29s under the words, not behind them",
+  "variants": [
+   {
+    "file": "B-29_Bomber_on_a_long_range_mission_in_late_1945.jpg",
+    "y": 0.62,
+    "zoom": 1.1,
+    "note": "one B-29 under the words"
+   }
+  ]
+ },
+ "question": "Did the B-29 win the war against Japan?",
+ "summary": "The Boeing B-29 Superfortress was the most expensive weapons program of World War II: its $3 billion cost exceeded the Manhattan Project's. Designed from 1938 as a pressurized long-range 'superbomber' with remote-controlled turrets, it suffered deadly engine fires and production delays, flew its first missions from India and China over the Himalayas, then from new bases in the Mariana Islands. From March 1945 Curtis LeMay sent it low, at night, with incendiaries, against Japanese cities; Silverplate B-29s Enola Gay and Bockscar dropped the atomic bombs on Hiroshima and Nagasaki. Four interned bombers became the Soviet Tu-4. B-29s fought again in Korea; 3,970 were built.",
+ "tags": [
+  "B-29",
+  "B-29 Superfortress",
+  "Superfortress",
+  "Boeing B-29",
+  "Curtis LeMay",
+  "Enola Gay",
+  "Bockscar",
+  "Operation Meetinghouse",
+  "Tokyo firebombing",
+  "air raids on Japan",
+  "Tupolev Tu-4",
+  "Hap Arnold",
+  "WW2 bomber",
+  "Pacific War",
+  "Silverplate"
+ ],
+ "pronounce": {
+  "Chengdu": "Cheng-doo",
+  "Yawata": "Ya-wah-ta",
+  "Tupolev": "Too-po-lev",
+  "Matterhorn": "Matter-horn",
+  "Vladivostok": "Vla-di-vos-tok",
+  "LeMay": "Le-May"
+ },
+ "films": {
+  "birth": {
+   "url": "https://archive.org/download/Birthoft1945/Birthoft1945.mp4",
+   "mono": true,
+   "credit": "Birth of the B-29 (1945): US War Department / Army Pictorial Service film (public domain, via Internet Archive)"
+  },
+  "tokyo": {
+   "url": "https://archive.org/download/TargetTokyo/TargetTokyo.mp4",
+   "mono": true,
+   "credit": "Target Tokyo (1945): Army Air Forces First Motion Picture Unit (public domain, via Internet Archive)"
+  },
+  "airwar": {
+   "url": "https://archive.org/download/gov.dod.dimoc.26162/gov.dod.dimoc.26162_512kb.mp4",
+   "mono": true,
+   "credit": "The Air Force Story: Air War Against Japan (1953): US Department of Defense, DIMOC 26162 (public domain, via Internet Archive)"
+  }
+ },
+ "chapters": [
+  {
+   "title": "",
+   "mode": "action",
+   "sentences": [
+    "In early 1945, in the Mariana Islands, an American general orders the guns taken out of his own bombers.",
+    "They come from the most expensive weapons program of the war, a program that costs more than the Manhattan Project itself.",
+    "Without the guns, they can carry twice their usual bomb load, and fly low, at night, over the cities of Japan.",
+    "Within months, they devastate most large Japanese cities, and two of them carry the atomic bombs.",
+    "This is the entire history of the B-29 Superfortress."
+   ],
+   "shots": [
+    {
+     "s": 1,
+     "film": "tokyo",
+     "from": 935,
+     "to": 939,
+     "sfx": "plane_flyby"
+    },
+    {
+     "s": 1,
+     "file": "Curtis_LeMay_(USAF).jpg",
+     "y": 0.25
+    },
+    {
+     "s": 2,
+     "film": "birth",
+     "from": 776,
+     "to": 781
+    },
+    {
+     "s": 2,
+     "film": "birth",
+     "from": 700,
+     "to": 705
+    },
+    {
+     "s": 3,
+     "film": "airwar",
+     "from": 545,
+     "to": 550,
+     "sfx": "explosion_far"
+    },
+    {
+     "s": 3,
+     "film": "airwar",
+     "from": 570,
+     "to": 575
+    },
+    {
+     "s": 4,
+     "film": "airwar",
+     "from": 625,
+     "to": 630
+    },
+    {
+     "s": 4,
+     "film": "airwar",
+     "from": 695,
+     "to": 701,
+     "sfx": "explosion_massive"
+    },
+    {
+     "s": 5,
+     "file": "B-29_Bomber_on_a_long_range_mission_in_late_1945.jpg",
+     "zoom": 1.05
+    }
+   ]
+  },
+  {
+   "title": "The Superbomber",
+   "mode": "people",
+   "sentences": [
+    "In 1938, Boeing begins work on long-range bombers.",
+    "Its first idea is a pressurized version of the B-17 Flying Fortress, with a wheel under the nose.",
+    "The Air Corps has no money for it, so Boeing keeps working with its own funds.",
+    "In December 1939, the Air Corps asks for a so-called superbomber.",
+    "It must carry 20,000 pounds of bombs to a target 2,667 miles away, at 400 miles an hour.",
+    "Boeing answers with its Model 345, against designs from Consolidated, Lockheed and Douglas.",
+    "Lockheed offers its XB-30, Douglas its XB-31, and Consolidated its Model 33, which later becomes the B-32.",
+    "Douglas and Lockheed soon give up, and in August 1940 Boeing receives an order for two flying prototypes.",
+    "In September, both Boeing and Consolidated receive orders for two experimental models each.",
+    "They are known as very long range bombers.",
+    "They are called the XB-29, and the name Superfortress will not be given until March 1944.",
+    "Consolidated keeps working on its own design, as a backup in case Boeing's runs into trouble.",
+    "In May 1941, the Army orders 14 service test aircraft and 250 production bombers.",
+    "In January 1942, the order grows to 500."
+   ],
+   "shots": [
+    {
+     "s": 1,
+     "film": "birth",
+     "from": 310,
+     "to": 316,
+     "note": "BOEING · 1938"
+    },
+    {
+     "s": 2,
+     "file": "Olive-drab_painted_B-29_superfortress.jpg"
+    },
+    {
+     "s": 3,
+     "film": "birth",
+     "from": 336,
+     "to": 341
+    },
+    {
+     "s": 4,
+     "film": "birth",
+     "from": 866,
+     "to": 871
+    },
+    {
+     "s": 5,
+     "film": "birth",
+     "from": 856,
+     "to": 861,
+     "note": "20,000 POUNDS"
+    },
+    {
+     "s": 6,
+     "file": "Boeing_XB-29_41-002.jpg",
+     "whole": true
+    },
+    {
+     "s": 7,
+     "film": "birth",
+     "from": 1001,
+     "to": 1006
+    },
+    {
+     "s": 8,
+     "film": "birth",
+     "from": 911,
+     "to": 917
+    },
+    {
+     "s": 9,
+     "film": "birth",
+     "from": 287,
+     "to": 293
+    },
+    {
+     "s": 10,
+     "film": "birth",
+     "from": 976,
+     "to": 981
+    },
+    {
+     "s": 11,
+     "file": "Boeing_XB-29_41-002.jpg",
+     "zoom": 1.3,
+     "x": 0.35,
+     "note": "XB-29"
+    },
+    {
+     "s": 12,
+     "film": "birth",
+     "from": 366,
+     "to": 371
+    },
+    {
+     "s": 13,
+     "film": "birth",
+     "from": 421,
+     "to": 427
+    },
+    {
+     "s": 14,
+     "film": "birth",
+     "from": 776,
+     "to": 782,
+     "note": "500 BOMBERS"
+    }
+   ]
+  },
+  {
+   "title": "The Most Expensive Weapon",
+   "mode": "people",
+   "sentences": [
+    "Building the B-29 is a huge task.",
+    "It needs four main assembly factories, in Washington, Kansas, Georgia and Nebraska.",
+    "Thousands of subcontractors work on the project.",
+    "The bomber is one of the largest aircraft of World War II.",
+    "Its four Wright engines give it a top speed of 357 miles an hour.",
+    "It can fly as high as 31,850 feet, where Japanese fighters can barely reach it.",
+    "For the first time in a bomber, its crew sits in a pressurized cabin.",
+    "The bomb bays are not pressurized, so a long tunnel joins the front and rear compartments, and the crew can crawl through it.",
+    "Its guns sit in four remote-controlled turrets, aimed through sights linked to analog computers.",
+    "There are five sighting stations: in the nose, in the tail, and in three Plexiglas blisters in the middle of the fuselage.",
+    "The gunner in the upper position acts as fire control officer, and shares out the turrets among the others.",
+    "The computers correct for airspeed, gravity, temperature and humidity.",
+    "They also allow a single gunner to fire two or more turrets at once.",
+    "All of this has a price.",
+    "Design and production cost three billion dollars, far more than the Manhattan Project.",
+    "The B-29 becomes the most expensive weapons program of the war."
+   ],
+   "shots": [
+    {
+     "s": 1,
+     "film": "birth",
+     "from": 441,
+     "to": 447
+    },
+    {
+     "s": 2,
+     "file": "Boeing-Whichata_B-29_Assembly_Line_-_1944.jpg",
+     "note": "FOUR FACTORIES"
+    },
+    {
+     "s": 3,
+     "film": "birth",
+     "from": 371,
+     "to": 376
+    },
+    {
+     "s": 4,
+     "film": "birth",
+     "from": 787,
+     "to": 792
+    },
+    {
+     "s": 5,
+     "film": "birth",
+     "from": 496,
+     "to": 501
+    },
+    {
+     "s": 5,
+     "film": "birth",
+     "from": 856,
+     "to": 860
+    },
+    {
+     "s": 6,
+     "film": "birth",
+     "from": 1186,
+     "to": 1192,
+     "note": "31,850 FEET"
+    },
+    {
+     "s": 7,
+     "film": "birth",
+     "from": 726,
+     "to": 731
+    },
+    {
+     "s": 8,
+     "film": "birth",
+     "from": 561,
+     "to": 567
+    },
+    {
+     "s": 8,
+     "film": "birth",
+     "from": 572,
+     "to": 576
+    },
+    {
+     "s": 9,
+     "file": "XB-29_or_YB-29_turret_(15942305083).jpg"
+    },
+    {
+     "s": 10,
+     "film": "airwar",
+     "from": 420,
+     "to": 426
+    },
+    {
+     "s": 11,
+     "film": "tokyo",
+     "from": 381,
+     "to": 386
+    },
+    {
+     "s": 12,
+     "film": "tokyo",
+     "from": 1146,
+     "to": 1150
+    },
+    {
+     "s": 13,
+     "film": "airwar",
+     "from": 421,
+     "to": 425
+    },
+    {
+     "s": 14,
+     "film": "birth",
+     "from": 801,
+     "to": 807
+    },
+    {
+     "s": 15,
+     "file": "Favored_by_Warm_breezes_and_under_a_blue_Kansas_Sky,_a_vast_crowd_attends_the_delivery_ceremony_on_the_Boeing-Wichita..._-_NARA_-_196890.jpg",
+     "note": "THREE BILLION DOLLARS"
+    },
+    {
+     "s": 16,
+     "film": "tokyo",
+     "from": 151,
+     "to": 157
+    }
+   ]
+  },
+  {
+   "title": "Fire in Seattle",
+   "mode": "action",
+   "sentences": [
+    "On 21 September 1942, the first prototype takes off from Boeing Field in Seattle.",
+    "The second prototype first flies on 30 December, but the flight ends with a serious engine fire.",
+    "On 18 February 1943, the same aircraft has another engine fire, and crashes.",
+    "Boeing's test pilot, Edmund T. Allen, and his 10-man crew are killed.",
+    "So are 20 workers at the Frye Meat Packing Plant, and a Seattle firefighter.",
+    "The engines are the most common cause of the trouble.",
+    "The early Wright R-3350 engines have dangerous reliability problems.",
+    "Mechanics replace the top cylinders every 25 hours, and the entire engines every 75 hours.",
+    "Cuffs are placed on the propeller blades, to push more cooling air into the engines.",
+    "Pilots describe the first minutes after takeoff as an urgent struggle for airspeed.",
+    "Changes come so fast that new bombers fly straight from the factory to modification depots, to be rebuilt.",
+    "Some depots have no hangar big enough, and the work goes on outdoors, in freezing weather.",
+    "By the end of 1943, almost 100 aircraft have been delivered, but only 15 are airworthy.",
+    "General Hap Arnold sends factory workers to the modification centers, in what becomes known as the Battle of Kansas.",
+    "Between 10 March and 15 April 1944, they make 150 bombers ready in five weeks."
+   ],
+   "shots": [
+    {
+     "s": 1,
+     "film": "birth",
+     "from": 816,
+     "to": 821,
+     "label": "SEATTLE · 21 SEPTEMBER 1942"
+    },
+    {
+     "s": 2,
+     "film": "birth",
+     "from": 491,
+     "to": 496
+    },
+    {
+     "s": 3,
+     "film": "birth",
+     "from": 496,
+     "to": 501
+    },
+    {
+     "s": 4,
+     "film": "birth",
+     "from": 1170,
+     "to": 1174,
+     "note": "EDMUND T. ALLEN"
+    },
+    {
+     "s": 5,
+     "film": "birth",
+     "from": 340,
+     "to": 345
+    },
+    {
+     "s": 6,
+     "film": "birth",
+     "from": 506,
+     "to": 511
+    },
+    {
+     "s": 7,
+     "film": "tokyo",
+     "from": 851,
+     "to": 856
+    },
+    {
+     "s": 8,
+     "film": "birth",
+     "from": 760,
+     "to": 764
+    },
+    {
+     "s": 9,
+     "film": "birth",
+     "from": 489,
+     "to": 493
+    },
+    {
+     "s": 10,
+     "film": "tokyo",
+     "from": 966,
+     "to": 972,
+     "sfx": "plane_flyby"
+    },
+    {
+     "s": 11,
+     "film": "birth",
+     "from": 665,
+     "to": 671
+    },
+    {
+     "s": 12,
+     "film": "birth",
+     "from": 746,
+     "to": 751
+    },
+    {
+     "s": 13,
+     "film": "birth",
+     "from": 702,
+     "to": 708,
+     "note": "ONLY 15 AIRWORTHY"
+    },
+    {
+     "s": 14,
+     "film": "tokyo",
+     "from": 1301,
+     "to": 1307,
+     "note": "BATTLE OF KANSAS"
+    },
+    {
+     "s": 15,
+     "film": "birth",
+     "from": 788,
+     "to": 794
+    }
+   ]
+  },
+  {
+   "title": "Over the Hump",
+   "mode": "action",
+   "sentences": [
+    "At first, the B-29 is meant for the war against Germany, from bases in Egypt.",
+    "But by the end of 1943, partly because of production delays, it is sent to the Pacific instead.",
+    "President Franklin D. Roosevelt has made a promise to China.",
+    "So under Operation Matterhorn, the bombers are based in India, and fly to forward airfields around Chengdu, in China.",
+    "There is no overland route between India and China.",
+    "All supplies have to be flown over the Himalayas, over the route the crews call the Hump.",
+    "Some B-29s are stripped of their armor and guns, and used only to carry fuel.",
+    "On 5 June 1944, the first combat mission sends 98 bombers against the railroad shops in Bangkok.",
+    "Five of them are lost, none of them to enemy fire.",
+    "Their bombs fall more than a mile from the targets.",
+    "Ten days later, 47 B-29s from Chengdu bomb the Imperial Iron and Steel Works at Yawata, in Japan.",
+    "It is the first attack on the Japanese home islands since the Doolittle Raid in April 1942.",
+    "Only one bomb hits the target factory, and the raid nearly exhausts the fuel at the Chengdu bases.",
+    "The raids from China go on at low intensity, until the bombers are withdrawn at the end of January 1945."
+   ],
+   "shots": [
+    {
+     "s": 1,
+     "file": "Olive-drab_painted_B-29_superfortress.jpg",
+     "zoom": 1.2,
+     "x": 0.6
+    },
+    {
+     "s": 2,
+     "film": "tokyo",
+     "from": 401,
+     "to": 406
+    },
+    {
+     "s": 3,
+     "file": "FDR_1944_Color_Portrait.jpg"
+    },
+    {
+     "s": 4,
+     "map": {
+      "places": [
+       {
+        "label": "INDIA",
+        "lat": 22.33,
+        "lon": 87.32
+       },
+       {
+        "label": "CHENGDU",
+        "lat": 30.66,
+        "lon": 104.07
+       },
+       {
+        "label": "YAWATA",
+        "lat": 33.87,
+        "lon": 130.8
+       }
+      ],
+      "routes": [
+       [
+        0,
+        1
+       ],
+       [
+        1,
+        2
+       ]
+      ]
+     },
+     "note": "OPERATION MATTERHORN"
+    },
+    {
+     "s": 5,
+     "film": "birth",
+     "from": 1056,
+     "to": 1061
+    },
+    {
+     "s": 6,
+     "film": "birth",
+     "from": 1186,
+     "to": 1196,
+     "note": "THE HUMP"
+    },
+    {
+     "s": 7,
+     "file": "B-29_Superfortress_of_the_20th_Bomber_Command_near_Chengdu,_China.jpg"
+    },
+    {
+     "s": 8,
+     "film": "birth",
+     "from": 1136,
+     "to": 1142,
+     "sfx": "plane_flyby"
+    },
+    {
+     "s": 9,
+     "film": "birth",
+     "from": 1150,
+     "to": 1155
+    },
+    {
+     "s": 10,
+     "film": "tokyo",
+     "from": 1261,
+     "to": 1266
+    },
+    {
+     "s": 11,
+     "film": "birth",
+     "from": 976,
+     "to": 981,
+     "note": "YAWATA"
+    },
+    {
+     "s": 12,
+     "film": "tokyo",
+     "from": 1236,
+     "to": 1243,
+     "sfx": "bomb_drop"
+    },
+    {
+     "s": 13,
+     "film": "birth",
+     "from": 1086,
+     "to": 1092
+    },
+    {
+     "s": 14,
+     "film": "birth",
+     "from": 1101,
+     "to": 1107
+    }
+   ]
+  },
+  {
+   "title": "Stalin's Copy",
+   "mode": "people",
+   "sentences": [
+    "Some damaged bombers cannot make it home.",
+    "On 31 July 1944, an engine fails on a B-29 called Ramp Tramp, during a raid on a steel mill in Manchuria.",
+    "Its crew diverts to Vladivostok, in the Soviet Union.",
+    "In November, two more damaged bombers land there, and the crew of a fourth bails out over Soviet territory.",
+    "The Soviet Union is neutral in the Pacific War, so it interns the crews, and keeps the aircraft.",
+    "The Americans ask for their return.",
+    "In January 1945, the crews are allowed to escape into Iran.",
+    "But none of the bombers ever comes back.",
+    "Stalin orders the Tupolev design bureau to copy the B-29, and to make it ready for production as soon as possible.",
+    "Soviet aluminum comes in metric sizes, so the entire aircraft has to be re-engineered.",
+    "The designers also use their own wing sections, and a Soviet engine of comparable power.",
+    "In 1947, the Soviets show their copy: the Tupolev Tu-4.",
+    "They build 847 of them.",
+    "For years, Soviet bombers keep a tail-gunner position just like the B-29's."
+   ],
+   "shots": [
+    {
+     "s": 1,
+     "film": "tokyo",
+     "from": 481,
+     "to": 486
+    },
+    {
+     "s": 2,
+     "film": "tokyo",
+     "from": 1041,
+     "to": 1047,
+     "note": "RAMP TRAMP"
+    },
+    {
+     "s": 3,
+     "map": {
+      "places": [
+       {
+        "label": "MANCHURIA",
+        "lat": 41.12,
+        "lon": 122.99
+       },
+       {
+        "label": "VLADIVOSTOK",
+        "lat": 43.12,
+        "lon": 131.89
+       }
+      ],
+      "routes": [
+       [
+        0,
+        1
+       ]
+      ]
+     }
+    },
+    {
+     "s": 4,
+     "film": "tokyo",
+     "from": 991,
+     "to": 996
+    },
+    {
+     "s": 5,
+     "file": "Joseph_Stalin_1945.jpg"
+    },
+    {
+     "s": 6,
+     "film": "tokyo",
+     "from": 1061,
+     "to": 1066
+    },
+    {
+     "s": 7,
+     "film": "tokyo",
+     "from": 471,
+     "to": 476
+    },
+    {
+     "s": 8,
+     "file": "B-29_Bomber_on_a_long_range_mission_in_late_1945.jpg",
+     "zoom": 1.3,
+     "x": 0.4
+    },
+    {
+     "s": 9,
+     "file": "Joseph_Stalin_1945.jpg",
+     "zoom": 1.3,
+     "y": 0.2,
+     "note": "TUPOLEV"
+    },
+    {
+     "s": 10,
+     "film": "birth",
+     "from": 336,
+     "to": 341
+    },
+    {
+     "s": 11,
+     "film": "birth",
+     "from": 491,
+     "to": 496
+    },
+    {
+     "s": 12,
+     "film": "tokyo",
+     "from": 991,
+     "to": 996,
+     "note": "TUPOLEV TU-4"
+    },
+    {
+     "s": 13,
+     "film": "birth",
+     "from": 1001,
+     "to": 1006
+    },
+    {
+     "s": 14,
+     "film": "tokyo",
+     "from": 1046,
+     "to": 1051
+    }
+   ]
+  },
+  {
+   "title": "Islands in Range",
+   "mode": "action",
+   "sentences": [
+    "From China, the B-29 can reach only a limited part of Japan.",
+    "The answer is the Mariana Islands, about 1,500 miles south of Tokyo.",
+    "On 15 June 1944, American forces invade Saipan.",
+    "After heavy fighting, the island is secured on 9 July, and Guam and Tinian follow by August.",
+    "Navy Seabees start building air bases even before the fighting is over.",
+    "In all they build five major airfields: two on Tinian, one on Saipan and two on Guam.",
+    "Each is large enough for 180 B-29s.",
+    "Unlike the bases in China, they can be supplied by ship.",
+    "The first B-29 arrives on Saipan on 12 October 1944.",
+    "On 1 November, a photo reconnaissance version of the B-29 flies over Tokyo, the first American aircraft over the city since the Doolittle Raid.",
+    "On 24 November, 111 B-29s set out for Tokyo.",
+    "Brigadier General Emmett O'Donnell flies as mission command pilot, in a B-29 called Dauntless Dotty.",
+    "It is the first attack on the Japanese capital since the Doolittle Raid.",
+    "But the precision raids from high altitude are generally unsuccessful.",
+    "An intense jet stream over Japan makes it difficult to aim the bombs."
+   ],
+   "shots": [
+    {
+     "s": 1,
+     "film": "birth",
+     "from": 1186,
+     "to": 1192
+    },
+    {
+     "s": 2,
+     "map": {
+      "places": [
+       {
+        "label": "SAIPAN",
+        "lat": 15.18,
+        "lon": 145.75
+       },
+       {
+        "label": "TOKYO",
+        "lat": 35.68,
+        "lon": 139.69
+       }
+      ],
+      "routes": [
+       [
+        0,
+        1
+       ]
+      ]
+     },
+     "note": "1,500 MILES"
+    },
+    {
+     "s": 3,
+     "film": "tokyo",
+     "from": 495,
+     "to": 500,
+     "sfx": "artillery",
+     "label": "SAIPAN · 15 JUNE 1944"
+    },
+    {
+     "s": 4,
+     "film": "tokyo",
+     "from": 501,
+     "to": 505
+    },
+    {
+     "s": 5,
+     "film": "tokyo",
+     "from": 520,
+     "to": 525
+    },
+    {
+     "s": 6,
+     "file": "Northfield-tinian-1945.jpg"
+    },
+    {
+     "s": 7,
+     "file": "Isely_Field_with_B-29s_in_mid_1945.jpg",
+     "note": "180 B-29s"
+    },
+    {
+     "s": 8,
+     "file": "497th_Bomb_Group_B-29s_on_Hardstands_Isley_Field_Saipan.jpg"
+    },
+    {
+     "s": 9,
+     "film": "tokyo",
+     "from": 551,
+     "to": 557,
+     "sfx": "plane_flyby"
+    },
+    {
+     "s": 10,
+     "film": "tokyo",
+     "from": 1201,
+     "to": 1206
+    },
+    {
+     "s": 11,
+     "film": "tokyo",
+     "from": 966,
+     "to": 972,
+     "note": "111 B-29s"
+    },
+    {
+     "s": 12,
+     "film": "tokyo",
+     "from": 822,
+     "to": 827,
+     "note": "DAUNTLESS DOTTY"
+    },
+    {
+     "s": 12,
+     "film": "tokyo",
+     "from": 926,
+     "to": 931
+    },
+    {
+     "s": 13,
+     "film": "tokyo",
+     "from": 1150,
+     "to": 1155
+    },
+    {
+     "s": 14,
+     "film": "tokyo",
+     "from": 1206,
+     "to": 1211
+    },
+    {
+     "s": 15,
+     "film": "tokyo",
+     "from": 1136,
+     "to": 1141
+    }
+   ]
+  },
+  {
+   "title": "LeMay's Gamble",
+   "mode": "people",
+   "sentences": [
+    "General Hap Arnold is disappointed, and wants results quickly.",
+    "In January 1945, he replaces the commander in the Marianas with Major General Curtis LeMay.",
+    "LeMay finds only about seven days of clear skies each month over Japan.",
+    "So he adopts radically different tactics.",
+    "His bombers will attack at night, one by one, from as low as 5,000 feet.",
+    "They will drop incendiary bombs, on Japanese cities.",
+    "To carry more, the gunners and almost all the guns stay behind, except those at the rear.",
+    "On the evening of 9 March 1945, 325 B-29s take off for Tokyo.",
+    "LeMay has been told about the atomic bomb, so he is forbidden to fly where he could be captured.",
+    "The attack is led by Brigadier General Thomas S. Power.",
+    "Bombs from 279 of them burn out much of eastern Tokyo.",
+    "The raid lasts about two hours and forty minutes, and twelve B-29s are shot down by anti-aircraft guns.",
+    "More than 90,000 people are killed, most of them civilians, and a million are left homeless.",
+    "A quarter of all the buildings in Tokyo are destroyed.",
+    "It is the most destructive single air attack of the war, even counting the atomic bombings.",
+    "Within days, the same tactics are used against Nagoya, Osaka and Kobe.",
+    "The firebombing stops only when the incendiary bombs run out."
+   ],
+   "shots": [
+    {
+     "s": 1,
+     "file": "General_of_the_Air_Force_Hap_Arnold.png"
+    },
+    {
+     "s": 2,
+     "file": "Curtis_LeMay_(USAF).jpg",
+     "note": "CURTIS LEMAY"
+    },
+    {
+     "s": 3,
+     "film": "tokyo",
+     "from": 1121,
+     "to": 1126
+    },
+    {
+     "s": 4,
+     "file": "LeMay,O'Donnel,Arnold,Giles.jpg"
+    },
+    {
+     "s": 5,
+     "film": "tokyo",
+     "from": 1061,
+     "to": 1066,
+     "note": "5,000 FEET"
+    },
+    {
+     "s": 6,
+     "film": "airwar",
+     "from": 515,
+     "to": 520
+    },
+    {
+     "s": 7,
+     "film": "airwar",
+     "from": 420,
+     "to": 425
+    },
+    {
+     "s": 8,
+     "film": "tokyo",
+     "from": 296,
+     "to": 302,
+     "sfx": "plane_flyby",
+     "label": "TOKYO · 9 MARCH 1945"
+    },
+    {
+     "s": 9,
+     "file": "Curtis_LeMay_(USAF).jpg",
+     "zoom": 1.3,
+     "y": 0.2
+    },
+    {
+     "s": 10,
+     "film": "tokyo",
+     "from": 721,
+     "to": 726
+    },
+    {
+     "s": 11,
+     "film": "airwar",
+     "from": 546,
+     "to": 551,
+     "sfx": "explosion_far"
+    },
+    {
+     "s": 11,
+     "film": "airwar",
+     "from": 571,
+     "to": 576
+    },
+    {
+     "s": 12,
+     "film": "airwar",
+     "from": 556,
+     "to": 561
+    },
+    {
+     "s": 13,
+     "file": "After_Bombing_of_Tokyo_on_March_1945_19450310.jpg"
+    },
+    {
+     "s": 14,
+     "file": "A_view_of_Tokyo_after_an_incendiary_bombing.jpg"
+    },
+    {
+     "s": 15,
+     "film": "airwar",
+     "from": 601,
+     "to": 607
+    },
+    {
+     "s": 16,
+     "map": {
+      "places": [
+       {
+        "label": "TOKYO",
+        "lat": 35.68,
+        "lon": 139.69
+       },
+       {
+        "label": "NAGOYA",
+        "lat": 35.18,
+        "lon": 136.91
+       },
+       {
+        "label": "OSAKA",
+        "lat": 34.69,
+        "lon": 135.5
+       }
+      ],
+      "routes": []
+     }
+    },
+    {
+     "s": 17,
+     "film": "airwar",
+     "from": 626,
+     "to": 631
+    }
+   ]
+  },
+  {
+   "title": "Silverplate",
+   "mode": "action",
+   "sentences": [
+    "Since November 1943, a few B-29s have been modified to carry the atomic bomb.",
+    "They are known as Silverplate.",
+    "The British Lancaster is considered for the job, but the B-29 has the range and the high-altitude performance.",
+    "Their bomb bays are enlarged, and all their guns except those in the tail are removed.",
+    "They also get fuel injection, and propellers that can be reversed.",
+    "They find their targets with an American-built version of the British H2S radar.",
+    "On 6 August 1945, the Enola Gay, flown by Colonel Paul Tibbets, drops the first bomb, Little Boy, on Hiroshima.",
+    "Three days later, Bockscar, piloted by Major Charles Sweeney, drops Fat Man on Nagasaki.",
+    "After the attack, Bockscar makes an emergency landing on Okinawa.",
+    "Sweeney later credits the reversible propellers with saving his aircraft.",
+    "Meanwhile, other B-29s drop naval mines into Japan's ports and shipping routes, in Operation Starvation.",
+    "It reduces Japan's ability to feed its people and to move its troops.",
+    "After the surrender, B-29s drop barrels of rations on the prison camps for prisoners of war."
+   ],
+   "shots": [
+    {
+     "s": 1,
+     "file": "Boeing_B-29_Superfortress_of_the_498th_at_Isely_Field,_Saipan,_circa_in_late_1944_(74237464).jpg"
+    },
+    {
+     "s": 2,
+     "file": "B-29_Enola_Gay_w_Crews.jpg",
+     "note": "SILVERPLATE"
+    },
+    {
+     "s": 3,
+     "film": "birth",
+     "from": 911,
+     "to": 917
+    },
+    {
+     "s": 4,
+     "file": "Loading_of_the_Little_Boy_nuclear_bomb_into_the_Boeing_B-29_on_Tinian,_Mariana_Island,_5_August_1945_(76048611).jpg"
+    },
+    {
+     "s": 5,
+     "film": "tokyo",
+     "from": 852,
+     "to": 856
+    },
+    {
+     "s": 6,
+     "film": "tokyo",
+     "from": 1216,
+     "to": 1221
+    },
+    {
+     "s": 7,
+     "file": "Col_Paul_W._Tibbets,_Pilot_Of_B-29_Superfortress_'Enola_Gay'.jpg",
+     "note": "ENOLA GAY"
+    },
+    {
+     "s": 8,
+     "file": "Major_Charles_W._Sweeney,_pilot_of_B-29_Bockscar.jpg",
+     "note": "BOCKSCAR"
+    },
+    {
+     "s": 9,
+     "map": {
+      "places": [
+       {
+        "label": "TINIAN",
+        "lat": 15.0,
+        "lon": 145.63
+       },
+       {
+        "label": "HIROSHIMA",
+        "lat": 34.39,
+        "lon": 132.45
+       },
+       {
+        "label": "NAGASAKI",
+        "lat": 32.75,
+        "lon": 129.87
+       },
+       {
+        "label": "OKINAWA",
+        "lat": 26.33,
+        "lon": 127.8
+       }
+      ],
+      "routes": [
+       [
+        0,
+        1
+       ],
+       [
+        0,
+        2
+       ],
+       [
+        2,
+        3
+       ]
+      ]
+     }
+    },
+    {
+     "s": 10,
+     "film": "airwar",
+     "from": 705,
+     "to": 710
+    },
+    {
+     "s": 11,
+     "file": "B29_Bombing_Tokyo_(25_May_1945).png",
+     "note": "OPERATION STARVATION"
+    },
+    {
+     "s": 12,
+     "film": "airwar",
+     "from": 625,
+     "to": 630
+    },
+    {
+     "s": 13,
+     "file": "Boeing_B-29_Superfortress_on_supply_mission_flies_over_Nagasaki,_Japan,_in_September_1945.jpg"
+    }
+   ]
+  },
+  {
+   "title": "The Last Missions",
+   "mode": "people",
+   "sentences": [
+    "When the war ends, the B-29 does not.",
+    "In September 1945, Generals Curtis LeMay, Emmett O'Donnell and Barney M. Giles fly three B-29s nonstop from Japan to Chicago.",
+    "The last one is completed at Boeing's Renton factory on 28 May 1946.",
+    "Silverplate bombers join the new Strategic Air Command, and in July 1946 one of them drops a Fat Man bomb in a test.",
+    "In 1950, B-29s go to war again, over Korea.",
+    "Soviet MiG-15 jet fighters appear, and after the loss of 28 aircraft, the bombers are restricted to night missions.",
+    "Over Korea, B-29s fly 20,000 sorties, and 78 of them are lost.",
+    "Their gunners are credited with shooting down more than two dozen enemy aircraft.",
+    "The last B-29 mission of that war is flown on 27 July 1953.",
+    "The Royal Air Force flies 87 of them, under the name Washington.",
+    "The B-29 is retired in the early 1960s.",
+    "In all, 3,970 B-29s are built.",
+    "Twenty-two survive today, and two of them, FIFI and Doc, still fly.",
+    "Enola Gay is fully restored, and on display at a Smithsonian museum near Washington, D.C.",
+    "So was the B-29 the weapon that brought Japan to its knees, or the start of a more terrible kind of war? Tell me what you think in the comments."
+   ],
+   "shots": [
+    {
+     "s": 1,
+     "film": "airwar",
+     "from": 721,
+     "to": 726
+    },
+    {
+     "s": 2,
+     "file": "LeMay,O'Donnel,Arnold,Giles.jpg",
+     "zoom": 1.15
+    },
+    {
+     "s": 3,
+     "film": "birth",
+     "from": 801,
+     "to": 807
+    },
+    {
+     "s": 4,
+     "film": "airwar",
+     "from": 751,
+     "to": 757
+    },
+    {
+     "s": 5,
+     "file": "B-29s_19th_Bomb_Group_over_Korea_1950.jpg"
+    },
+    {
+     "s": 6,
+     "file": "B-29_Dropping_1,000lb_Bombs_Over_Korea_August_1951.jpg",
+     "note": "MIG-15"
+    },
+    {
+     "s": 7,
+     "file": "B-29s_19th_Bomb_Group_over_Korea_1950.jpg",
+     "zoom": 1.3,
+     "x": 0.6
+    },
+    {
+     "s": 8,
+     "film": "tokyo",
+     "from": 1041,
+     "to": 1046
+    },
+    {
+     "s": 9,
+     "film": "airwar",
+     "from": 791,
+     "to": 796
+    },
+    {
+     "s": 10,
+     "film": "birth",
+     "from": 856,
+     "to": 861
+    },
+    {
+     "s": 11,
+     "film": "birth",
+     "from": 1031,
+     "to": 1036
+    },
+    {
+     "s": 12,
+     "film": "birth",
+     "from": 788,
+     "to": 793,
+     "note": "3,970 BUILT"
+    },
+    {
+     "s": 13,
+     "file": "B-29_Bomber_on_a_long_range_mission_in_late_1945.jpg"
+    },
+    {
+     "s": 14,
+     "file": "B-29_Enola_Gay_w_Crews.jpg",
+     "zoom": 1.25,
+     "y": 0.2
+    },
+    {
+     "s": 15,
+     "film": "birth",
+     "from": 911,
+     "to": 918
+    }
+   ]
+  }
+ ],
+ "clips": [
+  {
+   "from": [
+    0,
+    1
+   ],
+   "to": [
+    0,
+    4
+   ],
+   "title": "WHY THE B-29 LOST ITS GUNS",
+   "key": [
+    "B-29"
+   ],
+   "name": "Why LeMay Ordered the Guns Taken Out of His B-29s"
+  },
+  {
+   "from": [
+    5,
+    1
+   ],
+   "to": [
+    5,
+    8
+   ],
+   "title": "STALIN'S B-29",
+   "key": [
+    "B-29"
+   ],
+   "name": "Four B-29s Landed in the Soviet Union. Stalin Never Gave Them Back"
+  }
+ ]
+}
