@@ -8,12 +8,14 @@ from Wikimedia Commons, then longform.py renders it like a hand-made one.
   an editor round; hard problems after the last round -> exit 3 (no video, nothing published).
 - Pictures: the subject's own Commons category + one Commons search per sentence (Gemini's 'visual'), then one
   Gemini look at all of them (jurgen.match_pictures: which sentence each shows, wrong era, watermarks, bodies).
-- Thumbnail: the house photo (one picture full-bleed: the cover Gemini's picture look chose, else the subject's
-  best; words by Gemini: the topic's name + one concrete fact, max 5 words, the name on red).
+- Format (Andrii, Nov 10): The Entire War ('The ENTIRE History of X in {N} Minutes', 1,900-2,300 words in the
+  present tense, marker notes of the key names/numbers, 3-5 maps); thumbnail thumbs.py `entire` (the cover picture,
+  the main person's Wikipedia portrait cut out, the NAME in yellow stencil + years).
 - No archive film (picking film seconds needs a person); photos only. The story file is saved under
   stories/long/auto-*.json (committed by the workflow) so it can be reviewed and fixed by hand later.
 Gemini quota: ~4-6 requests (script, 1-2 editor rounds, pictures, translations)."""
 import json, pathlib, re
+from urllib.parse import unquote
 
 import sys
 sys.path.insert(0, str(pathlib.Path(__file__).resolve().parent / "lib"))  # shorts/jurgen/pastrak from ww2-bot
@@ -22,22 +24,23 @@ import jurgen as J
 from shorts import W, env, plain, pmap
 
 STORIES = pathlib.Path("stories/long")
-SEEDS = [   # exact English Wikipedia titles
-    "Heinrich Himmler", "Joseph Goebbels", "Martin Bormann", "Reinhard Heydrich", "Erwin Rommel", "Rudolf Hess",
-    "Benito Mussolini", "Hideki Tojo", "Josef Mengele", "Adolf Eichmann", "Klaus Barbie", "Albert Speer",
-    "Karl Dönitz", "Wilhelm Keitel", "Claus von Stauffenberg", "Eva Braun", "Isoroku Yamamoto", "Hiroo Onoda",
-    "German battleship Bismarck", "German battleship Tirpitz", "Japanese battleship Musashi", "Sinking of the Wilhelm Gustloff",
-    "German submarine U-505", "German submarine U-234", "Attack on Pearl Harbor", "Battle of Stalingrad",
-    "Battle of the Bulge", "Operation Market Garden", "Normandy landings", "Battle of Iwo Jima",
-    "Doolittle Raid", "Operation Vengeance", "Operation Mincemeat", "Gran Sasso raid", "Lady Be Good (aircraft)",
-    "Enola Gay", "Bockscar", "Battle of Berlin", "Battle of Okinawa", "Siege of Leningrad", "Dunkirk evacuation",
-    "Japanese aircraft carrier Shinano", "Operation Valkyrie", "Simo Häyhä", "Desmond Doss", "Audie Murphy",
-    "Michael Wittmann", "Otto Skorzeny", "Joachim Peiper", "Hermann Fegelein", "Wernher von Braun",
+SEEDS = [   # exact English Wikipedia titles: whole subjects (The Entire War format, Andrii, Nov 10)
+    "Boeing B-29 Superfortress", "Boeing B-17 Flying Fortress", "Panther tank", "T-34", "Panzer IV",
+    "Messerschmitt Bf 109", "Supermarine Spitfire", "Junkers Ju 87", "Messerschmitt Me 262", "V-2 rocket",
+    "Fallschirmjäger", "Royal Air Force Bomber Command", "Flying Tigers", "101st Airborne Division",
+    "Imperial Japanese Army", "Gestapo", "Hitler Youth", "Volkssturm", "Italian Army in World War II",
+    "Manhattan Project", "Enigma machine", "German battleship Bismarck", "Atlantic Wall", "Battle of Britain",
+    "Battle of the Atlantic", "Battle of Stalingrad", "Battle of the Bulge", "Battle of Okinawa", "Battle of Iwo Jima",
+    "Guadalcanal campaign", "Burma campaign", "Winter War", "Korean War", "Operation Barbarossa", "Normandy landings",
+    "Liberty ship", "PT boat", "Higgins boat", "Willys MB", "M1 Garand",
 ]
-J_KEYS = ('{"title": "...", "question": "...", "summary": "...", "tags": ["..."], '
-          '"cover": {"text": ["line 1", "line 2"], "key": ["NAME"]}, '
+J_KEYS = ('{"name": "the Afrika Korps", "title": "The ENTIRE History of the Afrika Korps in {N} Minutes", '
+          '"question": "...", "summary": "...", "tags": ["..."], '
+          '"thumb": {"name": ["AFRIKA", "KORPS"], "years": "1941 – 1943", "person": "Wikipedia title"}, '
           '"shorts": [{"chapter": 0, "from": 1, "to": 5, "title": "...", "key": ["NAME"], "name": "..."}, ...], '
-          '"chapters": [{"title": "", "mode": "action", "sentences": ["..."], "visuals": ["..."]}, ...]}')
+          '"chapters": [{"title": "", "mode": "action", "sentences": ["..."], "visuals": ["..."], '
+          '"notes": ["", "ERWIN ROMMEL", ...], "map": {"sentence": 3, "places": ["Wikipedia title", ...], '
+          '"labels": ["TRIPOLI", ...], "routes": [[0, 1]]}}, ...]}')
 
 
 def pick():
@@ -59,25 +62,32 @@ def slug(t):
 
 def rules(topic):
     return (
-        f"Write a 10-12 minute YouTube documentary script about: {topic}. Use ONLY facts in the ARTICLE below: every "
-        "number, date, name and quote must appear there (a checker rejects anything else). Calm, clear narration "
-        "for an English-speaking audience, no hype words, no 'you', no rhetorical questions except the last line.\n"
-        "STRUCTURE: chapter 1 = cold open with title '' and mode 'action': 5-7 sentences, the most dramatic moment "
-        "first (date + place in sentence 1), then why it still matters, then 'This is the story of ...'. Then 6-9 "
-        "chapters with short titles (2-4 words), each 7-12 sentences, in time order; mode 'people' for decisions, "
-        "characters and fates, 'action' for battles, attacks and sinkings. Open each chapter with a re-hook. The "
-        "last chapter ends with a quiet closing fact, then ONE final sentence: a debate question to the viewer that "
-        "ends with 'Tell me what you think in the comments.'\n"
-        "LENGTH: 1,500-1,900 words in total. Sentences of 8-26 words. At most 3 numbers in any 30 words: say the "
-        "rest in words ('half', 'most of them', 'a few hours'). Years and the day of a date do not count.\n"
+        f"Write a 12-17 minute YouTube documentary script: the ENTIRE history of: {topic}, from its beginning to its "
+        "end. Use ONLY facts in the ARTICLE below: every number, date, name and quote must appear there (a checker "
+        "rejects anything else). Clear narration for an English-speaking audience, told in the PRESENT tense ('In "
+        "February 1941, a German general lands in Tripoli...'), no hype words, no 'you', no rhetorical questions "
+        "except the last line.\n"
+        "STRUCTURE: chapter 1 = cold open with title '' and mode 'action': 4-6 sentences, ONE odd, visible detail of "
+        "the story first (date + place in sentence 1), then 'This is the entire history of <name>.' Then 7-10 "
+        "chapters in time order with short titles (2-4 words), each 8-14 sentences; mode 'people' for decisions and "
+        "leaders, 'action' for battles. Open each chapter with a re-hook. The last chapter ends with a quiet closing "
+        "fact, then ONE final sentence: a debate question to the viewer that ends with 'Tell me what you think in "
+        "the comments.'\n"
+        "LENGTH: 1,900-2,300 words in total. Sentences of 8-26 words. At most 3 numbers in any 30 words: say the "
+        "rest in words ('half', 'most of them'). Years and the day of a date do not count.\n"
         "For EVERY sentence give a 'visual': 2-5 words to search Wikimedia Commons for a 1930s-1940s photo that shows "
         "exactly that sentence (a person's full name, a ship's name, a place + year), same order as the sentences.\n"
-        "TITLE: the famous name first, then a colon and the promise or fate, max 70 characters (like 'Hermann Göring: "
-        "How He Cheated the Hangman at Nuremberg').\n"
-        "COVER (the thumbnail words over one photo, capitals): the topic's short NAME + ONE concrete fact of the "
-        "story that makes the viewer ask why/how, max 5 words in 1-2 lines, not the title's words again (like "
-        "'NOBODY CAME FOR INDIANAPOLIS', 'STALIN HID HITLER'S BODY', 'GÖRING CHEATED THE ROPE', 'YAMATO: NO FUEL, "
-        "NO PLANES'); key = the name word(s) exactly as written in text (shown on red).\n"
+        "NOTES: per chapter 'notes', one per sentence ('' for none): the key NAME or NUMBER of that sentence written "
+        "on screen in marker (like 'ERWIN ROMMEL', '130,000 PRISONERS'), exactly as in the sentence, at most one in "
+        "three sentences.\n"
+        "MAPS: in 3-5 chapters a 'map' for the sentence that moves armies or ships: places = 2-4 English Wikipedia "
+        "titles of towns, islands or ports that have coordinates, labels = their short names in capitals, routes = "
+        "pairs of place indexes in order (like [[0, 1], [1, 2]]).\n"
+        "TITLE: exactly 'The ENTIRE History of <name> in {N} Minutes' ({N} stays as it is: the bot puts the real "
+        "length in), or for a whole war 'The <War> Explained in {N} Minutes'; name = the subject as said in a "
+        "sentence ('the Afrika Korps').\n"
+        "THUMB: name = the subject's short NAME in capitals in 1-2 lines; years = 'YYYY – YYYY' of its story; "
+        "person = the English Wikipedia title of the person most tied to it (its commander, designer or hero).\n"
         "SHORTS (2 YouTube Shorts cut from the video, released the same day): each = ONE chapter's sentences "
         "from..to (chapter index 0 = the cold open, sentences 1-based), 60-140 words, ending on a CLIFFHANGER just "
         "before the answer or payoff (the Short then says 'full video on the channel'). Short 1 = the cold open "
@@ -91,7 +101,12 @@ def rules(topic):
 def ok(d):
     return isinstance(d, dict) and isinstance(d.get("chapters"), list) and len(d["chapters"]) >= 6 and \
         all(isinstance(c, dict) and isinstance(c.get("sentences"), list) and c["sentences"] for c in d["chapters"]) \
-        and isinstance(d.get("cover"), dict) and d.get("cover", {}).get("text") and d.get("title")
+        and isinstance(d.get("thumb"), dict) and d["thumb"].get("name") and "{N}" in str(d.get("title", ""))
+
+
+def probe(d):
+    """The draft as check() sees a finished entire story (the pictures come later)."""
+    return {**d, "format": "entire", "thumb": {"file": "x"}, "thumb_entire": {"bg": {"file": "x"}, "name": ["X"]}}
 
 
 def write(topic, text):
@@ -99,14 +114,14 @@ def write(topic, text):
     art = text[:24000]
     d = S.gemini(rules(topic) + "\n\nARTICLE:\n" + art, ok, purpose="long script")
     for rnd in range(2):
-        hard, soft = L.check({**d, "thumb": {"file": "x"}, "cover": {**d["cover"], "file": "x"}}, text)
+        hard, soft = L.check(probe(d), text)
         print(f"auto script round {rnd + 1}: hard {hard} | soft {soft[:4]}")
         if not hard and len(soft) <= 2:
             return d
         d = S.gemini(rules(topic) + "\n\nARTICLE:\n" + art + "\n\nYOUR DRAFT:\n" + json.dumps(d, ensure_ascii=False)
                      + "\n\nFIX THESE PROBLEMS (remove or rewrite every fact that is not in the article; keep the "
                      "length): " + "; ".join(hard + soft), ok, purpose="long editor")
-    hard, _ = L.check({**d, "thumb": {"file": "x"}, "cover": {**d["cover"], "file": "x"}}, text)
+    hard, _ = L.check(probe(d), text)
     if hard:
         raise SystemExit(f"auto story check failed: {hard}")
     return d
@@ -154,8 +169,8 @@ def shorts_of(d, got, cover):
         except (KeyError, IndexError, TypeError, ValueError):
             continue
     if not out and len(chs[0]["sentences"]) >= 3:
-        out.append({"from": [0, 1], "to": [0, len(chs[0]["sentences"]) - 1], "title": " ".join(cover["text"]),
-                    "key": cover["key"], "name": plain(d["title"])[:90]})
+        out.append({"from": [0, 1], "to": [0, len(chs[0]["sentences"]) - 1], "title": " ".join(cover["name"]),
+                    "key": [w for line in cover["name"] for w in line.split()], "name": plain(chs[0]["sentences"][0])[:90]})
     return out[:2]
 
 
@@ -182,14 +197,43 @@ def make():
                 shots.append({"s": i + 1, "file": f})
         c["shots"] = shots
         c.pop("visuals", None)
-    cs = d.pop("cover")
+    for c in d["chapters"]:                            # marker notes: only words that are in their sentence
+        notes = c.pop("notes", None)
+        notes = notes if isinstance(notes, list) else []
+        for s in c["shots"]:
+            n = notes[s["s"] - 1] if s["s"] - 1 < len(notes) else ""
+            if n and str(n).upper() in plain(c["sentences"][s["s"] - 1]).upper() and not any(
+                    x.get("note") for x in c["shots"] if x["s"] == s["s"]):
+                s["note"] = str(n).upper()[:28]
+        m = c.pop("map", None)
+        if isinstance(m, dict) and isinstance(m.get("places"), list) and 2 <= len(m["places"]) <= 5:
+            coords = S.wiki_coords([str(x) for x in m["places"]])
+            labels = m.get("labels") or []
+            ps = [{"label": str(labels[n] if n < len(labels) else x).upper()[:18], "lat": coords[x][0], "lon": coords[x][1]}
+                  for n, x in enumerate(m["places"]) if x in coords]
+            try:
+                at = int(m.get("sentence", 1))
+            except (TypeError, ValueError):
+                at = 1
+            if len(ps) == len(m["places"]) and 1 <= at <= len(c["sentences"]):
+                routes = [r for r in (m.get("routes") or []) if isinstance(r, list) and len(r) == 2
+                          and all(isinstance(x, int) and 0 <= x < len(ps) for x in r)]
+                c["shots"].append({"s": at, "map": {"places": ps, "routes": routes}})
+                c["shots"].sort(key=lambda s: s["s"])
+    th = d.pop("thumb")
     left = cover or subj[0]
-    lines, key = cs.get("text") or [title], cs.get("key") or []
-    lines = [lines] if isinstance(lines, str) else lines
-    key = [key] if isinstance(key, str) else key
-    d["cover"] = {"file": left, "text": [str(x).upper() for x in lines][:2],
-                  "key": [str(x).upper().strip("?!.,\":") for x in key]}
-    d["clips"] = shorts_of(d, d.pop("shorts", None), d["cover"])
+    person = None
+    if th.get("person"):
+        got = J.lead_image(str(th["person"]))
+        person = unquote(got[0].split("?")[0]).split("/")[-2 if "/thumb/" in got[0] else -1] if got else None
+    name = th.get("name") or [title]
+    name = [name] if isinstance(name, str) else name
+    d["format"] = "entire"
+    d["thumb_entire"] = {"bg": {"file": left}, "name": [str(x).upper() for x in name][:2],
+                         "years": str(th.get("years") or "")[:15]}
+    if person:
+        d["thumb_entire"]["person"] = {"file": person, "color": "tone", "x": 0.76, "h": 1.0}
+    d["clips"] = shorts_of(d, d.pop("shorts", None), d["thumb_entire"])
     d.update({"priority": 99, "topic": title, "sources": [], "thumb": {"file": left}, "pronounce": {},
               "films": {}, "auto": True})
     path = STORIES / (slug(title) + ".json")

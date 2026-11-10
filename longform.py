@@ -89,8 +89,19 @@ def check(d, text, facts_hard=True):
             hard.append(f"chapter {k}: no title (it is the chapter card and the YouTube chapter)")
     if not (d.get("thumb") or {}).get("file"):
         hard.append("no thumbnail picture")
+    if d.get("format") == "entire":                    # Andrii, Nov 10: The Entire War format
+        te = d.get("thumb_entire") or {}
+        if not (te.get("bg") or {}).get("file") or not te.get("name"):
+            hard.append("entire: `thumb_entire` needs bg.file + name (+ person, years)")
+        if "{N}" not in d["title"] or not re.search(r"ENTIRE History of|Explained in", d["title"]):
+            soft.append("entire: title 'The ENTIRE History of the X in {N} Minutes' / 'The X Explained in {N} Minutes'")
+        if words < 1700:
+            soft.append(f"entire: {words} words (want ~1,900-2,300: 12-17 min)")
+        past = sum(bool(re.search(r"\b(was|were|had)\b", s)) for s in ss)
+        if past > len(ss) * 0.35:
+            soft.append(f"entire: {past} of {len(ss)} sentences in the past tense (the format tells it in the present)")
     c = d.get("cover") or {}                           # Andrii, Nov 10: one photo + the topic's name + a fact
-    if not c.get("file") or not c.get("text"):
+    if d.get("format") != "entire" and (not c.get("file") or not c.get("text")):
         hard.append("no house thumbnail: story `cover` needs file + text (thumbs.py photo)")
     for v in [c] + list(c.get("variants") or []):
         if not v.get("text"):
@@ -282,26 +293,29 @@ def plan(d, segs, films, got):
                     z2 = round(float(m.get("zoom", 1.0)) * 1.22, 2)
                     shots += [{**sh, "dur": half, "name": m.get("name"), "label": m.get("label")},
                               {**sh, "start": sh["start"] + half, "dur": half, "zoom": z2, "name": None,
-                               "label": None, "sfx": None}]
+                               "label": None, "sfx": None, "note": None}]
                 else:
                     shots.append(sh)
     return shots
 
 
 def media(s, films, got):
+    if s.get("map"):                                   # The Entire War format: a 16:9 map (maps.py)
+        return {"kind": "map", "spec": s["map"], "sfx": s.get("sfx"), "name": None, "label": s.get("label"),
+                "note": s.get("note"), "credit": "Map: Natural Earth (public domain)"}
     if s.get("film"):
         f = films[s["film"]]
         return {"kind": "film", "path": f["path"], "ss": float(s["from"]), "to": float(s["to"]), "crop": f.get("crop"),
                 "x": float(s.get("x", 0.5)), "y": float(s.get("y", 0.5)), "zoom": float(s.get("zoom", 1.0)),
                 "sfx": s.get("sfx"), "punch": bool(s.get("punch")), "name": s.get("name"), "role": s.get("role"),
-                "label": s.get("label"), "credit": f["credit"], "mono": bool(f.get("mono"))}
+                "label": s.get("label"), "credit": f["credit"], "mono": bool(f.get("mono")), "note": s.get("note")}
     g = got.get(str(s.get("file")))
     if not g:
         return None
     return {"kind": "photo", "path": g[0], "credit": g[1], "x": float(s.get("x", 0.5)), "y": float(s.get("y", 0.5)),
             "zoom": float(s.get("zoom", 1.0)), "trim": s.get("trim"), "sfx": s.get("sfx"), "card": bool(s.get("card")),
             "whole": bool(s.get("whole")),
-            "name": s.get("name"), "role": s.get("role"), "label": s.get("label")}
+            "name": s.get("name"), "role": s.get("role"), "label": s.get("label"), "note": s.get("note")}
 
 
 # ---- shots ----------------------------------------------------------------------------------------------
@@ -397,6 +411,9 @@ def still_of(sh):
     from PIL import Image
     if sh["kind"] == "photo":
         return P.still(sh["path"], sh.get("trim"))
+    if sh["kind"] == "map":
+        import maps
+        return maps.still(sh)
     p = W / f"frame_{abs(hash((str(sh['path']), sh['ss']))) % 10 ** 8}.jpg"
     ff("-ss", f"{sh['ss'] + 0.5:.2f}", "-i", str(sh["path"]), "-frames:v", "1",
        *(["-vf", f"crop={sh['crop']}"] if sh.get("crop") else []), "-q:v", "2", p.name)
@@ -437,6 +454,7 @@ def build_ass(d, shots, segs):
             "Style: Label,Bebas Neue,48,&H00FFFFFF,&H00FFFFFF,&H00000000,&H78000000,0,0,0,0,100,100,6,0,1,0,2,7,0,0,0,1\n"
             "Style: Part,Bebas Neue,60,&H0045B8E8,&H00FFFFFF,&H00000000,&H00000000,0,0,0,0,100,100,12,0,1,0,0,5,0,0,0,1\n"
             "Style: Card,Bebas Neue,150,&H00FFFFFF,&H00FFFFFF,&H00000000,&H64000000,0,0,0,0,100,100,6,0,1,0,4,5,0,0,0,1\n"
+            "Style: Note,Permanent Marker,100,&H00FFFFFF,&H00FFFFFF,&H00141414,&H96000000,0,0,0,0,100,100,1,0,1,4,3,8,0,0,0,1\n"
             "Style: Sub,Bebas Neue,64,&H00E6E6E6,&H00FFFFFF,&H00000000,&H64000000,0,0,0,0,100,100,4,0,1,0,3,5,0,0,0,1\n"
             "\n[Events]\nFormat: Layer, Start, End, Style, Name, MarginL, MarginR, MarginV, Effect, Text\n")
     t = S.ass_time
@@ -450,12 +468,30 @@ def build_ass(d, shots, segs):
                       f"{ass_esc(sh.get('role') or '')}")
             ev.append(f"Dialogue: 2,{t(a1)},{t(b1)},Role,,0,0,0,,{{\\pos(110,840)\\fad(300,300)\\p1\\c&H0045B8E8&}}"
                       "m 0 0 l 90 0 90 6 0 6{\\p0}")
+        if sh.get("note"):                             # The Entire War: a name / number in marker, red underline
+            from PIL import ImageFont
+            txt = ass_esc(str(sh["note"]).upper())
+            f_ = ImageFont.truetype(str(FONTS / "PermanentMarker-Regular.ttf"), 100)
+            tw = f_.getlength(txt) * 100 / sum(f_.getmetrics()) + 30     # libass: size = ascent + descent
+            x0, a1, b1 = round(960 - tw / 2), a + 0.2, min(b - 0.1, a + 4.0)
+            ev.append(f"Dialogue: 5,{t(a1)},{t(b1)},Note,,0,0,0,,{{\\pos(960,62)\\fad(200,250)}}{txt}")
+            ev.append(f"Dialogue: 5,{t(a1)},{t(b1)},Note,,0,0,0,,{{\\an7\\pos({x0},150)\\bord0\\shad0"
+                      f"\\c&H1C1CC4&\\fad(0,250)\\clip({x0},130,{x0},190)\\t(150,550,\\clip({x0},130,{x0 + round(tw)},190))"
+                      f"\\p1}}m 0 6 b {tw / 3:.0f} 0 {2 * tw / 3:.0f} 12 {tw:.0f} 4 l {tw:.0f} 14 b {2 * tw / 3:.0f} 22 "
+                      f"{tw / 3:.0f} 10 0 18{{\\p0}}")
         if sh.get("label"):
             a1, b1 = a + 0.25, min(b - 0.1, a + 4.5)
             ev.append(f"Dialogue: 3,{t(a1)},{t(b1)},Label,,0,0,0,,{{\\pos(96,72)\\fad(250,300)}}{ass_esc(sh['label'])}")
     for g in segs:
         a, b = g["start"], g["start"] + g["dur"]
-        if g["kind"] == "title":
+        if g["kind"] == "title" and d.get("thumb_entire"):   # 'AFRIKA KORPS' + '1941 – 1943'
+            te = d["thumb_entire"]
+            ev.append(f"Dialogue: 4,{t(a + 0.3)},{t(b - 0.2)},Card,,0,0,0,,{{\\pos(960,500)\\fad(500,400)}}"
+                      f"{ass_esc(' '.join(te['name']).upper())}")
+            if te.get("years"):
+                ev.append(f"Dialogue: 4,{t(a + 0.8)},{t(b - 0.2)},Sub,,0,0,0,,{{\\pos(960,630)\\fad(500,400)}}"
+                          f"{ass_esc(te['years'])}")
+        elif g["kind"] == "title":
             name, _, rest = plain(d["title"]).partition(":")
             ev.append(f"Dialogue: 4,{t(a + 0.3)},{t(b - 0.2)},Card,,0,0,0,,{{\\pos(960,500)\\fad(500,400)}}"
                       f"{ass_esc(name.upper())}")
@@ -669,7 +705,11 @@ def thumb_specs(d, more=False):
     """The 3 thumbnails of the video (Test & compare takes 3): the house photo (story `cover`) + up to 2 variants of
     it (`cover.variants`: other words); old stories: the case file (`case`); more=True adds `thumbs_more`."""
     import thumbs
-    if d.get("cover"):
+    if d.get("thumb_entire"):                          # The Entire War format (Andrii, Nov 10)
+        te = d["thumb_entire"]
+        main = [{"style": "entire", **{k: v for k, v in te.items() if k != "variants"}}] + \
+            [{"style": "entire", **{k: v for k, v in te.items() if k != "variants"}, **v} for v in te.get("variants") or []]
+    elif d.get("cover"):
         c = d["cover"]
         main = [thumbs.house_photo(c)] + [thumbs.house_photo(c, v) for v in c.get("variants") or []]
     elif d.get("case"):
@@ -734,7 +774,9 @@ def metadata(d, topic, credits, marks, translations):
             + "\n".join(f"- {c}" for c in credits) +
             "\nMusic and sound effects: Mixkit (free licence). Narration: synthetic voice.\n\n"
             "#ww2 #history #documentary")
-    loc = {l: {"title": v["title"][:100], "description": (v.get("summary") or "")[:4900]}
+    mins = re.search(r"\b(\d+) Minutes", plain(d["title"]))
+    loc = {l: {"title": v["title"].replace("{N}", mins.group(1) if mins else "")[:100],
+               "description": (v.get("summary") or "")[:4900]}
            for l, v in (translations or {}).items() if v.get("title")}
     body = {"snippet": {"title": plain(d["title"])[:100], "description": S.cut_bytes(desc),
                         "tags": S.tag_list(d, topic) if d.get("tags") else [], "categoryId": "27",
@@ -754,6 +796,10 @@ def make_video(d):
         films, got = fetch_media(d)
         voices = voices.result()
     segs, total = timeline(d, voices)
+    if "{N}" in d["title"]:                            # The Entire War: '... in {N} Minutes' = the real length
+        d.setdefault("key", d["title"])
+        d["title"] = d["title"].replace("{N}", str(int(total // 60)))
+        print("title:", d["title"])
     shots = plan(d, segs, films, got)
     chs = chapters(d)
     for sh in shots:                                   # cards: the chapter's first picture; title/outro: the thumb
@@ -778,6 +824,9 @@ def make_video(d):
             return render_film(sh, sh["dur"], k)
         if sh["kind"] == "photo":
             return render_photo(sh, sh["dur"], k)
+        if sh["kind"] == "map":
+            import maps
+            return maps.render(sh, sh["dur"], k, ENC)
         return render_card(sh, sh["dur"], k, sh["pic"])
     with ThreadPoolExecutor(max_workers=1) as ex:
         audio = ex.submit(mix_audio, d, segs, shots, total)
@@ -824,6 +873,8 @@ def main():
         if S.is_used(d.get("key") or d["title"]):
             raise SystemExit(f"publish: {d['title']} is already on the channel")
         d["seconds"] = round(probe_duration(W / "final.mp4"), 1)
+        if "{N}" in d["title"]:                        # the Entire format: the title with the real minutes
+            d["key"], d["title"] = d["title"], meta["upload"]["snippet"]["title"]
         print("publishing the reviewed video:", meta["upload"]["snippet"]["title"])
         return publish(stats, meta["upload"], {**d, "headline": all_sentences(d)[0]}, d)
     if env("L_CLIPS_FOR"):                             # Shorts for a long video already on YouTube
