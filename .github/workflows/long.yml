@@ -32,6 +32,14 @@ on:
         description: "Only the 2 Shorts of an uploaded long video: its YouTube id (+ story). Released +30 min / +3 h"
         type: string
         default: ""
+      clips_ny:
+        description: "clips_for of an OLD video: the Shorts' day, New York 'YYYY-MM-DD HH:MM' (+30 min / +3 h)"
+        type: string
+        default: ""
+      set_thumb:
+        description: "clips_for: also set the long video's thumbnail to the story's cover (house photo)"
+        type: boolean
+        default: false
 permissions:
   contents: write
   actions: read
@@ -109,6 +117,8 @@ jobs:
           L_PRIVACY: ${{ inputs.privacy || 'public' }}
           L_PUBLISH_NY: ${{ github.event_name == 'schedule' && '19:00' || inputs.publish_ny }}
           L_CLIPS_FOR: ${{ inputs.clips_for }}
+          L_CLIPS_NY: ${{ inputs.clips_ny }}
+          L_SET_THUMB: ${{ inputs.set_thumb && '1' || '0' }}
           L_PRESET: "veryfast"
           L_WORKERS: "4"
       - name: test video

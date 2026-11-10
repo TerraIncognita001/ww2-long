@@ -1546,5 +1546,37 @@
    "INDIANAPOLIS"
   ],
   "note": "nobody reported her missing for almost four days (true)"
- }
+ },
+ "clips": [
+  {
+   "from": [
+    0,
+    1
+   ],
+   "to": [
+    0,
+    6
+   ],
+   "title": "INDIANAPOLIS: NOBODY CAME",
+   "key": [
+    "INDIANAPOLIS"
+   ],
+   "name": "Nobody Noticed USS Indianapolis Was Gone for Almost Four Days"
+  },
+  {
+   "from": [
+    6,
+    1
+   ],
+   "to": [
+    6,
+    7
+   ],
+   "title": "INDIANAPOLIS: THE SHARKS",
+   "key": [
+    "INDIANAPOLIS"
+   ],
+   "name": "Then Came the Sharks: The Men of USS Indianapolis"
+  }
+ ]
 }

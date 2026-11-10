@@ -782,5 +782,37 @@
     }
    ]
   }
+ ],
+ "clips": [
+  {
+   "from": [
+    0,
+    1
+   ],
+   "to": [
+    0,
+    5
+   ],
+   "title": "GÖRING'S LAST NIGHT",
+   "key": [
+    "GÖRING'S"
+   ],
+   "name": "Göring Was Guarded Around the Clock, Yet He Had Cyanide"
+  },
+  {
+   "from": [
+    8,
+    1
+   ],
+   "to": [
+    8,
+    7
+   ],
+   "title": "WHO GAVE GÖRING THE POISON?",
+   "key": [
+    "GÖRING"
+   ],
+   "name": "Who Gave Göring the Cyanide? Three Theories"
+  }
  ]
 }

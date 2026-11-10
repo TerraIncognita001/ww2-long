@@ -934,9 +934,21 @@ def clips_only(stats, long_id, story):
         print("DRY RUN: Shorts not uploaded: work/clip_*.mp4")
         return
     yt = S.youtube(S.credentials())
+    release = None
+    if env("L_CLIPS_NY"):                              # an old video: the Shorts' day, 'YYYY-MM-DD HH:MM' New York
+        from datetime import datetime
+        from zoneinfo import ZoneInfo
+        release = datetime.strptime(env("L_CLIPS_NY"), "%Y-%m-%d %H:%M").replace(tzinfo=ZoneInfo("America/New_York"))
     with stage("shorts upload"):
-        clips.upload_all(yt, d, long_id, stats)
+        clips.upload_all(yt, d, long_id, stats, release=release)
     S.save_stats(stats)
+    if env("L_SET_THUMB") == "1":                      # the long video's thumbnail -> the house photo (work/cover.png)
+        got = S.set_thumbnail(yt, long_id, "cover.png")
+        for v in stats["videos"]:
+            if v.get("id") == long_id:
+                v["thumb"] = got
+        print("long video thumbnail:", got)
+        S.save_stats(stats)
 
 
 def pending_comments(stats):

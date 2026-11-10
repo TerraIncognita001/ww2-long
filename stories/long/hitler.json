@@ -878,5 +878,37 @@
     }
    ]
   }
+ ],
+ "clips": [
+  {
+   "from": [
+    0,
+    1
+   ],
+   "to": [
+    0,
+    6
+   ],
+   "title": "WHERE IS HITLER'S BODY?",
+   "key": [
+    "HITLER'S"
+   ],
+   "name": "Stalin Said Hitler Was Alive, Living in Spain or Argentina"
+  },
+  {
+   "from": [
+    8,
+    1
+   ],
+   "to": [
+    8,
+    4
+   ],
+   "title": "HITLER'S SKULL?",
+   "key": [
+    "HITLER'S"
+   ],
+   "name": "The Skull the Soviets Said Was Hitler's"
+  }
  ]
 }
