@@ -151,7 +151,7 @@ def times_for(release, n):
             t = last + timedelta(minutes=60)
         out.append(t)
         last = t
-    return [t.strftime("%Y-%m-%dT%H:%M:%SZ") for t in out]
+    return [t.astimezone(timezone.utc).strftime("%Y-%m-%dT%H:%M:%SZ") for t in out]   # NY times -> UTC
 
 
 def body_of(d, meta, clip, long_id, at):
