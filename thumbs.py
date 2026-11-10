@@ -411,7 +411,56 @@ def house_photo(c, extra=None):
             **(extra or {})}
 
 
-STYLES = {"case": case, "glow": glow, "mystery": mystery, "headline": headline_style, "photo": photo}
+STENCIL = FONTS / "BlackOpsOne-Regular.ttf"           # OFL, fonts/OFL-BlackOpsOne.txt
+YELLOW = (250, 204, 21)
+
+
+def entire(v, got):
+    """THE ENTIRE WAR format (Andrii, Nov 10): the scene full-bleed in colour, one person cut out big on the right
+    (the face in the top half: TV shows only the top), the topic's NAME huge in yellow stencil + the years under it,
+    top left. v: {bg: {file, x, y, ...}, person: {file, x, h, ...}, name: ["AFRIKA", "KORPS"], years: "1941 – 1943"}"""
+    b = v["bg"]
+    bg = prepared(got[b["file"]][0], b)
+    z = float(b.get("zoom", 1))
+    if z != 1:
+        bg = bg.resize((round(bg.width * z), round(bg.height * z)), Image.LANCZOS)
+    im = ImageOps.fit(bg, (TW, TH), centering=(b.get("x", 0.5), b.get("y", 0.5)))
+    im = ImageEnhance.Brightness(im).enhance(b.get("bright", 0.9))
+    shade = Image.linear_gradient("L").rotate(90, expand=True).resize((TW, TH))   # darker on the left (the words)
+    shade = shade.point(lambda a: int(150 * max(0, a / 255 - 0.35) ** 1.3))
+    im = Image.composite(Image.new("RGB", (TW, TH), "black"), im, shade).convert("RGBA")
+    if v.get("person"):
+        s = v["person"]
+        pic = prepared(got[s["file"]][0], s)
+        h = round(TH * s.get("h", 1.0))
+        pic = pic.resize((round(pic.width * h / pic.height), h), Image.LANCZOS)
+        m = cutout_mask(pic)
+        x0, y0 = round(TW * s.get("x", 0.75) - pic.width / 2), TH - h + round(TH * s.get("drop", 0.0))
+        sh = Image.new("RGBA", pic.size, (0, 0, 0, 0))
+        sh.putalpha(m.filter(ImageFilter.MaxFilter(9)).filter(ImageFilter.GaussianBlur(18)).point(lambda a: a * 0.7))
+        im.alpha_composite(sh, (x0 - 14, y0 + 6))
+        person = pic.convert("RGBA")
+        person.putalpha(m)
+        im.alpha_composite(person, (x0, y0))
+    im = im.convert("RGB")
+    d = ImageDraw.Draw(im)
+    y = TH * v.get("text_y", 0.04)
+    x = TW * v.get("text_x", 0.035)
+    size = v.get("size", 150)
+    for line in v["name"]:
+        f = font(STENCIL, size)
+        while f.getlength(line) > TW * v.get("maxw", 0.6) and f.size > 60:
+            f = font(STENCIL, f.size - 6)
+        d.text((x, y), line, font=f, fill=YELLOW, stroke_width=9, stroke_fill="black")
+        y += f.size * 0.98
+    if v.get("years"):
+        f = font(STENCIL, v.get("years_size", 84))
+        d.text((x + 4, y + 6), v["years"], font=f, fill="white", stroke_width=7, stroke_fill="black")
+    return im
+
+
+STYLES = {"case": case, "glow": glow, "mystery": mystery, "headline": headline_style, "photo": photo,
+          "entire": entire}
 
 
 def render(v, got, out):

@@ -613,7 +613,7 @@ def draw_arrow(dr, x1, y1, x2, y2, w=34):
 
 def thumb_files(v):
     """Every picture a thumbnail spec uses (panels, case items, glow background/subject/shadow)."""
-    parts = (v.get("panels") or []) + (v.get("items") or []) + [v[k] for k in ("bg", "subject", "shadow") if v.get(k)]
+    parts = (v.get("panels") or []) + (v.get("items") or []) + [v[k] for k in ("bg", "subject", "shadow", "person") if v.get(k)]
     return [p["file"] for p in parts + [v] if p.get("file")]
 
 

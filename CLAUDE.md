@@ -95,6 +95,25 @@ chapters = pastrak pacing (film 2-4 s, SFX up, music down). Story field `mode: "
 - Hand stories so far use: NARA NPC-8708/4888/16243 (Indianapolis), Wochenschau 755 + 111-ADC-4990 + Eva Braun
   reel 2 (Hitler), ADC-9927 + 1945/1946 newsreels (Nuremberg), USAF-16985 Ford (Midway), NPC-11213 (Yamato).
 
+## THE ENTIRE WAR FORMAT (Andrii, Nov 10: 'clone everything except the animated clips: we use archive film') - HARD RULE
+Model: youtube.com/@TheEntireWar (started Oct 25 2026, 12 videos in 2 weeks, 2.2k subs; Vietnam 99k, Afrika Korps
+70k, Luftwaffe 49k, the rest 5-27k). We copy the FORMAT, never their scripts or pictures (ours: Wikipedia facts,
+archive film + photos only, no AI pictures).
+- Topic: a WHOLE subject from start to end, not one person's fate: an army / service (Afrika Korps, Luftwaffe,
+  Red Army, US Marines, Kriegsmarine), a weapon (Tiger, Sherman, U-boat, Kamikaze), a whole war (Vietnam).
+- Title: 'The ENTIRE History of the <X> in <N> Minutes' (N = the real length, rounded down), or 'The <War> Explained
+  in <N> Minutes' for a whole war.
+- Length 12-17 min, ~1,900-2,300 words, PRESENT tense ('In February 1941, a German general lands in Tripoli...').
+- Cold open = one odd, visible detail (Rommel's wooden tanks on Volkswagens), then 'This is the entire history of
+  <X>.' Then 7-10 chapters in time order with on-screen titles ('Italy's Desert Collapse', 'Rats of Tobruk'), from
+  the creation to the end; each chapter opens on a re-hook.
+- On screen: the key names and numbers handwritten (Permanent Marker) with a red underline ('ERWIN ROMMEL',
+  '130,000 PRISONERS'); simple maps (plain land, red route line) between the archive shots.
+- Thumbnail (thumbs.py `entire`): the scene full-bleed in colour, one person cut out big on the right (face in the
+  top half), the NAME huge in yellow stencil (Black Ops One, OFL) + the years in white under it, top left.
+  Story field "thumb_entire": {bg: {file...}, person: {file...}, name: ["AFRIKA", "KORPS"], years: "1941 – 1943"}.
+- Shorts (clips.py) stay: 2 per long video on its release day.
+
 ## THE THUMBNAIL STANDARD (Andrii, Nov 10: 'format 2, text 3') - HARD RULE
 Every video's thumbnail = ONE PHOTO + WORDS (thumbs.py `photo` / house_photo): the story's most dramatic picture
 full-bleed (colorized, or color 'tone' when DDColor gives odd colours), darkened at the top, vignette; 1-2 lines of
