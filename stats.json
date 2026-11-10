@@ -31,11 +31,7 @@
    "seconds": 586.4,
    "words": 1415,
    "tts": "edge",
-   "thumb": "ok",
-   "comment_due": {
-    "at": "2026-11-10T00:00:00Z",
-    "q": "How do you think Göring got the poison?"
-   }
+   "thumb": "ok"
   },
   {
    "id": "FCzm-9fDxXA",
@@ -47,6 +43,24 @@
    "words": 1436,
    "tts": "edge",
    "thumb": "ok"
+  },
+  {
+   "id": "jNra1c_nEjU",
+   "date": "2026-11-10",
+   "format": "short",
+   "long": "y3sS2sn4dXU",
+   "title": "Nobody Noticed USS Indianapolis Was Gone for Almost Four Days",
+   "seconds": 35.4,
+   "publish_at": "2026-11-10T19:30:00Z"
+  },
+  {
+   "id": "oWFn7-SF4hM",
+   "date": "2026-11-10",
+   "format": "short",
+   "long": "y3sS2sn4dXU",
+   "title": "Then Came the Sharks: The Men of USS Indianapolis",
+   "seconds": 32.8,
+   "publish_at": "2026-11-10T22:00:00Z"
   }
  ],
  "metrics": {},
