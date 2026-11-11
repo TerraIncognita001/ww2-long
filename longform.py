@@ -912,6 +912,12 @@ def main():
         return publish(stats, meta["upload"], {**d, "headline": all_sentences(d)[0]}, d)
     if env("L_CLIPS_FOR"):                             # Shorts for a long video already on YouTube
         return clips_only(stats, env("L_CLIPS_FOR"), env("L_STORY"))
+    if env("GITHUB_EVENT_NAME") == "schedule":         # Nov 11: the cron starts up to 8 h late; when the release was
+        from datetime import date, timedelta           # sent by hand meanwhile, the late run must not release the next
+        since = (date.today() - timedelta(days=1)).isoformat()
+        if any(v.get("format") == "long" and v.get("date", "") >= since for v in stats.get("videos", [])):
+            print("a long video was uploaded in the last day: this scheduled run has nothing to do")
+            return
     story = env("L_STORY") or ready_story()
     if not story and env("L_AUTO", "1") == "1":       # Andrii, Nov 9: the queue is empty -> the bot writes one
         import autostory
