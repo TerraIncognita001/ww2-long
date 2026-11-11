@@ -721,27 +721,32 @@ def ai_scenes(scenes):
 # ---- voice ----------------------------------------------------------------------------------------------
 def calm_pauses(path, words, keep=0.8):
     """Removes the silence before the first word and shortens pauses longer than `keep` (a documentary keeps its
-    breaths, unlike the tight classic Shorts); word timings follow."""
+    breaths, unlike the tight classic Shorts); word timings follow. SAMPLE-EXACT (ww2-bot v2.33/v2.42): the audio is
+    cut as PCM in Python, not with ffmpeg's aselect (it drops whole frames -> the captions drift from the voice), and
+    a word that starts inside a cut pause starts where the cut ends (Edge gives starts ~0.1 s early)."""
     log = subprocess.run(["ffmpeg", "-i", str(path), "-af", "silencedetect=noise=-40dB:d=0.05", "-f", "null", "-"],
                          capture_output=True, text=True).stderr
     pairs = list(zip([float(x) for x in re.findall(r"silence_start: (-?[\d.]+)", log)],
                      [float(x) for x in re.findall(r"silence_end: ([\d.]+)", log)]))
     cuts = [(a + keep / 2, b - keep / 2) for a, b in pairs if b - a > keep and a > 0.01]
-    if pairs and pairs[0][0] <= 0.01 and pairs[0][1] > 0.1:
-        cuts.insert(0, (0.0, pairs[0][1] - 0.05))
+    if pairs and pairs[0][0] <= 0.01 and pairs[0][1] > 0.04:
+        cuts.insert(0, (0.0, pairs[0][1] - 0.02))
     if not cuts:
         return words
-    keep_expr, prev = [], 0.0
-    for a, b in cuts:
-        if a > prev:
-            keep_expr.append(f"between(t,{prev:.3f},{a:.3f})")
-        prev = b
-    keep_expr.append(f"gte(t,{prev:.3f})")
+    sr = 24000
+    raw = subprocess.run(["ffmpeg", "-loglevel", "error", "-i", str(path), "-f", "s16le", "-ac", "1", "-ar", str(sr),
+                          "-"], capture_output=True, check=True).stdout
+    n, out, prev = len(raw) // 2, [], 0
+    for a, b in sorted(cuts):
+        ia, ib = max(prev, min(n, round(a * sr))), max(prev, min(n, round(b * sr)))
+        out.append(raw[2 * prev:2 * ia])
+        prev = ib
+    out.append(raw[2 * prev:])
     tmp = path.with_name("voice_calm.mp3")
-    subprocess.run(["ffmpeg", "-y", "-loglevel", "error", "-i", str(path), "-af",
-                    f"aselect='{'+'.join(keep_expr)}',asetpts=N/SR/TB", str(tmp)], check=True)
+    subprocess.run(["ffmpeg", "-y", "-loglevel", "error", "-f", "s16le", "-ac", "1", "-ar", str(sr), "-i", "-",
+                    "-c:a", "libmp3lame", "-b:a", "128k", str(tmp)], input=b"".join(out), check=True)
     tmp.replace(path)
-    shift = lambda t: t - sum(b - a for a, b in cuts if b <= t + 0.001)
+    shift = lambda t: t - sum(b - a if b <= t + 0.001 else max(0.0, t - a) for a, b in cuts if a < t)
     return [(w[0], max(0.0, shift(w[1])), *w[2:]) for w in words]
 
 

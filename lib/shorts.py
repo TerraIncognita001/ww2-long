@@ -3291,17 +3291,21 @@ def tighten(path, words):
         cuts.insert(0, (0.0, pairs[0][1] - 0.02))
     if not cuts:
         return words
-    keep, prev = [], 0.0
-    for a, b in cuts:
-        if a > prev:
-            keep.append(f"between(t,{prev:.3f},{a:.3f})")
-        prev = b
-    keep.append(f"gte(t,{prev:.3f})")
+    sr = 24000                                         # sample-exact cut (v2.42): aselect drops whole frames
+    raw = subprocess.run(["ffmpeg", "-loglevel", "error", "-i", str(path), "-f", "s16le", "-ac", "1", "-ar", str(sr),
+                          "-"], capture_output=True, check=True).stdout
+    n, out, prev = len(raw) // 2, [], 0
+    for a, b in sorted(cuts):
+        ia, ib = max(prev, min(n, round(a * sr))), max(prev, min(n, round(b * sr)))
+        out.append(raw[2 * prev:2 * ia])
+        prev = ib
+    out.append(raw[2 * prev:])
     tmp = path.with_name("voice_tight.mp3")
-    subprocess.run(["ffmpeg", "-y", "-loglevel", "error", "-i", str(path), "-af",
-                    f"aselect='{'+'.join(keep)}',asetpts=N/SR/TB", str(tmp)], check=True)
+    subprocess.run(["ffmpeg", "-y", "-loglevel", "error", "-f", "s16le", "-ac", "1", "-ar", str(sr), "-i", "-",
+                    "-c:a", "libmp3lame", "-b:a", "128k", str(tmp)], input=b"".join(out), check=True)
     tmp.replace(path)
-    shift = lambda t: t - sum(b - a for a, b in cuts if b <= t + 0.001)
+    # v2.33: a word that starts inside a cut pause (Edge is ~0.1 s early) starts where the cut ends
+    shift = lambda t: t - sum(b - a if b <= t + 0.001 else max(0.0, t - a) for a, b in cuts if a < t)
     return [(w[0], max(0.0, shift(w[1])), *w[2:]) for w in words]
 
 
