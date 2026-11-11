@@ -11,17 +11,17 @@
   "file": "B-29_Bomber_on_a_long_range_mission_in_late_1945.jpg"
  },
  "cover": {
-  "file": "B-29s_19th_Bomb_Group_over_Korea_1950.jpg",
+  "file": "B-29_Bomber_on_a_long_range_mission_in_late_1945.jpg",
   "color": false,
-  "x": 0.6,
-  "y": 0.0,
-  "note": "A1 (Andrii, Nov 10): black and white, the B-29s under the words, not behind them",
+  "y": 0.62,
+  "zoom": 1.1,
+  "note": "A1 (Andrii, Nov 11: 'the right one is super'): one B-29 in black and white under the words",
   "variants": [
    {
-    "file": "B-29_Bomber_on_a_long_range_mission_in_late_1945.jpg",
-    "y": 0.62,
-    "zoom": 1.1,
-    "note": "one B-29 under the words"
+    "file": "B-29s_19th_Bomb_Group_over_Korea_1950.jpg",
+    "x": 0.6,
+    "y": 0.0,
+    "note": "two B-29s over Korea"
    }
   ]
  },

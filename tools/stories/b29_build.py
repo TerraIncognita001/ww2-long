@@ -122,9 +122,9 @@ d = {
  "sources": ["Operation Meetinghouse", "Air raids on Japan"],
  "title": "The ENTIRE History of the B-29 Superfortress in {N} Minutes",
  "thumb": {"file": COLOR_FLIGHT},
- "cover": {"file": KOREA, "color": False, "x": 0.6, "y": 0.0,
-           "note": "A1 (Andrii, Nov 10): black and white, the B-29s under the words, not behind them",
-           "variants": [{"file": COLOR_FLIGHT, "y": 0.62, "zoom": 1.1, "note": "one B-29 under the words"}]},
+ "cover": {"file": COLOR_FLIGHT, "color": False, "y": 0.62, "zoom": 1.1,
+           "note": "A1 (Andrii, Nov 11: 'the right one is super'): one B-29 in black and white under the words",
+           "variants": [{"file": KOREA, "x": 0.6, "y": 0.0, "note": "two B-29s over Korea"}]},
  "question": "Did the B-29 win the war against Japan?",
  "summary": ("The Boeing B-29 Superfortress was the most expensive weapons program of World War II: its $3 billion "
              "cost exceeded the Manhattan Project's. Designed from 1938 as a pressurized long-range 'superbomber' "
