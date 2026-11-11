@@ -20,6 +20,7 @@ import requests
 import sys
 sys.path.insert(0, str(pathlib.Path(__file__).resolve().parent / "lib"))  # shorts/jurgen/pastrak from ww2-bot
 import shorts as S
+import voicecut
 import jurgen as J
 import pastrak as P
 from shorts import W, env, plain, stage, ff, probe_duration, pmap
@@ -221,7 +222,7 @@ def narrate(d):
         return path, S.speak(S.respell(" ".join(plain(s) for s in c["sentences"]), pron), path)
 
     def one(c, path, words):
-        words = J.calm_pauses(path, words, keep=PAUSE)     # one at a time: it uses a fixed temp file
+        words = voicecut.calm_pauses(path, words, keep=PAUSE)   # sample-exact (ww2-bot v2.33/v2.42: captions ran ahead)
         dur = probe_duration(path)
         toks = [w for s in c["sentences"] for w in plain(s).split()]
         times = S.align(toks, words, dur)
