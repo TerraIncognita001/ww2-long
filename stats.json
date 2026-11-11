@@ -115,6 +115,39 @@
    "title": "Who Gave Göring the Cyanide? Three Theories",
    "seconds": 45.3,
    "publish_at": "2026-11-14T22:00:00Z"
+  },
+  {
+   "id": "VAxMLiW9jEw",
+   "date": "2026-11-11",
+   "format": "long",
+   "title": "Yamato: The Biggest Battleship Ever Built Sent on a One-Way Mission",
+   "topic": "Japanese battleship Yamato",
+   "seconds": 567.5,
+   "words": 1406,
+   "tts": "edge",
+   "thumb": "ok",
+   "comment_due": {
+    "at": "2026-11-12T00:00:00Z",
+    "q": "Was Yamato's last mission courage or a waste?"
+   }
+  },
+  {
+   "id": "sCLkXImuT1g",
+   "date": "2026-11-11",
+   "format": "short",
+   "long": "VAxMLiW9jEw",
+   "title": "The Largest Battleship Ever Built Was Sent on a Mission With No Way Back",
+   "seconds": 34.3,
+   "publish_at": "2026-11-12T00:30:00Z"
+  },
+  {
+   "id": "s11jYomOhxE",
+   "date": "2026-11-11",
+   "format": "short",
+   "long": "VAxMLiW9jEw",
+   "title": "280 American Planes Against the Largest Battleship Ever Built",
+   "seconds": 45.6,
+   "publish_at": "2026-11-12T03:00:00Z"
   }
  ],
  "metrics": {},
