@@ -125,11 +125,7 @@
    "seconds": 567.5,
    "words": 1406,
    "tts": "edge",
-   "thumb": "ok",
-   "comment_due": {
-    "at": "2026-11-12T00:00:00Z",
-    "q": "Was Yamato's last mission courage or a waste?"
-   }
+   "thumb": "ok"
   },
   {
    "id": "sCLkXImuT1g",
@@ -148,6 +144,39 @@
    "title": "280 American Planes Against the Largest Battleship Ever Built",
    "seconds": 45.6,
    "publish_at": "2026-11-12T03:00:00Z"
+  },
+  {
+   "id": "TstDbORT--o",
+   "date": "2026-11-13",
+   "format": "long",
+   "title": "The ENTIRE History of the B-29 Superfortress in 13 Minutes",
+   "topic": "Boeing B-29 Superfortress",
+   "seconds": 806.7,
+   "words": 1895,
+   "tts": "edge",
+   "thumb": "ok",
+   "comment_due": {
+    "at": "2026-11-14T00:00:00Z",
+    "q": "Did the B-29 win the war against Japan?"
+   }
+  },
+  {
+   "id": "gPt1c1C-UXI",
+   "date": "2026-11-13",
+   "format": "short",
+   "long": "TstDbORT--o",
+   "title": "Why LeMay Ordered the Guns Taken Out of His B-29s",
+   "seconds": 30.6,
+   "publish_at": "2026-11-14T00:30:00Z"
+  },
+  {
+   "id": "EYAqsnQgAzQ",
+   "date": "2026-11-13",
+   "format": "short",
+   "long": "TstDbORT--o",
+   "title": "Four B-29s Landed in the Soviet Union. Stalin Never Gave Them Back",
+   "seconds": 41.9,
+   "publish_at": "2026-11-14T03:00:00Z"
   }
  ],
  "metrics": {},
