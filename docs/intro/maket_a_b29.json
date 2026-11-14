@@ -1,0 +1,97 @@
+{
+ "maket": "A",
+ "note": "Intro maket A (Andrii, Nov 14): chapter 0 of a long story. Rendered from this file: chapter 0 + the title card.",
+ "intro": {
+  "title": "",
+  "mode": "action",
+  "sentences": [
+   "In early 1945, an American general orders the guns taken out of his own bombers.",
+   "It is the most expensive weapon of the war, costing more than the atomic bomb.",
+   "A prototype catches fire, and crashes into Seattle.",
+   "Its crews haul their own fuel over the Himalayas.",
+   "Stalin keeps three of them, and builds a copy.",
+   "In one night, it burns out a quarter of Tokyo.",
+   "And two of them carry the atomic bombs.",
+   "This is the entire history of the B-29 Superfortress."
+  ],
+  "shots": [
+   {
+    "s": 1,
+    "film": "tokyo",
+    "from": 935,
+    "to": 939,
+    "sfx": "plane_flyby"
+   },
+   {
+    "s": 1,
+    "file": "Curtis_LeMay_(USAF).jpg",
+    "y": 0.25
+   },
+   {
+    "s": 2,
+    "film": "birth",
+    "from": 441,
+    "to": 447
+   },
+   {
+    "s": 2,
+    "file": "Favored_by_Warm_breezes_and_under_a_blue_Kansas_Sky,_a_vast_crowd_attends_the_delivery_ceremony_on_the_Boeing-Wichita..._-_NARA_-_196890.jpg",
+    "note": "THREE BILLION DOLLARS"
+   },
+   {
+    "s": 3,
+    "film": "birth",
+    "from": 491,
+    "to": 496,
+    "label": "SEATTLE · 1943"
+   },
+   {
+    "s": 4,
+    "film": "birth",
+    "from": 1186,
+    "to": 1192,
+    "note": "THE HUMP"
+   },
+   {
+    "s": 5,
+    "file": "Joseph_Stalin_1945.jpg",
+    "y": 0.2
+   },
+   {
+    "s": 5,
+    "film": "tokyo",
+    "from": 991,
+    "to": 996,
+    "note": "TUPOLEV TU-4"
+   },
+   {
+    "s": 6,
+    "film": "airwar",
+    "from": 546,
+    "to": 551,
+    "sfx": "explosion_far",
+    "label": "TOKYO · 9 MARCH 1945"
+   },
+   {
+    "s": 6,
+    "file": "A_view_of_Tokyo_after_an_incendiary_bombing.jpg"
+   },
+   {
+    "s": 7,
+    "file": "B-29_Enola_Gay_w_Crews.jpg",
+    "note": "ENOLA GAY"
+   },
+   {
+    "s": 7,
+    "film": "airwar",
+    "from": 705,
+    "to": 710
+   },
+   {
+    "s": 8,
+    "file": "B-29_Bomber_on_a_long_range_mission_in_late_1945.jpg",
+    "zoom": 1.05
+   }
+  ]
+ }
+}

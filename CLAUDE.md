@@ -123,6 +123,15 @@ archive film + photos only, no AI pictures).
   lines, yellow text/boxes, slab/square fonts. thumbs.py `entire` + fonts stay in the code, not used.
 - Shorts (clips.py) stay: 2 per long video on its release day.
 
+## INTRO = THE HOOK (Andrii, Nov 14: maket A saved; a 2nd candidate from a reference is being built)
+Chapter 0 of every story = a ~30 s intro (70-85 words, mode action) that tells the whole video in short:
+1 sentence = the odd, visible detail with date + place (the hook); then ONE sentence per main chapter, each a
+promise of what the video shows (the cost, the crash, the copy, the raid, the bomb); last: 'This is the entire
+history of <X>.' -> the title card. Cuts every ~2.5-3 s, a shot from that chapter for each sentence, a Bebas note
+with the red underline on 3-4 of them, PLACE · DATE labels. Every sentence = a fact of the story's own text.
+Maket A: `docs/intro/maket_a_b29.json` (B-29, 83 words, 31.6 s). Not yet in check()/autostory/clips: waits for
+the choice between candidate A and candidate 2.
+
 ## THE THUMBNAIL STANDARD (Andrii, Nov 10: 'format 2, text 3') - HARD RULE
 Every video's thumbnail = ONE PHOTO + WORDS (thumbs.py `photo` / house_photo): the story's most dramatic picture
 full-bleed (colorized, or color 'tone' when DDColor gives odd colours), darkened at the top, vignette; 1-2 lines of
