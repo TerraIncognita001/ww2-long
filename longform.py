@@ -47,6 +47,7 @@ FONT = FONTS / "BebasNeue-Regular.ttf"                  # OFL, fonts/OFL.txt
 STORIES = pathlib.Path("stories/long")
 PHOTOS = W / "photos"
 UPLOADED = []
+SHORTS = env("L_SHORTS", "0") == "1"                   # Andrii, Nov 14: Shorts stopped (to be remade as 10 s promos)
 ROMAN = "I II III IV V VI VII VIII IX X XI XII".split()
 
 
@@ -116,7 +117,8 @@ def check(d, text, facts_hard=True):
             soft.append(f"cover text '{t}': over 5 words")
     chs_ = chapters(d)                                 # Andrii, Nov 10: 2 Shorts per long video (clips.py)
     if not d.get("clips"):
-        soft.append("no `clips`: the 2 Shorts of the release day (clips.py)")
+        if SHORTS:
+            soft.append("no `clips`: the 2 Shorts of the release day (clips.py)")
     for n, cl in enumerate(d.get("clips") or [], 1):
         try:
             (c0, s0), (c1, s1) = cl["from"], cl["to"]
@@ -911,6 +913,8 @@ def main():
         print("publishing the reviewed video:", meta["upload"]["snippet"]["title"])
         return publish(stats, meta["upload"], {**d, "headline": all_sentences(d)[0]}, d)
     if env("L_CLIPS_FOR"):                             # Shorts for a long video already on YouTube
+        if not SHORTS:
+            raise SystemExit("Shorts are stopped (Andrii, Nov 14): set L_SHORTS=1 to make them again")
         return clips_only(stats, env("L_CLIPS_FOR"), env("L_STORY"))
     if env("GITHUB_EVENT_NAME") == "schedule":         # Nov 11: the cron starts up to 8 h late; when the release was
         from datetime import date, timedelta           # sent by hand meanwhile, the late run must not release the next
@@ -938,7 +942,7 @@ def main():
                                  plain(d.get("summary", "")), "")
         credits, marks, cover = make_video(d)
         body = metadata(d, topic, credits, marks, translations.result())
-    if d.get("clips"):                                 # Andrii, Nov 10: 2 Shorts from every long video
+    if d.get("clips") and SHORTS:                      # Andrii, Nov 10: 2 Shorts from every long video (off Nov 14)
         import clips
         with stage("shorts"):
             clips.make(story)
@@ -999,7 +1003,7 @@ def publish(stats, body, data, d):
         else:
             S.post_comment(yt, vid, data)
     S.save_stats(stats)
-    if d.get("clips") and (W / "clips.json").exists():  # the same day: release + 30 min and + 3 h
+    if SHORTS and d.get("clips") and (W / "clips.json").exists():  # the same day: release + 30 min and + 3 h
         import clips
         from datetime import datetime, timezone
         rel = datetime.fromisoformat(at.replace("Z", "+00:00")) if at else datetime.now(timezone.utc)
