@@ -4,6 +4,7 @@ import pathlib, sys
 sys.path.insert(0, str(pathlib.Path(__file__).resolve().parents[1] / "lib"))
 import shorts as S
 
+FAR = "2028-01-01T00:00:00Z"                    # not a release: a parking date, moved/deleted only on his order
 yt = S.youtube()
 for vid in sys.argv[1:]:
     got = yt.videos().list(part="status,snippet", id=vid).execute().get("items") or []
@@ -15,6 +16,10 @@ for vid in sys.argv[1:]:
         print(vid, "already", st.get("privacyStatus"), "- not touched"); continue
     keep = {k: st[k] for k in ("embeddable", "license", "publicStatsViewable", "selfDeclaredMadeForKids",
                                 "containsSyntheticMedia") if k in st}
-    yt.videos().update(part="status", body={"id": vid, "status": {**keep, "privacyStatus": "private"}}).execute()
-    st = yt.videos().list(part="status", id=vid).execute()["items"][0]["status"]
-    print(vid, "after:", st.get("privacyStatus"), st.get("publishAt"))
+    for at in (None, FAR):                            # null clears the release time; if YouTube keeps it, push it far away
+        yt.videos().update(part="status", body={"id": vid, "status": {**keep, "privacyStatus": "private",
+                                                                       "publishAt": at}}).execute()
+        st = yt.videos().list(part="status", id=vid).execute()["items"][0]["status"]
+        print(vid, "after:", st.get("privacyStatus"), st.get("publishAt"))
+        if not st.get("publishAt") or st["publishAt"].startswith(FAR[:4]):
+            break
