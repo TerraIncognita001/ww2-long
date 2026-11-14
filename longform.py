@@ -456,7 +456,7 @@ def build_ass(d, shots, segs):
             "Style: Label,Bebas Neue,48,&H00FFFFFF,&H00FFFFFF,&H00000000,&H78000000,0,0,0,0,100,100,6,0,1,0,2,7,0,0,0,1\n"
             "Style: Part,Bebas Neue,60,&H0045B8E8,&H00FFFFFF,&H00000000,&H00000000,0,0,0,0,100,100,12,0,1,0,0,5,0,0,0,1\n"
             "Style: Card,Bebas Neue,150,&H00FFFFFF,&H00FFFFFF,&H00000000,&H64000000,0,0,0,0,100,100,6,0,1,0,4,5,0,0,0,1\n"
-            "Style: Note,Permanent Marker,100,&H00FFFFFF,&H00FFFFFF,&H00141414,&H96000000,0,0,0,0,100,100,1,0,1,4,3,8,0,0,0,1\n"
+            "Style: Note,Bebas Neue,120,&H00FFFFFF,&H00FFFFFF,&H00141414,&H96000000,0,0,0,0,100,100,6,0,1,3,4,8,0,0,0,1\n"
             "Style: Sub,Bebas Neue,64,&H00E6E6E6,&H00FFFFFF,&H00000000,&H64000000,0,0,0,0,100,100,4,0,1,0,3,5,0,0,0,1\n"
             "\n[Events]\nFormat: Layer, Start, End, Style, Name, MarginL, MarginR, MarginV, Effect, Text\n")
     t = S.ass_time
@@ -470,15 +470,15 @@ def build_ass(d, shots, segs):
                       f"{ass_esc(sh.get('role') or '')}")
             ev.append(f"Dialogue: 2,{t(a1)},{t(b1)},Role,,0,0,0,,{{\\pos(110,840)\\fad(300,300)\\p1\\c&H0045B8E8&}}"
                       "m 0 0 l 90 0 90 6 0 6{\\p0}")
-        if sh.get("note"):                             # The Entire War: a name / number in marker, red underline
-            from PIL import ImageFont
+        if sh.get("note"):                             # The Entire War: a name / number, red underline; Bebas Neue
+            from PIL import ImageFont                  # like the title card (Andrii, Nov 14; was Permanent Marker)
             txt = ass_esc(str(sh["note"]).upper())
-            f_ = ImageFont.truetype(str(FONTS / "PermanentMarker-Regular.ttf"), 100)
-            tw = f_.getlength(txt) * 100 / sum(f_.getmetrics()) + 30     # libass: size = ascent + descent
+            f_ = ImageFont.truetype(str(FONT), 120)
+            tw = f_.getlength(txt) * 120 / sum(f_.getmetrics()) + 6 * len(txt) + 30   # libass: size = ascent + descent
             x0, a1, b1 = round(960 - tw / 2), a + 0.2, min(b - 0.1, a + 4.0)
             ev.append(f"Dialogue: 5,{t(a1)},{t(b1)},Note,,0,0,0,,{{\\pos(960,62)\\fad(200,250)}}{txt}")
-            ev.append(f"Dialogue: 5,{t(a1)},{t(b1)},Note,,0,0,0,,{{\\an7\\pos({x0},150)\\bord0\\shad0"
-                      f"\\c&H1C1CC4&\\fad(0,250)\\clip({x0},130,{x0},190)\\t(150,550,\\clip({x0},130,{x0 + round(tw)},190))"
+            ev.append(f"Dialogue: 5,{t(a1)},{t(b1)},Note,,0,0,0,,{{\\an7\\pos({x0},170)\\bord0\\shad0"
+                      f"\\c&H1C1CC4&\\fad(0,250)\\clip({x0},150,{x0},210)\\t(150,550,\\clip({x0},150,{x0 + round(tw)},210))"
                       f"\\p1}}m 0 6 b {tw / 3:.0f} 0 {2 * tw / 3:.0f} 12 {tw:.0f} 4 l {tw:.0f} 14 b {2 * tw / 3:.0f} 22 "
                       f"{tw / 3:.0f} 10 0 18{{\\p0}}")
         if sh.get("label"):

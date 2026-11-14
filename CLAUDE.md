@@ -110,7 +110,7 @@ archive film + photos only, no AI pictures).
 - Cold open = one odd, visible detail (Rommel's wooden tanks on Volkswagens), then 'This is the entire history of
   <X>.' Then 7-10 chapters in time order with on-screen titles ('Italy's Desert Collapse', 'Rats of Tobruk'), from
   the creation to the end; each chapter opens on a re-hook.
-- On screen: the key names and numbers handwritten (Permanent Marker) with a red underline ('ERWIN ROMMEL',
+- On screen: the key names and numbers in Bebas Neue (as the title card; Permanent Marker until Nov 14) with a red underline ('ERWIN ROMMEL',
   '130,000 PRISONERS'); simple maps (plain land, red route line) between the archive shots.
 - THUMBNAIL (Andrii, Nov 10, 'A1' - after trying the Entire War look, a mix, colours and fonts) - HARD RULE:
   the house photo (thumbs.py `photo`) in BLACK AND WHITE (`mono`), the title in 3 lines of Bebas, white with a black

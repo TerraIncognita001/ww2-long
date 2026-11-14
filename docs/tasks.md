@@ -27,6 +27,7 @@
 
 ## Відкрите — історії (черга)
 
+- [ ] **P1** Інтро 30 с (гачок + по реченню на розділ + «This is the entire history of X»): зразок B-29 показано, чекає «так» Андрія, щоб стати правилом (`CLAUDE.md`, `check()`, `autostory.py`, Short 1)
 - [ ] **P1** До пн 16.11: 1–2 готові історії Entire War, написані й перевірені за повними статтями (Afrika Korps, Tiger)
 - [ ] **P1** Тримати запас на 2 випуски вперед (рутина на кшталт 'Daily jurgen scripts': одна історія раз на ~2 дні)
 - [ ] **P2** Наступні теми Entire War: U-boat, Kamikaze, Luftwaffe, Red Army, US Marines, Kriegsmarine, Sherman
@@ -57,6 +58,7 @@
 
 ## Зроблено
 
+- ✅ ~~**14.11 написи по центру з червоним підкресленням: шрифт Bebas Neue, як у титрі (було Permanent Marker), лінія нижче на 20 px**~~
 - ✅ ~~**handoff.md: стан проєкту на 14.11 (у `main`)**~~
 - ✅ ~~**13.11 вийшло B-29 (`TstDbORT--o`), перше відео Entire War + 2 Shorts**~~
 - ✅ ~~**11.11 вийшло Yamato (вручну) + 2 Shorts**~~
