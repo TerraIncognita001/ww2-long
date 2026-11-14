@@ -121,7 +121,7 @@ archive film + photos only, no AI pictures).
   Story: "cover": {"file", "x", "y", "zoom", "variants": [<= 2 other pictures for Test & compare]}.
   Tried and dropped: yellow stencil + person cut out (archive portraits cut out badly and hide the object), fact
   lines, yellow text/boxes, slab/square fonts. thumbs.py `entire` + fonts stay in the code, not used.
-- Shorts (clips.py) stay: 2 per long video on its release day.
+- Shorts (clips.py): STOPPED Nov 14 (see below), to be remade as 10 s promos.
 
 ## INTRO = THE HOOK (Andrii, Nov 14: maket A saved; a 2nd candidate from a reference is being built)
 Chapter 0 of every story = a ~30 s intro (70-85 words, mode action) that tells the whole video in short:
@@ -149,7 +149,12 @@ subject; A/B the words. The case file (Oct 28 - Nov 10, `case` / house_case) was
 the label showed, on a phone the captions and label were unreadable. Old styles stay in thumbs.py, not used.
 The 4 videos released with the case file keep it on YouTube unless the new cover is set by hand in Studio.
 
-## SHORTS FROM EVERY LONG VIDEO (Andrii, Nov 10: 'the Yamato examples are ideal, keep this') - HARD RULE
+## SHORTS FROM EVERY LONG VIDEO - STOPPED (Andrii, Nov 14: 'Зупини вихід шорт відео для вв2лонг, їх треба переробити')
+`L_SHORTS=0` by default: no Shorts are made or uploaded, clips_for refuses. The 2 Göring Shorts scheduled for Nov 14
+were held private (tools/yt_hold.py), not deleted. NEXT (after the intro candidate is chosen): 10-second PROMO
+Shorts in the chosen intro's style; their one goal = send the viewer to the channel and make him want the long video.
+The old rule below is kept for history.
+## (old) SHORTS FROM EVERY LONG VIDEO (Andrii, Nov 10: 'the Yamato examples are ideal, keep this')
 On the day a long video is released, 2 Shorts about it go out on the same channel: released +30 min and +3 h after
 the long video (19:30 and 22:00 New York). clips.py cuts them from the rendered final.mp4 at the sentence times of
 captions.srt (same voice, music, SFX): 1080x1920, the whole 16:9 frame in the middle on a blurred copy of itself,
