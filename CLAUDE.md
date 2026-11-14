@@ -1,6 +1,9 @@
 # CLAUDE.md — WW2 long videos (ww2-long)
 
 Owner: Andrii (Ukrainian, short army-style answers, best free option). Reply in Ukrainian.
+ANDRII'S LIST: `docs/tasks.md` (Ukrainian: schedule on top, open tasks by category with P1-P3, 'Зроблено' at the
+bottom as '- ✅ ~~**text**~~'). Keep it current and show it to him (SendUserFile, display render) after a change.
+State summary: `handoff.md`.
 Base: the Shorts bot `ww2-bot` (Classified 1945), its CLAUDE.md is the source of every rule below.
 
 ## Decisions (Andrii, Oct 27)
