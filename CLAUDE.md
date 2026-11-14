@@ -129,7 +129,8 @@ Chapter 0 of every story = a ~30 s intro (70-85 words, mode action) that tells t
 promise of what the video shows (the cost, the crash, the copy, the raid, the bomb); last: 'This is the entire
 history of <X>.' -> the title card. Cuts every ~2.5-3 s, a shot from that chapter for each sentence, a Bebas note
 with the red underline on 3-4 of them, PLACE · DATE labels. Every sentence = a fact of the story's own text.
-Maket A: `docs/intro/maket_a_b29.json` (B-29, 83 words, 31.6 s). Not yet in check()/autostory/clips: waits for
+Maket A: `docs/intro/maket_a_b29.json` (B-29, 83 words, 31.6 s). Candidate 2 (HISTORY 'The Minutes that Changed World War II'):
+`docs/intro/cand2_b29.json` (51 s): `pre` = ~15 s of film with NO narrator: SFX, the DATE then the PLACE huge in dark red (`stamp`), the period recording's own voice (`audio` from `period_audio`, Commons PD; Truman's Aug 1945 newsreel) with its source in small letters (`source`); then the narrator goes back to how it came to this, a tall portrait revealed by a slow tilt medals -> face (`reveal` [y_from, y_to]) while the name is said. `python tools/intro_render.py <file>` renders either. Not yet in check()/autostory/clips: waits for
 the choice between candidate A and candidate 2.
 
 ## THE THUMBNAIL STANDARD (Andrii, Nov 10: 'format 2, text 3') - HARD RULE
