@@ -37,6 +37,9 @@ SEEDS = [   # exact English Wikipedia titles: whole subjects (The Entire War for
 J_KEYS = ('{"name": "the Afrika Korps", "title": "The ENTIRE History of the Afrika Korps in {N} Minutes", '
           '"question": "...", "summary": "...", "tags": ["..."], '
           '"intro": {"date": "FEBRUARY 12", "year": "1941", "place": "TRIPOLI"}, '
+          '"promos": [{"chapter": 5, "sentences": ["...", "...", "..."], "top": "STALIN KEPT|3 B-29 BOMBERS", '
+          '"key": ["B-29"], "hook": "number", "big": "847", "line": "OF WHAT?", "hidden": "", "end": "", '
+          '"name": "..."}, ...], '
           '"shorts": [{"chapter": 0, "from": 1, "to": 5, "title": "...", "key": ["NAME"], "name": "..."}, ...], '
           '"chapters": [{"title": "", "mode": "action", "sentences": ["..."], "visuals": ["..."], '
           '"notes": ["", "ERWIN ROMMEL", ...], "map": {"sentence": 3, "places": ["Wikipedia title", ...], '
@@ -97,6 +100,14 @@ def rules(topic):
         "without its last sentence; Short 2 = the most dramatic run of another chapter. title = 2-5 words on top "
         "of the Short with the topic's NAME (key = the name word(s)); name = the Short's YouTube title, max 80 "
         "characters, a fact of the story.\n"
+        "PROMOS (2 YouTube Shorts that advertise the video, max 15 s each): from 2 DIFFERENT chapters (index 1+), "
+        "each the most surprising fact of that chapter in 3 short sentences, 20-28 words in total, present tense, "
+        "facts of the article, ending BEFORE the answer (the Short then sends the viewer to the full video). top = "
+        "2 lines split by '|', 2-4 words each, with the topic's name (key = that word, without ?/:). hook = how the "
+        "end card teases the answer, the 2 promos use 2 different hooks: 'number' (big = a number of the answer, "
+        "line = 'OF WHAT?' or '<THING> IN <TIME>. HOW?'), 'redacted' (line = the answer's sentence without its last "
+        "word(s), hidden = those word(s), shown blacked out), 'question' (end = the open question, max 5 words). "
+        "name = the Short's YouTube title, max 80 characters, a fact.\n"
         "question = the debate question (max 8 words); summary = 3-5 factual sentences for the description; tags = "
         "12-15 search tags.\nReturn JSON " + J_KEYS)
 
@@ -232,6 +243,28 @@ def make():
         d["pre"] = [{"dur": 2.6, "file": pics[0], "sfx": "explosion_far"},
                     {"dur": 2.8, "file": pics[1], "stamp": stamp1},
                     {"dur": 3.0, "file": pics[2 % len(pics)], "stamp": [str(intro["place"]).upper()[:14]]}]
+    promos = []                                       # PROMO TEASERS (Nov 15): Gemini's 2 -> story `promos`
+    for n, g in enumerate(d.pop("promos", None) or []):
+        try:
+            k = int(g["chapter"])
+            sents = [str(x) for x in g["sentences"]][:3]
+            pics = [s for s in d["chapters"][k]["shots"] if s.get("file")][:3]
+        except (KeyError, IndexError, TypeError, ValueError):
+            continue
+        if not 1 <= k < len(d["chapters"]) or len(sents) < 2 or not pics or len(" ".join(sents).split()) > 30:
+            continue
+        hook = str(g.get("hook") or "question")
+        cta = ({"kind": "number", "big": str(g.get("big", ""))[:6], "line": str(g.get("line", "")).upper()[:28]}
+               if hook == "number" and g.get("big") else
+               {"kind": "redacted", "line": str(g.get("line", "")).upper()[:24], "hidden": str(g.get("hidden", "")).upper()[:12]}
+               if hook == "redacted" and g.get("hidden") else {"kind": "question"})
+        promos.append({"id": f"p{n + 1}", "chapter": k, "sentences": sents,
+                       "shots": [{**s, "s": i + 1} for i, s in enumerate(pics)][:len(sents)],
+                       "top": str(g.get("top", "")).upper()[:40], "key": [str(x).upper() for x in g.get("key") or []],
+                       "cta": cta, "end": str(g.get("end") or "WHAT HAPPENS NEXT?").upper()[:30],
+                       "name": plain(str(g.get("name") or sents[0]))[:90]})
+    if promos:
+        d["promos"] = promos[:2]
     d.pop("thumb", None)
     left = cover or subj[0]
     d.pop("short", None)

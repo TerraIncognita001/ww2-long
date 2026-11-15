@@ -198,7 +198,13 @@ revealed, 'DID IT WORK?', 13.4 s), 'THE B-29: A BOMBER ON FIRE' (PART III, '150 
   answer is), 'FULL VIDEO · 13 MIN' (the minutes in red), 'LINK BELOW' + a red arrow down at YouTube's
   related-video link. Set 'Related video' = the long video in Studio BY HAND (no API).
 - Dropped: the intro cut as a promo (A, Nov 15), the 25-60 s cuts of clips.py (Nov 10-14).
-- NOT YET automatic: the story field `promos`, the render in the run and the upload on the release day.
+- AUTOMATIC (Nov 15): story field `promos` (2: id, chapter, 3 sentences <= 30 words, shots, top, key, cta, end,
+  name; see promo.py). The run renders the 2 sources BEFORE the long video (promo.sources, L_INTRO_ONLY; the voice
+  must end by 12 s, measured on voice00.mp3), the long, then the vertical teasers with its cover.png, real minutes and
+  chapter times (promo.finish -> work/promo/*.mp4 + promos.json; in the dry-run artifact), uploaded after the long
+  video: release +30 min and +3 h (promo.upload_all, stats 'promo': true). check() checks 2 teasers, 2 chapters,
+  2 hooks, facts. autostory: Gemini writes them on the chapter's own pictures. Old video: workflow clips_for=<id> +
+  story (+ clips_ny). `L_PROMOS=0` turns them off. The 'Related video' link is still set by hand in Studio.
 ## (old) SHORTS FROM EVERY LONG VIDEO (Andrii, Nov 10: 'the Yamato examples are ideal, keep this')
 On the day a long video is released, 2 Shorts about it go out on the same channel: released +30 min and +3 h after
 the long video (19:30 and 22:00 New York). clips.py cuts them from the rendered final.mp4 at the sentence times of

@@ -132,6 +132,122 @@ def render(p, out):
     return round(dur, 1)
 
 
+# ---- in the run (Nov 15): the story's `promos` -> 2 teasers, uploaded after the long video's release ----------
+# Story field: "promos": [{"id": "stalin", "chapter": 5, "sentences": [3 short sentences, cut before the answer],
+#   "shots": [{"s": 1, "film"/"file"/"map"...}], "top": "STALIN KEPT|3 B-29 BOMBERS", "key": ["B-29"],
+#   "cta": {"kind": "redacted", "line": "STALIN BUILDS THE", "hidden": "TU-4"}, "end": "WHAT DID HE BUILD?",
+#   "name": "the Short's YouTube title (a fact)"}]   (2 per long video, 2 different cta kinds)
+MAX_VOICE = MAX_S - END_S                              # the teaser's voice must end by 12 s
+
+
+def voice_end(path):
+    """When the narrator's last word ends (the voice file's trailing silence cut off) + 0.4 s (the 0.3 s fade-out)."""
+    from shorts import probe_duration
+    log = subprocess.run(["ffmpeg", "-i", str(path), "-af", "silencedetect=noise=-40dB:d=0.15", "-f", "null", "-"],
+                         capture_output=True, text=True).stderr
+    dur = probe_duration(path)
+    starts = [float(x) for x in re.findall(r"silence_start: ([\d.]+)", log)]
+    ends = [float(x) for x in re.findall(r"silence_end: ([\d.]+)", log)]
+    if starts and len(starts) > len(ends):             # a silence that runs to the end of the file
+        return round(starts[-1] + 0.4, 2)
+    if starts and ends and ends[-1] >= dur - 0.05:
+        return round(starts[-1] + 0.4, 2)
+    return round(dur, 2)
+
+
+def sources(d):
+    """BEFORE the long video's render (both write work/final.mp4): each promo's 3 sentences rendered 16:9 by
+    longform (L_INTRO_ONLY, no pre, no title card) -> work/promo/<id>_src.mp4 + .srt; returns {id: voice end}."""
+    import copy, os, shutil
+    import longform as L
+    out = {}
+    (W / "promo").mkdir(parents=True, exist_ok=True)
+    for p in d.get("promos") or []:
+        s = copy.deepcopy(d)
+        for k in ("pre", "period_audio", "clips", "promos"):
+            s.pop(k, None)
+        s["title_on_last"] = False
+        s["title"] = s["title"].replace("{N}", str(L.minutes_guess(d)))
+        s["chapters"] = [{"title": "", "mode": "action", "sentences": p["sentences"], "shots": p.get("shots") or []}]
+        os.environ["L_INTRO_ONLY"] = "1"
+        try:
+            L.make_video(s)
+        except Exception as e:                         # one teaser failing never stops the long video
+            print(f"promo {p.get('id')}: source failed: {type(e).__name__} {str(e)[:150]}")
+            continue
+        finally:
+            os.environ.pop("L_INTRO_ONLY", None)
+        src, srt = W / "promo" / f"{p['id']}_src.mp4", W / "promo" / f"{p['id']}_src.srt"
+        shutil.copy(W / "final.mp4", src)
+        shutil.copy(W / "captions.srt", srt)
+        cues = srt_caps(srt, 0, 999)
+        end = voice_end(W / "voice00.mp3") if cues else 0
+        if not cues or end > MAX_VOICE:
+            print(f"promo {p['id']}: the voice ends at {end:.1f} s (max {MAX_VOICE:.0f} s): shorten the sentences")
+            continue
+        out[p["id"]] = round(end, 2)
+    return out
+
+
+def finish(d, ends, marks, minutes, cover):
+    """AFTER the long video's render: the vertical teasers with its thumbnail (work/cover.png), its real minutes and
+    chapter times (the timestamp hook) -> work/promo/<id>.mp4 + work/promos.json (for the upload)."""
+    import longform as L
+    chs, meta = L.chapters(d), []
+    at = {}
+    for m in marks:                                    # '6:18 Stalin's Copy' -> {"Stalin's Copy": '6:18'}
+        t, _, name = m.partition(" ")
+        at[name] = t
+    for p in d.get("promos") or []:
+        if p.get("id") not in ends:
+            continue
+        k = int(p["chapter"])
+        cta = dict(p.get("cta") or {"kind": "question"})
+        if cta.get("kind") == "timestamp":
+            cta["at"] = at.get(chs[k]["title"], "")
+        spec = {**p, "source": str(W / "promo" / f"{p['id']}_src.mp4"), "from": 0.0, "to": ends[p["id"]],
+                "srt": str(W / "promo" / f"{p['id']}_src.srt"), "cta": cta, "minutes": minutes, "cover": str(cover),
+                "part": f"PART {L.ROMAN[k - 1] if 0 < k <= len(L.ROMAN) else k} · {chs[k]['title'].upper()}",
+                "end": p.get("end") or ""}
+        out = W / "promo" / f"{p['id']}.mp4"
+        try:
+            sec = render(spec, out)
+        except (Exception, SystemExit) as e:
+            print(f"promo {p['id']}: failed: {e}")
+            continue
+        meta.append({"file": f"promo/{out.name}", "seconds": sec, "title": p.get("name") or d["title"],
+                     "id": p["id"], "first": plain(p["sentences"][0])})
+        print(f"promo teaser: {out.name} {sec} s - {p.get('name', '')}")
+    (W / "promos.json").write_text(json.dumps(meta, ensure_ascii=False, indent=1), encoding="utf-8")
+    return meta
+
+
+def upload_all(yt, d, long_id, stats, release=None):
+    """Uploads the teasers of work/promos.json as Shorts, released +30 min and +3 h after the long video (as the
+    Shorts were on Nov 10); stats format 'short' + 'promo': true. The 'Related video' link = the long video: set
+    it by hand in Studio (no API)."""
+    from datetime import date
+    from googleapiclient.http import MediaFileUpload
+    import clips
+    meta = json.loads((W / "promos.json").read_text(encoding="utf-8"))
+    ats = clips.times_for(release or clips.release_of(yt, long_id), len(meta))
+    for m, at in zip(meta, ats):
+        desc = (f"{m['first']}\n\nFull video: {plain(d['title'])}\nhttps://www.youtube.com/watch?v={long_id}\n\n"
+                "Narration: synthetic voice. Archive film and photos: public domain / free licences.\n\n"
+                "#shorts #ww2 #history")
+        tags = [t for t in (d.get("tags") or []) if isinstance(t, str)][:12] + ["shorts", "ww2", "history"]
+        body = {"snippet": {"title": plain(m["title"])[:100], "description": desc[:4900], "tags": tags,
+                            "categoryId": "27", "defaultLanguage": "en", "defaultAudioLanguage": "en"},
+                "status": {"privacyStatus": "private", "publishAt": at, "selfDeclaredMadeForKids": False,
+                           "containsSyntheticMedia": False}}
+        vid = yt.videos().insert(part="snippet,status", body=body, media_body=MediaFileUpload(
+            str(W / m["file"]), chunksize=-1, resumable=True)).execute(num_retries=3)["id"]
+        print(f"teaser uploaded: {vid} | release {at} UTC | {body['snippet']['title']} | set its Related video in Studio")
+        stats["videos"].append({"id": vid, "date": date.today().isoformat(), "format": "short", "promo": True,
+                                "long": long_id, "title": body["snippet"]["title"], "seconds": m["seconds"],
+                                "publish_at": at})
+
+
 def make(spec):
     ps = json.loads(pathlib.Path(spec).read_text(encoding="utf-8"))
     ps = ps.get("promos", ps) if isinstance(ps, dict) else ps

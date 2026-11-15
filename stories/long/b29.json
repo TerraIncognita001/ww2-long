@@ -1295,5 +1295,89 @@
    ],
    "name": "Four B-29s Landed in the Soviet Union. Stalin Never Gave Them Back"
   }
+ ],
+ "promos": [
+  {
+   "id": "b29_stalin",
+   "chapter": 5,
+   "sentences": [
+    "In 1944, three damaged B-29s land in the Soviet Union.",
+    "Stalin never gives them back.",
+    "He orders his designers to copy the B-29, as soon as possible."
+   ],
+   "shots": [
+    {
+     "s": 1,
+     "film": "tokyo",
+     "from": 1041,
+     "to": 1047
+    },
+    {
+     "s": 2,
+     "file": "Joseph_Stalin_1945.jpg",
+     "zoom": 1.2,
+     "y": 0.25
+    },
+    {
+     "s": 3,
+     "film": "tokyo",
+     "from": 991,
+     "to": 996,
+     "note": "COPY IT"
+    }
+   ],
+   "top": "STALIN KEPT|3 B-29 BOMBERS",
+   "key": [
+    "B-29"
+   ],
+   "cta": {
+    "kind": "redacted",
+    "line": "STALIN BUILDS THE",
+    "hidden": "TU-4"
+   },
+   "end": "WHAT DID HE BUILD?",
+   "name": "Stalin kept three American B-29s"
+  },
+  {
+   "id": "b29_seattle",
+   "chapter": 3,
+   "sentences": [
+    "In 1943, a B-29 prototype catches fire and crashes in Seattle.",
+    "Its test pilot and his ten-man crew are killed.",
+    "And its engines are the trouble."
+   ],
+   "shots": [
+    {
+     "s": 1,
+     "film": "birth",
+     "from": 816,
+     "to": 821,
+     "sfx": "explosion_far"
+    },
+    {
+     "s": 2,
+     "film": "birth",
+     "from": 1170,
+     "to": 1174
+    },
+    {
+     "s": 3,
+     "film": "tokyo",
+     "from": 851,
+     "to": 856
+    }
+   ],
+   "top": "THE B-29:|A BOMBER ON FIRE",
+   "key": [
+    "B-29"
+   ],
+   "cta": {
+    "kind": "number",
+    "big": "150",
+    "line": "BOMBERS IN 5 WEEKS. HOW?"
+   },
+   "end": "HOW DO THEY FIX IT?",
+   "name": "The B-29 prototype that crashed in Seattle"
+  }
  ]
 }

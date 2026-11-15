@@ -47,7 +47,8 @@ FONT = FONTS / "BebasNeue-Regular.ttf"                  # OFL, fonts/OFL.txt
 STORIES = pathlib.Path("stories/long")
 PHOTOS = W / "photos"
 UPLOADED = []
-SHORTS = env("L_SHORTS", "0") == "1"                   # Andrii, Nov 14: Shorts stopped (to be remade as 10 s promos)
+SHORTS = env("L_SHORTS", "0") == "1"                   # Andrii, Nov 14: the old Shorts (clips.py) stopped
+PROMOS = env("L_PROMOS", "1") == "1"                   # Andrii, Nov 15: 2 promo teasers per long video (promo.py)
 ROMAN = "I II III IV V VI VII VIII IX X XI XII".split()
 
 
@@ -151,6 +152,33 @@ def check(d, text, facts_hard=True):
             soft.append(f"clip {n}: {w} words (~{w / 2.33:.0f} s): keep 50-150 (Shorts of 25-60 s)")
         if not cl.get("title") or not set(x.strip("?!.,\":") for x in cl["title"].split()) & set(cl.get("key") or []):
             soft.append(f"clip {n}: top words without the key (the topic's name on red)")
+    prs = d.get("promos") or []                        # Andrii, Nov 15: 2 promo teasers per long video (promo.py)
+    if PROMOS and len(prs) != 2:
+        soft.append(f"promos: {len(prs)} teasers (want 2, from 2 different chapters)")
+    for n, p in enumerate(prs, 1):
+        try:
+            k = int(p["chapter"])
+            ok_ = 1 <= k < len(chs_) and isinstance(p.get("sentences"), list) and p["sentences"] and p.get("id")
+        except (KeyError, TypeError, ValueError):
+            ok_ = False
+        if not ok_:
+            hard.append(f"promo {n}: needs id, chapter (1..{len(chs_) - 1}) and sentences")
+            continue
+        pb = " ".join(plain(s) for s in p["sentences"])
+        if len(pb.split()) > 30:
+            soft.append(f"promo {n}: {len(pb.split())} words (~{len(pb.split()) / 2.4:.0f} s): the voice must end by 12 s")
+        if S.numbers_ok(pb, text):
+            facts.append(f"promo {n}: numbers not in the source: {S.numbers_ok(pb, text)}")
+        if S.names_ok(pb, text):
+            facts.append(f"promo {n}: names not in the source: {S.names_ok(pb, text)}")
+        if not any(int(s.get("s", 0)) == 1 for s in p.get("shots") or []):
+            hard.append(f"promo {n}: sentence 1 has no shot")
+        if not p.get("top") or not set(w.strip("?!.,\":") for w in p["top"].replace("|", " ").split()) & set(p.get("key") or []):
+            soft.append(f"promo {n}: top words without the key (the topic's name in red)")
+    if len({p.get("chapter") for p in prs}) < len(prs):
+        soft.append("promos: the 2 teasers must come from 2 different chapters")
+    if len({(p.get("cta") or {}).get("kind", "question") for p in prs}) < len(prs):
+        soft.append("promos: the 2 teasers should use 2 different end-card hooks (number / redacted / question)")
     long = [i + 1 for i, s in enumerate(ss) if len(s.split()) > 30]
     if long:
         soft.append(f"sentences over 30 words: {long}")
@@ -1094,6 +1122,8 @@ def main():
         print("publishing the reviewed video:", meta["upload"]["snippet"]["title"])
         return publish(stats, meta["upload"], {**d, "headline": all_sentences(d)[0]}, d)
     if env("L_CLIPS_FOR"):                             # Shorts for a long video already on YouTube
+        if PROMOS:                                     # Nov 15: the 2 promo teasers of an uploaded long video
+            return promos_only(stats, env("L_CLIPS_FOR"), env("L_STORY"))
         if not SHORTS:
             raise SystemExit("Shorts are stopped (Andrii, Nov 14): set L_SHORTS=1 to make them again")
         return clips_only(stats, env("L_CLIPS_FOR"), env("L_STORY"))
@@ -1117,12 +1147,14 @@ def main():
     if hard:
         raise SystemExit(f"story check failed: {hard}")
     data = {**d, "headline": all_sentences(d)[0], "lines": all_sentences(d)[1:]}
+    ends = make_promo_sources(d)                       # before the long video: both write work/final.mp4
     from concurrent.futures import ThreadPoolExecutor
     with ThreadPoolExecutor(max_workers=1) as ex:
         translations = ex.submit(S.translate, plain(d["title"]), plain(d.get("question", "")),
                                  plain(d.get("summary", "")), "")
         credits, marks, cover = make_video(d)
         body = metadata(d, topic, credits, marks, translations.result())
+    make_promos(d, ends, marks)
     if d.get("clips") and SHORTS:                      # Andrii, Nov 10: 2 Shorts from every long video (off Nov 14)
         import clips
         with stage("shorts"):
@@ -1136,6 +1168,24 @@ def main():
         print("DRY RUN: nothing uploaded. Video: work/final.mp4, thumbnail: work/cover.png, work/metadata.json")
         return
     publish(stats, body, data, d)
+
+
+def make_promo_sources(d):
+    """PROMO TEASERS (Andrii, Nov 15): the story's 2 `promos` rendered 16:9 before the long video (promo.py)."""
+    if not (PROMOS and d.get("promos")):
+        return {}
+    import promo
+    with stage("promo teasers: sources"):
+        return promo.sources(d)
+
+
+def make_promos(d, ends, marks):
+    if not ends:
+        return
+    import promo
+    m = re.search(r"in (\d+) Minutes", d["title"])
+    with stage("promo teasers"):
+        promo.finish(d, ends, marks, int(m.group(1)) if m else int(d.get("seconds", 0) // 60), W / "cover.png")
 
 
 def publish_at(local=None, zone="America/New_York", lead_min=20):
@@ -1184,6 +1234,16 @@ def publish(stats, body, data, d):
         else:
             S.post_comment(yt, vid, data)
     S.save_stats(stats)
+    if PROMOS and (W / "promos.json").exists() and json.loads((W / "promos.json").read_text(encoding="utf-8")):
+        import promo                                   # Andrii, Nov 15: the 2 teasers, release + 30 min and + 3 h
+        from datetime import datetime, timezone
+        rel = datetime.fromisoformat(at.replace("Z", "+00:00")) if at else datetime.now(timezone.utc)
+        try:
+            with stage("promo teasers upload"):
+                promo.upload_all(yt, d, vid, stats, release=rel)
+        except Exception as e:                         # the long video is out: a teaser failure must not fail the run
+            print("promo teasers upload failed:", type(e).__name__, str(e)[:200])
+        S.save_stats(stats)
     if SHORTS and d.get("clips") and (W / "clips.json").exists():  # the same day: release + 30 min and + 3 h
         import clips
         from datetime import datetime, timezone
@@ -1191,6 +1251,33 @@ def publish(stats, body, data, d):
         with stage("shorts upload"):
             clips.upload_all(yt, d, vid, stats, release=rel)
         S.save_stats(stats)
+
+
+def promos_only(stats, long_id, story):
+    """workflow input clips_for (Nov 15): the 2 promo teasers of a long video already on YouTube: the story rendered
+    again for its thumbnail, minutes and chapter times (no long upload), the teasers released +30 min / +3 h after
+    the long video's release, or after clips_ny ('YYYY-MM-DD HH:MM' New York) for an old video."""
+    if not story:
+        raise SystemExit("clips_for needs the story file (input story)")
+    d = json.loads(pathlib.Path(story).read_text(encoding="utf-8"))
+    if not d.get("promos"):
+        raise SystemExit(f"{story}: no `promos` in the story")
+    ends = make_promo_sources(d)
+    _, marks, _ = make_video(d)
+    make_promos(d, ends, marks)
+    if S.DRY_RUN:
+        print("DRY RUN: teasers not uploaded: work/promo/*.mp4")
+        return
+    yt = S.youtube(S.credentials())
+    release = None
+    if env("L_CLIPS_NY"):
+        from datetime import datetime
+        from zoneinfo import ZoneInfo
+        release = datetime.strptime(env("L_CLIPS_NY"), "%Y-%m-%d %H:%M").replace(tzinfo=ZoneInfo("America/New_York"))
+    import promo
+    with stage("promo teasers upload"):
+        promo.upload_all(yt, d, long_id, stats, release=release)
+    S.save_stats(stats)
 
 
 def clips_only(stats, long_id, story):
