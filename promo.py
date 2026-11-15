@@ -19,7 +19,8 @@ VW, VH, FG_H = 1080, 1920, 608
 END_S = 3.0
 MAX_S = 15.0
 FONT = "Bebas Neue"
-RED, BLACK = r"{\3c&H1E14E1&\bord22}", r"{\3c&H000000&\bord7}"
+STAMP = "&H1E1EBE&"                                  # the red of the long video's stamps (a touch lighter)
+KEY, WHITE = r"{\c&H1E1EBE&}", r"{\c&HFFFFFF&}"
 
 
 def t_(t):
@@ -44,13 +45,16 @@ def ass(p, cut, dur):
             "Format: Name, Fontname, Fontsize, PrimaryColour, SecondaryColour, OutlineColour, BackColour, Bold, Italic, "
             "Underline, StrikeOut, ScaleX, ScaleY, Spacing, Angle, BorderStyle, Outline, Shadow, Alignment, MarginL, "
             "MarginR, MarginV, Encoding\n"
-            f"Style: Top,{FONT},132,&H00FFFFFF,&H00FFFFFF,&H00000000,&H00000000,0,0,0,0,100,100,1,0,1,7,0,8,60,60,300,1\n"
-            f"Style: Cap,{FONT},116,&H00FFFFFF,&H0000E0FF,&H00000000,&H00000000,0,0,0,0,100,100,1,0,1,7,0,2,70,70,470,1\n"
-            f"Style: End,{FONT},120,&H00FFFFFF,&H00FFFFFF,&H00000000,&H00000000,0,0,0,0,100,100,1,0,1,7,0,5,40,40,0,1\n"
-            f"Style: Small,{FONT},64,&H00D8D8D8,&H00FFFFFF,&H00000000,&H00000000,0,0,0,0,100,100,4,0,1,5,0,5,40,40,0,1\n\n"
+            # Andrii, Nov 15: the font of the long video's red DATE / PLACE stamps (Bebas, no edge, slightly
+            # see-through), in WHITE; the key word in the stamps' red
+            f"Style: Top,{FONT},150,&H10FFFFFF,&H00FFFFFF,&H00000000,&H90000000,0,0,0,0,100,100,2,0,1,0,4,8,50,50,280,1\n"
+            f"Style: Cap,{FONT},116,&H00FFFFFF,&H0000E0FF,&H00000000,&H50000000,0,0,0,0,100,100,2,0,1,0,7,2,70,70,470,1\n"
+            f"Style: End,{FONT},130,&H10FFFFFF,&H00FFFFFF,&H00000000,&H90000000,0,0,0,0,100,100,2,0,1,0,4,5,40,40,0,1\n"
+            f"Style: Big,{FONT},380,&H001E1EBE,&H00FFFFFF,&H00000000,&H90000000,0,0,0,0,100,100,2,0,1,0,5,5,40,40,0,1\n"
+            f"Style: Small,{FONT},64,&H00D8D8D8,&H00FFFFFF,&H00000000,&H90000000,0,0,0,0,100,100,4,0,1,0,3,5,40,40,0,1\n\n"
             "[Events]\nFormat: Layer, Start, End, Style, Name, MarginL, MarginR, MarginV, Effect, Text\n")
     key = set(p.get("key") or [])
-    top = r"\N".join(" ".join(RED + w + BLACK if w.strip("?!.,\":") in key else w for w in line.split())
+    top = r"\N".join(" ".join(KEY + w + WHITE if w.strip("?!.,\":") in key else w for w in line.split())
                      for line in p["top"].split("|"))
     ev = [f"Dialogue: 1,{t_(0)},{t_(cut)},Top,,0,0,0,,{top}"]
     caps = p.get("caps") or (srt_caps(p["srt"], p["from"], p["to"]) if p.get("srt") else [])
@@ -63,16 +67,41 @@ def ass(p, cut, dur):
             e = t + (y - x) * (len(" ".join(c)) + 2) / total
             ev.append(f"Dialogue: 0,{t_(t)},{t_(e)},Cap,,0,0,0,,{' '.join(c).upper()}")
             t = e
-    e0 = cut + 0.1                                     # the end card: question / thumbnail / FULL VIDEO / link
-    ev.append(f"Dialogue: 2,{t_(e0)},{t_(dur)},End,,0,0,0,,{{\\pos(540,560)\\fad(200,0)}}{p['end']}")
-    if p.get("part"):
-        ev.append(f"Dialogue: 2,{t_(e0 + 0.2)},{t_(dur)},Small,,0,0,0,,{{\\pos(540,1310)\\fad(250,0)}}{p['part']}")
-    ev.append(f"Dialogue: 2,{t_(e0 + 0.35)},{t_(dur)},End,,0,0,0,,{{\\pos(540,1450)\\fad(200,0)}}"
-              f"{RED}FULL VIDEO · {p.get('minutes', '')} MIN{BLACK}")
-    ev.append(f"Dialogue: 2,{t_(e0 + 0.6)},{t_(dur)},Small,,0,0,0,,{{\\pos(540,1620)\\fad(200,0)}}LINK BELOW")
-    ev.append(f"Dialogue: 2,{t_(e0 + 0.6)},{t_(dur)},Small,,0,0,0,,{{\\an8\\pos(540,1680)\\bord0\\c&H1E14E1&"
-              r"\fad(200,0)\move(540,1670,540,1700,0,600)\p1}m 0 0 l 70 0 35 50{\p0}")
+    ev += end_card(p, cut + 0.1, dur)
     return head + "\n".join(ev) + "\n"
+
+
+def end_card(p, e0, dur):
+    """The last 3 s: the long video's thumbnail in the middle (y 650-1190) + ONE way to send the viewer to it
+    (`cta`): question | redacted | number | timestamp (Andrii, Nov 15: intrigue, a cut at the interesting moment,
+    or a question)."""
+    c = p.get("cta") or {"kind": "question"}
+    k = c.get("kind", "question")
+    d = lambda layer, st, style, pos, txt, fad=200: \
+        f"Dialogue: {layer},{t_(e0 + st)},{t_(dur)},{style},,0,0,0,,{{\\pos(540,{pos})\\fad({fad},0)}}{txt}"
+    ev = []
+    if k == "question":                                # the open question of the teaser over the thumbnail
+        ev.append(d(2, 0, "End", 560, p["end"]))
+    elif k == "redacted":                              # the answer shown but blacked out, like a classified file
+        ev.append(d(2, 0, "End", 400, c["line"]))
+        w = 46 * len(c["hidden"]) + 40
+        ev.append(f"Dialogue: 3,{t_(e0 + 0.35)},{t_(dur)},End,,0,0,0,,{{\\an5\\pos(540,560)\\bord0\\shad0"
+                  f"\\c&H2A2A2A&\\3c{STAMP}\\bord4\\fad(120,0)\\p1}}m 0 0 l {w} 0 {w} 120 0 120{{\\p0}}")
+        ev.append(f"Dialogue: 4,{t_(e0 + 0.35)},{t_(dur)},Small,,0,0,0,,{{\\pos(540,560)\\frz-6\\c{STAMP}"
+                  f"\\3c{STAMP}\\bord3\\shad0\\fad(120,0)}}CLASSIFIED")
+    elif k == "number":                                # one number of the answer, without what it counts
+        ev.append(d(2, 0, "Big", 380, c["big"]))
+        ev.append(d(2, 0.3, "End", 590, c["line"]))
+    elif k == "timestamp":                             # where in the long video the answer is
+        ev.append(d(2, 0, "End", 440, p["end"]))
+        ev.append(d(2, 0.3, "End", 580, f"THE ANSWER: {KEY}{c['at']}{WHITE}"))
+    if p.get("part") and k != "timestamp":
+        ev.append(d(2, 0.2, "Small", 1290, p["part"], 250))
+    ev.append(d(2, 0.35, "End", 1430, f"FULL VIDEO · {KEY}{p.get('minutes', '')} MIN{WHITE}"))
+    ev.append(d(2, 0.6, "Small", 1600, "LINK BELOW"))
+    ev.append(f"Dialogue: 2,{t_(e0 + 0.6)},{t_(dur)},Small,,0,0,0,,{{\\an8\\bord0\\shad0\\c{STAMP}"
+              r"\fad(200,0)\move(540,1650,540,1680,0,600)\p1}m 0 0 l 70 0 35 50{\p0}")
+    return ev
 
 
 def render(p, out):
