@@ -31,6 +31,7 @@ S.TTS_RATE = env("L_RATE", "+0%")
 PAUSE = float(env("L_PAUSE", "0.75"))                   # pauses kept up to this (s): a documentary breathes
 SHOT_MAX = {"action": float(env("L_SHOT_ACTION", "4.0")), "people": float(env("L_SHOT_PEOPLE", "7.5"))}
 FIRST_MAX = 2.4                                         # the first shot of the video
+PHOTO_MAX, PHOTO_FILL = 10.0, 8.0                       # Andrii, Nov 15 (HARD): a photo <= 10 s; plan() aims at 8
 TITLE_S, CARD_S, GAP_S, OUTRO_S = 4.5, 3.2, 0.5, float(env("L_OUTRO", "12"))   # outro = room for the end screen
 WORDS_LO, WORDS_HI = 1400, 2600                         # ~140 words a minute: 10-18 min
 NUM_WORDS, NUM_MAX = 33, 3                              # Andrii's standard: at most 3 numbers in ~12 s of speech
@@ -110,8 +111,11 @@ def check(d, text, facts_hard=True):
             soft.append("intro: no `pre` (film with no narrator: DATE stamp, PLACE stamp, the period speech)")
         elif sum(bool(p.get("stamp")) for p in pre) < 2:
             soft.append("intro: `pre` wants 2 stamps: ['MONTH DAY', 'YEAR'] then ['PLACE']")
-        if pre and not any(p.get("audio") for p in pre):
-            soft.append("intro: no period speech in `pre` (add one when Commons has a recording of the moment)")
+        if not any(p.get("audio") for p in pre):      # Andrii, Nov 15: HARD - no video without the speech
+            hard.append("intro: no period speech in `pre` (a known person about the topic: speech.py / by hand)")
+        for k_, a_ in (d.get("period_audio") or {}).items():
+            if not (a_.get("speaker") and a_.get("file")):
+                hard.append(f"intro: period_audio '{k_}' needs file + speaker (a known person)")
         for p in pre:
             if p.get("film") and p["film"] not in films:
                 hard.append(f"intro: `pre` shot of an unknown film: {p['film']}")
@@ -358,21 +362,47 @@ def plan(d, segs, films, got):
                 by.setdefault(int(s["s"]) - 1, []).append(m)
         sent = g["sent"][:-1] if g.get("cut_at") else g["sent"]
         ends = sent[1:] + [g.get("cut_at") or g["start"] + g["dur"]]
+        pool = []                                      # Andrii, Nov 15: a photo never longer than 10 s -> the
+        for k_ in sorted(by):                          # chapter's other pictures fill the time instead
+            pool += [m for m in by[k_] if all(m is not x for x in pool)]
+        nxt = [0]
+
+        def other(last):                               # the next picture of the chapter that is not `last`
+            for _ in range(len(pool)):
+                m = pool[nxt[0] % len(pool)]
+                nxt[0] += 1
+                if str(m.get("path")) != str(last):
+                    return m
+            return None
         for i, (a, b) in enumerate(zip(sent, ends)):
-            items = by.get(i) or []
+            items = list(by.get(i) or [])
             if not items:
-                if shots and shots[-1]["kind"] in ("film", "photo"):
-                    shots[-1]["dur"] += b - a
-                elif by:
-                    items = [next(iter(by.values()))[0]]
-                if not items:
+                last = shots[-1] if shots and shots[-1]["kind"] in ("film", "photo") else None
+                if last and (last["kind"] == "film" or run_of(shots) + (b - a) <= PHOTO_FILL):
+                    last["dur"] += b - a
                     continue
+                m = other(last.get("path") if last else None) if pool else None
+                if m:
+                    items = [m]
+                elif last:
+                    last["dur"] += b - a
+                    continue
+                else:
+                    continue
+            while pool and (b - a) / len(items) > PHOTO_FILL and items[-1]["kind"] == "photo":
+                m = other(items[-1].get("path"))
+                if not m:
+                    break
+                items.append(m)
             cuts = [a + (b - a) * j / len(items) for j in range(len(items))] + [b]
             if not shots and len(items) > 1:
                 cuts[1] = min(cuts[1], a + FIRST_MAX)
                 rest = len(items) - 1
                 cuts = cuts[:2] + [cuts[1] + (b - cuts[1]) * j / rest for j in range(1, rest)] + [b]
             for j, m in enumerate(items):
+                if m["kind"] == "photo" and shots and str(shots[-1].get("path")) == str(m.get("path")) and \
+                        run_of(shots) + cuts[j + 1] - cuts[j] > PHOTO_FILL and pool:
+                    m = other(m.get("path")) or m      # the same photo again right after itself: another one
                 sh = {**m, "start": cuts[j], "dur": cuts[j + 1] - cuts[j], "chapter": g["chapter"], "mode": mode}
                 if sh["kind"] == "photo" and sh["dur"] > SHOT_MAX[mode] * 1.25 and not sh.get("card") \
                         and not sh.get("reveal"):
@@ -384,6 +414,36 @@ def plan(d, segs, films, got):
                 else:
                     shots.append(sh)
     return shots
+
+
+def run_of(shots):
+    """How long the last picture has been on screen (consecutive shots of the same photo, its closer crops too)."""
+    if not shots or shots[-1]["kind"] != "photo":
+        return 0.0
+    p, t = str(shots[-1].get("path")), 0.0
+    for sh in reversed(shots):
+        if sh["kind"] != "photo" or str(sh.get("path")) != p:
+            break
+        t += sh["dur"]
+    return t
+
+
+def photo_holds(shots):
+    """Andrii, Nov 15 (HARD): no photo on screen longer than PHOTO_MAX s -> [(start, seconds, file)] that break it."""
+    bad, i = [], 0
+    while i < len(shots):
+        sh = shots[i]
+        if sh["kind"] != "photo":
+            i += 1
+            continue
+        j, t = i, 0.0
+        while j < len(shots) and shots[j]["kind"] == "photo" and str(shots[j].get("path")) == str(sh.get("path")):
+            t += shots[j]["dur"]
+            j += 1
+        if t > PHOTO_MAX + 0.05:
+            bad.append((round(sh["start"], 1), round(t, 1), pathlib.Path(str(sh.get("path"))).name[:60]))
+        i = j
+    return bad
 
 
 def media(s, films, got):
@@ -1047,6 +1107,10 @@ def make_video(d):
         fill_minutes(d, n)
         print("title:", d["title"])
     shots = plan(d, segs, films, got)
+    holds = photo_holds(shots)
+    if holds:                                          # Andrii, Nov 15: such a video is not made at all
+        raise SystemExit(f"a photo longer than {PHOTO_MAX:.0f} s (start s, seconds, file): {holds[:8]} -> "
+                         "more pictures for these sentences")
     chs = chapters(d)
     for sh in shots:                                   # cards: the chapter's first picture; title/outro: the thumb
         if sh["kind"] in ("title", "outro"):

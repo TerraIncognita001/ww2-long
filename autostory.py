@@ -46,6 +46,20 @@ J_KEYS = ('{"name": "the Afrika Korps", "title": "The ENTIRE History of the Afri
           '"labels": ["TRIPOLI", ...], "routes": [[0, 1]]}}, ...]}')
 
 
+def topics():
+    """The unused SEEDS, most viewed first."""
+    used = {p.stem for p in STORIES.glob("*.json")}
+    done = set()
+    for p in STORIES.glob("*.json"):
+        d = json.loads(p.read_text(encoding="utf-8"))
+        done |= {d.get("topic", ""), d.get("title", "")}
+    left = [t for t in SEEDS if t not in done and not S.is_used(t) and slug(t) not in used]
+    views = S.page_views(left) if left else {}
+    left.sort(key=lambda t: -views.get(t, 0))
+    print("auto story candidates:", [(t, int(views.get(t, 0))) for t in left[:6]])
+    return left
+
+
 def pick():
     used = {p.stem for p in STORIES.glob("*.json")}
     done = set()
@@ -206,18 +220,36 @@ def shorts_of(d, got, cover):
     return out[:2]
 
 
+class Skip(Exception):
+    """This topic cannot make a video by the rules: the next topic is tried."""
+
+
 def make():
-    topic = pick()
-    if not topic:
-        raise SystemExit("auto story: no topic left in SEEDS")
+    """Andrii, Nov 15: a video only by the rules: a period SPEECH of a known person about the topic (speech.py), no
+    photo longer than 10 s (>= 3 pictures in every chapter) -> topics are tried in order until one passes."""
+    tried = []
+    for topic in topics()[:4]:
+        try:
+            return make_one(topic)
+        except Skip as e:
+            print(f"auto story: {topic} skipped: {e}")
+            tried.append(topic)
+    raise SystemExit(f"auto story: no topic passed the rules: {tried}")
+
+
+def make_one(topic):
+    import speech
     title, text = S.wiki_text(topic, limit=90000)     # the whole article (the checker uses the same text)
     if not title:
-        raise SystemExit(f"auto story: article not found: {topic}")
+        raise Skip("article not found")
     print("auto story topic:", title)
+    sp = speech.find(title, [f"{title} speech", f"{title} address", f"{title} radio broadcast"])
+    if not sp:                                         # first: no speech, no video (and no Gemini script spent)
+        raise Skip("no period speech of a known person about it on Commons")
     d = write(title, text)
     files, subj, cover = pictures(d, title)
     if len(files) < 15 or not subj:
-        raise SystemExit(f"auto story: too few pictures ({len(files)} sentences, {len(subj)} subject photos)")
+        raise Skip(f"too few pictures ({len(files)} sentences, {len(subj)} subject photos)")
     pool, k = subj[:], 0
     for ci, c in enumerate(d["chapters"]):
         shots = []
@@ -227,7 +259,20 @@ def make():
                 got, k = [pool[k % len(pool)]], k + 1
             for f in got or []:
                 shots.append({"s": i + 1, "file": f})
-        c["shots"] = shots
+        have = {s["file"] for s in shots}              # Andrii, Nov 15: no photo > 10 s -> >= 3 pictures a chapter
+        free = [i for i in range(len(c["sentences"])) if not files.get((ci, i)) and i]
+        for i in free[1::2]:
+            if len(have) >= 3 and len(have) * 3 >= len(c["sentences"]):
+                break
+            f = next((x for x in pool[k:] + pool[:k] if x not in have), None)
+            if not f:
+                break
+            k = (pool.index(f) + 1) % len(pool)
+            shots.append({"s": i + 1, "file": f})
+            have.add(f)
+        if len(have) < 3:
+            raise Skip(f"chapter {ci}: only {len(have)} pictures (a photo would stay over 10 s)")
+        c["shots"] = sorted(shots, key=lambda s: s["s"])
         c.pop("visuals", None)
     for c in d["chapters"]:                            # marker notes: only words that are in their sentence
         notes = c.pop("notes", None)
@@ -261,6 +306,17 @@ def make():
         d["pre"] = [{"dur": 2.6, "file": pics[0], "sfx": "explosion_far"},
                     {"dur": 2.8, "file": pics[1], "stamp": stamp1},
                     {"dur": 3.0, "file": pics[2 % len(pics)], "stamp": [str(intro["place"]).upper()[:14]]}]
+    else:                                              # no date/place of the article: the speech without stamps
+        d["pre"] = [{"dur": 2.6, "file": pics[0], "sfx": "explosion_far"},
+                    {"dur": 3.0, "file": pics[1 % len(pics)]}]
+    src = " · ".join(x for x in (sp["speaker"].upper(), sp["date"].upper()) if x)
+    d["period_audio"] = {"speech": {k_: sp[k_] for k_ in ("file", "credit", "speaker", "text", "date")}}
+    d["pre"][-1].update({"hush": True, "audio": {"src": "speech", "from": sp["from"], "to": sp["to"]}, "source": src})
+    rest = sp["to"] - sp["from"] - d["pre"][-1]["dur"] + 0.8   # the speech alone, over 1-2 more pictures
+    while rest > 0.3:
+        dur = min(4.0, rest)
+        d["pre"].append({"dur": round(dur, 2), "file": pics[len(d["pre"]) % len(pics)], "source": src})
+        rest -= dur
     promos = []                                       # PROMO TEASERS (Nov 15): Gemini's 2 -> story `promos`
     for n, g in enumerate(d.pop("promos", None) or []):
         try:

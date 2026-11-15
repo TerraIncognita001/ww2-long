@@ -4,7 +4,7 @@
  "story": "stories/long/b29.json",
  "period_audio": {
   "truman": {
-   "file": "President_Harry_S._Truman_Talks_on_Atomic_Bombs.ogg",
+   "file": "President_Harry_S._Truman_Talks_on_Atomic_Bombs.ogg", "speaker": "Harry S. Truman", "date": "AUGUST 1945",
    "credit": "President Harry S. Truman Talks on Atomic Bombs (1945): US Government newsreel recording (public domain, via Wikimedia Commons)"
   }
  },
