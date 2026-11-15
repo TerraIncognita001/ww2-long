@@ -180,6 +180,18 @@ Reference analysed whole: `docs/reference/minutes_that_changed_ww2.md` (102 word
 2. SILENT BEATS: chapter `beats` [{"after": n, "shots": [{dur, film/file, sfx}]}] = after sentence n the narrator
    stops; film + music + SFX (+ low rumble in action) for 10-20 s; the chapter's voice is cut there and goes on
    after it (voice segments with off/aend/first). Every action chapter gets one. Words: 1,600-2,100.
+2a. NEWSPAPERS IN THE SILENCE (Andrii, Nov 15, at 1:10 of the B-29 test: 'після слів про те що літак розбився немає
+   озвучки - вставити вирізки з газет тих часів') - HARD RULE: a silent beat right after a NEWS EVENT (a crash, a
+   sinking, a raid, a bombing, a surrender, a landing) shows 1-3 FRONT PAGES / CLIPPINGS OF THOSE DAYS ABOUT THAT
+   EVENT, not just film: each a beat shot {"file": the scan, "focus": [x0, y0, x1, y1] = its headline in 0-1 of the
+   page, "dur": 4-5, "sfx": "typewriter"} -> render_paper(): the whole page on its blurred copy, then an eased push
+   into the headline with a red frame round it (80 % of the shot, then it holds). Sources: public domain only
+   (Wikimedia Commons front pages, Library of Congress Chronicling America, Internet Archive; credit them). Find the
+   headline box on a grid (the 'Plain Dealer Aug 7 1945' test: '125 Superfortresses Pound Naval Arsenal' =
+   [0.37, 0.59, 0.71, 0.64]); LOOK at the frames. NEVER a headline with a slur of the time ('Japs' etc., common in
+   1941-45 US papers): choose another headline of the page or another paper. No paper of that event found: the film
+   beat as before. Tools: Commons search '<event> front page <year>'; LoC's APIs refused automated requests on
+   Nov 15 (503 / 403): the bot's own finder for autostory is still to build.
 3. SECOND VOICES: a beat with `audio` {src, from, to} (a period recording of `period_audio`, with `source`) or with
    `quote` {text, name, role} = a participant's words QUOTED IN THE ARTICLE word for word (check() facts), read by
    QUOTE_VOICE (en-US-ChristopherNeural) with the name plate. 2-3 per video.

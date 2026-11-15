@@ -614,7 +614,7 @@ def media(s, films, got):
             "zoom": float(s.get("zoom", 1.0)), "trim": s.get("trim"), "sfx": s.get("sfx"), "card": bool(s.get("card")),
             "whole": bool(s.get("whole")), "reveal": s.get("reveal"),
             "name": s.get("name"), "role": s.get("role"), "label": s.get("label"), "note": s.get("note"),
-            "stamp": s.get("stamp")}
+            "stamp": s.get("stamp"), "focus": s.get("focus")}     # focus = a newspaper page pushed to its headline
 
 
 # ---- shots ----------------------------------------------------------------------------------------------
@@ -723,6 +723,35 @@ def render_reveal(m, d, k):
           f"{GRADE},setsar=1,format=yuv420p{',' + WHIP if k else ''}[v]")
     ff("-loop", "1", "-framerate", "30", "-i", fp.name, "-filter_complex", fc, "-map", "[v]", "-t", f"{d:.3f}",
        *ENC, out.name)
+    return out
+
+
+def render_paper(m, d, k):
+    """NEWSPAPERS (Andrii, Nov 15): a scanned front page / clipping of those days: the whole page on its blurred
+    copy, then an eased push into the headline (`focus` [x0, y0, x1, y1] of the page, 0-1) that fills the frame,
+    with a red frame drawn round it as the camera arrives."""
+    from PIL import Image, ImageDraw
+    out = W / f"s{k:04d}.mp4"
+    im = Image.open(m["path"]).convert("RGB")         # the page as it is: the focus box is in its own fractions
+    CW, CH = SIZE[0] * 2, SIZE[1] * 2                  # 2x canvas: zoompan rounds to whole pixels (no jitter)
+    bg = blurred(im).resize((CW, CH), Image.LANCZOS)
+    s = min(CH * 0.96 / im.height, CW * 0.96 / im.width)
+    page = im.resize((round(im.width * s), round(im.height * s)), Image.LANCZOS)
+    px, py = (CW - page.width) // 2, (CH - page.height) // 2
+    bg.paste(page, (px, py))
+    x0, y0, x1, y1 = m["focus"]
+    bx0, by0, bx1, by1 = px + x0 * page.width, py + y0 * page.height, px + x1 * page.width, py + y1 * page.height
+    ImageDraw.Draw(bg).rectangle((bx0 - 8, by0 - 8, bx1 + 8, by1 + 8), outline=(200, 26, 26), width=10)
+    fp = W / f"f{k:04d}.jpg"
+    bg.save(fp, quality=93)
+    zt = min(CW / (bx1 - bx0 + 80), CH / (by1 - by0 + 80), 6.0)
+    cx, cy = (bx0 + bx1) / 2, (by0 + by1) / 2
+    n = max(1, round(d * 30))
+    e = f"((1-cos(PI*min(on/{n * 0.8:.0f},1)))/2)"     # arrives at 80 % of the shot, then holds on the headline
+    zp = (f"zoompan=z='1+({zt - 1:.4f})*{e}':x='({CW / 2:.1f}+({cx - CW / 2:.1f})*{e})-iw/zoom/2':"
+          f"y='({CH / 2:.1f}+({cy - CH / 2:.1f})*{e})-ih/zoom/2':d={n}:s={SIZE[0]}x{SIZE[1]}:fps=30")
+    ff("-i", fp.name, "-filter_complex", f"[0:v]{zp},{GRADE},setsar=1,format=yuv420p{',' + WHIP if k else ''}[v]",
+       "-map", "[v]", "-frames:v", str(n), *ENC, out.name)
     return out
 
 
@@ -1330,6 +1359,8 @@ def make_video(d):
         k, sh = a
         if sh["kind"] == "film":
             return render_film(sh, sh["dur"], k)
+        if sh["kind"] == "photo" and sh.get("focus"):
+            return render_paper(sh, sh["dur"], k)
         if sh["kind"] == "photo" and sh.get("reveal"):
             return render_reveal(sh, sh["dur"], k)
         if sh["kind"] == "photo":
