@@ -270,6 +270,8 @@ def fetch_media(d):
     thumbs = [f for v in thumb_specs(d) for f in thumb_files(v)]
     names = list(dict.fromkeys([str(s["file"]) for c in chapters(d) for s in c.get("shots") or [] if s.get("file")]
                                + [str(p["file"]) for p in d.get("pre") or [] if p.get("file")]
+                               + [str(s["file"]) for c in chapters(d) for b in c.get("beats") or []
+                                  for s in b.get("shots") or [] if s.get("file")]
                                + [d["thumb"]["file"]] + thumbs))
     got = dict(zip(names, pmap(commons_photo, names, workers=3)))
     missing = [n for n in names if not got.get(n)]
@@ -389,6 +391,11 @@ def plan(d, segs, films, got):
             bt, t = g["beat"], g["start"]
             ss = [(media(s_, films, got), s_) for s_ in bt.get("shots") or []]
             ss = [(m, s_) for m, s_ in ss if m]
+            if not ss:                                 # no picture of the beat arrived: the last shot holds
+                if shots:                              # (never a hole: the picture would run ahead of the sound)
+                    shots[-1]["dur"] += g["dur"]
+                print(f"beat in chapter {g['chapter']}: no picture, the previous shot holds")
+                continue
             total = sum(float(s_["dur"]) for _, s_ in ss) or 1.0
             q = bt.get("quote") or {}
             for j, (m, s_) in enumerate(ss):
@@ -1334,6 +1341,11 @@ def make_video(d):
         fill_minutes(d, n)
         print("title:", d["title"])
     shots = plan(d, segs, films, got)
+    t_ = 0.0                                           # Nov 15: the shots must cover the timeline without a hole,
+    for sh in shots:                                   # else the picture runs ahead of the sound from there on
+        if abs(sh["start"] - t_) > 0.05:
+            raise SystemExit(f"timeline hole at {t_:.1f}-{sh['start']:.1f} s (a shot without its picture)")
+        t_ = sh["start"] + sh["dur"]
     portraits(d, shots)                                # change 4: a person enters through a coloured portrait tilt
     holds = photo_holds(shots)
     if holds:                                          # Andrii, Nov 15: such a video is not made at all
