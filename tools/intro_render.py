@@ -99,26 +99,38 @@ def main(path):
     L.say_minutes({"chapters": [intro]}, 13)          # the B-29 video is 13 min (the real run: longform.make_video)
     voice = L.narrate({**d, "chapters": [intro]})[0]
     # the pre block: no narrator
-    shots, segs, t = [], [], 0.0
+    shots, segs, periods, hush, t = [], [], [], None, 0.0
     for k, p in enumerate(spec.get("pre") or []):
         m = L.media(p, films, got)
         sh = {**m, "start": t, "dur": float(p["dur"]), "chapter": 0, "mode": "action", "stamp": p.get("stamp"),
               "source": p.get("source")}
         shots.append(sh)
+        if p.get("hush"):                              # Andrii, Nov 15: at HIROSHIMA all goes quiet, Truman alone
+            hush = t + 0.1
         if p.get("audio"):
             a = p["audio"]
             cut = period_cut(a, spec["period_audio"][a["src"]], k)
-            segs.append({"kind": "voice", "start": t + 0.15, "dur": probe_duration(cut), "chapter": 0, "voice": cut,
-                         "sent": [t], "mode": "action", "period": True})
+            if p.get("hush"):
+                periods.append((t + 0.35, cut))        # alone in the silence: mixed in after the music and SFX
+            else:
+                segs.append({"kind": "voice", "start": t + 0.15, "dur": probe_duration(cut), "chapter": 0,
+                             "voice": cut, "sent": [t], "mode": "action", "period": True})
         t += float(p["dur"])
     pre = t + 0.3
     vseg = {"kind": "voice", "start": pre, "dur": voice[2] + L.GAP_S, "chapter": 0, "voice": voice[0],
             "sent": [pre + x for x in voice[3]], "mode": intro.get("mode", "action")}
-    tseg = {"kind": "title", "start": pre + vseg["dur"], "dur": L.TITLE_S, "chapter": 1}
+    if spec.get("title_on_last"):                      # Andrii, Nov 15: the last line is said over the title card
+        last = vseg["sent"][-1]                        # that shows it ('THE ENTIRE HISTORY OF / THE B-29...')
+        tseg = {"kind": "title", "start": last, "dur": max(L.TITLE_S, vseg["start"] + vseg["dur"] - last + 1.2),
+                "chapter": 1}
+        pseg = {**vseg, "dur": last - vseg["start"], "sent": vseg["sent"][:-1]}
+    else:
+        tseg = {"kind": "title", "start": pre + vseg["dur"], "dur": L.TITLE_S, "chapter": 1}
+        pseg = vseg
     total = round(tseg["start"] + tseg["dur"], 3)
     if shots:
         shots[-1]["dur"] += pre - t                    # the 0.3 s breath before the narrator
-    planned = L.plan(d, [vseg, tseg], films, got)
+    planned = L.plan(d, [pseg, tseg], films, got)
     for sh in planned:
         if sh["kind"] == "title":
             sh["pic"] = P.still(got[d["thumb"]["file"]][0])
@@ -145,6 +157,18 @@ def main(path):
         return L.render_card(sh, sh["dur"], k, sh["pic"])
     parts = L.pmap(render, list(enumerate(shots)), workers=4)
     L.mix_audio(d, segs + [vseg, tseg], shots, total)
+    if hush is not None or periods:                    # the silence: the mix down to nothing, the period voice alone
+        a, b = (hush if hush is not None else 0.0), pre - 1.0
+        gain = f"clip(({a:.2f}-t)/0.5\\,0\\,1)+clip((t-{b:.2f})/0.8\\,0\\,1)"
+        fc = [f"[0:a]volume='{gain}':eval=frame[bg]"]
+        for n, (at, cut) in enumerate(periods, 1):
+            ms = int(at * 1000)
+            fc.append(f"[{n}:a]aresample=44100,aformat=channel_layouts=stereo,volume=8.5dB,alimiter=limit=0.9,adelay={ms}|{ms}[p{n}]")
+        fc.append("".join(["[bg]"] + [f"[p{n}]" for n in range(1, len(periods) + 1)]) +
+                  f"amix=inputs={len(periods) + 1}:duration=first:normalize=0[a]")
+        ff("-i", "mix.m4a", *[x for _, c in periods for x in ("-i", c.name)], "-filter_complex", ";".join(fc),
+           "-map", "[a]", "-c:a", "aac", "-b:a", "192k", "mix_hush.m4a")
+        (W / "mix_hush.m4a").replace(W / "mix.m4a")
     (W / "shots.txt").write_text("".join(f"file '{p.name}'\n" for p in parts), encoding="utf-8")
     ass = L.build_ass(d, shots, [vseg, tseg])
     st, ev = extra_ass(shots)

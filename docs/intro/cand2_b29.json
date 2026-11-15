@@ -1,6 +1,6 @@
 {
  "maket": "2",
- "note": "Intro candidate 2 (Nov 14): the HISTORY 'The Minutes that Changed World War II' (WWII with Tom Hanks) opening, rebuilt on B-29 material. Reference 0-75 s: 2 s of film + explosions with no voice -> the DATE in huge dark-red letters over film (2.5 s) -> the PLACE the same way (3 s) -> the period broadcast's own voice over film, its source in small letters at the bottom ('WOL MUTUAL RADIO BROADCAST') -> only then the narrator, who goes back to how it came to this; a big portrait is revealed by a slow tilt from the medals up to the face (Yamamoto, Nimitz) while his name is said. Nov 15 (Andrii): the period speech plays from second 0 under the film and the stamps, up to the narrator. Render: python tools/intro_render.py docs/intro/cand2_b29.json",
+ "note": "Intro candidate 2 (Nov 14): the HISTORY 'The Minutes that Changed World War II' (WWII with Tom Hanks) opening, rebuilt on B-29 material. Reference 0-75 s: 2 s of film + explosions with no voice -> the DATE in huge dark-red letters over film (2.5 s) -> the PLACE the same way (3 s) -> the period broadcast's own voice over film, its source in small letters at the bottom ('WOL MUTUAL RADIO BROADCAST') -> only then the narrator, who goes back to how it came to this; a big portrait is revealed by a slow tilt from the medals up to the face (Yamamoto, Nimitz) while his name is said. Nov 15 (Andrii): v1 kept; the explosions at the start stay; at HIROSHIMA all sound fades out and Truman speaks alone (hush); the last line is said over the title card that shows it (\title_on_last). Render: python tools/intro_render.py docs/intro/cand2_b29.json",
  "story": "stories/long/b29.json",
  "period_audio": {
   "truman": {
@@ -14,13 +14,7 @@
    "film": "airwar",
    "from": 689,
    "to": 693.5,
-   "sfx": "explosion_far",
-   "source": "PRESIDENT TRUMAN · NEWSREEL, AUGUST 1945",
-   "audio": {
-    "src": "truman",
-    "from": 7.3,
-    "to": 22.5
-   }
+   "sfx": "explosion_far"
   },
   {
    "dur": 2.8,
@@ -31,8 +25,7 @@
     "AUGUST 6",
     "1945"
    ],
-   "sfx": "explosion_massive",
-   "source": "PRESIDENT TRUMAN · NEWSREEL, AUGUST 1945"
+   "sfx": "explosion_massive"
   },
   {
    "dur": 3.0,
@@ -42,21 +35,19 @@
    "stamp": [
     "HIROSHIMA"
    ],
+   "hush": true,
+   "audio": {
+    "src": "truman",
+    "from": 7.3,
+    "to": 13.45
+   },
    "source": "PRESIDENT TRUMAN · NEWSREEL, AUGUST 1945"
   },
   {
-   "dur": 3.2,
+   "dur": 3.6,
    "film": "airwar",
    "from": 704,
    "to": 707.8,
-   "source": "PRESIDENT TRUMAN · NEWSREEL, AUGUST 1945",
-   "sfx": "plane_flyby"
-  },
-  {
-   "dur": 3.4,
-   "film": "airwar",
-   "from": 708,
-   "to": 713,
    "source": "PRESIDENT TRUMAN · NEWSREEL, AUGUST 1945"
   }
  ],
@@ -68,8 +59,8 @@
    "Five months earlier, more than three hundred of them burn out a quarter of Tokyo, in a single night.",
    "The man who sends them in low, at night, and without their guns, is Major General Curtis LeMay.",
    "It is the most expensive weapon of the war, costing more than the atomic bomb itself.",
-   "But the story of the B-29 does not begin over Hiroshima.",
-   "It begins seven years earlier, in Seattle."
+   "Two years earlier, a prototype catches fire, and crashes into Seattle.",
+   "This is the entire history of the B-29 Superfortress."
   ],
   "shots": [
    {
@@ -104,24 +95,19 @@
    },
    {
     "s": 5,
-    "film": "airwar",
-    "from": 704,
-    "to": 707.8
+    "film": "birth",
+    "from": 490,
+    "to": 493,
+    "label": "SEATTLE · 1943"
    },
    {
-    "s": 6,
-    "film": "tokyo",
-    "from": 900,
-    "to": 904.5,
-    "label": "SEATTLE · 1938"
-   },
-   {
-    "s": 6,
+    "s": 5,
     "film": "tokyo",
     "from": 943,
     "to": 947.5,
     "sfx": "plane_flyby"
    }
   ]
- }
+ },
+ "title_on_last": true
 }
