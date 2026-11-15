@@ -676,6 +676,11 @@ def build_ass(d, shots, segs):
                       "THE ENTIRE HISTORY OF")
             ev.append(f"Dialogue: 4,{t(a + 0.6)},{t(b - 0.2)},Card,,0,0,0,,{{\\pos(960,530)\\fad(500,400)}}"
                       f"{ass_esc(nm.upper())}")
+        elif g["kind"] == "title" and re.search(r"The (.+?) Explained in \d+ Minutes", d["title"]):
+            nm = re.search(r"The (.+?) Explained in \d+ Minutes", d["title"]).group(1)
+            ev.append(f"Dialogue: 4,{t(a + 0.3)},{t(b - 0.2)},Card,,0,0,0,,{{\\pos(960,500)\\fad(500,400)}}"
+                      f"{ass_esc(('THE ' + nm).upper())}")
+            ev.append(f"Dialogue: 4,{t(a + 0.6)},{t(b - 0.2)},Sub,,0,0,0,,{{\\pos(960,640)\\fad(500,400)}}EXPLAINED")
         elif g["kind"] == "title":
             name, _, rest = plain(d["title"]).partition(":")
             ev.append(f"Dialogue: 4,{t(a + 0.3)},{t(b - 0.2)},Card,,0,0,0,,{{\\pos(960,500)\\fad(500,400)}}"
@@ -891,11 +896,12 @@ def entire_cover(d):
     in 3 lines: 'HISTORY OF THE' / '<NAME>' (white on red, biggest) / 'IN {N} MINUTES'; the name comes from the title
     'The ENTIRE History of <the NAME> in {N} Minutes'. The story's `cover` gives the picture (file, x, y, zoom) and
     may override any of it. RULE: the object (the machine, the place) must not be under the words: pick the crop."""
-    m = re.search(r"ENTIRE History of (?:the )?(.+?) in (?:\{N\}|\d+) Minutes", d.get("key") or d["title"])
+    m = re.search(r"(?:ENTIRE History of (?:the )?(.+?)|The (.+?) Explained) in (?:\{N\}|\d+) Minutes",
+                  d.get("key") or d["title"])               # 'The Korean War Explained in {N} Minutes' (a whole war)
     c = d.get("cover")
     if d.get("format") != "entire" or not m or not isinstance(c, dict):
         return
-    name = m.group(1).upper()
+    name = (m.group(1) or m.group(2)).upper()
     c.setdefault("text", ["HISTORY OF THE", name, "IN {N} MINUTES"])
     c.setdefault("key", name.split())
     c.setdefault("sizes", [96, 150, 96])
@@ -1092,12 +1098,12 @@ def make_video(d):
 
 
 def load_topic(d):
-    got = S.wiki_text(d["topic"])
+    got = S.wiki_text(d["topic"], limit=90000)        # the whole article: Entire War topics are long
     if not got[0]:
         raise SystemExit(f"article not found: {d['topic']}")
     topic = S.topic_of([got])
     for extra in d.get("sources") or []:
-        title, text = S.wiki_text(extra)
+        title, text = S.wiki_text(extra, limit=90000)
         if title:
             topic["text"] += "\n" + text
             topic["articles"].append(title)

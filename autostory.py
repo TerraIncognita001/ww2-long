@@ -134,9 +134,9 @@ def probe(d):
 
 def write(topic, text):
     import longform as L
-    art = text[:24000]
+    art = text[:90000]
     d = S.gemini(rules(topic) + "\n\nARTICLE:\n" + art, ok, purpose="long script", read=300, tokens=32768)
-    for rnd in range(2):
+    for rnd in range(3):
         hard, soft = L.check(probe(d), text)
         print(f"auto script round {rnd + 1}: hard {hard} | soft {soft[:4]}")
         if not hard and len(soft) <= 2:
@@ -201,7 +201,7 @@ def make():
     topic = pick()
     if not topic:
         raise SystemExit("auto story: no topic left in SEEDS")
-    title, text = S.wiki_text(topic)
+    title, text = S.wiki_text(topic, limit=90000)     # the whole article (the checker uses the same text)
     if not title:
         raise SystemExit(f"auto story: article not found: {topic}")
     print("auto story topic:", title)

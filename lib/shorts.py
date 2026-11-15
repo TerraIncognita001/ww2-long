@@ -396,7 +396,7 @@ def wiki_get(**p):
                         headers=UA, timeout=60).json()
 
 
-def wiki_text(title):
+def wiki_text(title, limit=20000):
     try:
         page = wiki_get(action="query", prop="extracts", explaintext=1, titles=title)["query"]["pages"][0]
     except Exception:
@@ -404,7 +404,7 @@ def wiki_text(title):
     if page.get("missing") or not page.get("extract"):
         return None, None
     return page["title"], re.split(r"\n==\s*(?:See also|References|Notes|Further reading|External links|"
-                                   r"Bibliography)\s*==", page["extract"])[0][:20000]
+                                   r"Bibliography)\s*==", page["extract"])[0][:limit]
 
 
 SENSITIVE = re.compile(r"corpse|dead bodies|mass.grave|cremat|autopsy|execut(ion|ed)|hanged|hanging|"
