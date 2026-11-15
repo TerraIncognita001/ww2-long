@@ -102,8 +102,9 @@ def check(d, text, facts_hard=True):
             soft.append(f"entire: cover text '{ct}': 'HISTORY OF THE' / '<NAME>' / 'IN {{N}} MINUTES' (Andrii, Nov 10)")
         if "{N}" not in d["title"] or not re.search(r"ENTIRE History of|Explained in", d["title"]):
             soft.append("entire: title 'The ENTIRE History of the X in {N} Minutes' / 'The X Explained in {N} Minutes'")
-        if words < 1700:
-            soft.append(f"entire: {words} words (want ~1,900-2,300: 12-17 min)")
+        lo_, hi_ = (1600, 2100) if d.get("pre") else (1700, 2300)   # Nov 15: silent beats + quotes add the rest
+        if not lo_ <= words <= hi_:
+            soft.append(f"entire: {words} words (want ~{lo_:,}-{hi_:,})")
         past = sum(bool(re.search(r"\b(was|were|had)\b", s)) for s in ss)
         if past > len(ss) * 0.35:
             soft.append(f"entire: {past} of {len(ss)} sentences in the past tense (the format tells it in the present)")
@@ -123,6 +124,19 @@ def check(d, text, facts_hard=True):
                 hard.append(f"intro: `pre` shot of an unknown film: {p['film']}")
             if p.get("audio") and p["audio"].get("src") not in (d.get("period_audio") or {}):
                 hard.append(f"intro: `pre` audio of an unknown recording: {p['audio'].get('src')}")
+        flat = re.sub(r"[^a-z0-9 ]+", "", re.sub(r"\s+", " ", text.lower()))
+        for k_, c_ in enumerate(chapters(d)):          # the HISTORY reference (Nov 15): stamps, beats, quotes
+            if k_ and chapter_stamps(d) and not c_.get("stamp"):
+                soft.append(f"chapter {k_}: no `stamp` (its place or date in red; the title is shown instead)")
+            for b_ in c_.get("beats") or []:
+                if not (str(b_.get("after", "")).isdigit() and 1 <= int(b_["after"]) < len(c_["sentences"])):
+                    hard.append(f"chapter {k_}: beat 'after' must be a sentence number inside the chapter")
+                q_ = (b_.get("quote") or {}).get("text")
+                if q_ and " ".join(re.sub(r"[^a-z0-9 ]+", "", plain(q_).lower()).split()) not in flat:
+                    facts.append(f"chapter {k_}: the quote is not word for word in the source: {q_[:50]}")
+        if chapters(d) and len(chapters(d)) > 1 and plain(chapters(d)[-1]["sentences"][-1]).endswith("?"):
+            soft.append("ending: the last line is a question; the HISTORY ending is a quiet verdict (the question "
+                        "goes into the pinned comment)")
         last = plain(chapters(d)[0]["sentences"][-1]) if chapters(d) else ""
         if not re.search(r"entire history of|explained", last, re.I):
             soft.append(f"intro: the last line '{last[:50]}' should be 'This is the entire history of <X>.' "
@@ -311,10 +325,33 @@ def timeline(d, voices):
         if k >= 1:
             segs.append({"kind": "card", "start": t, "dur": CARD_S, "chapter": k})
             t += CARD_S
-        g = {"kind": "voice", "start": t, "dur": v[2] + GAP_S, "chapter": k, "voice": v[0],
-             "sent": [t + x for x in v[3]], "mode": c.get("mode", "people")}
-        segs.append(g)
-        t += v[2] + GAP_S
+        # Andrii, Nov 15 (the HISTORY reference, change 2): `beats` = montages with NO narrator inside a chapter
+        # (film + sound, or a period recording / a quote in a second voice): the chapter's voice is cut at the
+        # sentence a beat follows and goes on after it
+        n = len(c["sentences"])
+        cuts = sorted({min(n, max(1, int(b_["after"]))) for b_ in c.get("beats") or [] if k and str(b_.get("after", "")).isdigit()
+                       and int(b_["after"]) < n})
+        bounds = [0] + cuts + [n]
+        for a_, b_ in zip(bounds, bounds[1:]):
+            off = v[3][a_] if a_ else 0.0
+            end = v[3][b_] if b_ < n else v[2]
+            last = b_ == n
+            g = {"kind": "voice", "start": t, "dur": end - off + (GAP_S if last else 0.2), "chapter": k, "voice": v[0],
+                 "off": off, "aend": end, "first": a_, "sent": [t + x - off for x in v[3][a_:b_]],
+                 "mode": c.get("mode", "people")}
+            segs.append(g)
+            t += g["dur"]
+            if not last:
+                for bt in [b for b in c.get("beats") or [] if str(b.get("after", "")).isdigit() and int(b["after"]) == b_]:
+                    dur = sum(float(s_["dur"]) for s_ in bt.get("shots") or [])
+                    if bt.get("_len"):
+                        dur = max(dur, bt["_len"] + 0.9)
+                    segs.append({"kind": "beat", "start": t, "dur": dur, "chapter": k, "beat": bt,
+                                 "mode": c.get("mode", "people")})
+                    if bt.get("_cut"):
+                        segs.append({"kind": "period", "start": t + 0.45, "dur": bt["_len"], "chapter": k,
+                                     "voice": bt["_cut"]})
+                    t += dur
         if k == 0 and on_last:
             g["cut_at"] = g["sent"][-1]                # the pictures stop here: the title card takes the last line
             ttl = {"kind": "title", "start": g["cut_at"], "dur": max(TITLE_S, t - g["cut_at"] + 1.2), "chapter": 1}
@@ -348,6 +385,28 @@ def plan(d, segs, films, got):
                     shots[-1]["dur"] += dur
                 t += float(p["dur"])
             continue
+        if g["kind"] == "beat":                        # a montage with no narrator: its own shots, stretched to fit
+            bt, t = g["beat"], g["start"]
+            ss = [(media(s_, films, got), s_) for s_ in bt.get("shots") or []]
+            ss = [(m, s_) for m, s_ in ss if m]
+            total = sum(float(s_["dur"]) for _, s_ in ss) or 1.0
+            q = bt.get("quote") or {}
+            for j, (m, s_) in enumerate(ss):
+                dur = g["dur"] * float(s_["dur"]) / total
+                shots.append({**m, "start": t, "dur": dur, "chapter": g["chapter"], "mode": g["mode"],
+                              "stamp": s_.get("stamp"), "source": bt.get("source"),
+                              "name": (q.get("name") if j == 0 and q else m.get("name")),
+                              "role": (q.get("role") if j == 0 and q else m.get("role"))})
+                t += dur
+            continue
+        if g["kind"] == "card" and chapter_stamps(d):  # change 1: a STAMP over the chapter's film opens it
+            c = chs[g["chapter"]]
+            opener = stamp_picture(d, c, films, got)
+            if opener:
+                shots.append({**opener, "start": g["start"], "dur": g["dur"], "chapter": g["chapter"],
+                              "mode": c.get("mode", "people"), "stamp": c.get("stamp") or [c["title"].upper()],
+                              "name": None, "label": None, "note": None, "sfx": opener.get("sfx") or "explosion_far"})
+                continue
         if g["kind"] != "voice":
             shots.append({"kind": g["kind"], "start": g["start"], "dur": g["dur"], "chapter": g["chapter"]})
             continue
@@ -377,7 +436,7 @@ def plan(d, segs, films, got):
                     if str(m.get("path")) != str(last) and (m["kind"] != "photo" or uses(shots, m) < limit):
                         return m
             return None
-        for i, (a, b) in enumerate(zip(sent, ends)):
+        for i, (a, b) in enumerate(zip(sent, ends), start=g.get("first", 0)):
             items = list(by.get(i) or [])
             if not items:
                 last = shots[-1] if shots and shots[-1]["kind"] in ("film", "photo") else None
@@ -413,10 +472,61 @@ def plan(d, segs, films, got):
                     z2 = round(float(m.get("zoom", 1.0)) * 1.22, 2)
                     shots += [{**sh, "dur": half, "name": m.get("name"), "label": m.get("label")},
                               {**sh, "start": sh["start"] + half, "dur": half, "zoom": z2, "name": None,
-                               "label": None, "sfx": None, "note": None}]
+                               "label": None, "sfx": None, "note": None, "stamp": None}]
                 else:
                     shots.append(sh)
     return shots
+
+
+def portraits(d, shots):
+    """Change 4 (Andrii, Nov 15; HISTORY's Nimitz / Yamamoto): a photo with a name plate (a person entering) is a
+    REVEAL - a slow tilt from the medals up to the face - when it is tall enough, and coloured (DDColor; a print it
+    cannot colour gets the warm hand-tinted grade). `portraits: false` in the story keeps the old look."""
+    if not d.get("portraits", bool(d.get("pre"))):
+        return
+    from PIL import Image
+    done = {}
+    for sh in shots:
+        if sh["kind"] != "photo" or not sh.get("name") or sh.get("card"):
+            continue
+        src = str(sh["path"])
+        if src not in done:
+            try:
+                new = S.colorize(pathlib.Path(src)) if S.toned(src) else pathlib.Path(src)
+                if str(new) == src and S.toned(src):
+                    new = S.warm_tone(pathlib.Path(src))
+            except Exception as e:
+                print("portrait colour failed:", pathlib.Path(src).name[:50], type(e).__name__)
+                new = pathlib.Path(src)
+            done[src] = new
+        sh["path"] = done[src]
+        try:
+            w, h = Image.open(sh["path"]).size
+        except Exception:
+            continue
+        if not sh.get("reveal") and h >= w * 1.05 and sh["dur"] >= 3.0:
+            sh["reveal"] = [0.62, 0.22]
+    for sh in shots:                                   # the same portrait elsewhere (its closer crop too): coloured too
+        if sh["kind"] == "photo" and str(sh.get("path")) in done:
+            sh["path"] = done[str(sh["path"])]
+
+
+def chapter_stamps(d):
+    """Change 1 (Andrii, Nov 15): chapters open on a red STAMP over film instead of the 'PART II' card (default on
+    for stories with `pre`, i.e. the new intro; `chapter_stamps: false` brings the cards back)."""
+    return d.get("chapter_stamps", bool(d.get("pre")))
+
+
+def stamp_picture(d, c, films, got):
+    """The chapter's opening picture for its stamp: its first film, else its first map, else its 2nd photo (so the
+    photo of sentence 1 does not show twice in a row)."""
+    ms = [m for m in (media(s, films, got) for s in c.get("shots") or [] if int(s.get("s", 0)) != 1) if m] or \
+        [m for m in (media(s, films, got) for s in c.get("shots") or []) if m]   # not the picture of sentence 1
+    for kind in ("film", "map"):
+        m = next((x for x in ms if x["kind"] == kind), None)
+        if m:
+            return m
+    return ms[1] if len(ms) > 1 else (ms[0] if ms else None)
 
 
 def run_of(shots):
@@ -489,20 +599,22 @@ def photo_holds(shots):
 def media(s, films, got):
     if s.get("map"):                                   # The Entire War format: a 16:9 map (maps.py)
         return {"kind": "map", "spec": s["map"], "sfx": s.get("sfx"), "name": None, "label": s.get("label"),
-                "note": s.get("note"), "credit": "Map: Natural Earth (public domain)"}
+                "note": s.get("note"), "stamp": s.get("stamp"), "credit": "Map: Natural Earth (public domain)"}
     if s.get("film"):
         f = films[s["film"]]
         return {"kind": "film", "path": f["path"], "ss": float(s["from"]), "to": float(s["to"]), "crop": f.get("crop"),
                 "x": float(s.get("x", 0.5)), "y": float(s.get("y", 0.5)), "zoom": float(s.get("zoom", 1.0)),
                 "sfx": s.get("sfx"), "punch": bool(s.get("punch")), "name": s.get("name"), "role": s.get("role"),
-                "label": s.get("label"), "credit": f["credit"], "mono": bool(f.get("mono")), "note": s.get("note")}
+                "label": s.get("label"), "credit": f["credit"], "mono": bool(f.get("mono")), "note": s.get("note"),
+                "stamp": s.get("stamp")}                # change 5: '7:00 A.M.' over the film in the climax
     g = got.get(str(s.get("file")))
     if not g:
         return None
     return {"kind": "photo", "path": g[0], "credit": g[1], "x": float(s.get("x", 0.5)), "y": float(s.get("y", 0.5)),
             "zoom": float(s.get("zoom", 1.0)), "trim": s.get("trim"), "sfx": s.get("sfx"), "card": bool(s.get("card")),
             "whole": bool(s.get("whole")), "reveal": s.get("reveal"),
-            "name": s.get("name"), "role": s.get("role"), "label": s.get("label"), "note": s.get("note")}
+            "name": s.get("name"), "role": s.get("role"), "label": s.get("label"), "note": s.get("note"),
+            "stamp": s.get("stamp")}
 
 
 # ---- shots ----------------------------------------------------------------------------------------------
@@ -620,29 +732,60 @@ def period_cuts(d):
     of the file: newsreel recordings often open on 20+ s of noise (Truman's starts at 23.6 s)."""
     t = 0.0
     for k, p in enumerate(d.get("pre") or []):
-        a = p.get("audio")
-        if a:
-            src = (d.get("period_audio") or {}).get(a["src"]) or {}
-            try:
-                raw = W / ("period_" + re.sub(r"[^A-Za-z0-9._-]+", "_", src["file"]))
-                if not raw.exists():
-                    r = requests.get("https://commons.wikimedia.org/wiki/Special:FilePath/"
-                                     + requests.utils.quote(src["file"].replace(" ", "_")), headers=S.UA, timeout=120)
-                    r.raise_for_status()
-                    raw.write_bytes(r.content)
-                cut = W / f"period{k:02d}.mp3"
-                x, y = float(a["from"]), float(a["to"])
-                ff("-ss", f"{x:.2f}", "-t", f"{y - x:.2f}", "-i", raw.name, "-af",
-                   "highpass=f=120,lowpass=f=6000,loudnorm=I=-16:TP=-2:LRA=7,afade=t=in:d=0.05,"
-                   f"afade=t=out:st={max(0.0, y - x - 0.15):.2f}:d=0.15", "-ar", "24000", "-ac", "1",
-                   "-c:a", "libmp3lame", "-b:a", "128k", cut.name)
-                p["_cut"], p["_len"] = cut, probe_duration(cut)
+        if p.get("audio"):
+            if cut_recording(d, p, f"period{k:02d}"):
                 p["_at"] = t + (0.35 if p.get("hush") else 0.15)
-                p["_credit"] = src.get("credit")
-            except Exception as e:                     # no speech: the intro still works on its film and SFX
-                print("period audio failed:", a, type(e).__name__, str(e)[:100])
+            else:                                      # no speech: the intro still works on its film and SFX
                 p.pop("hush", None)
         t += float(p["dur"])
+    for k, c in enumerate(chapters(d)):                # change 3: second voices inside the chapters (beats)
+        for n, bt in enumerate(c.get("beats") or []):
+            if bt.get("audio"):
+                cut_recording(d, bt, f"beat{k:02d}_{n}")
+            elif bt.get("quote"):
+                quote_voice(bt, f"quote{k:02d}_{n}")
+
+
+def cut_recording(d, p, name):
+    """A period recording of `period_audio` cut from..to and levelled -> p['_cut'], p['_len'], p['_credit']."""
+    a = p["audio"]
+    src = (d.get("period_audio") or {}).get(a.get("src")) or {}
+    try:
+        raw = W / ("period_" + re.sub(r"[^A-Za-z0-9._-]+", "_", src["file"]))
+        if not raw.exists():
+            r = requests.get("https://commons.wikimedia.org/wiki/Special:FilePath/"
+                             + requests.utils.quote(src["file"].replace(" ", "_")), headers=S.UA, timeout=120)
+            r.raise_for_status()
+            raw.write_bytes(r.content)
+        cut = W / f"{name}.mp3"
+        x, y = float(a["from"]), float(a["to"])
+        ff("-ss", f"{x:.2f}", "-t", f"{y - x:.2f}", "-i", raw.name, "-af",
+           "highpass=f=120,lowpass=f=6000,loudnorm=I=-16:TP=-2:LRA=7,afade=t=in:d=0.05,"
+           f"afade=t=out:st={max(0.0, y - x - 0.15):.2f}:d=0.15", "-ar", "24000", "-ac", "1",
+           "-c:a", "libmp3lame", "-b:a", "128k", cut.name)
+        p["_cut"], p["_len"], p["_credit"] = cut, probe_duration(cut), src.get("credit")
+        return True
+    except Exception as e:
+        print("period audio failed:", a, type(e).__name__, str(e)[:100])
+        return False
+
+
+QUOTE_VOICE = env("L_QUOTE_VOICE", "en-US-ChristopherNeural")   # change 3: a participant's words, a second voice
+
+
+def quote_voice(bt, name):
+    """A quote of a participant (its text from the article) read by the second voice -> bt['_cut'], bt['_len']."""
+    path = W / f"{name}.mp3"
+    keep = S.VOICE
+    try:
+        S.VOICE = QUOTE_VOICE
+        words = S.speak(S.respell(plain(bt["quote"]["text"])), path)
+        voicecut.calm_pauses(path, words or [], keep=PAUSE)
+        bt["_cut"], bt["_len"] = path, probe_duration(path)
+    except Exception as e:
+        print("quote voice failed:", type(e).__name__, str(e)[:100])
+    finally:
+        S.VOICE = keep
 
 
 def hush_mix(d, segs):
@@ -705,6 +848,14 @@ def ass_esc(t):
     return str(t).replace("\\", "").replace("{", "(").replace("}", ")").replace("\n", " ")
 
 
+def fit(text, size, width=1700):
+    """The Bebas size (libass: ascent + descent) at which `text` is at most `width` px wide, at most `size`."""
+    from PIL import ImageFont
+    f = ImageFont.truetype(str(FONT), 100)
+    w100 = f.getlength(ass_esc(str(text))) * 100 / sum(f.getmetrics()) + 2 * len(str(text))
+    return int(min(size, width * 100 / max(1.0, w100)))
+
+
 def build_ass(d, shots, segs):
     head = ("[Script Info]\nScriptType: v4.00+\nPlayResX: 1920\nPlayResY: 1080\nWrapStyle: 0\n"
             "ScaledBorderAndShadow: yes\n\n[V4+ Styles]\n"
@@ -751,14 +902,14 @@ def build_ass(d, shots, segs):
         lines = sh.get("stamp") or []
         a, b = sh["start"], sh["start"] + sh["dur"]
         grow = "\\t(0,{0},\\fscx104\\fscy104)".format(round(sh["dur"] * 1000))
-        if len(lines) == 1:
-            ev.append(f"Dialogue: 6,{t(a + 0.1)},{t(b)},Stamp2,,0,0,0,,{{\\pos(960,560)\\fs400\\alpha&H18&\\fad(120,0)"
-                      f"{grow}}}{ass_esc(lines[0])}")
+        if len(lines) == 1:                            # sized to fit 1,700 px (a long place or chapter name)
+            ev.append(f"Dialogue: 6,{t(a + 0.1)},{t(b)},Stamp2,,0,0,0,,{{\\pos(960,560)\\fs{fit(lines[0], 400)}\\alpha&H18&"
+                      f"\\fad(120,0){grow}}}{ass_esc(lines[0])}")
         elif lines:
-            ev.append(f"Dialogue: 6,{t(a + 0.1)},{t(b)},Stamp,,0,0,0,,{{\\pos(960,250)\\alpha&H18&\\fad(120,0)"
-                      f"{grow}}}{ass_esc(lines[0])}")
-            ev.append(f"Dialogue: 6,{t(a + 0.1)},{t(b)},Stamp2,,0,0,0,,{{\\pos(960,560)\\alpha&H18&\\fad(120,0)"
-                      f"{grow}}}{ass_esc(lines[1])}")
+            ev.append(f"Dialogue: 6,{t(a + 0.1)},{t(b)},Stamp,,0,0,0,,{{\\pos(960,250)\\fs{fit(lines[0], 190)}\\alpha&H18&"
+                      f"\\fad(120,0){grow}}}{ass_esc(lines[0])}")
+            ev.append(f"Dialogue: 6,{t(a + 0.1)},{t(b)},Stamp2,,0,0,0,,{{\\pos(960,560)\\fs{fit(lines[1], 560)}\\alpha&H18&"
+                      f"\\fad(120,0){grow}}}{ass_esc(lines[1])}")
     runs = []                                          # the period recording's source: one caption over its shots
     for sh in shots:
         if sh.get("source") and runs and runs[-1][2] == sh["source"] and abs(runs[-1][1] - sh["start"]) < 0.05:
@@ -788,7 +939,7 @@ def build_ass(d, shots, segs):
             if rest.strip():
                 ev.append(f"Dialogue: 4,{t(a + 0.8)},{t(b - 0.2)},Sub,,0,0,0,,{{\\pos(960,630)\\fad(500,400)}}"
                           f"{ass_esc(rest.strip().upper())}")
-        elif g["kind"] == "card":
+        elif g["kind"] == "card" and not chapter_stamps(d):
             k = g["chapter"]
             ev.append(f"Dialogue: 4,{t(a + 0.25)},{t(b - 0.15)},Part,,0,0,0,,{{\\pos(960,440)\\fad(400,300)}}"
                       f"PART {ROMAN[k - 1] if k <= len(ROMAN) else k}")
@@ -829,7 +980,10 @@ def mix_audio(d, segs, shots, total):
         if g["kind"] in ("voice", "period"):           # period = a recording of the time heard over the film
             n = inp(g["voice"])
             ms = int(g["start"] * 1000)
-            fc.append(f"[{n}:a]{fmt},adelay={ms}|{ms}[v{n}]")
+            cut = (f"atrim={g['off']:.3f}:{g['aend']:.3f},asetpts=PTS-STARTPTS,"   # a chapter split by a beat
+                   if g.get("off") or (g.get("aend") and g["kind"] == "voice" and g.get("first", 0) + len(g["sent"])
+                                       < len(chapters(d)[g["chapter"]]["sentences"])) else "")
+            fc.append(f"[{n}:a]{fmt},{cut}adelay={ms}|{ms}[v{n}]")
             vo.append(f"[v{n}]")
     fc.append(f"{''.join(vo)}amix=inputs={len(vo)}:duration=longest:normalize=0,apad,atrim=0:{total:.3f},"
               "highpass=f=80,acompressor=threshold=0.1:ratio=2.5:attack=10:release=200,asplit=2[vo][key]")
@@ -843,7 +997,7 @@ def mix_audio(d, segs, shots, total):
         mu.append(f"[m{n}]")
     bed = pathlib.Path("sfx") / "low_rumble.mp3"
     for g in segs:
-        if g["kind"] == "voice" and g["mode"] == "action" and bed.exists():
+        if g["kind"] in ("voice", "beat") and g["mode"] == "action" and bed.exists():
             n = inp(bed, loop=True)
             ms = int(g["start"] * 1000)
             fc.append(f"[{n}:a]{fmt},atrim=0:{g['dur']:.3f},asetpts=N/SR/TB,volume={BED_LUFS - P.lufs(bed):.1f}dB,"
@@ -1074,7 +1228,7 @@ def write_srt(d, segs, total):
     for g in segs:
         if g["kind"] != "voice":
             continue
-        ss = [plain(s) for s in chs[g["chapter"]]["sentences"]]
+        ss = [plain(s) for s in chs[g["chapter"]]["sentences"]][g.get("first", 0):g.get("first", 0) + len(g["sent"])]
         ends = g["sent"][1:] + [g["start"] + g["dur"] - GAP_S]
         for s, a, b in zip(ss, g["sent"], ends):
             words = s.split()                          # long sentences: two cues, split by the word share
@@ -1147,6 +1301,7 @@ def make_video(d):
         fill_minutes(d, n)
         print("title:", d["title"])
     shots = plan(d, segs, films, got)
+    portraits(d, shots)                                # change 4: a person enters through a coloured portrait tilt
     holds = photo_holds(shots)
     if holds:                                          # Andrii, Nov 15: such a video is not made at all
         raise SystemExit(f"a photo longer than {PHOTO_MAX:.0f} s (start s, seconds, file): {holds[:8]} -> "
@@ -1199,7 +1354,8 @@ def make_video(d):
            "-crf", "20", "-maxrate", "10M", "-bufsize", "20M", "-pix_fmt", "yuv420p", "-c:a", "copy",
            "-movflags", "+faststart", "final.mp4")
     credits = list(dict.fromkeys([s["credit"] for s in shots if s.get("credit")]
-                                 + [p["_credit"] for p in d.get("pre") or [] if p.get("_credit")]))
+                                 + [p["_credit"] for p in d.get("pre") or [] if p.get("_credit")]
+                                 + [b["_credit"] for c in chapters(d) for b in c.get("beats") or [] if b.get("_credit")]))
     d["seconds"] = round(total, 1)
     return credits, chapter_marks(d, segs), cover
 

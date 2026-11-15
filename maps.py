@@ -13,6 +13,8 @@ SIZE = (1920, 1080)
 OVER = 1.12                       # the base map is drawn 12% bigger: the push-in happens inside it
 SEA, LAND, COAST, GRID = (196, 210, 214), (232, 222, 196), (120, 108, 86), (182, 196, 200)
 RED, INK = (196, 28, 28), (38, 30, 22)
+BLUE = (36, 82, 170)                                    # the other side (Nov 15, the HISTORY reference: red Japan, blue US)
+SIDE = {"red": RED, "blue": BLUE}
 FONT = pathlib.Path("fonts/BebasNeue-Regular.ttf")
 
 
@@ -35,6 +37,10 @@ def places_of(spec):
             out.append(p)
     if len(out) < len(ps):
         print("map: places without coordinates dropped:", [p.get("label") or p.get("title") for p in ps if "lat" not in p])
+    if out and max(p["lon"] for p in out) - min(p["lon"] for p in out) > 180:   # across the date line (Japan ->
+        for p in out:                                                        # Midway): the Pacific, not the world
+            if p["lon"] < 0:
+                p["lon"] += 360
     return out
 
 
@@ -102,21 +108,27 @@ def frame(bm, xy, ps, routes, t, dur):
     d = ImageDraw.Draw(ov)
     to = lambda p: ((xy(p["lon"], p["lat"])[0] - x0) / cw * SIZE[0] * k, (xy(p["lon"], p["lat"])[1] - y0) / ch * SIZE[1] * k)
     per = 1.6                                          # seconds to draw one route
-    for n, (i, j) in enumerate(routes):
+    for n, (i, j, side, bend) in enumerate(routes):   # a route: [i, j] or [i, j, "blue"] or [i, j, "red", 0.3] (a curve)
         p = (t - 0.5 - n * (per + 0.3)) / per
         if p <= 0:
             continue
+        col = SIDE.get(side, RED)
         (ax, ay), (bx, by) = to(ps[i]), to(ps[j])
         ln = max(1.0, math.hypot(bx - ax, by - ay))
         ux, uy = (bx - ax) / ln, (by - ay) / ln
         ax, ay = ax + ux * 18 * k, ay + uy * 18 * k        # from the edge of one dot to just before the next
         bx, by = bx - ux * 46 * k, by - uy * 46 * k
+        cx, cy = (ax + bx) / 2 - uy * ln * bend, (ay + by) / 2 + ux * ln * bend   # control point of the curve
         p = min(1.0, p)
-        ex, ey = ax + (bx - ax) * p, ay + (by - ay) * p
-        d.line([(ax, ay), (ex, ey)], fill=RED + (255,), width=9 * k, joint="curve")
+        pts = [((1 - s) ** 2 * ax + 2 * (1 - s) * s * cx + s * s * bx, (1 - s) ** 2 * ay + 2 * (1 - s) * s * cy + s * s * by)
+               for s in [p * q / 24 for q in range(25)]]
+        d.line(pts, fill=col + (255,), width=9 * k, joint="curve")
+        (qx, qy), (ex, ey) = pts[-2], pts[-1]
+        hl = max(1e-6, math.hypot(ex - qx, ey - qy))
+        hx, hy = (ex - qx) / hl, (ey - qy) / hl
         if p > 0.05:
-            d.polygon([(ex + ux * 26 * k, ey + uy * 26 * k), (ex - uy * 17 * k, ey + ux * 17 * k),
-                       (ex + uy * 17 * k, ey - ux * 17 * k)], fill=RED + (255,))
+            d.polygon([(ex + hx * 26 * k, ey + hy * 26 * k), (ex - hy * 17 * k, ey + hx * 17 * k),
+                       (ex + hy * 17 * k, ey - hx * 17 * k)], fill=col + (255,))
     f = ImageFont.truetype(str(FONT), 54 * k)
     for n, p in enumerate(ps):
         a = max(0.0, min(1.0, (t - 0.15 * n) / 0.35))
@@ -124,7 +136,8 @@ def frame(bm, xy, ps, routes, t, dur):
             continue
         x, y = to(p)
         r = 11 * k
-        d.ellipse((x - r, y - r, x + r, y + r), fill=RED + (int(255 * a),), outline=(255, 255, 255, int(255 * a)),
+        d.ellipse((x - r, y - r, x + r, y + r), fill=SIDE.get(p.get("side"), RED) + (int(255 * a),),
+                  outline=(255, 255, 255, int(255 * a)),
                   width=3 * k)
         right = x < SIZE[0] * k * 0.7
         d.text((x + (22 if right else -22) * k, y - 4 * k), p["label"], font=f, anchor="lm" if right else "rm",
@@ -140,7 +153,7 @@ def render(m, dur, k, enc):
     ps = places_of(spec)
     if not ps:
         raise SystemExit(f"map shot {k}: no place with coordinates")
-    routes = [(i, j) for i, j in (spec.get("routes") or []) if i < len(ps) and j < len(ps)]
+    routes = routes_of(spec, ps)
     bm, xy = base(ps, float(spec.get("pad", 0.35)))
     out = W / f"s{k:04d}.mp4"
     pr = subprocess.Popen(["ffmpeg", "-y", "-loglevel", "error", "-f", "rawvideo", "-pix_fmt", "rgb24", "-s",
@@ -159,5 +172,16 @@ def still(m):
     """The map's last frame (for a chapter card)."""
     ps = places_of(m["spec"])
     bm, xy = base(ps, float(m["spec"].get("pad", 0.35)))
-    routes = [(i, j) for i, j in (m["spec"].get("routes") or []) if i < len(ps) and j < len(ps)]
-    return frame(bm, xy, ps, routes, 30.0, 30.0)
+    return frame(bm, xy, ps, routes_of(m["spec"], ps), 30.0, 30.0)
+
+
+def routes_of(spec, ps):
+    """[[i, j], [i, j, "blue"], [i, j, "red", 0.3]] -> [(i, j, side, bend)] (bend 0 = straight; 0.3 = a pincer arc)."""
+    out = []
+    for r in spec.get("routes") or []:
+        if isinstance(r, (list, tuple)) and len(r) >= 2 and all(isinstance(x, int) for x in r[:2]) \
+                and r[0] < len(ps) and r[1] < len(ps):
+            side = r[2] if len(r) > 2 and r[2] in SIDE else "red"
+            bend = float(r[3]) if len(r) > 3 and isinstance(r[3], (int, float)) else 0.0
+            out.append((r[0], r[1], side, max(-0.6, min(0.6, bend))))
+    return out

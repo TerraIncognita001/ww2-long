@@ -42,6 +42,8 @@ J_KEYS = ('{"name": "the Afrika Korps", "title": "The ENTIRE History of the Afri
           '"name": "..."}, ...], '
           '"shorts": [{"chapter": 0, "from": 1, "to": 5, "title": "...", "key": ["NAME"], "name": "..."}, ...], '
           '"chapters": [{"title": "", "mode": "action", "sentences": ["..."], "visuals": ["..."], '
+          '"stamp": ["JUNE 4", "1942"], "stamps": ["", "6:30 A.M.", ...], "beat": {"after": 5, "seconds": 15}, '
+          '"quote": {"after": 3, "text": "...", "name": "CHESTER NIMITZ", "role": "ADMIRAL"}, '
           '"notes": ["", "ERWIN ROMMEL", ...], "map": {"sentence": 3, "places": ["Wikipedia title", ...], '
           '"labels": ["TRIPOLI", ...], "routes": [[0, 1]]}}, ...]}')
 
@@ -93,10 +95,21 @@ def rules(topic):
         "1950 at the 38th parallel, not an event of another war). "
         "Then 7-10 "
         "chapters in time order with short titles (2-4 words), each 8-14 sentences; mode 'people' for decisions and "
-        "leaders, 'action' for battles. Open each chapter with a re-hook. The last chapter ends with a quiet closing "
-        "fact, then ONE final sentence: a debate question to the viewer that ends with 'Tell me what you think in "
-        "the comments.'\n"
-        "LENGTH: 1,900-2,300 words in total. Sentences of 8-26 words. At most 3 numbers in any 30 words: say the "
+        "leaders, 'action' for battles. Open each chapter with a re-hook. ONE open question per chapter, answered "
+        "in the same chapter. The last chapter ends with a quiet closing fact and then ONE short VERDICT sentence "
+        "on what it meant ('This is a turning point.'): no question to the viewer in the narration (the debate "
+        "'question' goes into a pinned comment).\n"
+        "STAMPS: per chapter 'stamp' = 1-2 short lines shown huge in red over film as the chapter opens: the place "
+        "(['MIDWAY']) or the date (['JUNE 4', '1942']) of its first sentence, written in that sentence.\n"
+        "CLOCK: in the chapter of the decisive battle tell the key moments by the clock when the article gives the "
+        "times ('At 6:30 a.m.', 'Thirty minutes later', 'In four minutes'), and give those sentences a 'stamps' "
+        "entry ('6:30 A.M.'), one per sentence like 'notes' ('' for none).\n"
+        "SILENCE: in every 'action' chapter ONE 'beat': {'after': n, 'seconds': 10-20} = after sentence n the "
+        "narrator stops and only the pictures and the sound of the battle play (choose the most violent moment).\n"
+        "QUOTES: in 2-3 chapters a 'quote': {'after': n, 'text': the exact words of a participant QUOTED IN THE "
+        "ARTICLE (copy them), 'name': his name in capitals, 'role': his rank or job in capitals}, heard in a second "
+        "voice. Only real quotes of the article; none if the article has none.\n"
+        "LENGTH: 1,600-2,000 words in total (the silent beats and quotes add the rest). Sentences of 8-26 words. At most 3 numbers in any 30 words: say the "
         "rest in words ('half', 'most of them'). Years and the day of a date do not count.\n"
         "For EVERY sentence give a 'visual': 2-5 words to search Wikimedia Commons for a 1930s-1940s photo that shows "
         "exactly that sentence (a person's full name, a ship's name, a place + year), same order as the sentences.\n"
@@ -105,7 +118,8 @@ def rules(topic):
         "three sentences.\n"
         "MAPS: in 3-5 chapters a 'map' for the sentence that moves armies or ships: places = 2-4 English Wikipedia "
         "titles of towns, islands or ports that have coordinates, labels = their short names in capitals, routes = "
-        "pairs of place indexes in order (like [[0, 1], [1, 2]]).\n"
+        "place index pairs in order with the SIDE that moves: [[0, 1, 'red'], [2, 1, 'blue']] (red = one side, blue "
+        "= the other, the same colours in every map of the video).\n"
         "TITLE: exactly 'The ENTIRE History of <name> in {N} Minutes' ({N} stays as it is: the bot puts the real "
         "length in), or for a whole war 'The <War> Explained in {N} Minutes'; name = the subject as said in a "
         "sentence ('the Afrika Korps').\n"
@@ -227,6 +241,54 @@ def shorts_of(d, got, cover):
     return out[:2]
 
 
+def shape(d, text):
+    """Gemini's chapter fields -> the renderer's (Nov 15, the 7 changes from the HISTORY reference): `stamp` (the
+    chapter opens on its place/date in red, written in its sentence 1), `stamps` (clock times over the climax's
+    shots, written in their sentences), `beat` (a silent montage of the chapter's own pictures), `quote` (a
+    participant's words QUOTED IN THE ARTICLE, a second voice). Anything not in the text is dropped."""
+    flat = re.sub(r"[^a-z0-9 ]+", "", re.sub(r"\s+", " ", text.lower()))
+    for k, c in enumerate(d["chapters"]):
+        st = c.pop("stamp", None)
+        s1 = plain(c["sentences"][0]).upper()
+        if k and isinstance(st, list) and 1 <= len(st) <= 2 and all(str(x).upper() in s1 for x in st):
+            c["stamp"] = [str(x).upper()[:18] for x in st]
+        clock = c.pop("stamps", None)
+        for s in c.get("shots") or []:
+            n = s["s"] - 1
+            if isinstance(clock, list) and n < len(clock) and clock[n] and \
+                    re.sub(r"[^0-9:]", "", str(clock[n])) in plain(c["sentences"][n]) and \
+                    not any(x.get("stamp") for x in c["shots"] if x["s"] == s["s"]):
+                s["stamp"] = [str(clock[n]).upper()[:12]]
+        pics = [s["file"] for s in c.get("shots") or [] if s.get("file")]
+        beats = []
+        b = c.pop("beat", None)
+        if k and c.get("mode") == "action" and isinstance(b, dict) and len(pics) >= 3:
+            try:
+                after, sec = int(b.get("after")), min(20.0, max(10.0, float(b.get("seconds", 15))))
+            except (TypeError, ValueError):
+                after = 0
+            if 1 <= after < len(c["sentences"]):
+                ps = pics[after % len(pics):] + pics[:after % len(pics)]
+                beats.append({"after": after, "shots": [{"dur": round(sec / 3, 1), "file": f, "sfx": "explosion_far" if i == 0
+                                                         else None} for i, f in enumerate(ps[:3])]})
+        q = c.pop("quote", None)
+        if k and isinstance(q, dict) and q.get("text"):
+            words = re.sub(r"[^a-z0-9 ]+", "", plain(str(q["text"])).lower()).split()
+            try:
+                after = int(q.get("after"))
+            except (TypeError, ValueError):
+                after = 0
+            if 5 <= len(words) <= 40 and " ".join(words) in flat and 1 <= after < len(c["sentences"]) and pics and \
+                    after not in {x["after"] for x in beats}:
+                beats.append({"after": after, "quote": {"text": plain(str(q["text"])), "name": str(q.get("name", "")).upper()[:30],
+                                                        "role": str(q.get("role", "")).upper()[:30]},
+                              "shots": [{"dur": round(len(words) / 2.4 + 1, 1), "file": pics[after % len(pics)]}]})
+            elif q:
+                print(f"chapter {k}: quote dropped (not word for word in the article): {str(q.get('text'))[:60]}")
+        if beats:
+            c["beats"] = beats
+
+
 class Skip(Exception):
     """This topic cannot make a video by the rules: the next topic is tried."""
 
@@ -309,6 +371,7 @@ def make_one(topic):
                           and all(isinstance(x, int) and 0 <= x < len(ps) for x in r)]
                 c["shots"].append({"s": at, "map": {"places": ps, "routes": routes}})
                 c["shots"].sort(key=lambda s: s["s"])
+    shape(d, text)                                     # the HISTORY reference (Nov 15): stamps, clock, beats, quotes
     intro = d.pop("intro", None)                       # INTRO rule (Nov 15): film-less here: the cold open's own
     pics = [s["file"] for s in d["chapters"][0]["shots"] if s.get("file")]   # pictures under the DATE / PLACE stamps
     s1 = plain(d["chapters"][0]["sentences"][0]).lower()   # rule 3 (Nov 15): the stamps = the moment sentence 1

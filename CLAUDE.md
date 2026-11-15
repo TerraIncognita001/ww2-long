@@ -170,6 +170,27 @@ Proposed, NOT chosen by Andrii (Nov 15): forbidden picture types (drawings, text
 1950) as a hard Gemini filter; shortening a too-long teaser instead of dropping it; his OK before an auto story is
 published; 30 % archive film. NOTE: without the OK rule a passing auto story is published by the cron by itself.
 
+## THE HISTORY REFERENCE: 7 CHANGES (Andrii, Nov 15: 'беремо всі 7') - HARD RULE for new stories
+Reference analysed whole: `docs/reference/minutes_that_changed_ww2.md` (102 words/min, 3.8 s shots, 5 stamps,
+~15 % second voices). In longform (on by default for stories with `pre`):
+1. STAMP OPENS A CHAPTER instead of the 'PART II' card: chapter `stamp` ['SEATTLE', '1943'] / ['MIDWAY'] (its place
+   or date, written in its sentence 1) huge in red over the chapter's film (not the picture of sentence 1), 3.2 s;
+   no stamp = the chapter title in stamp style; sized to fit (fit()); `chapter_stamps: false` brings the cards back.
+   YouTube chapters in the description stay.
+2. SILENT BEATS: chapter `beats` [{"after": n, "shots": [{dur, film/file, sfx}]}] = after sentence n the narrator
+   stops; film + music + SFX (+ low rumble in action) for 10-20 s; the chapter's voice is cut there and goes on
+   after it (voice segments with off/aend/first). Every action chapter gets one. Words: 1,600-2,100.
+3. SECOND VOICES: a beat with `audio` {src, from, to} (a period recording of `period_audio`, with `source`) or with
+   `quote` {text, name, role} = a participant's words QUOTED IN THE ARTICLE word for word (check() facts), read by
+   QUOTE_VOICE (en-US-ChristopherNeural) with the name plate. 2-3 per video.
+4. PORTRAITS: a photo with a name plate is coloured (DDColor, else the warm tone) and a REVEAL tilt when tall.
+5. THE CLOCK: the decisive battle told by the clock ('At 6:30 a.m.'), a shot `stamp` ['6:30 A.M.'] over it.
+6. MAPS OF TWO SIDES: routes [i, j, 'red'|'blue', bend] (bend 0.15-0.3 = an arc); place `side`; maps across the
+   date line show the Pacific (lon shifted), not the world.
+7. THE ENDING: a quiet verdict ('This is a turning point.'); the debate question only in the pinned comment.
+autostory: Gemini writes stamp / stamps / beat / quote per chapter, shape() keeps only what is in the sentence or
+the article. Local test: `work/test7/final.mp4` (B-29 cut to 3 chapters).
+
 ## THE THUMBNAIL STANDARD (Andrii, Nov 10: 'format 2, text 3') - HARD RULE
 Every video's thumbnail = ONE PHOTO + WORDS (thumbs.py `photo` / house_photo): the story's most dramatic picture
 full-bleed (colorized, or color 'tone' when DDColor gives odd colours), darkened at the top, vignette; 1-2 lines of
