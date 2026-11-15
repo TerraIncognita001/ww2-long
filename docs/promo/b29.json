@@ -1,0 +1,16 @@
+{
+ "note": "Promo Shorts for 'The ENTIRE History of the B-29 Superfortress in 13 Minutes' (TstDbORT--o), Nov 15 samples. A = Andrii's: the long video's own intro cut (date, place, silence, Truman); B = Claude's: one chapter's surprise in 3 sentences, cut before the answer, the end card names the chapter (PART V).",
+ "promos": [
+  {"id": "b29_a_intro", "name": "Which plane dropped the bomb on Hiroshima?",
+   "source": "work/intro/cand2_b29.mp4", "from": 2.6, "to": 14.15,
+   "top": "WHICH PLANE|DROPPED IT?", "key": ["PLANE"],
+   "caps": [[5.9, 13.9, "A short time ago an American airplane dropped one bomb on Hiroshima and destroyed its usefulness to the enemy."]],
+   "end": "ITS WHOLE STORY", "part": "PART VIII · SILVERPLATE", "minutes": 13,
+   "cover": "work/promo/b29_cover.png"},
+  {"id": "b29_b_teaser", "name": "Stalin kept three American B-29s",
+   "source": "work/intro/b29_stalin_src.mp4", "from": 0.0, "to": 11.95, "srt": "work/promo/b29_stalin_src.srt",
+   "top": "STALIN KEPT|3 B-29 BOMBERS", "key": ["B-29"],
+   "end": "WHAT DID HE BUILD?", "part": "PART V · STALIN'S COPY", "minutes": 13,
+   "cover": "work/promo/b29_cover.png"}
+ ]
+}

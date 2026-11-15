@@ -1,0 +1,19 @@
+{
+ "note": "Promo Short B source (Nov 15): one chapter's surprise told in 3 short sentences, cut before the answer. Rendered 16:9 by tools/intro_render.py, then tools/promo.py makes the vertical Short.",
+ "story": "stories/long/b29.json",
+ "title_on_last": false,
+ "intro": {
+  "title": "",
+  "mode": "action",
+  "sentences": [
+   "In 1944, three damaged B-29s land in the Soviet Union.",
+   "Stalin never gives them back.",
+   "He orders his designers to copy the B-29, as soon as possible."
+  ],
+  "shots": [
+   {"s": 1, "film": "tokyo", "from": 1041, "to": 1047},
+   {"s": 2, "file": "Joseph_Stalin_1945.jpg", "zoom": 1.2, "y": 0.25},
+   {"s": 3, "film": "tokyo", "from": 991, "to": 996, "note": "COPY IT"}
+  ]
+ }
+}
