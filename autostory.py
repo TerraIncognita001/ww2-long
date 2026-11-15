@@ -289,6 +289,35 @@ def shape(d, text):
             c["beats"] = beats
 
 
+def rehearse(d):
+    """Andrii's rules (Nov 15: a photo <= 10 s, <= 2 times, >= 6 pictures a minute) tried on an estimated timeline
+    (2.45 words a second): a story that would be refused at the render is skipped now, and the next topic tried."""
+    import longform as L
+    voices = []
+    for c in L.chapters(d):
+        t, starts = 0.0, []
+        for s in c["sentences"]:
+            starts.append(t)
+            t += len(plain(s).split()) / 2.45 + 0.35
+        voices.append(("x.mp3", [], t, starts))
+    for c in L.chapters(d):
+        for b in c.get("beats") or []:
+            if b.get("quote"):
+                b["_len"] = len(b["quote"]["text"].split()) / 2.4 + 0.5
+    files = {s["file"] for c in L.chapters(d) for s in (c.get("shots") or []) + [x for b in c.get("beats") or []
+                                                                              for x in b.get("shots") or []] if s.get("file")}
+    files |= {p["file"] for p in d.get("pre") or [] if p.get("file")}
+    got = {f: (f, "") for f in files}
+    segs, _ = L.timeline(d, voices)
+    shots = L.plan(d, segs, {k: {**f, "path": k} for k, f in (d.get("films") or {}).items()}, got)
+    for c in L.chapters(d):
+        for b in c.get("beats") or []:
+            b.pop("_len", None)
+    bad = [f"photo over 10 s: {h}" for h in L.photo_holds(shots)[:3]] + L.variety(shots, segs)[:3]
+    if bad:
+        raise Skip(f"the rules fail on the rehearsal: {bad}")
+
+
 class Skip(Exception):
     """This topic cannot make a video by the rules: the next topic is tried."""
 
@@ -426,6 +455,7 @@ def make_one(topic):
     d["clips"] = shorts_of(d, d.pop("shorts", None), d["cover"])
     d.update({"priority": 99, "topic": title, "sources": [], "thumb": {"file": left}, "pronounce": {},
               "films": {}, "auto": True})
+    rehearse(d)                                        # the rules checked on a rehearsal edit before it is saved
     path = STORIES / (slug(title) + ".json")
     path.write_text(json.dumps(d, ensure_ascii=False, indent=1), encoding="utf-8")
     print("auto story written:", path)

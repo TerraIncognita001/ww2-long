@@ -428,13 +428,12 @@ def plan(d, segs, films, got):
             pool += [m for m in by[k_] if all(m is not x for x in pool)]
         nxt = [0]
 
-        def other(last):                               # the next picture of the chapter that is not `last` and
-            for limit in (PHOTO_USES, 99):             # not yet shown PHOTO_USES times in the video
-                for _ in range(len(pool)):
-                    m = pool[nxt[0] % len(pool)]
-                    nxt[0] += 1
-                    if str(m.get("path")) != str(last) and (m["kind"] != "photo" or uses(shots, m) < limit):
-                        return m
+        def other(last, limit=PHOTO_USES):             # the next picture of the chapter that is not `last` and
+            for _ in range(len(pool)):                 # not yet shown `limit` times in the video
+                m = pool[nxt[0] % len(pool)]
+                nxt[0] += 1
+                if str(m.get("path")) != str(last) and (m["kind"] != "photo" or uses(shots, m) < limit):
+                    return m
             return None
         for i, (a, b) in enumerate(zip(sent, ends), start=g.get("first", 0)):
             items = list(by.get(i) or [])
@@ -444,6 +443,10 @@ def plan(d, segs, films, got):
                     last["dur"] += b - a
                     continue
                 m = other(last.get("path") if last else None) if pool else None
+                if not m and last and run_of(shots) + (b - a) <= PHOTO_MAX:   # no fresh picture: hold up to 10 s
+                    last["dur"] += b - a
+                    continue
+                m = m or (other(last.get("path") if last else None, 99) if pool else None)   # else a 3rd showing
                 if m:
                     items = [m]
                 elif last:
@@ -452,7 +455,8 @@ def plan(d, segs, films, got):
                 else:
                     continue
             while pool and (b - a) / len(items) > PHOTO_FILL and items[-1]["kind"] == "photo":
-                m = other(items[-1].get("path"))
+                m = other(items[-1].get("path")) or \
+                    (other(items[-1].get("path"), 99) if (b - a) / len(items) > PHOTO_MAX else None)
                 if not m:
                     break
                 items.append(m)
