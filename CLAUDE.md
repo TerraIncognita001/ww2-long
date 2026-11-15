@@ -180,15 +180,23 @@ The Shorts are ADS for the long video: 2 TEASERS per long video, each <= 15 s (p
 DIFFERENT chapter (not the intro): the most surprising fact of that chapter told in 3 short narrator sentences
 (present tense, facts of the story), CUT BEFORE THE ANSWER. Samples: `docs/promo/b29.json` (+ `*_src.json`):
 'STALIN KEPT 3 B-29 BOMBERS' (PART V, 'WHAT DID HE BUILD?', 14.9 s), 'NO GUNS ON THE B-29?' (PART VII, LeMay
-revealed, 'DID IT WORK?', 13.4 s).
+revealed, 'DID IT WORK?', 13.4 s), 'THE B-29: A BOMBER ON FIRE' (PART III, '150 BOMBERS IN 5 WEEKS. HOW?', 14.6 s).
 - Source: a 16:9 piece rendered by `python tools/intro_render.py docs/promo/<x>_src.json` (story + 3 sentences +
   their shots, `title_on_last: false`; a person enters with `reveal` starting near the face so it shows in time);
   `cp work/captions.srt work/promo/<x>_src.srt`; cut from 0 to the voice's end (~10-12 s).
-- `python promo.py docs/promo/<long>.json`: 1080x1920, the frame whole in the middle on its blurred copy, top words
-  (2 lines, '|' = new line) with the topic's NAME on red (`key` without '?'), captions of up to 3 words, then 3 s
-  END CARD: the frame dark + blurred, the long video's OWN THUMBNAIL in the middle, the open question above
-  ('WHAT DID HE BUILD?'), 'PART V · STALIN'S COPY' (where the answer is), 'FULL VIDEO · 13 MIN' on red, 'LINK BELOW' +
-  a red arrow down at YouTube's related-video link. Set 'Related video' = the long video in Studio BY HAND (no API).
+- THE SHORTS DESIGN (Andrii, Nov 15: 'хай відтепер шортс виглядають саме так' = the B-29 teasers, model
+  `work/promo/b29_d_seattle.mp4`): `python promo.py docs/promo/<long>.json` -> 1080x1920, the 16:9 frame whole in the
+  middle on its blurred copy; TOP WORDS 2 lines ('|' = new line) in the long video's STAMP font (Bebas Neue 150, no
+  edge, slightly see-through, soft shadow) in WHITE, the topic's NAME in the stamps' RED (`key`, written without
+  '?' or ':'); captions of up to 3 words in the same white Bebas with a dense shadow; then a 3 s END CARD: the frame
+  dark + blurred, the long video's OWN THUMBNAIL in the middle, ABOVE it ONE hook (`cta`):
+    number    {'big': '150', 'line': 'BOMBERS IN 5 WEEKS. HOW?'}  - a number of the answer, huge in red (the model);
+    redacted  {'line': 'STALIN BUILDS THE', 'hidden': 'TU-4'}     - the answer blacked out, a red CLASSIFIED stamp;
+    question  (`end`: 'WHAT DID HE BUILD?')                       - when the chapter has no number or name to hide;
+    timestamp {'at': '6:18'}                                      - 'THE ANSWER: 6:18' (the chapter's time);
+  the 2 teasers of one long video use 2 DIFFERENT hooks; under the thumbnail 'PART V · STALIN'S COPY' (where the
+  answer is), 'FULL VIDEO · 13 MIN' (the minutes in red), 'LINK BELOW' + a red arrow down at YouTube's
+  related-video link. Set 'Related video' = the long video in Studio BY HAND (no API).
 - Dropped: the intro cut as a promo (A, Nov 15), the 25-60 s cuts of clips.py (Nov 10-14).
 - NOT YET automatic: the story field `promos`, the render in the run and the upload on the release day.
 ## (old) SHORTS FROM EVERY LONG VIDEO (Andrii, Nov 10: 'the Yamato examples are ideal, keep this')

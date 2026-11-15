@@ -1,4 +1,4 @@
-"""PROMO SHORTS (Andrii, Nov 15: the Shorts are ADS for the long video: <= 15 s, the point = 'the main thing is in
+"""PROMO SHORTS = THE SHORTS DESIGN from Nov 15 on (CLAUDE.md, PROMO TEASERS; Andrii, Nov 15: the Shorts are ADS for the long video: <= 15 s, the point = 'the main thing is in
 the long version'). Replaces the old 25-60 s cuts of clips.py.
 A promo = a 16:9 piece (the long video's intro, or a 3-sentence teaser rendered by tools/intro_render.py) cut
 from..to, vertical 1080x1920: the frame whole in the middle on its blurred copy, 2-4 top words with the topic's
