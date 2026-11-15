@@ -90,6 +90,7 @@ def main(path):
     films = {k: {**f, "path": P.film_file(k, f)} for k, f in (d.get("films") or {}).items()}
     names = list(dict.fromkeys([s["file"] for s in intro["shots"] if s.get("file")] + [d["thumb"]["file"]]))
     got = {n: L.commons_photo(n) for n in names}
+    L.say_minutes({"chapters": [intro]}, 13)          # the B-29 video is 13 min (the real run: longform.make_video)
     voice = L.narrate({**d, "chapters": [intro]})[0]
     # the pre block: no narrator
     shots, segs, t = [], [], 0.0

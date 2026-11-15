@@ -107,8 +107,8 @@ archive film + photos only, no AI pictures).
 - Title: 'The ENTIRE History of the <X> in <N> Minutes' (N = the real length, rounded down), or 'The <War> Explained
   in <N> Minutes' for a whole war.
 - Length 12-17 min, ~1,900-2,300 words, PRESENT tense ('In February 1941, a German general lands in Tripoli...').
-- Cold open = one odd, visible detail (Rommel's wooden tanks on Volkswagens), then 'This is the entire history of
-  <X>.' Then 7-10 chapters in time order with on-screen titles ('Italy's Desert Collapse', 'Rats of Tobruk'), from
+- Cold open = one odd, visible detail (Rommel's wooden tanks on Volkswagens), ending on the 'From... to..., in {N}
+  minutes.' line (INTRO below; was 'This is the entire history of <X>.' until Nov 14). Then 7-10 chapters in time order with on-screen titles ('Italy's Desert Collapse', 'Rats of Tobruk'), from
   the creation to the end; each chapter opens on a re-hook.
 - On screen: the key names and numbers in Bebas Neue (as the title card; Permanent Marker until Nov 14) with a red underline ('ERWIN ROMMEL',
   '130,000 PRISONERS'); simple maps (plain land, red route line) between the archive shots.
@@ -126,8 +126,11 @@ archive film + photos only, no AI pictures).
 ## INTRO = THE HOOK (Andrii, Nov 14: maket A saved; a 2nd candidate from a reference is being built)
 Chapter 0 of every story = a ~30 s intro (70-85 words, mode action) that tells the whole video in short:
 1 sentence = the odd, visible detail with date + place (the hook); then ONE sentence per main chapter, each a
-promise of what the video shows (the cost, the crash, the copy, the raid, the bomb); last: 'This is the entire
-history of <X>.' -> the title card. Cuts every ~2.5-3 s, a shot from that chapter for each sentence, a Bebas note
+promise of what the video shows (the cost, the crash, the copy, the raid, the bomb); LAST LINE (Andrii, Nov 14,
+'idea 1'): 'From <the first fact> to <the last / most famous fact>, in {N} minutes.' ('From a burning prototype over
+Seattle to the sky over Hiroshima, in {N} minutes.') = the whole span + the title's 'N minutes'; longform.say_minutes
+says {N} in words (guess, then the real length: chapter 0 is voiced again if the guess was off; the title takes the
+spoken N) -> the title card names the subject. Cuts every ~2.5-3 s, a shot from that chapter for each sentence, a Bebas note
 with the red underline on 3-4 of them, PLACE · DATE labels. Every sentence = a fact of the story's own text.
 Maket A: `docs/intro/maket_a_b29.json` (B-29, 83 words, 31.6 s). Candidate 2 (HISTORY 'The Minutes that Changed World War II'):
 `docs/intro/cand2_b29.json` (51 s): `pre` = ~15 s of film with NO narrator: SFX, the DATE then the PLACE huge in dark red (`stamp`), the period recording's own voice (`audio` from `period_audio`, Commons PD; Truman's Aug 1945 newsreel) with its source in small letters (`source`); then the narrator goes back to how it came to this, a tall portrait revealed by a slow tilt medals -> face (`reveal` [y_from, y_to]) while the name is said. `python tools/intro_render.py <file>` renders either. Not yet in check()/autostory/clips: waits for

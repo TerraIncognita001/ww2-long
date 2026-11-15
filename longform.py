@@ -728,6 +728,19 @@ def fill_minutes(d, n):
             c["text"] = [str(x).replace("{N}", str(n)) for x in c["text"]]
 
 
+NUM_WORD = ("zero one two three four five six seven eight nine ten eleven twelve thirteen fourteen fifteen sixteen "
+            "seventeen eighteen nineteen twenty").split()
+
+
+def say_minutes(d, n):
+    """Andrii, Nov 14: the intro ends 'From <first fact> to <last fact>, in {N} minutes.' -> the minutes in words.
+    The story keeps '{N}' in `said_n` so the line can be said again with the real length."""
+    for c in chapters(d):
+        if any("{N}" in s for s in c["sentences"]) or c.get("said_n"):
+            c.setdefault("said_n", list(c["sentences"]))
+            c["sentences"] = [s.replace("{N}", NUM_WORD[n] if n < len(NUM_WORD) else str(n)) for s in c["said_n"]]
+
+
 def minutes_guess(d):
     """The length before a render (the `thumbs` command): ~148 words a minute (B-29: 1,895 words = 13.4 min) + the cards and the outro."""
     words = len(" ".join(all_sentences(d)).split())
@@ -825,15 +838,24 @@ def metadata(d, topic, credits, marks, translations):
 # ---- the video ------------------------------------------------------------------------------------------
 def make_video(d):
     from concurrent.futures import ThreadPoolExecutor
+    said = minutes_guess(d)
+    say_minutes(d, said)                               # '{N}' in the intro's last line: the guess first
     with stage("voice + pictures"), ThreadPoolExecutor(max_workers=1) as ex:
         voices = ex.submit(narrate, d)
         films, got = fetch_media(d)
         voices = voices.result()
     segs, total = timeline(d, voices)
+    if any(c.get("said_n") for c in chapters(d)) and int(total // 60) != said:
+        said = int(total // 60)                        # the guess was off: the line is said again with the real one
+        say_minutes(d, said)
+        print("minutes said again:", said)
+        voices = narrate(d)
+        segs, total = timeline(d, voices)
     if "{N}" in d["title"]:                            # The Entire War: '... in {N} Minutes' = the real length
+        n = said if any(c.get("said_n") for c in chapters(d)) else int(total // 60)   # = what the narrator says
         d.setdefault("key", d["title"])
-        d["title"] = d["title"].replace("{N}", str(int(total // 60)))
-        fill_minutes(d, int(total // 60))
+        d["title"] = d["title"].replace("{N}", str(n))
+        fill_minutes(d, n)
         print("title:", d["title"])
     shots = plan(d, segs, films, got)
     chs = chapters(d)

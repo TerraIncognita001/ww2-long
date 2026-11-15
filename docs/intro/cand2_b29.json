@@ -22,8 +22,7 @@
    "Five months earlier, more than three hundred of them burn out a quarter of Tokyo, in a single night.",
    "The man who sends them in low, at night, and without their guns, is Major General Curtis LeMay.",
    "It is the most expensive weapon of the war, costing more than the atomic bomb itself.",
-   "Two years earlier, a prototype catches fire, and crashes into Seattle.",
-   "This is the entire history of the B-29 Superfortress."
+   "From a burning prototype over Seattle to the sky over Hiroshima, in {N} minutes."
   ],
   "shots": [
    {"s": 1, "file": "B-29_Enola_Gay_w_Crews.jpg", "note": "ENOLA GAY"},
@@ -31,7 +30,8 @@
    {"s": 3, "file": "Curtis_LeMay_(USAF).jpg", "reveal": [0.72, 0.26], "name": "CURTIS LEMAY", "role": "COMMANDER, MARIANAS"},
    {"s": 4, "film": "birth", "from": 433, "to": 439, "note": "THREE BILLION DOLLARS"},
    {"s": 5, "film": "birth", "from": 490, "to": 493, "label": "SEATTLE · 1943"},
-   {"s": 6, "film": "tokyo", "from": 943, "to": 947.5, "sfx": "plane_flyby"}
+   {"s": 5, "film": "airwar", "from": 704, "to": 707.8},
+   {"s": 5, "film": "tokyo", "from": 943, "to": 947.5, "sfx": "plane_flyby"}
   ]
  }
 }
