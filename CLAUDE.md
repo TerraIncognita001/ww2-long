@@ -153,6 +153,23 @@ pictures with the stamps (no film, no speech: those are hand-picked). Tried and 
 ..., in N minutes' last line (longform.say_minutes stays for '{N}' in sentences), the speech under the explosions from
 second 0 (Andrii: keep the explosions, the speech alone in the silence at the PLACE).
 
+## VIDEO STANDARDS (Andrii, Nov 15, after the bot's own Korean War test: 'така якість недопустима') - HARD RULES
+In the code: a video that breaks them is NOT made (make_video / check() stop the run; autostory tries the next
+topic, up to 4).
+1. A PHOTO NEVER LONGER THAN 10 s on screen (its closer crops count): plan() fills a sentence without a picture with
+   the chapter's other pictures (aim 8 s); photo_holds() refuses the render otherwise.
+2. A PERIOD SPEECH IN EVERY VIDEO (Entire War format): a KNOWN person (head of state, general, minister, famous
+   reporter) speaking DIRECTLY about the topic, in the intro (`pre`, `period_audio` with `speaker`). By hand: Commons /
+   NARA + a spectrogram. Bot: speech.py (Commons audio search, Gemini LISTENS: who, about the topic, the seconds of one
+   6-9 s sentence; loudness/silence check). No speech = no video on that topic (searched before the script).
+3. VARIETY + THE RIGHT INTRO (rule 3 of the proposals): a photo at most 2 times per video (PHOTO_USES); at least 6
+   different pictures in every minute of narration (PER_MIN; a film's moments 5 s apart and maps count); autostory
+   wants ~1 picture per 10 s of a chapter (its own subject photos fill first). The intro's DATE/PLACE stamps = the
+   moment of sentence 1, of the topic itself (the Korean War test showed 'AUGUST 15 1945 / HIROSHIMA').
+Proposed, NOT chosen by Andrii (Nov 15): forbidden picture types (drawings, text pages, scanned maps, colour after
+1950) as a hard Gemini filter; shortening a too-long teaser instead of dropping it; his OK before an auto story is
+published; 30 % archive film. NOTE: without the OK rule a passing auto story is published by the cron by itself.
+
 ## THE THUMBNAIL STANDARD (Andrii, Nov 10: 'format 2, text 3') - HARD RULE
 Every video's thumbnail = ONE PHOTO + WORDS (thumbs.py `photo` / house_photo): the story's most dramatic picture
 full-bleed (colorized, or color 'tone' when DDColor gives odd colours), darkened at the top, vignette; 1-2 lines of

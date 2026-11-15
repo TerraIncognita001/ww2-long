@@ -88,7 +88,9 @@ def rules(topic):
         "the story's most famous moment first (sentence 1 = what the viewer has just seen happen at that date and "
         "place), then one sentence per main chapter going back to how it came to this, then as its LAST sentence "
         "'This is the entire history of <name>.' (said over the title card). 'intro' = that moment as the screen "
-        "shows it before the narrator: date ('AUGUST 6'), year ('1945'), place ('HIROSHIMA'), all in the article. "
+        "shows it before the narrator: date ('AUGUST 6'), year ('1945'), place ('HIROSHIMA'), all in the article "
+        "AND all written in sentence 1; the moment belongs to the topic itself (the Korean War: its start on 25 June "
+        "1950 at the 38th parallel, not an event of another war). "
         "Then 7-10 "
         "chapters in time order with short titles (2-4 words), each 8-14 sentences; mode 'people' for decisions and "
         "leaders, 'action' for battles. Open each chapter with a re-hook. The last chapter ends with a quiet closing "
@@ -172,7 +174,7 @@ def pictures(d, topic):
     Nov 15: CHAPTER BY CHAPTER (jurgen's finder was built for a 60 s Short: <= 30 pictures and one Gemini look at
     <= 36 for the whole story = ~8 sentences with a picture out of 130). Each chapter: its own Commons searches
     ('visuals') + the subject's category, one Gemini look; a picture is used in one chapter only."""
-    files, subj, covers, used = {}, [], [], set()
+    files, subj, covers, used, local = {}, [], [], set(), {}
     for k, c in enumerate(d["chapters"]):
         sents = [plain(s) for s in c["sentences"]]
         vis = (c.get("visuals") or [])[:len(sents)]
@@ -195,9 +197,11 @@ def pictures(d, topic):
                 files[(k, n)] = names
                 used.update(names)
         subj += [name_of[str(x)] for x in subject if str(x) in name_of and name_of[str(x)] not in subj]
+        local[k] = [name_of[str(x)] for x in subject if str(x) in name_of]   # this chapter's own subject photos
         if flat.get("_cover") and str(flat["_cover"]) in name_of:
             covers.append(name_of[str(flat["_cover"])])
         print(f"chapter {k}: {sum(1 for (ck, _) in files if ck == k)} of {len(sents)} sentences with a picture")
+    pictures.local = local
     return files, subj, (covers[0] if covers else None)
 
 
@@ -253,7 +257,7 @@ def make_one(topic):
     files, subj, cover = pictures(d, title)
     if len(files) < 15 or not subj:
         raise Skip(f"too few pictures ({len(files)} sentences, {len(subj)} subject photos)")
-    pool, k = subj[:], 0
+    pool, k, shown = subj[:], 0, set()
     for ci, c in enumerate(d["chapters"]):
         shots = []
         for i in range(len(c["sentences"])):
@@ -262,19 +266,24 @@ def make_one(topic):
                 got, k = [pool[k % len(pool)]], k + 1
             for f in got or []:
                 shots.append({"s": i + 1, "file": f})
-        have = {s["file"] for s in shots}              # Andrii, Nov 15: no photo > 10 s -> >= 3 pictures a chapter
+        have = {s["file"] for s in shots}              # Andrii, Nov 15: a photo <= 10 s and <= 2 times, >= 6
+        need = max(3, -(-len(c["sentences"]) * 65 // 100))   # pictures a minute -> ~1 picture per 10 s of voice
         free = [i for i in range(len(c["sentences"])) if not files.get((ci, i)) and i]
-        for i in free[1::2]:
-            if len(have) >= 3 and len(have) * 3 >= len(c["sentences"]):
+        mine = [x for x in getattr(pictures, "local", {}).get(ci, []) if x not in have]
+        for i in free:                                 # this chapter's subject photos first, then the story's
+            if len(have) >= need:
                 break
-            f = next((x for x in pool[k:] + pool[:k] if x not in have), None)
+            f = mine.pop(0) if mine else next((x for x in pool[k:] + pool[:k] if x not in have and x not in shown), None)
             if not f:
                 break
-            k = (pool.index(f) + 1) % len(pool)
+            if f in pool:
+                k = (pool.index(f) + 1) % len(pool)
             shots.append({"s": i + 1, "file": f})
             have.add(f)
-        if len(have) < 3:
-            raise Skip(f"chapter {ci}: only {len(have)} pictures (a photo would stay over 10 s)")
+        if len(have) < need:
+            raise Skip(f"chapter {ci}: {len(have)} pictures for {len(c['sentences'])} sentences (want {need}: "
+                       "a photo <= 10 s, <= 2 times, 6 a minute)")
+        shown.update(have)
         c["shots"] = sorted(shots, key=lambda s: s["s"])
         c.pop("visuals", None)
     for c in d["chapters"]:                            # marker notes: only words that are in their sentence
@@ -302,8 +311,10 @@ def make_one(topic):
                 c["shots"].sort(key=lambda s: s["s"])
     intro = d.pop("intro", None)                       # INTRO rule (Nov 15): film-less here: the cold open's own
     pics = [s["file"] for s in d["chapters"][0]["shots"] if s.get("file")]   # pictures under the DATE / PLACE stamps
+    s1 = plain(d["chapters"][0]["sentences"][0]).lower()   # rule 3 (Nov 15): the stamps = the moment sentence 1
     if isinstance(intro, dict) and len(pics) >= 2 and intro.get("year") and intro.get("place") and \
-            str(intro["year"]) in text and str(intro["place"]).lower() in text.lower():   # facts of the article
+            str(intro["year"]) in text and str(intro["place"]).lower() in text.lower() and \
+            str(intro["year"]) in s1 and str(intro["place"]).lower() in s1:   # names (Korea: not HIROSHIMA 1945)
         date = str(intro.get("date") or "").upper()[:20]
         stamp1 = [date, str(intro["year"])[:9]] if date else [str(intro["year"])[:9]]
         d["pre"] = [{"dur": 2.6, "file": pics[0], "sfx": "explosion_far"},

@@ -32,6 +32,8 @@ PAUSE = float(env("L_PAUSE", "0.75"))                   # pauses kept up to this
 SHOT_MAX = {"action": float(env("L_SHOT_ACTION", "4.0")), "people": float(env("L_SHOT_PEOPLE", "7.5"))}
 FIRST_MAX = 2.4                                         # the first shot of the video
 PHOTO_MAX, PHOTO_FILL = 10.0, 8.0                       # Andrii, Nov 15 (HARD): a photo <= 10 s; plan() aims at 8
+PHOTO_USES, PER_MIN = 2, 6                              # Andrii, Nov 15 (HARD, rule 3): a photo <= 2 times a video,
+                                                        # >= 6 different pictures in every minute of narration
 TITLE_S, CARD_S, GAP_S, OUTRO_S = 4.5, 3.2, 0.5, float(env("L_OUTRO", "12"))   # outro = room for the end screen
 WORDS_LO, WORDS_HI = 1400, 2600                         # ~140 words a minute: 10-18 min
 NUM_WORDS, NUM_MAX = 33, 3                              # Andrii's standard: at most 3 numbers in ~12 s of speech
@@ -367,12 +369,13 @@ def plan(d, segs, films, got):
             pool += [m for m in by[k_] if all(m is not x for x in pool)]
         nxt = [0]
 
-        def other(last):                               # the next picture of the chapter that is not `last`
-            for _ in range(len(pool)):
-                m = pool[nxt[0] % len(pool)]
-                nxt[0] += 1
-                if str(m.get("path")) != str(last):
-                    return m
+        def other(last):                               # the next picture of the chapter that is not `last` and
+            for limit in (PHOTO_USES, 99):             # not yet shown PHOTO_USES times in the video
+                for _ in range(len(pool)):
+                    m = pool[nxt[0] % len(pool)]
+                    nxt[0] += 1
+                    if str(m.get("path")) != str(last) and (m["kind"] != "photo" or uses(shots, m) < limit):
+                        return m
             return None
         for i, (a, b) in enumerate(zip(sent, ends)):
             items = list(by.get(i) or [])
@@ -426,6 +429,43 @@ def run_of(shots):
             break
         t += sh["dur"]
     return t
+
+
+def uses(shots, m):
+    """How many times a photo has appeared so far (separate runs on screen; its closer crops are the same run)."""
+    p, n, prev = str(m.get("path")), 0, None
+    for sh in shots:
+        cur = str(sh.get("path")) if sh["kind"] == "photo" else None
+        if cur == p and prev != p:
+            n += 1
+        prev = cur
+    return n
+
+
+def variety(shots, segs):
+    """Andrii, Nov 15 (HARD, rule 3): no photo shown more than PHOTO_USES times; every minute of narration at least
+    PER_MIN different pictures (a film's moments count apart, maps count) -> list of problems."""
+    out = []
+    seen = {}
+    for sh in shots:
+        if sh["kind"] == "photo":
+            seen[str(sh.get("path"))] = uses(shots, sh)
+    over = [(pathlib.Path(p).name[:50], n) for p, n in seen.items() if n > PHOTO_USES]
+    if over:
+        out.append(f"photos shown more than {PHOTO_USES} times: {over[:6]}")
+    talk = [sh for sh in shots if sh["kind"] in ("photo", "film", "map")]
+    for g in [g for g in segs if g["kind"] == "voice" and g["dur"] >= 60]:
+        t = g["start"]
+        while t + 60 <= g["start"] + g["dur"] + 0.01:
+            keys = {(str(sh.get("path")), round(sh.get("ss", 0)) // 5 if sh["kind"] == "film" else 0,
+                     json.dumps(sh.get("spec"), sort_keys=True)[:80] if sh["kind"] == "map" else "")
+                    for sh in talk if sh["start"] < t + 60 and sh["start"] + sh["dur"] > t}
+            if len(keys) < PER_MIN:
+                out.append(f"chapter {g['chapter']}: {len(keys)} pictures in the minute from {t / 60:.1f} min "
+                           f"(want {PER_MIN})")
+                break
+            t += 30
+    return out
 
 
 def photo_holds(shots):
@@ -1111,6 +1151,9 @@ def make_video(d):
     if holds:                                          # Andrii, Nov 15: such a video is not made at all
         raise SystemExit(f"a photo longer than {PHOTO_MAX:.0f} s (start s, seconds, file): {holds[:8]} -> "
                          "more pictures for these sentences")
+    poor = variety(shots, segs) if env("L_INTRO_ONLY") != "1" else []
+    if poor:                                           # Andrii, Nov 15 (rule 3): not made either
+        raise SystemExit(f"too little variety: {poor[:6]} -> more pictures")
     chs = chapters(d)
     for sh in shots:                                   # cards: the chapter's first picture; title/outro: the thumb
         if sh["kind"] in ("title", "outro"):
