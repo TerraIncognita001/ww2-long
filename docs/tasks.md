@@ -27,7 +27,8 @@
 ## Відкрите — історії (черга)
 
 - [x] **P1** Інтро, кандидат 2 (14.11): інтро HISTORY «The Minutes that Changed World War II» розібрано посекундно, зібрано на B-29: `docs/intro/cand2_b29.json`, рендер `python tools/intro_render.py docs/intro/cand2_b29.json` (51 с: 15 с хроніки без диктора — червоні ДАТА/МІСЦЕ, голос Трумена з підписом джерела; далі диктор + портрет LeMay з панорамою знизу вгору)
-- [ ] **P1** Вибір між макетом A і кандидатом 2 → правило в `check()`, `autostory.py`, Short 1
+- [x] **P1** 15.11 обрано кандидат 2 → ПРАВИЛО INTRO у `CLAUDE.md`; у `longform.py`: `pre` (хроніка без диктора), `stamp`, `hush` + промова доби (`period_audio`), `source`, `reveal`, остання фраза разом із титром (`title_on_last`); `check()` і `autostory.py` (дата/місце від Gemini)
+- [ ] **P1** Кожна нова історія: `pre` + промова доби з Commons/NARA, де вона є (спектрограма перед нарізкою)
 - [ ] **P1** До пн 16.11: 1–2 готові історії Entire War, написані й перевірені за повними статтями (Afrika Korps, Tiger)
 - [ ] **P1** Тримати запас на 2 випуски вперед (рутина на кшталт 'Daily jurgen scripts': одна історія раз на ~2 дні)
 - [ ] **P2** Наступні теми Entire War: U-boat, Kamikaze, Luftwaffe, Red Army, US Marines, Kriegsmarine, Sherman
