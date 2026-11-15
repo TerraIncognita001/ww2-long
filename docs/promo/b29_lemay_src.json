@@ -1,0 +1,19 @@
+{
+ "note": "Promo teaser 2 source (Nov 15): LeMay's gamble (PART VII) in 3 sentences, cut before the result.",
+ "story": "stories/long/b29.json",
+ "title_on_last": false,
+ "intro": {
+  "title": "",
+  "mode": "action",
+  "sentences": [
+   "In 1945, an American general orders the guns taken out of his own bombers.",
+   "His bombers will go in at night, and low.",
+   "His name is Curtis LeMay."
+  ],
+  "shots": [
+   {"s": 1, "film": "tokyo", "from": 902, "to": 905},
+   {"s": 2, "film": "airwar", "from": 541, "to": 547},
+   {"s": 3, "file": "Curtis_LeMay_(USAF).jpg", "reveal": [0.5, 0.24], "name": "CURTIS LEMAY"}
+  ]
+ }
+}

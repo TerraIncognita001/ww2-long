@@ -173,9 +173,24 @@ The 4 videos released with the case file keep it on YouTube unless the new cover
 
 ## SHORTS FROM EVERY LONG VIDEO - STOPPED (Andrii, Nov 14: 'Зупини вихід шорт відео для вв2лонг, їх треба переробити')
 `L_SHORTS=0` by default: no Shorts are made or uploaded, clips_for refuses. The 2 Göring Shorts scheduled for Nov 14
-were held private (tools/yt_hold.py), not deleted. NEXT (after the intro candidate is chosen): 10-second PROMO
-Shorts in the chosen intro's style; their one goal = send the viewer to the channel and make him want the long video.
-The old rule below is kept for history.
+were held private (tools/yt_hold.py), not deleted. The old rule below is kept for history.
+
+## PROMO TEASERS (Andrii, Nov 15: 'обираю твій тизер; на один лонг - два тизера') - HARD RULE
+The Shorts are ADS for the long video: 2 TEASERS per long video, each <= 15 s (promo.py refuses longer), each from a
+DIFFERENT chapter (not the intro): the most surprising fact of that chapter told in 3 short narrator sentences
+(present tense, facts of the story), CUT BEFORE THE ANSWER. Samples: `docs/promo/b29.json` (+ `*_src.json`):
+'STALIN KEPT 3 B-29 BOMBERS' (PART V, 'WHAT DID HE BUILD?', 14.9 s), 'NO GUNS ON THE B-29?' (PART VII, LeMay
+revealed, 'DID IT WORK?', 13.4 s).
+- Source: a 16:9 piece rendered by `python tools/intro_render.py docs/promo/<x>_src.json` (story + 3 sentences +
+  their shots, `title_on_last: false`; a person enters with `reveal` starting near the face so it shows in time);
+  `cp work/captions.srt work/promo/<x>_src.srt`; cut from 0 to the voice's end (~10-12 s).
+- `python promo.py docs/promo/<long>.json`: 1080x1920, the frame whole in the middle on its blurred copy, top words
+  (2 lines, '|' = new line) with the topic's NAME on red (`key` without '?'), captions of up to 3 words, then 3 s
+  END CARD: the frame dark + blurred, the long video's OWN THUMBNAIL in the middle, the open question above
+  ('WHAT DID HE BUILD?'), 'PART V · STALIN'S COPY' (where the answer is), 'FULL VIDEO · 13 MIN' on red, 'LINK BELOW' +
+  a red arrow down at YouTube's related-video link. Set 'Related video' = the long video in Studio BY HAND (no API).
+- Dropped: the intro cut as a promo (A, Nov 15), the 25-60 s cuts of clips.py (Nov 10-14).
+- NOT YET automatic: the story field `promos`, the render in the run and the upload on the release day.
 ## (old) SHORTS FROM EVERY LONG VIDEO (Andrii, Nov 10: 'the Yamato examples are ideal, keep this')
 On the day a long video is released, 2 Shorts about it go out on the same channel: released +30 min and +3 h after
 the long video (19:30 and 22:00 New York). clips.py cuts them from the rendered final.mp4 at the sentence times of
