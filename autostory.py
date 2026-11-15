@@ -151,28 +151,37 @@ def write(topic, text):
 
 
 def pictures(d, topic):
-    """{(chapter, sentence): [file names]}, subject files, cover file -> the story's shots and cover."""
-    sents, where = [], []
+    """{(chapter, sentence): [file names]}, subject files, cover file -> the story's shots and cover.
+    Nov 15: CHAPTER BY CHAPTER (jurgen's finder was built for a 60 s Short: <= 30 pictures and one Gemini look at
+    <= 36 for the whole story = ~8 sentences with a picture out of 130). Each chapter: its own Commons searches
+    ('visuals') + the subject's category, one Gemini look; a picture is used in one chapter only."""
+    files, subj, covers, used = {}, [], [], set()
     for k, c in enumerate(d["chapters"]):
-        for i, s in enumerate(c["sentences"]):
-            sents.append(plain(s))
-            where.append((k, i))
-    flat = {"headline": sents[0], "lines": sents[1:], "people": {},
-            "visuals": [{"sentence": str(n + 1), "search": v}
-                        for n, v in enumerate(v for c in d["chapters"] for v in (c.get("visuals") or []))][:len(sents)]}
-    cands = J.story_candidates(flat, {"articles": [topic]})
-    name_of = {str(p): n for p, n, c, h in cands}
-    credit_of = {p: c for p, n, c, h in cands}
-    hint_of = {p: h for p, n, c, h in cands}
-    by_sent, subject, _, _ = J.match_pictures([p for p, *_ in cands], [], {}, flat, {"articles": [topic]},
-                                              credit_of=credit_of, hint_of=hint_of)
-    files = {}
-    for n, ps in by_sent.items():
-        if 0 <= n < len(where):
-            files[where[n]] = [name_of[str(p)] for p in ps if str(p) in name_of][:2]
-    subj = [name_of[str(p)] for p in subject if str(p) in name_of]
-    cover = name_of.get(str(flat.get("_cover"))) if flat.get("_cover") else None
-    return files, subj, cover
+        sents = [plain(s) for s in c["sentences"]]
+        vis = (c.get("visuals") or [])[:len(sents)]
+        flat = {"headline": sents[0], "lines": sents[1:], "people": {},
+                "visuals": [{"sentence": str(n + 1), "search": v} for n, v in enumerate(vis)]}
+        try:
+            cands = J.story_candidates(flat, {"articles": [topic]})
+        except Exception as e:
+            print(f"chapter {k}: pictures failed: {type(e).__name__}")
+            continue
+        name_of = {str(p): n for p, n, cr, h in cands}
+        cands = [x for x in cands if x[1] not in used]
+        credit_of = {p: cr for p, n, cr, h in cands}
+        hint_of = {p: h for p, n, cr, h in cands}
+        by_sent, subject, _, _ = J.match_pictures([p for p, *_ in cands], [], {}, flat, {"articles": [topic]},
+                                                  credit_of=credit_of, hint_of=hint_of)
+        for n, ps in by_sent.items():
+            names = [name_of[str(x)] for x in ps if str(x) in name_of and name_of[str(x)] not in used][:2]
+            if 0 <= n < len(sents) and names:
+                files[(k, n)] = names
+                used.update(names)
+        subj += [name_of[str(x)] for x in subject if str(x) in name_of and name_of[str(x)] not in subj]
+        if flat.get("_cover") and str(flat["_cover"]) in name_of:
+            covers.append(name_of[str(flat["_cover"])])
+        print(f"chapter {k}: {sum(1 for (ck, _) in files if ck == k)} of {len(sents)} sentences with a picture")
+    return files, subj, (covers[0] if covers else None)
 
 
 def shorts_of(d, got, cover):

@@ -62,7 +62,7 @@ chapters = pastrak pacing (film 2-4 s, SFX up, music down). Story field `mode: "
 - Outputs (work/): final.mp4, cover.png (1280x720 thumbnail: dark fade, Bebas Neue words, flag), captions.srt
   (sentence cues), metadata.json (title, description with YouTube chapters, sources, credits, categoryId 27).
 - `python longform.py check story.json sources/*.txt` = facts hard against the FULL articles (numbers_ok, names_ok,
-  OVERCLAIM), shots, numbers per ~12 s. In the run the facts are soft (S.wiki_text stops at 20,000 characters).
+  OVERCLAIM), shots, numbers per ~12 s. In the run the facts are soft (the whole article since Nov 15: S.wiki_text limit 90,000).
 - Workflow `.github/workflows/long.yml`: cron Mon/Wed/Fri 15:05 UTC (PROPOSAL, ask Andrii), manual dry_run ->
   artifact 'long-video' (final.mp4 is ~400-700 MB: too big for a branch), publish_run=<run id> uploads that exact
   video (L_PUBLISH=1), film cache, state commit (used.json, stats.json).
@@ -121,18 +121,18 @@ archive film + photos only, no AI pictures).
   Story: "cover": {"file", "x", "y", "zoom", "variants": [<= 2 other pictures for Test & compare]}.
   Tried and dropped: yellow stencil + person cut out (archive portraits cut out badly and hide the object), fact
   lines, yellow text/boxes, slab/square fonts. thumbs.py `entire` + fonts stay in the code, not used.
-- Shorts (clips.py): STOPPED Nov 14 (see below), to be remade as 10 s promos.
+- Shorts: 2 PROMO TEASERS per long video (below; the old clips.py Shorts stopped Nov 14).
 
 ## INTRO (Andrii, Nov 15: 'candidate 2' chosen) - HARD RULE
 Model: HISTORY 'The Minutes that Changed World War II' (WWII with Tom Hanks), first 75 s analysed second by second.
-Built for B-29: docs/intro/cand2_b29.json (47 s); python tools/intro_render.py <story or candidate> renders only
-the intro through longform's own code. Maket A (docs/intro/maket_a_b29.json, a 30 s summary) is archived.
-1. pre (~12-15 s, NO narrator) = the story's most famous MOMENT as it happens, on archive FILM, cuts of 2.5-3.5 s:
+Built for B-29: `docs/intro/cand2_b29.json` (47 s); `python tools/intro_render.py <story or candidate>` renders only
+the intro through longform's own code. Maket A (`docs/intro/maket_a_b29.json`, a 30 s summary) is archived.
+1. `pre` (~12-15 s, NO narrator) = the story's most famous MOMENT as it happens, on archive FILM, cuts of 2.5-3.5 s:
    - 2.6 s film + a big SFX (explosion_far), no words;
-   - stamp ['AUGUST 6', '1945'] = the DATE in huge dark-red Bebas over the film (2.8 s, SFX on);
-   - stamp ['HIROSHIMA'] = the PLACE the same way (3.0 s) + hush: from here the music and SFX fade to nothing
-     in 0.5 s and the PERIOD SPEECH plays alone (udio {src, from, to} of period_audio {key: {file, credit}}),
-     its source in small letters at the bottom (source: 'PRESIDENT TRUMAN · NEWSREEL, AUGUST 1945'), over 1-2 more
+   - `stamp` ['AUGUST 6', '1945'] = the DATE in huge dark-red Bebas over the film (2.8 s, SFX on);
+   - `stamp` ['HIROSHIMA'] = the PLACE the same way (3.0 s) + `hush`: from here the music and SFX fade to nothing
+     in 0.5 s and the PERIOD SPEECH plays alone (`audio` {src, from, to} of `period_audio` {key: {file, credit}}),
+     its source in small letters at the bottom (`source`: 'PRESIDENT TRUMAN · NEWSREEL, AUGUST 1945'), over 1-2 more
      film shots of the moment; the sound comes back 1 s before the narrator.
    - SPEECHES WHEREVER POSSIBLE (Andrii): a recording of the time about THAT moment (a president, a general, a
      radio flash, a newsreel narrator) from Wikimedia Commons / NARA, public domain only; credit it. LOOK at a
@@ -141,15 +141,14 @@ the intro through longform's own code. Maket A (docs/intro/maket_a_b29.json, a 3
      the stamps and the SFX, no hush.
 2. The narrator (chapter 0, mode action, ~5-6 sentences, ~30 s): sentence 1 names what was just seen ('The airplane
    is a B-29 Superfortress, the Enola Gay.'), then goes back: ONE sentence per main chapter, each a fact the video
-   shows (the raid, the man, the cost, the crash); the key person enters with a portrait REVEAL (
-eveal
+   shows (the raid, the man, the cost, the crash); the key person enters with a portrait REVEAL (`reveal`
    [0.72, 0.26]: a slow tilt from the medals up to the face, one shot, never split) + the lower-third name; Bebas
    notes with the red underline on 1-2 of them, PLACE · DATE labels.
 3. LAST LINE 'This is the entire history of <X>.' is said OVER THE TITLE CARD that shows it ('THE ENTIRE HISTORY OF
-   / THE B-29 SUPERFORTRESS'): 	itle_on_last (default on with pre); the pictures of chapter 0 stop where it
+   / THE B-29 SUPERFORTRESS'): `title_on_last` (default on with `pre`); the pictures of chapter 0 stop where it
    starts; the card stays until 1.2 s after the voice (min 4.5 s).
-Every sentence and stamp = a fact of the story's own text (check() warns on a missing pre / stamps / speech / last
-line). autostory: Gemini gives intro {date, year, place} (must be in the article) -> pre on the cold open's own
+Every sentence and stamp = a fact of the story's own text (check() warns on a missing `pre` / stamps / speech / last
+line). autostory: Gemini gives `intro` {date, year, place} (must be in the article) -> `pre` on the cold open's own
 pictures with the stamps (no film, no speech: those are hand-picked). Tried and dropped (Nov 14-15): the 'From... to
 ..., in N minutes' last line (longform.say_minutes stays for '{N}' in sentences), the speech under the explosions from
 second 0 (Andrii: keep the explosions, the speech alone in the silence at the PLACE).

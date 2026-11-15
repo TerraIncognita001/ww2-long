@@ -326,7 +326,7 @@ class stage:
         TIMES[self.name] = TIMES.get(self.name, 0) + time.time() - self.t
 
 
-def gemini(prompt, ok, rounds=6, extra=None, purpose="script", models=None, read=90, tokens=None):
+def gemini(prompt, ok, rounds=6, extra=None, purpose="script", models=None, read=180, tokens=None):
     """JSON from Gemini. A 429/5xx puts that model on cooldown and moves to the next one at once; a used-up daily
     quota skips the model for the rest of the run. Waits only when every model is cooling down (exponential
     backoff with jitter, honours retryDelay). Every request is counted per purpose for the summary."""
