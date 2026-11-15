@@ -1,0 +1,19 @@
+{
+ "note": "Promo teaser 3 source (Nov 15): Fire in Seattle (PART III), cut before the Battle of Kansas.",
+ "story": "stories/long/b29.json",
+ "title_on_last": false,
+ "intro": {
+  "title": "",
+  "mode": "action",
+  "sentences": [
+   "In 1943, a B-29 prototype catches fire and crashes in Seattle.",
+   "Its test pilot and his ten-man crew are killed.",
+   "And its engines are the trouble."
+  ],
+  "shots": [
+   {"s": 1, "film": "birth", "from": 816, "to": 821, "sfx": "explosion_far"},
+   {"s": 2, "film": "birth", "from": 1170, "to": 1174},
+   {"s": 3, "film": "tokyo", "from": 851, "to": 856}
+  ]
+ }
+}

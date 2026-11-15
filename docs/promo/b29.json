@@ -32,6 +32,27 @@
    "part": "PART VII · LEMAY'S GAMBLE",
    "minutes": 13,
    "cover": "work/promo/b29_cover.png"
+  },
+  {
+   "id": "b29_d_seattle",
+   "name": "The B-29 prototype that crashed in Seattle",
+   "source": "work/intro/b29_seattle_src.mp4",
+   "from": 0.0,
+   "to": 11.6,
+   "srt": "work/promo/b29_seattle_src.srt",
+   "top": "THE B-29:|A BOMBER ON FIRE",
+   "key": [
+    "B-29"
+   ],
+   "end": "HOW DO THEY FIX IT?",
+   "cta": {
+    "kind": "number",
+    "big": "150",
+    "line": "BOMBERS IN 5 WEEKS. HOW?"
+   },
+   "part": "PART III · FIRE IN SEATTLE",
+   "minutes": 13,
+   "cover": "work/promo/b29_cover.png"
   }
  ]
 }
