@@ -326,7 +326,7 @@ class stage:
         TIMES[self.name] = TIMES.get(self.name, 0) + time.time() - self.t
 
 
-def gemini(prompt, ok, rounds=6, extra=None, purpose="script", models=None):
+def gemini(prompt, ok, rounds=6, extra=None, purpose="script", models=None, read=90, tokens=None):
     """JSON from Gemini. A 429/5xx puts that model on cooldown and moves to the next one at once; a used-up daily
     quota skips the model for the rest of the run. Waits only when every model is cooling down (exponential
     backoff with jitter, honours retryDelay). Every request is counted per purpose for the summary."""
@@ -338,9 +338,10 @@ def gemini(prompt, ok, rounds=6, extra=None, purpose="script", models=None):
             CALLS[purpose] = CALLS.get(purpose, 0) + 1
             try:
                 r = requests.post(f"https://generativelanguage.googleapis.com/v1beta/models/{model}:generateContent",
-                                  params={"key": os.environ["GEMINI_API_KEY"]}, timeout=(15, 90),
+                                  params={"key": os.environ["GEMINI_API_KEY"]}, timeout=(15, read),
                                   json={"contents": [{"parts": [{"text": prompt}] + (extra or [])}],
-                                        "generationConfig": {"responseMimeType": "application/json"}})
+                                        "generationConfig": {"responseMimeType": "application/json",
+                                                             **({"maxOutputTokens": tokens} if tokens else {})}})
                 if r.status_code == 429 and "PerDay" in r.text:
                     DEAD.add(model)
                     print(f"{model}: daily quota used up ({purpose}) -> next model")

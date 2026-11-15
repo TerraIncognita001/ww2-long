@@ -120,13 +120,22 @@ def ok(d):
 
 def probe(d):
     """The draft as check() sees a finished entire story (the pictures come later)."""
+    import copy                                        # the pictures come later: a shot per sentence for check()
+    d = copy.deepcopy(d)
+    for c in d.get("chapters") or []:
+        if isinstance(c, dict) and isinstance(c.get("sentences"), list):
+            c["shots"] = [{"s": i + 1, "file": "x"} for i in range(len(c["sentences"]))]
+    for n, g in enumerate(d.get("promos") or []):
+        if isinstance(g, dict):
+            g.setdefault("id", f"p{n + 1}")
+            g["shots"] = [{"s": 1, "file": "x"}]
     return {**d, "format": "entire", "thumb": {"file": "x"}, "cover": {"file": "x"}}
 
 
 def write(topic, text):
     import longform as L
     art = text[:24000]
-    d = S.gemini(rules(topic) + "\n\nARTICLE:\n" + art, ok, purpose="long script")
+    d = S.gemini(rules(topic) + "\n\nARTICLE:\n" + art, ok, purpose="long script", read=300, tokens=32768)
     for rnd in range(2):
         hard, soft = L.check(probe(d), text)
         print(f"auto script round {rnd + 1}: hard {hard} | soft {soft[:4]}")
@@ -134,7 +143,7 @@ def write(topic, text):
             return d
         d = S.gemini(rules(topic) + "\n\nARTICLE:\n" + art + "\n\nYOUR DRAFT:\n" + json.dumps(d, ensure_ascii=False)
                      + "\n\nFIX THESE PROBLEMS (remove or rewrite every fact that is not in the article; keep the "
-                     "length): " + "; ".join(hard + soft), ok, purpose="long editor")
+                     "length): " + "; ".join(hard + soft), ok, purpose="long editor", read=300, tokens=32768)
     hard, _ = L.check(probe(d), text)
     if hard:
         raise SystemExit(f"auto story check failed: {hard}")
