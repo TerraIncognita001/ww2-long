@@ -36,7 +36,7 @@ SEEDS = [   # exact English Wikipedia titles: whole subjects (The Entire War for
 ]
 J_KEYS = ('{"name": "the Afrika Korps", "title": "The ENTIRE History of the Afrika Korps in {N} Minutes", '
           '"question": "...", "summary": "...", "tags": ["..."], '
-          ''
+          '"intro": {"date": "FEBRUARY 12", "year": "1941", "place": "TRIPOLI"}, '
           '"shorts": [{"chapter": 0, "from": 1, "to": 5, "title": "...", "key": ["NAME"], "name": "..."}, ...], '
           '"chapters": [{"title": "", "mode": "action", "sentences": ["..."], "visuals": ["..."], '
           '"notes": ["", "ERWIN ROMMEL", ...], "map": {"sentence": 3, "places": ["Wikipedia title", ...], '
@@ -68,9 +68,11 @@ def rules(topic):
         "February 1941, a German general lands in Tripoli...'), no hype words, no 'you', no rhetorical questions "
         "except the last line.\n"
         "STRUCTURE: chapter 1 = cold open with title '' and mode 'action': 4-6 sentences, ONE odd, visible detail of "
-        "the story first (date + place in sentence 1), then as its LAST sentence 'From <the first fact of the story> "
-        "to <its last or most famous fact>, in {N} minutes.' ({N} stays as it is: the bot says the real minutes; e.g. "
-        "'From a burning prototype over Seattle to the sky over Hiroshima, in {N} minutes.'). Then 7-10 "
+        "the story's most famous moment first (sentence 1 = what the viewer has just seen happen at that date and "
+        "place), then one sentence per main chapter going back to how it came to this, then as its LAST sentence "
+        "'This is the entire history of <name>.' (said over the title card). 'intro' = that moment as the screen "
+        "shows it before the narrator: date ('AUGUST 6'), year ('1945'), place ('HIROSHIMA'), all in the article. "
+        "Then 7-10 "
         "chapters in time order with short titles (2-4 words), each 8-14 sentences; mode 'people' for decisions and "
         "leaders, 'action' for battles. Open each chapter with a re-hook. The last chapter ends with a quiet closing "
         "fact, then ONE final sentence: a debate question to the viewer that ends with 'Tell me what you think in "
@@ -221,6 +223,15 @@ def make():
                           and all(isinstance(x, int) and 0 <= x < len(ps) for x in r)]
                 c["shots"].append({"s": at, "map": {"places": ps, "routes": routes}})
                 c["shots"].sort(key=lambda s: s["s"])
+    intro = d.pop("intro", None)                       # INTRO rule (Nov 15): film-less here: the cold open's own
+    pics = [s["file"] for s in d["chapters"][0]["shots"] if s.get("file")]   # pictures under the DATE / PLACE stamps
+    if isinstance(intro, dict) and len(pics) >= 2 and intro.get("year") and intro.get("place") and \
+            str(intro["year"]) in text and str(intro["place"]).lower() in text.lower():   # facts of the article
+        date = str(intro.get("date") or "").upper()[:20]
+        stamp1 = [date, str(intro["year"])[:9]] if date else [str(intro["year"])[:9]]
+        d["pre"] = [{"dur": 2.6, "file": pics[0], "sfx": "explosion_far"},
+                    {"dur": 2.8, "file": pics[1], "stamp": stamp1},
+                    {"dur": 3.0, "file": pics[2 % len(pics)], "stamp": [str(intro["place"]).upper()[:14]]}]
     d.pop("thumb", None)
     left = cover or subj[0]
     d.pop("short", None)

@@ -107,9 +107,9 @@ archive film + photos only, no AI pictures).
 - Title: 'The ENTIRE History of the <X> in <N> Minutes' (N = the real length, rounded down), or 'The <War> Explained
   in <N> Minutes' for a whole war.
 - Length 12-17 min, ~1,900-2,300 words, PRESENT tense ('In February 1941, a German general lands in Tripoli...').
-- Cold open = one odd, visible detail (Rommel's wooden tanks on Volkswagens), ending on the 'From... to..., in {N}
-  minutes.' line (INTRO below; was 'This is the entire history of <X>.' until Nov 14). Then 7-10 chapters in time order with on-screen titles ('Italy's Desert Collapse', 'Rats of Tobruk'), from
-  the creation to the end; each chapter opens on a re-hook.
+- Cold open = the INTRO (below, HARD RULE): the most famous moment first, ending on 'This is the entire history of
+  <X>.' said over the title card. Then 7-10 chapters in time order with on-screen titles ('Italy's Desert Collapse',
+  'Rats of Tobruk'), from the creation to the end; each chapter opens on a re-hook.
 - On screen: the key names and numbers in Bebas Neue (as the title card; Permanent Marker until Nov 14) with a red underline ('ERWIN ROMMEL',
   '130,000 PRISONERS'); simple maps (plain land, red route line) between the archive shots.
 - THUMBNAIL (Andrii, Nov 10, 'A1' - after trying the Entire War look, a mix, colours and fonts) - HARD RULE:
@@ -123,18 +123,36 @@ archive film + photos only, no AI pictures).
   lines, yellow text/boxes, slab/square fonts. thumbs.py `entire` + fonts stay in the code, not used.
 - Shorts (clips.py): STOPPED Nov 14 (see below), to be remade as 10 s promos.
 
-## INTRO = THE HOOK (Andrii, Nov 14: maket A saved; a 2nd candidate from a reference is being built)
-Chapter 0 of every story = a ~30 s intro (70-85 words, mode action) that tells the whole video in short:
-1 sentence = the odd, visible detail with date + place (the hook); then ONE sentence per main chapter, each a
-promise of what the video shows (the cost, the crash, the copy, the raid, the bomb); LAST LINE (Andrii, Nov 14,
-'idea 1'): 'From <the first fact> to <the last / most famous fact>, in {N} minutes.' ('From a burning prototype over
-Seattle to the sky over Hiroshima, in {N} minutes.') = the whole span + the title's 'N minutes'; longform.say_minutes
-says {N} in words (guess, then the real length: chapter 0 is voiced again if the guess was off; the title takes the
-spoken N) -> the title card names the subject. Cuts every ~2.5-3 s, a shot from that chapter for each sentence, a Bebas note
-with the red underline on 3-4 of them, PLACE · DATE labels. Every sentence = a fact of the story's own text.
-Maket A: `docs/intro/maket_a_b29.json` (B-29, 83 words, 31.6 s). Candidate 2 (HISTORY 'The Minutes that Changed World War II'):
-`docs/intro/cand2_b29.json` (51 s): `pre` = ~15 s of film with NO narrator: SFX, the DATE then the PLACE huge in dark red (`stamp`), the period recording's own voice (`audio` from `period_audio`, Commons PD; Truman's Aug 1945 newsreel) with its source in small letters (`source`); then the narrator goes back to how it came to this, a tall portrait revealed by a slow tilt medals -> face (`reveal` [y_from, y_to]) while the name is said. `python tools/intro_render.py <file>` renders either. Not yet in check()/autostory/clips: waits for
-the choice between candidate A and candidate 2.
+## INTRO (Andrii, Nov 15: 'candidate 2' chosen) - HARD RULE
+Model: HISTORY 'The Minutes that Changed World War II' (WWII with Tom Hanks), first 75 s analysed second by second.
+Built for B-29: docs/intro/cand2_b29.json (47 s); python tools/intro_render.py <story or candidate> renders only
+the intro through longform's own code. Maket A (docs/intro/maket_a_b29.json, a 30 s summary) is archived.
+1. pre (~12-15 s, NO narrator) = the story's most famous MOMENT as it happens, on archive FILM, cuts of 2.5-3.5 s:
+   - 2.6 s film + a big SFX (explosion_far), no words;
+   - stamp ['AUGUST 6', '1945'] = the DATE in huge dark-red Bebas over the film (2.8 s, SFX on);
+   - stamp ['HIROSHIMA'] = the PLACE the same way (3.0 s) + hush: from here the music and SFX fade to nothing
+     in 0.5 s and the PERIOD SPEECH plays alone (udio {src, from, to} of period_audio {key: {file, credit}}),
+     its source in small letters at the bottom (source: 'PRESIDENT TRUMAN · NEWSREEL, AUGUST 1945'), over 1-2 more
+     film shots of the moment; the sound comes back 1 s before the narrator.
+   - SPEECHES WHEREVER POSSIBLE (Andrii): a recording of the time about THAT moment (a president, a general, a
+     radio flash, a newsreel narrator) from Wikimedia Commons / NARA, public domain only; credit it. LOOK at a
+     spectrogram before cutting (ffmpeg showspectrumpic): newsreel files often open on 20+ s of noise (Truman's
+     words start at 23.6 s of his file: the first cut was pure hiss). One sentence, 6-9 s. No speech found: keep
+     the stamps and the SFX, no hush.
+2. The narrator (chapter 0, mode action, ~5-6 sentences, ~30 s): sentence 1 names what was just seen ('The airplane
+   is a B-29 Superfortress, the Enola Gay.'), then goes back: ONE sentence per main chapter, each a fact the video
+   shows (the raid, the man, the cost, the crash); the key person enters with a portrait REVEAL (
+eveal
+   [0.72, 0.26]: a slow tilt from the medals up to the face, one shot, never split) + the lower-third name; Bebas
+   notes with the red underline on 1-2 of them, PLACE · DATE labels.
+3. LAST LINE 'This is the entire history of <X>.' is said OVER THE TITLE CARD that shows it ('THE ENTIRE HISTORY OF
+   / THE B-29 SUPERFORTRESS'): 	itle_on_last (default on with pre); the pictures of chapter 0 stop where it
+   starts; the card stays until 1.2 s after the voice (min 4.5 s).
+Every sentence and stamp = a fact of the story's own text (check() warns on a missing pre / stamps / speech / last
+line). autostory: Gemini gives intro {date, year, place} (must be in the article) -> pre on the cold open's own
+pictures with the stamps (no film, no speech: those are hand-picked). Tried and dropped (Nov 14-15): the 'From... to
+..., in N minutes' last line (longform.say_minutes stays for '{N}' in sentences), the speech under the explosions from
+second 0 (Andrii: keep the explosions, the speech alone in the silence at the PLACE).
 
 ## THE THUMBNAIL STANDARD (Andrii, Nov 10: 'format 2, text 3') - HARD RULE
 Every video's thumbnail = ONE PHOTO + WORDS (thumbs.py `photo` / house_photo): the story's most dramatic picture

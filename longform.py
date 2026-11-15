@@ -103,6 +103,23 @@ def check(d, text, facts_hard=True):
         past = sum(bool(re.search(r"\b(was|were|had)\b", s)) for s in ss)
         if past > len(ss) * 0.35:
             soft.append(f"entire: {past} of {len(ss)} sentences in the past tense (the format tells it in the present)")
+    if d.get("format") == "entire" or d.get("pre"):    # INTRO rule (Andrii, Nov 15: candidate 2)
+        pre = d.get("pre") or []
+        if not pre:
+            soft.append("intro: no `pre` (film with no narrator: DATE stamp, PLACE stamp, the period speech)")
+        elif sum(bool(p.get("stamp")) for p in pre) < 2:
+            soft.append("intro: `pre` wants 2 stamps: ['MONTH DAY', 'YEAR'] then ['PLACE']")
+        if pre and not any(p.get("audio") for p in pre):
+            soft.append("intro: no period speech in `pre` (add one when Commons has a recording of the moment)")
+        for p in pre:
+            if p.get("film") and p["film"] not in films:
+                hard.append(f"intro: `pre` shot of an unknown film: {p['film']}")
+            if p.get("audio") and p["audio"].get("src") not in (d.get("period_audio") or {}):
+                hard.append(f"intro: `pre` audio of an unknown recording: {p['audio'].get('src')}")
+        last = plain(chapters(d)[0]["sentences"][-1]) if chapters(d) else ""
+        if not re.search(r"entire history of|explained", last, re.I):
+            soft.append(f"intro: the last line '{last[:50]}' should be 'This is the entire history of <X>.' "
+                        "(said over the title card)")
     c = d.get("cover") or {}                           # Andrii, Nov 10: one photo + the topic's name + a fact
     if not c.get("file") or not c.get("text"):
         hard.append("no house thumbnail: story `cover` needs file + text (thumbs.py photo)")
@@ -204,6 +221,7 @@ def fetch_media(d):
     films = {k: {**f, "path": P.film_file(k, f)} for k, f in (d.get("films") or {}).items()}
     thumbs = [f for v in thumb_specs(d) for f in thumb_files(v)]
     names = list(dict.fromkeys([str(s["file"]) for c in chapters(d) for s in c.get("shots") or [] if s.get("file")]
+                               + [str(p["file"]) for p in d.get("pre") or [] if p.get("file")]
                                + [d["thumb"]["file"]] + thumbs))
     got = dict(zip(names, pmap(commons_photo, names, workers=3)))
     missing = [n for n in names if not got.get(n)]
@@ -240,18 +258,39 @@ def narrate(d):
 
 # ---- the timeline ---------------------------------------------------------------------------------------
 def timeline(d, voices):
-    """Segments in order: cold open (chapter 0) -> title card -> [chapter card -> chapter]... -> outro."""
+    """Segments in order: [pre: the film with no narrator] -> cold open (chapter 0) -> title card -> [chapter card ->
+    chapter]... -> outro. INTRO rule (Andrii, Nov 15): with `pre` the cold open's last line ('This is the entire
+    history of X.') is said over the title card that shows it (`title_on_last`, default on with `pre`)."""
     segs, t = [], 0.0
+    if d.get("pre"):
+        dur = sum(float(p["dur"]) for p in d["pre"]) + 0.3
+        segs.append({"kind": "pre", "start": 0.0, "dur": dur, "chapter": 0})
+        for p in d["pre"]:                             # a period voice heard over the film (not alone: no `hush`)
+            if p.get("_cut") and not p.get("hush"):
+                segs.append({"kind": "period", "start": p["_at"], "dur": p["_len"], "chapter": 0, "voice": p["_cut"]})
+        t = dur
+    on_last = d.get("title_on_last", bool(d.get("pre")))
     for k, (c, v) in enumerate(zip(chapters(d), voices)):
-        if k == 1:
+        if k == 1 and not on_last:
             segs.append({"kind": "title", "start": t, "dur": TITLE_S, "chapter": 1})
             t += TITLE_S
         if k >= 1:
             segs.append({"kind": "card", "start": t, "dur": CARD_S, "chapter": k})
             t += CARD_S
-        segs.append({"kind": "voice", "start": t, "dur": v[2] + GAP_S, "chapter": k, "voice": v[0],
-                     "sent": [t + x for x in v[3]], "mode": c.get("mode", "people")})
+        g = {"kind": "voice", "start": t, "dur": v[2] + GAP_S, "chapter": k, "voice": v[0],
+             "sent": [t + x for x in v[3]], "mode": c.get("mode", "people")}
+        segs.append(g)
         t += v[2] + GAP_S
+        if k == 0 and on_last:
+            g["cut_at"] = g["sent"][-1]                # the pictures stop here: the title card takes the last line
+            ttl = {"kind": "title", "start": g["cut_at"], "dur": max(TITLE_S, t - g["cut_at"] + 1.2), "chapter": 1}
+            segs.append(ttl)
+            t = ttl["start"] + ttl["dur"]
+        if env("L_INTRO_ONLY") == "1":                 # tools/intro_render.py: the intro + its title card only
+            if not on_last:
+                segs.append({"kind": "title", "start": t, "dur": TITLE_S, "chapter": 1})
+                t += TITLE_S
+            return segs, round(t, 3)
     segs.append({"kind": "outro", "start": t, "dur": OUTRO_S, "chapter": len(voices) - 1})
     return segs, round(t + OUTRO_S, 3)
 
@@ -261,6 +300,20 @@ def plan(d, segs, films, got):
     becomes two shots (the second a closer crop); the first shot of the video is short; cards/outro are shots too."""
     shots, chs = [], chapters(d)
     for g in segs:
+        if g["kind"] == "period":
+            continue
+        if g["kind"] == "pre":                         # the film before the narrator: each shot its own length
+            t = g["start"]
+            for n, p in enumerate(d["pre"]):
+                m = media(p, films, got)
+                dur = float(p["dur"]) + (g["start"] + g["dur"] - t - float(p["dur"]) if n == len(d["pre"]) - 1 else 0)
+                if m:
+                    shots.append({**m, "start": t, "dur": dur, "chapter": 0, "mode": "action",
+                                  "stamp": p.get("stamp"), "source": p.get("source")})
+                elif shots:
+                    shots[-1]["dur"] += dur
+                t += float(p["dur"])
+            continue
         if g["kind"] != "voice":
             shots.append({"kind": g["kind"], "start": g["start"], "dur": g["dur"], "chapter": g["chapter"]})
             continue
@@ -275,8 +328,9 @@ def plan(d, segs, films, got):
             m = media(s, films, got)
             if m:
                 by.setdefault(int(s["s"]) - 1, []).append(m)
-        ends = g["sent"][1:] + [g["start"] + g["dur"]]
-        for i, (a, b) in enumerate(zip(g["sent"], ends)):
+        sent = g["sent"][:-1] if g.get("cut_at") else g["sent"]
+        ends = sent[1:] + [g.get("cut_at") or g["start"] + g["dur"]]
+        for i, (a, b) in enumerate(zip(sent, ends)):
             items = by.get(i) or []
             if not items:
                 if shots and shots[-1]["kind"] in ("film", "photo"):
@@ -292,7 +346,8 @@ def plan(d, segs, films, got):
                 cuts = cuts[:2] + [cuts[1] + (b - cuts[1]) * j / rest for j in range(1, rest)] + [b]
             for j, m in enumerate(items):
                 sh = {**m, "start": cuts[j], "dur": cuts[j + 1] - cuts[j], "chapter": g["chapter"], "mode": mode}
-                if sh["kind"] == "photo" and sh["dur"] > SHOT_MAX[mode] * 1.25 and not sh.get("card"):
+                if sh["kind"] == "photo" and sh["dur"] > SHOT_MAX[mode] * 1.25 and not sh.get("card") \
+                        and not sh.get("reveal"):
                     half = sh["dur"] / 2
                     z2 = round(float(m.get("zoom", 1.0)) * 1.22, 2)
                     shots += [{**sh, "dur": half, "name": m.get("name"), "label": m.get("label")},
@@ -318,7 +373,7 @@ def media(s, films, got):
         return None
     return {"kind": "photo", "path": g[0], "credit": g[1], "x": float(s.get("x", 0.5)), "y": float(s.get("y", 0.5)),
             "zoom": float(s.get("zoom", 1.0)), "trim": s.get("trim"), "sfx": s.get("sfx"), "card": bool(s.get("card")),
-            "whole": bool(s.get("whole")),
+            "whole": bool(s.get("whole")), "reveal": s.get("reveal"),
             "name": s.get("name"), "role": s.get("role"), "label": s.get("label"), "note": s.get("note")}
 
 
@@ -410,6 +465,81 @@ def render_photo(m, d, k):
     return out
 
 
+def render_reveal(m, d, k):
+    """INTRO rule (Nov 15, from HISTORY's Nimitz / Yamamoto): a tall portrait fitted to the width, tilting eased
+    from y_from to y_to (`reveal`: [0.72, 0.26] = the medals up to the face) while the name is said."""
+    from PIL import Image
+    out = W / f"s{k:04d}.mp4"
+    im = P.still(m["path"], m.get("trim"))
+    wid = round(SIZE[0] * 1.12)
+    im = im.resize((wid, round(im.height * wid / im.width)), Image.LANCZOS)
+    if im.height < SIZE[1] + 40:                       # not tall enough to tilt: the usual push-in
+        return render_photo({**m, "reveal": None}, d, k)
+    fp = W / f"f{k:04d}.jpg"
+    im.save(fp, quality=94)
+    y0, y1 = (min(max(0, f * im.height - SIZE[1] / 2), im.height - SIZE[1]) for f in m["reveal"])
+    ease = f"(1-cos(PI*min(t/{d:.3f},1)))/2"
+    fc = (f"[0:v]crop={SIZE[0]}:{SIZE[1]}:{(wid - SIZE[0]) // 2}:'{y0:.0f}+({y1 - y0:.0f})*{ease}',"
+          f"{GRADE},setsar=1,format=yuv420p{',' + WHIP if k else ''}[v]")
+    ff("-loop", "1", "-framerate", "30", "-i", fp.name, "-filter_complex", fc, "-map", "[v]", "-t", f"{d:.3f}",
+       *ENC, out.name)
+    return out
+
+
+def period_cuts(d):
+    """INTRO rule: the `pre` shots' period recordings (story `period_audio`: Commons files, public domain) cut
+    from..to and levelled -> p['_cut'], p['_at'] (when it starts), p['_len']. Before cutting, LOOK at a spectrogram
+    of the file: newsreel recordings often open on 20+ s of noise (Truman's starts at 23.6 s)."""
+    t = 0.0
+    for k, p in enumerate(d.get("pre") or []):
+        a = p.get("audio")
+        if a:
+            src = (d.get("period_audio") or {}).get(a["src"]) or {}
+            try:
+                raw = W / ("period_" + re.sub(r"[^A-Za-z0-9._-]+", "_", src["file"]))
+                if not raw.exists():
+                    r = requests.get("https://commons.wikimedia.org/wiki/Special:FilePath/"
+                                     + requests.utils.quote(src["file"].replace(" ", "_")), headers=S.UA, timeout=120)
+                    r.raise_for_status()
+                    raw.write_bytes(r.content)
+                cut = W / f"period{k:02d}.mp3"
+                x, y = float(a["from"]), float(a["to"])
+                ff("-ss", f"{x:.2f}", "-t", f"{y - x:.2f}", "-i", raw.name, "-af",
+                   "highpass=f=120,lowpass=f=6000,loudnorm=I=-16:TP=-2:LRA=7,afade=t=in:d=0.05,"
+                   f"afade=t=out:st={max(0.0, y - x - 0.15):.2f}:d=0.15", "-ar", "24000", "-ac", "1",
+                   "-c:a", "libmp3lame", "-b:a", "128k", cut.name)
+                p["_cut"], p["_len"] = cut, probe_duration(cut)
+                p["_at"] = t + (0.35 if p.get("hush") else 0.15)
+                p["_credit"] = src.get("credit")
+            except Exception as e:                     # no speech: the intro still works on its film and SFX
+                print("period audio failed:", a, type(e).__name__, str(e)[:100])
+                p.pop("hush", None)
+        t += float(p["dur"])
+
+
+def hush_mix(d, segs):
+    """INTRO rule (Andrii, Nov 15): at the `hush` shot (the PLACE stamp) the music and SFX fade to nothing in 0.5 s
+    and the period voice speaks alone; the sound comes back 1 s before the narrator."""
+    pre = d.get("pre") or []
+    at = sum(float(p["dur"]) for p in pre[:next((n for n, p in enumerate(pre) if p.get("hush")), len(pre))])
+    alone = [p for p in pre if p.get("hush") and p.get("_cut")]
+    if not alone:
+        return
+    a = at + 0.1
+    b = next(g["start"] for g in segs if g["kind"] == "voice") - 1.0
+    gain = f"clip(({a:.2f}-t)/0.5\\,0\\,1)+clip((t-{b:.2f})/0.8\\,0\\,1)"
+    fc = [f"[0:a]volume='{gain}':eval=frame[bg]"]
+    for n, p in enumerate(alone, 1):
+        ms = int(p["_at"] * 1000)
+        fc.append(f"[{n}:a]aresample=44100,aformat=channel_layouts=stereo,volume=8.5dB,alimiter=limit=0.9,"
+                  f"adelay={ms}|{ms}[p{n}]")
+    fc.append("".join(["[bg]"] + [f"[p{n}]" for n in range(1, len(alone) + 1)])
+              + f"amix=inputs={len(alone) + 1}:duration=first:normalize=0[a]")
+    ff("-i", "mix.m4a", *[x for p in alone for x in ("-i", p["_cut"].name)], "-filter_complex", ";".join(fc),
+       "-map", "[a]", "-c:a", "aac", "-b:a", "192k", "-ar", "44100", "mix_hush.m4a")
+    (W / "mix_hush.m4a").replace(W / "mix.m4a")
+
+
 def still_of(sh):
     """A PIL picture of a shot (a film's frame at its start) for the cards."""
     from PIL import Image
@@ -460,6 +590,9 @@ def build_ass(d, shots, segs):
             "Style: Card,Bebas Neue,150,&H00FFFFFF,&H00FFFFFF,&H00000000,&H64000000,0,0,0,0,100,100,6,0,1,0,4,5,0,0,0,1\n"
             "Style: Note,Bebas Neue,120,&H00FFFFFF,&H00FFFFFF,&H00141414,&H96000000,0,0,0,0,100,100,6,0,1,3,4,8,0,0,0,1\n"
             "Style: Sub,Bebas Neue,64,&H00E6E6E6,&H00FFFFFF,&H00000000,&H64000000,0,0,0,0,100,100,4,0,1,0,3,5,0,0,0,1\n"
+            "Style: Stamp,Bebas Neue,190,&H001A1AA8,&H00FFFFFF,&H00000000,&H00000000,0,0,0,0,100,100,4,0,1,0,0,5,0,0,0,1\n"
+            "Style: Stamp2,Bebas Neue,560,&H001A1AA8,&H00FFFFFF,&H00000000,&H00000000,0,0,0,0,100,100,2,0,1,0,0,5,0,0,0,1\n"
+            "Style: Source,Bebas Neue,48,&H00F0F0F0,&H00FFFFFF,&H00000000,&H64000000,0,0,0,0,100,100,5,0,1,0,2,2,0,0,0,1\n"
             "\n[Events]\nFormat: Layer, Start, End, Style, Name, MarginL, MarginR, MarginV, Effect, Text\n")
     t = S.ass_time
     ev, chs = [], chapters(d)
@@ -486,6 +619,27 @@ def build_ass(d, shots, segs):
         if sh.get("label"):
             a1, b1 = a + 0.25, min(b - 0.1, a + 4.5)
             ev.append(f"Dialogue: 3,{t(a1)},{t(b1)},Label,,0,0,0,,{{\\pos(96,72)\\fad(250,300)}}{ass_esc(sh['label'])}")
+    for sh in shots:                                   # INTRO rule: the DATE / PLACE in huge dark red on the film
+        lines = sh.get("stamp") or []
+        a, b = sh["start"], sh["start"] + sh["dur"]
+        grow = "\\t(0,{0},\\fscx104\\fscy104)".format(round(sh["dur"] * 1000))
+        if len(lines) == 1:
+            ev.append(f"Dialogue: 6,{t(a + 0.1)},{t(b)},Stamp2,,0,0,0,,{{\\pos(960,560)\\fs400\\alpha&H18&\\fad(120,0)"
+                      f"{grow}}}{ass_esc(lines[0])}")
+        elif lines:
+            ev.append(f"Dialogue: 6,{t(a + 0.1)},{t(b)},Stamp,,0,0,0,,{{\\pos(960,250)\\alpha&H18&\\fad(120,0)"
+                      f"{grow}}}{ass_esc(lines[0])}")
+            ev.append(f"Dialogue: 6,{t(a + 0.1)},{t(b)},Stamp2,,0,0,0,,{{\\pos(960,560)\\alpha&H18&\\fad(120,0)"
+                      f"{grow}}}{ass_esc(lines[1])}")
+    runs = []                                          # the period recording's source: one caption over its shots
+    for sh in shots:
+        if sh.get("source") and runs and runs[-1][2] == sh["source"] and abs(runs[-1][1] - sh["start"]) < 0.05:
+            runs[-1][1] = sh["start"] + sh["dur"]
+        elif sh.get("source"):
+            runs.append([sh["start"], sh["start"] + sh["dur"], sh["source"]])
+    for a, b, s in runs:
+        ev.append(f"Dialogue: 6,{t(a + 0.4)},{t(b - 0.1)},Source,,0,0,0,,{{\\pos(960,1015)\\alpha&H10&\\fad(400,300)}}"
+                  f"{ass_esc(s)}")
     for g in segs:
         a, b = g["start"], g["start"] + g["dur"]
         if g["kind"] == "title" and re.search(r"ENTIRE History of (.+?) in \d+ Minutes", d["title"]):
@@ -539,7 +693,7 @@ def mix_audio(d, segs, shots, total):
         return sum(1 for x in args if x == "-i") - 1
 
     for g in segs:
-        if g["kind"] == "voice":
+        if g["kind"] in ("voice", "period"):           # period = a recording of the time heard over the film
             n = inp(g["voice"])
             ms = int(g["start"] * 1000)
             fc.append(f"[{n}:a]{fmt},adelay={ms}|{ms}[v{n}]")
@@ -844,6 +998,7 @@ def make_video(d):
         voices = ex.submit(narrate, d)
         films, got = fetch_media(d)
         voices = voices.result()
+    period_cuts(d)                                     # INTRO rule: the period speech of the pre film
     segs, total = timeline(d, voices)
     if any(c.get("said_n") for c in chapters(d)) and int(total // 60) != said:
         said = int(total // 60)                        # the guess was off: the line is said again with the real one
@@ -872,13 +1027,15 @@ def make_video(d):
                        "picture": (f"{pathlib.Path(str(s['path'])).name} {s['ss']:.1f}-{s['to']:.1f}"
                                    if s["kind"] == "film" else pathlib.Path(str(s.get("path", ""))).name)}
                       for s in shots]
-    cover = thumbnail(d, got)
+    cover = thumbnail(d, got) if env("L_INTRO_ONLY") != "1" else None
     write_srt(d, segs, total)
 
     def render(a):
         k, sh = a
         if sh["kind"] == "film":
             return render_film(sh, sh["dur"], k)
+        if sh["kind"] == "photo" and sh.get("reveal"):
+            return render_reveal(sh, sh["dur"], k)
         if sh["kind"] == "photo":
             return render_photo(sh, sh["dur"], k)
         if sh["kind"] == "map":
@@ -890,6 +1047,7 @@ def make_video(d):
         with stage("shots"):
             parts = pmap(render, list(enumerate(shots)), workers=int(env("L_WORKERS", "4")))
         audio.result()
+    hush_mix(d, segs)                                  # INTRO rule: silence + the period voice alone
     (W / "shots.txt").write_text("".join(f"file '{p.name}'\n" for p in parts), encoding="utf-8")
     ass = build_ass(d, shots, segs)
     fonts = pathlib.Path("..") / FONTS                 # ff runs inside work/: relative paths, no Windows drive colon
@@ -899,7 +1057,8 @@ def make_video(d):
            "-t", f"{total:.3f}", "-r", "30", "-c:v", "libx264", "-preset", env("L_FINAL_PRESET", "veryfast"),
            "-crf", "20", "-maxrate", "10M", "-bufsize", "20M", "-pix_fmt", "yuv420p", "-c:a", "copy",
            "-movflags", "+faststart", "final.mp4")
-    credits = list(dict.fromkeys([s["credit"] for s in shots if s.get("credit")]))
+    credits = list(dict.fromkeys([s["credit"] for s in shots if s.get("credit")]
+                                 + [p["_credit"] for p in d.get("pre") or [] if p.get("_credit")]))
     d["seconds"] = round(total, 1)
     return credits, chapter_marks(d, segs), cover
 
