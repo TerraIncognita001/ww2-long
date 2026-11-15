@@ -73,9 +73,15 @@ def extra_ass(shots):
                           f"{ass_esc(lines[0])}")
                 ev.append(f"Dialogue: 6,{t(a + 0.1)},{t(b)},Stamp2,,0,0,0,,{{\\pos(960,560)\\alpha&H18&\\fad(120,0){grow}}}"
                           f"{ass_esc(lines[1])}")
-        if sh.get("source"):
-            ev.append(f"Dialogue: 6,{t(a + 0.2)},{t(b - 0.1)},Source,,0,0,0,,{{\\pos(960,1015)\\alpha&H10&\\fad(250,250)}}"
-                      f"{ass_esc(sh['source'])}")
+    runs = []                                          # one caption over shots in a row with the same source
+    for sh in shots:
+        if sh.get("source") and runs and runs[-1][2] == sh["source"] and abs(runs[-1][1] - sh["start"]) < 0.05:
+            runs[-1][1] = sh["start"] + sh["dur"]
+        elif sh.get("source"):
+            runs.append([sh["start"], sh["start"] + sh["dur"], sh["source"]])
+    for a, b, s in runs:
+        ev.append(f"Dialogue: 6,{t(a + 0.4)},{t(b - 0.1)},Source,,0,0,0,,{{\\pos(960,1015)\\alpha&H10&\\fad(400,300)}}"
+                  f"{ass_esc(s)}")
     return st, ev
 
 
