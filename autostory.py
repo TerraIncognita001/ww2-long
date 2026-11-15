@@ -143,7 +143,10 @@ def probe(d):
         if isinstance(g, dict):
             g.setdefault("id", f"p{n + 1}")
             g["shots"] = [{"s": 1, "file": "x"}]
-    return {**d, "format": "entire", "thumb": {"file": "x"}, "cover": {"file": "x"}}
+    return {**d, "format": "entire", "thumb": {"file": "x"}, "cover": {"file": "x"},   # the speech is added later
+            "pre": [{"dur": 2.8, "file": "x", "stamp": ["X", "1"]}, {"dur": 3, "file": "x", "stamp": ["X"],
+                                                                     "audio": {"src": "speech", "from": 0, "to": 7}}],
+            "period_audio": {"speech": {"file": "x", "speaker": "x"}}}
 
 
 def write(topic, text):
