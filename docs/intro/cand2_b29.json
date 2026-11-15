@@ -1,6 +1,6 @@
 {
  "maket": "2",
- "note": "Intro candidate 2 (Nov 14): the HISTORY 'The Minutes that Changed World War II' (WWII with Tom Hanks) opening, rebuilt on B-29 material. Reference 0-75 s: 2 s of film + explosions with no voice -> the DATE in huge dark-red letters over film (2.5 s) -> the PLACE the same way (3 s) -> the period broadcast's own voice over film, its source in small letters at the bottom ('WOL MUTUAL RADIO BROADCAST') -> only then the narrator, who goes back to how it came to this; a big portrait is revealed by a slow tilt from the medals up to the face (Yamamoto, Nimitz) while his name is said. Nov 15 (Andrii): v1 kept; the explosions at the start stay; at HIROSHIMA all sound fades out and Truman speaks alone (hush); the last line is said over the title card that shows it (\title_on_last). Render: python tools/intro_render.py docs/intro/cand2_b29.json",
+ "note": "Intro candidate 2 (Nov 14): the HISTORY 'The Minutes that Changed World War II' (WWII with Tom Hanks) opening, rebuilt on B-29 material. Reference 0-75 s: 2 s of film + explosions with no voice -> the DATE in huge dark-red letters over film (2.5 s) -> the PLACE the same way (3 s) -> the period broadcast's own voice over film, its source in small letters at the bottom ('WOL MUTUAL RADIO BROADCAST') -> only then the narrator, who goes back to how it came to this; a big portrait is revealed by a slow tilt from the medals up to the face (Yamamoto, Nimitz) while his name is said. Nov 15 (Andrii): v1 kept; the explosions at the start stay; at HIROSHIMA all sound fades out and Truman speaks alone (hush); the last line is said over the title card that shows it (\title_on_last). Render: python tools/intro_render.py docs/intro/cand2_b29.json Truman speaks from 23.6 s of the Commons file (0-23.5 s = only the noise of the film; spectrogram checked).",
  "story": "stories/long/b29.json",
  "period_audio": {
   "truman": {
@@ -38,16 +38,23 @@
    "hush": true,
    "audio": {
     "src": "truman",
-    "from": 7.3,
-    "to": 13.45
+    "from": 23.4,
+    "to": 31.65
    },
    "source": "PRESIDENT TRUMAN · NEWSREEL, AUGUST 1945"
   },
   {
-   "dur": 3.6,
+   "dur": 3.4,
    "film": "airwar",
    "from": 704,
    "to": 707.8,
+   "source": "PRESIDENT TRUMAN · NEWSREEL, AUGUST 1945"
+  },
+  {
+   "dur": 2.6,
+   "film": "airwar",
+   "from": 708,
+   "to": 712.5,
    "source": "PRESIDENT TRUMAN · NEWSREEL, AUGUST 1945"
   }
  ],
