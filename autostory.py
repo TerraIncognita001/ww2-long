@@ -178,8 +178,8 @@ def write(topic, text):
                      + "\n\nFIX THESE PROBLEMS (remove or rewrite every fact that is not in the article; keep the "
                      "length): " + "; ".join(hard + soft), ok, purpose="long editor", read=300, tokens=32768)
     hard, _ = L.check(probe(d), text)
-    if hard:
-        raise SystemExit(f"auto story check failed: {hard}")
+    if hard:                                           # Nov 15: the next topic, not the end of the run
+        raise Skip(f"the script fails the check: {hard[:4]}")
     return d
 
 
