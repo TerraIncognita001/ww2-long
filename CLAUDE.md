@@ -247,6 +247,16 @@ revealed, 'DID IT WORK?', 13.4 s), 'THE B-29: A BOMBER ON FIRE' (PART III, '150 
   answer is), 'FULL VIDEO · 13 MIN' (the minutes in red), 'LINK BELOW' + a red arrow down at YouTube's
   related-video link. Set 'Related video' = the long video in Studio BY HAND (no API).
 - Dropped: the intro cut as a promo (A, Nov 15), the 25-60 s cuts of clips.py (Nov 10-14).
+- CLIFFHANGER (Andrii, Nov 17: 'зацікавлювали, тримали інтригу і обривались переходом на лонг' -> 'беремо, зроби
+  правилом') - HARD RULE: sentence 1 = the HOOK at second 0 (the stakes / the paradox, no date first: 'The largest
+  seaborne invasion in history waits on one weather forecast.'); sentence 2 = the pressure rises ('The sea is too
+  rough, and the next chance is two weeks away.'); sentence 3 = the ANSWER STARTS after a COLON ('Eisenhower gives
+  his answer: the invasion goes ahead on 6 June.' / 'And its commander is a famous American general: George S.
+  Patton.') and the narrator is CUT DEAD at its first syllable (promo.cliff_cut: the pause at the colon + 0.18 s,
+  no fade); the caption shows the words before the colon + '...'; 0.3 s GLITCH (frozen frame, RGB split, noise,
+  radio static); then the end card with the long video's thumbnail SLIDING UP. <= 30 words said (before the colon).
+  check() is hard on a teaser without the colon; autostory drops one. `cliff: false` = the old ending.
+  Model: `work/promo/v2_weather.mp4`, `v2_ghost.mp4` (D-Day, 13 s).
 - AUTOMATIC (Nov 15): story field `promos` (2: id, chapter, 3 sentences <= 30 words, shots, top, key, cta, end,
   name; see promo.py). The run renders the 2 sources BEFORE the long video (promo.sources, L_INTRO_ONLY; the voice
   must end by 12 s, measured on voice00.mp3), the long, then the vertical teasers with its cover.png, real minutes and

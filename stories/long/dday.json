@@ -135,9 +135,9 @@
    "id": "dday_weather",
    "chapter": 4,
    "sentences": [
-    "On 4 June 1944, the sea is too rough to invade.",
-    "A forecaster says the weather will improve, just enough.",
-    "The next chance is two weeks away."
+    "The largest seaborne invasion in history waits on one weather forecast.",
+    "The sea is too rough, and the next chance is two weeks away.",
+    "Eisenhower gives his answer: the invasion goes ahead on 6 June."
    ],
    "shots": [
     {
@@ -159,23 +159,23 @@
      "to": 341
     }
    ],
-   "top": "D-DAY HUNG|ON THE WEATHER",
+   "top": "ONE FORECAST|DECIDES D-DAY",
    "key": [
     "D-DAY"
    ],
    "cta": {
     "kind": "question"
    },
-   "end": "WHAT DID IKE DECIDE?",
+   "end": "WHAT DID IKE SAY?",
    "name": "D-Day Depended on One Weather Forecast"
   },
   {
    "id": "dday_ghost",
    "chapter": 3,
    "sentences": [
-    "To fool the Germans, the Allies create an army that does not exist.",
-    "Its radio messages are real.",
-    "And its commander is a famous American general."
+    "To protect D-Day, the Allies build an army that does not exist.",
+    "Its camps are fake, but its radio messages are real.",
+    "And its commander is a famous American general: George S. Patton."
    ],
    "shots": [
     {

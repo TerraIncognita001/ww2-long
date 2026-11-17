@@ -22,6 +22,7 @@ sys.path.insert(0, str(pathlib.Path(__file__).resolve().parent / "lib"))  # shor
 import shorts as S
 import jurgen as J
 from shorts import W, env, plain, pmap
+from promo import spoken                               # CLIFF teasers (Nov 17)
 
 STORIES = pathlib.Path("stories/long")
 SEEDS = [   # exact English Wikipedia titles: whole subjects (The Entire War format, Andrii, Nov 10)
@@ -131,8 +132,12 @@ def rules(topic):
         "of the Short with the topic's NAME (key = the name word(s)); name = the Short's YouTube title, max 80 "
         "characters, a fact of the story.\n"
         "PROMOS (2 YouTube Shorts that advertise the video, max 15 s each): from 2 DIFFERENT chapters (index 1+), "
-        "each the most surprising fact of that chapter in 3 short sentences, 20-28 words in total, present tense, "
-        "facts of the article, ending BEFORE the answer (the Short then sends the viewer to the full video). top = "
+        "each the most surprising fact of that chapter, present tense, facts of the article, built as a CLIFFHANGER: "
+        "sentence 1 = the hook (the stakes or the paradox at once, no date first: 'The largest seaborne invasion in "
+        "history waits on one weather forecast.'), sentence 2 = the pressure rises, sentence 3 = the ANSWER STARTS "
+        "after a colon: '<who> gives his answer: <the answer>.' / 'Its commander is a famous American general: George "
+        "S. Patton.' (the video cuts the narrator at the first syllable after the colon); 20-28 words BEFORE the "
+        "colon in total. top = "
         "2 lines split by '|', 2-4 words each, with the topic's name (key = that word, without ?/:). hook = how the "
         "end card teases the answer, the 2 promos use 2 different hooks: 'number' (big = a number of the answer, "
         "line = 'OF WHAT?' or '<THING> IN <TIME>. HOW?'), 'redacted' (line = the answer's sentence without its last "
@@ -431,7 +436,7 @@ def make_one(topic):
             pics = [s for s in d["chapters"][k]["shots"] if s.get("file")][:3]
         except (KeyError, IndexError, TypeError, ValueError):
             continue
-        if not 1 <= k < len(d["chapters"]) or len(sents) < 2 or not pics or len(" ".join(sents).split()) > 30:
+        if not 1 <= k < len(d["chapters"]) or len(sents) < 2 or not pics or len(spoken(sents).split()) > 30 or ":" not in sents[-1]:
             continue
         hook = str(g.get("hook") or "question")
         cta = ({"kind": "number", "big": str(g.get("big", ""))[:6], "line": str(g.get("line", "")).upper()[:28]}

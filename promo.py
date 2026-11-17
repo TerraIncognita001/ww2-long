@@ -17,6 +17,7 @@ from shorts import W, plain
 
 VW, VH, FG_H = 1080, 1920, 608
 END_S = 3.0
+GLITCH = 0.3                                          # CLIFF: the frozen frame breaks up before the end card
 MAX_S = 15.0
 FONT = "Bebas Neue"
 STAMP = "&H1E1EBE&"                                  # the red of the long video's stamps (a touch lighter)
@@ -58,6 +59,9 @@ def ass(p, cut, dur):
                      for line in p["top"].split("|"))
     ev = [f"Dialogue: 1,{t_(0)},{t_(cut)},Top,,0,0,0,,{top}"]
     caps = p.get("caps") or (srt_caps(p["srt"], p["from"], p["to"]) if p.get("srt") else [])
+    if p.get("cliff") and caps and ":" in caps[-1][2]:  # CLIFF (Nov 17): only the words before the cut
+        x, y, s_ = caps[-1]
+        caps[-1] = [x, y, s_[:s_.rfind(":")] + "..."]
     for x, y, s in caps:                               # chunks of up to 3 words, timed by their length
         x, y = max(0.0, x - p["from"]), min(cut, y - p["from"])
         words = plain(s).split()
@@ -67,7 +71,7 @@ def ass(p, cut, dur):
             e = t + (y - x) * (len(" ".join(c)) + 2) / total
             ev.append(f"Dialogue: 0,{t_(t)},{t_(e)},Cap,,0,0,0,,{' '.join(c).upper()}")
             t = e
-    ev += end_card(p, cut + 0.1, dur)
+    ev += end_card(p, cut + (GLITCH if p.get("cliff") else 0.1), dur)
     return head + "\n".join(ev) + "\n"
 
 
@@ -113,20 +117,31 @@ def render(p, out):
     sub = out.with_suffix(".ass")
     sub.write_text(ass(p, cut, dur), encoding="utf-8")
     cw, ch = 960, 540
+    cl = bool(p.get("cliff"))
+    g = cut + (GLITCH if cl else 0.0)                  # where the end card starts
+    glitch = (f"[v1]rgbashift=rh=-18:bh=18:enable='between(t,{cut:.3f},{g:.3f})',"
+              f"noise=alls=45:allf=t:enable='between(t,{cut:.3f},{g:.3f})',"
+              f"eq=brightness=0.12:enable='between(t,{cut:.3f},{cut + 0.06:.3f})'[v1g];" if cl else "")
+    vin = "[v1g]" if cl else "[v1]"
+    rise = f"+max(0,220*(1-(t-{g:.3f})/0.35))" if cl else ""
     vf = (f"[0:v]fps=30,tpad=stop_mode=clone:stop_duration={END_S},split[a][b];"
           f"[a]scale=-2:{VH},crop={VW}:{VH},boxblur=28:2,eq=brightness=-0.22[bg];"
-          f"[b]scale={VW}:{FG_H}[fg];[bg][fg]overlay=0:{(VH - FG_H) // 2}[v1];"
-          f"[v1]boxblur=30:3:enable='gte(t,{cut:.3f})',eq=brightness=-0.45:enable='gte(t,{cut:.3f})'[v2];"
-          f"[2:v]scale={cw}:{ch},format=rgba,fade=t=in:st={cut + 0.05:.3f}:d=0.3:alpha=1[cv];"
-          f"[v2][cv]overlay=(W-w)/2:{(VH - ch) // 2 - 20}:enable='gte(t,{cut:.3f})',"
+          f"[b]scale={VW}:{FG_H}[fg];[bg][fg]overlay=0:{(VH - FG_H) // 2}[v1];{glitch}"
+          f"{vin}boxblur=30:3:enable='gte(t,{g:.3f})',eq=brightness=-0.45:enable='gte(t,{g:.3f})'[v2];"
+          f"[2:v]scale={cw}:{ch},format=rgba,fade=t=in:st={g + 0.05:.3f}:d=0.3:alpha=1[cv];"
+          f"[v2][cv]overlay=x=(W-w)/2:y='{(VH - ch) // 2 - 20}{rise}':enable='gte(t,{g:.3f})',"
           f"subtitles={sub.as_posix()}:fontsdir=fonts[v];"
-          f"[0:a]afade=t=out:st={cut - 0.3:.3f}:d=0.3,apad=pad_dur={END_S}[va];"
+          # CLIFF: the voice stops dead mid-word (a radio cut), no fade
+          f"[0:a]afade=t=out:st={cut - (0.04 if cl else 0.3):.3f}:d={0.04 if cl else 0.3},apad=pad_dur={END_S}[va];"
           f"[1:a]atrim=0:{END_S},asetpts=PTS-STARTPTS,volume=0.6,afade=t=in:d=0.2,"
-          f"afade=t=out:st={END_S - 0.8}:d=0.8,adelay={int(cut * 1000)}:all=1[sx];"
-          f"[va][sx]amix=inputs=2:normalize=0,loudnorm=I=-14:TP=-1.5:LRA=11[aud]")
+          f"afade=t=out:st={END_S - 0.8}:d=0.8,adelay={int(g * 1000)}:all=1[sx];"
+          + (f"[3:a]atrim=0:{GLITCH + 0.1},asetpts=PTS-STARTPTS,volume=0.7,afade=t=out:st={GLITCH - 0.05}:d=0.15,"
+             f"adelay={int(cut * 1000)}:all=1[gl];[va][sx][gl]amix=inputs=3:normalize=0," if cl else
+             "[va][sx]amix=inputs=2:normalize=0,")
+          + "loudnorm=I=-14:TP=-1.5:LRA=11[aud]")
     subprocess.run(["ffmpeg", "-y", "-loglevel", "error", "-ss", f"{a:.3f}", "-t", f"{cut:.3f}", "-i", p["source"],
                     "-i", "sfx/low_rumble.mp3", "-loop", "1", "-t", f"{dur:.3f}", "-i", p["cover"],
-                    "-filter_complex", vf, "-map", "[v]", "-map", "[aud]", "-t", f"{dur:.3f}", "-c:v", "libx264",
+                    *(["-i", "sfx/radio_static.mp3"] if cl else []), "-filter_complex", vf, "-map", "[v]", "-map", "[aud]", "-t", f"{dur:.3f}", "-c:v", "libx264",
                     "-preset", "veryfast", "-crf", "20", "-pix_fmt", "yuv420p", "-c:a", "aac", "-b:a", "160k",
                     "-ar", "48000", str(out)], check=True)
     return round(dur, 1)
@@ -153,6 +168,42 @@ def voice_end(path):
     if starts and ends and ends[-1] >= dur - 0.05:
         return round(starts[-1] + 0.4, 2)
     return round(dur, 2)
+
+
+def spoken(sentences):
+    """The words the teaser's narrator says: the last sentence only up to its colon (CLIFF, Nov 17)."""
+    ss = [plain(x) for x in sentences]
+    if ss and ":" in ss[-1]:
+        ss[-1] = ss[-1][:ss[-1].rfind(":")]
+    return " ".join(ss)
+
+
+def is_cliff(p):
+    """CLIFF is the rule from Nov 17 (Andrii: 'беремо, зроби правилом'): on unless `cliff: false`, and only when the
+    last sentence has the colon before the answer."""
+    ss = p.get("sentences") or []
+    return p.get("cliff", True) is not False and bool(ss) and ":" in ss[-1]
+
+
+def cliff_cut(path, srt):
+    """CLIFF (Andrii, Nov 17: 'обривались переходом на лонг'): the last sentence of the teaser STARTS the answer
+    ('Eisenhower gives his answer: the invasion goes ahead...'); the cut = 0.18 s after the narrator starts again
+    after the colon, so the first syllable of the answer is heard and cut off. The pause nearest to where the colon
+    falls in the last caption."""
+    cues = srt_caps(srt, 0, 999)
+    x, y, text = cues[-1]
+    if ":" not in text:
+        return None
+    at = x + (y - x) * text.rfind(":") / max(1, len(text))
+    log = subprocess.run(["ffmpeg", "-i", str(path), "-af", "silencedetect=noise=-38dB:d=0.08", "-f", "null", "-"],
+                         capture_output=True, text=True).stderr
+    pairs = list(zip([float(v) for v in re.findall(r"silence_start: ([\d.]+)", log)],
+                     [float(v) for v in re.findall(r"silence_end: ([\d.]+)", log)]))
+    pairs = [q for q in pairs if x - 0.1 < q[0] < y]
+    if not pairs:
+        return None
+    a, b = min(pairs, key=lambda q: abs((q[0] + q[1]) / 2 - at))
+    return round(b + 0.18, 2)
 
 
 def sources(d):
@@ -182,6 +233,8 @@ def sources(d):
         shutil.copy(W / "captions.srt", srt)
         cues = srt_caps(srt, 0, 999)
         end = voice_end(W / "voice00.mp3") if cues else 0
+        if cues and is_cliff(p):
+            end = cliff_cut(W / "voice00.mp3", srt) or end
         if not cues or end > MAX_VOICE:
             print(f"promo {p['id']}: the voice ends at {end:.1f} s (max {MAX_VOICE:.0f} s): shorten the sentences")
             continue
@@ -206,7 +259,7 @@ def finish(d, ends, marks, minutes, cover):
         if cta.get("kind") == "timestamp":
             cta["at"] = at.get(chs[k]["title"], "")
         spec = {**p, "source": str(W / "promo" / f"{p['id']}_src.mp4"), "from": 0.0, "to": ends[p["id"]],
-                "srt": str(W / "promo" / f"{p['id']}_src.srt"), "cta": cta, "minutes": minutes, "cover": str(cover),
+                "srt": str(W / "promo" / f"{p['id']}_src.srt"), "cta": cta, "cliff": is_cliff(p), "minutes": minutes, "cover": str(cover),
                 "part": f"PART {L.ROMAN[k - 1] if 0 < k <= len(L.ROMAN) else k} · {chs[k]['title'].upper()}",
                 "end": p.get("end") or ""}
         out = W / "promo" / f"{p['id']}.mp4"

@@ -184,9 +184,14 @@ def check(d, text, facts_hard=True):
         if not ok_:
             hard.append(f"promo {n}: needs id, chapter (1..{len(chs_) - 1}) and sentences")
             continue
+        import promo as PR
         pb = " ".join(plain(s) for s in p["sentences"])
-        if len(pb.split()) > 30:
-            soft.append(f"promo {n}: {len(pb.split())} words (~{len(pb.split()) / 2.4:.0f} s): the voice must end by 12 s")
+        said = PR.spoken(p["sentences"]).split()
+        if len(said) > 30:
+            soft.append(f"promo {n}: {len(said)} words said (~{len(said) / 2.4:.0f} s): the voice must end by 12 s")
+        if not PR.is_cliff(p):                         # Andrii, Nov 17: every teaser breaks off on the answer
+            hard.append(f"promo {n}: CLIFF: the last sentence must start the answer after a colon "
+                        "('Eisenhower gives his answer: the invasion goes ahead...'), cut at its first syllable")
         if S.numbers_ok(pb, text):
             facts.append(f"promo {n}: numbers not in the source: {S.numbers_ok(pb, text)}")
         if S.names_ok(pb, text):
