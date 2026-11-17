@@ -5,7 +5,9 @@ work/
 client_secret.json
 sources/
 music/
-sfx/
+sfx/*
+!sfx/kit/
+!sfx/ov/
 _assets/
 *.part
 *.bak.json

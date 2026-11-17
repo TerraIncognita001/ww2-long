@@ -1,0 +1,65 @@
+{
+ "morse_code": {
+  "title": "kki-cw-2011-03-06.10.15cet.mp3",
+  "credit": "kki-cw-2011-03-06.10.15cet.mp3 by ok1has (Freesound, CC0)",
+  "id": "bbdaf771-a2c7-4833-9b9f-b9cc5d6666ce",
+  "url": "https://cdn.freesound.org/previews/116/116237_108524-hq.mp3",
+  "query": "telegraph morse",
+  "desc": "a telegraph key tapping morse code",
+  "score": 3.53
+ },
+ "machine_gun": {
+  "title": "50 Cal MG",
+  "credit": "50 Cal MG by qubodup (Freesound, CC0)",
+  "id": "734e80d6-de1d-4806-b30e-28af9a7570f5",
+  "url": "https://cdn.freesound.org/previews/239/239138_71257-hq.mp3",
+  "query": "machine gun burst",
+  "desc": "a burst of machine gun fire",
+  "score": 7.36
+ },
+ "ship_horn": {
+  "title": "Cruise ship Albatros ship horn",
+  "credit": "Cruise ship Albatros ship horn by Tvabutzku1234 (Wikimedia Audio, CC0)",
+  "id": "5e1cb015-2672-4e89-924d-50107b8add96",
+  "url": "https://upload.wikimedia.org/wikipedia/commons/0/07/Cruise_ship_Albatros_ship_horn.ogg",
+  "query": "ship horn",
+  "desc": "a deep ship horn blowing",
+  "score": 5.64
+ },
+ "crowd_cheer": {
+  "title": "Medium crowd cheering 02",
+  "credit": "Medium crowd cheering 02 by misjoc (Freesound, CC0)",
+  "id": "c80ae9c9-9f84-4b03-8bc1-27c87feef9dd",
+  "url": "https://cdn.freesound.org/previews/400/400586_3372256-hq.mp3",
+  "query": "crowd cheering",
+  "desc": "a large crowd cheering and applauding",
+  "score": 5.37
+ },
+ "church_bells": {
+  "title": "CHURCH BELLS AT NOON",
+  "credit": "CHURCH BELLS AT NOON by _CAZAPROD_ (Freesound, CC0)",
+  "id": "7a1a9dc0-306b-4eeb-aa67-da7053657e7b",
+  "url": "https://cdn.freesound.org/previews/393/393782_5775999-hq.mp3",
+  "query": "church bells",
+  "desc": "church bells ringing",
+  "score": 5.06
+ },
+ "prop_plane": {
+  "title": "75 Paratrooper Plunge.wav",
+  "credit": "75 Paratrooper Plunge.wav by MissloonerVoiceOver255 (Freesound, CC0)",
+  "id": "b5c61d79-3e26-4e99-9df1-27fdc92941fe",
+  "url": "https://cdn.freesound.org/previews/592/592197_12672827-hq.mp3",
+  "query": "propeller airplane engine",
+  "desc": "a propeller airplane engine droning",
+  "score": 4.66
+ },
+ "ocean_waves": {
+  "title": "sea waves beach Poland Sopot",
+  "credit": "sea waves beach Poland Sopot by blukotek (Freesound, CC0)",
+  "id": "f97c5f33-d947-45b6-ad89-ccd1dd1499de",
+  "url": "https://cdn.freesound.org/previews/276/276535_4451798-hq.mp3",
+  "query": "waves beach",
+  "desc": "sea waves breaking on a beach",
+  "score": 5.98
+ }
+}

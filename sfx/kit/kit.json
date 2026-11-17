@@ -1,0 +1,197 @@
+{
+ "source": "SFX Kit by Wyzowl 1.0.0 (CC0 1.0), github.com/wyzowl/sfx-kit",
+ "sounds": {
+  "cinematic-drum-big": {
+   "sync": 0.011,
+   "meets": "instant",
+   "dur": 2.178,
+   "lufs": -20,
+   "under_vo_db": -8,
+   "what": "A giant drum struck hard: the crack of the stick and a big, deep boom."
+  },
+  "cinematic-thunder-big": {
+   "sync": 0.011,
+   "meets": "instant",
+   "dur": 3.813,
+   "lufs": -20,
+   "under_vo_db": -8,
+   "what": "A thunderclap: a sharp crack and a rolling rumble."
+  },
+  "cinematic-metal-big": {
+   "sync": 0.03,
+   "meets": "instant",
+   "dur": 2.115,
+   "lufs": -20,
+   "under_vo_db": -8,
+   "what": "A big metal hit: a deep clang of steel ringing on."
+  },
+  "boom-hit-strong": {
+   "sync": 0.047,
+   "meets": "instant",
+   "dur": 1.693,
+   "lufs": -22,
+   "under_vo_db": -8,
+   "what": "A big, deep boom that fills the room."
+  },
+  "boom-hit-medium": {
+   "sync": 0.038,
+   "meets": "instant",
+   "dur": 1.301,
+   "lufs": -24.5,
+   "under_vo_db": -8,
+   "what": "A deep, rounded boom with a warm hall."
+  },
+  "boom-drop-medium": {
+   "sync": 0.052,
+   "meets": "instant",
+   "dur": 3.441,
+   "lufs": -24.5,
+   "under_vo_db": -8,
+   "what": "A deep drop: a boom sinking, with a low roll under it."
+  },
+  "bass-sub-drop-medium": {
+   "sync": 0.021,
+   "meets": "instant",
+   "dur": 2.154,
+   "lufs": -21,
+   "under_vo_db": -8,
+   "what": "A sub drop of about two seconds: deep and falling, felt more than heard."
+  },
+  "bass-sub-drop-short": {
+   "sync": 0.021,
+   "meets": "instant",
+   "dur": 1.175,
+   "lufs": -21,
+   "under_vo_db": -8,
+   "what": "A short sub drop: a deep tone dropping away, about a second."
+  },
+  "bass-rumble-medium": {
+   "sync": 0.017,
+   "meets": "action-start",
+   "dur": 2.805,
+   "lufs": -24,
+   "under_vo_db": -8,
+   "what": "A low rumble of about three seconds: distant thunder, the ground shaking."
+  },
+  "impact-deep-hard": {
+   "sync": 0.01,
+   "meets": "instant",
+   "dur": 1.205,
+   "lufs": -19,
+   "under_vo_db": -7,
+   "what": "A deep, hard hit: a crisp crack over a heavy, rumbling low end."
+  },
+  "riser-1s-soft": {
+   "sync": 0.982,
+   "meets": "arrival",
+   "dur": 1.19,
+   "lufs": -24,
+   "under_vo_db": -3,
+   "what": "A 1-second soft, airy rise that builds to its peak at the end."
+  },
+  "riser-2s-soft": {
+   "sync": 1.994,
+   "meets": "arrival",
+   "dur": 2.189,
+   "lufs": -24,
+   "under_vo_db": -3,
+   "what": "A 2-second soft, airy rise that builds to its peak at the end."
+  },
+  "riser-1s-strong": {
+   "sync": 0.984,
+   "meets": "arrival",
+   "dur": 1.216,
+   "lufs": -20,
+   "under_vo_db": -5,
+   "what": "A 1-second strong, bright rise that builds to its peak at the end."
+  },
+  "reverse-whoosh-short-strong": {
+   "sync": 0.34,
+   "meets": "arrival",
+   "dur": 0.499,
+   "lufs": -20,
+   "under_vo_db": -5,
+   "what": "A short strong, bright reverse whoosh: air drawn in, building to a sudden stop."
+  },
+  "reverse-whoosh-medium-soft": {
+   "sync": 0.679,
+   "meets": "arrival",
+   "dur": 0.861,
+   "lufs": -24,
+   "under_vo_db": -3,
+   "what": "A soft reverse whoosh: air drawn in, building to a sudden stop."
+  },
+  "whoosh-slow-soft": {
+   "sync": 0.452,
+   "meets": "move-peak",
+   "dur": 1.049,
+   "lufs": -24,
+   "under_vo_db": -2,
+   "what": "A long, soft breath of air drifting past."
+  },
+  "whoosh-medium-soft": {
+   "sync": 0.229,
+   "meets": "move-peak",
+   "dur": 0.543,
+   "lufs": -24,
+   "under_vo_db": -2,
+   "what": "A smooth, gentle sweep of air that rises and fades without an edge."
+  },
+  "foley-paper-slide": {
+   "sync": 0.006,
+   "meets": "action-start",
+   "dur": 0.492,
+   "lufs": -25,
+   "under_vo_db": -2,
+   "what": "Paper sliding across a desk: a soft, dry hiss."
+  },
+  "foley-paper-touch": {
+   "sync": 0.022,
+   "meets": "instant",
+   "dur": 0.31,
+   "lufs": -24,
+   "under_vo_db": -2,
+   "what": "A sheet of paper handled: a quick crinkle and rustle."
+  },
+  "props-page-turn": {
+   "sync": 0,
+   "meets": "action-start",
+   "dur": 0.54,
+   "lufs": -26,
+   "under_vo_db": -3,
+   "what": "A page turning: lifted at the corner, swung over and falling flat."
+  },
+  "mechanical-shutter-heavy": {
+   "sync": 0.01,
+   "meets": "instant",
+   "dur": 0.184,
+   "lufs": -22.5,
+   "under_vo_db": -3,
+   "what": "A camera's mirror and shutter: a fuller, slower ka-chunk."
+  },
+  "time-clock": {
+   "sync": 0,
+   "meets": "action-start",
+   "dur": 3.037,
+   "lufs": -27,
+   "under_vo_db": -1,
+   "what": "A clock ticking: tick, tock, once a second."
+  },
+  "time-clock-fast": {
+   "sync": 0,
+   "meets": "action-start",
+   "dur": 2.534,
+   "lufs": -25,
+   "under_vo_db": -1,
+   "what": "Fast, urgent ticking: twice a second."
+  },
+  "writing-pen-draw": {
+   "sync": 0,
+   "meets": "action-start",
+   "dur": 1.269,
+   "lufs": -27,
+   "under_vo_db": -1,
+   "what": "A pen on paper, drawing a few long strokes."
+  }
+ }
+}

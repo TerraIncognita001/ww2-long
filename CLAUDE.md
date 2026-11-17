@@ -203,6 +203,29 @@ Reference analysed whole: `docs/reference/minutes_that_changed_ww2.md` (102 word
 autostory: Gemini writes stamp / stamps / beat / quote per chapter, shape() keeps only what is in the sentence or
 the article. Local test: `work/test7/final.mp4` (B-29 cut to 3 chapters).
 
+## SFX KIT + OPENVERSE + EARS (Andrii, Nov 17: 3 repos analysed -> 'впроваджуй всі три по черзі')
+1. SFX KIT (github.com/wyzowl/sfx-kit, CC0, code-made, 320 sounds with sync points): 24 of them in `sfx/kit/`
+   (+ kit.json: sync, level). longform.accents() places them on the EDIT'S OWN MOMENTS by each sound's sync point
+   (start = moment - sync): DATE / PLACE / chapter stamps = a riser into `cinematic-drum-big`; a clock stamp =
+   `time-clock(-fast)`; the title card = `riser-2s-soft` into `boom-hit-strong`; a newspaper = `foley-paper-slide` +
+   `mechanical-shutter-heavy` when the red frame arrives; a portrait reveal = `whoosh-slow-soft`; a map with routes =
+   `writing-pen-draw`. Teasers: `reverse-whoosh-short-strong` into the cliff cut, `bass-sub-drop-medium` under the
+   glitch, `whoosh-medium-soft` as the thumbnail slides up. NOT used: the UI clicks, phones, notifications, money
+   (modern). `L_ACCENTS=0` turns them off.
+2. OPENVERSE (api.openverse.org, `openverse.py`; no key: 20/min, 200/day): autostory.pictures() adds pictures from
+   it when Commons gives a chapter fewer than its sentences (Flickr Commons / LOC / national archives / Smithsonian;
+   free licences only: PDM, CC0, CC BY, CC BY-SA, credited; Commons skipped; modern ones dropped by title/tags:
+   museum, re-enactors, replicas, air shows, models, 1960+); a shot's file 'ov:<id>' (longform.commons_photo).
+   Speeches: none there (Commons / NARA stay). SFX: `python tools/sfx_fetch.py <name> "<query>" "<description>"` =
+   Freesound CC0 / PD recordings ranked by earshot -> sfx/ov/<name>.mp3 (shot "sfx": "ov/<name>"), credits in
+   sfx/ov/openverse.json; first 7: morse_code, machine_gun, ship_horn, crowd_cheer, church_bells, prop_plane,
+   ocean_waves. sfx/kit + sfx/ov are IN the public repo (CC0 / PD); Mixkit's sfx/ still comes from ww2-bot.
+3. EARS (github.com/Leonxlnx/earshot, MIT; CLAP + AST on the CPU; `ears.py`): installed in its own venv
+   (%USERPROFILE%/.earshot-venv, torch CPU), LOCAL only (the runner skips it). After every full render
+   ears.listen(final.mp4): holes in the sound (> 1.5 s under -45 dB, ffmpeg, runs everywhere) + earshot's listening
+   summary and sheet PNG (work/ears_sheet.png: LOOK at it before showing Andrii); a period speech cut that has no
+   voice in it is reported (Truman's first cut was hiss); sfx_fetch ranks downloads by the description.
+
 ## THE THUMBNAIL STANDARD (Andrii, Nov 10: 'format 2, text 3') - HARD RULE
 Every video's thumbnail = ONE PHOTO + WORDS (thumbs.py `photo` / house_photo): the story's most dramatic picture
 full-bleed (colorized, or color 'tone' when DDColor gives odd colours), darkened at the top, vignette; 1-2 lines of

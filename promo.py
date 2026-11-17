@@ -22,6 +22,8 @@ MAX_S = 15.0
 FONT = "Bebas Neue"
 STAMP = "&H1E1EBE&"                                  # the red of the long video's stamps (a touch lighter)
 KEY, WHITE = r"{\c&H1E1EBE&}", r"{\c&HFFFFFF&}"
+KIT = ((lambda f: json.loads(f.read_text(encoding="utf-8"))["sounds"] if f.exists() else {})
+       (pathlib.Path("sfx/kit/kit.json")))               # SFX Kit by Wyzowl (CC0)
 
 
 def t_(t):
@@ -124,6 +126,13 @@ def render(p, out):
               f"eq=brightness=0.12:enable='between(t,{cut:.3f},{cut + 0.06:.3f})'[v1g];" if cl else "")
     vin = "[v1g]" if cl else "[v1]"
     rise = f"+max(0,220*(1-(t-{g:.3f})/0.35))" if cl else ""
+    # SFX KIT (Nov 17): air drawn in to the cut, a sub drop under the glitch, a whoosh as the thumbnail slides up
+    kits = [(k_, at, lv) for k_, at, lv in (("reverse-whoosh-short-strong", cut, -19), ("bass-sub-drop-medium", cut, -17),
+                                            ("whoosh-medium-soft", g + 0.15, -26)) if k_ in KIT] if cl else []
+    kit_fc = "".join(f"[{4 + i}:a]atrim={max(0.0, KIT[k_]['sync'] - at):.3f},asetpts=PTS-STARTPTS,"
+                     f"volume={lv - KIT[k_]['lufs']:.1f}dB,adelay={int(max(0.0, at - KIT[k_]['sync']) * 1000)}:all=1[k{i}];"
+                     for i, (k_, at, lv) in enumerate(kits))
+    kit_in = "".join(f"[k{i}]" for i in range(len(kits)))
     vf = (f"[0:v]fps=30,tpad=stop_mode=clone:stop_duration={END_S},split[a][b];"
           f"[a]scale=-2:{VH},crop={VW}:{VH},boxblur=28:2,eq=brightness=-0.22[bg];"
           f"[b]scale={VW}:{FG_H}[fg];[bg][fg]overlay=0:{(VH - FG_H) // 2}[v1];{glitch}"
@@ -136,12 +145,13 @@ def render(p, out):
           f"[1:a]atrim=0:{END_S},asetpts=PTS-STARTPTS,volume=0.6,afade=t=in:d=0.2,"
           f"afade=t=out:st={END_S - 0.8}:d=0.8,adelay={int(g * 1000)}:all=1[sx];"
           + (f"[3:a]atrim=0:{GLITCH + 0.1},asetpts=PTS-STARTPTS,volume=0.7,afade=t=out:st={GLITCH - 0.05}:d=0.15,"
-             f"adelay={int(cut * 1000)}:all=1[gl];[va][sx][gl]amix=inputs=3:normalize=0," if cl else
-             "[va][sx]amix=inputs=2:normalize=0,")
+             f"adelay={int(cut * 1000)}:all=1[gl];{kit_fc}[va][sx][gl]{kit_in}amix=inputs={3 + len(kits)}:normalize=0,"
+             if cl else "[va][sx]amix=inputs=2:normalize=0,")
           + "loudnorm=I=-14:TP=-1.5:LRA=11[aud]")
     subprocess.run(["ffmpeg", "-y", "-loglevel", "error", "-ss", f"{a:.3f}", "-t", f"{cut:.3f}", "-i", p["source"],
                     "-i", "sfx/low_rumble.mp3", "-loop", "1", "-t", f"{dur:.3f}", "-i", p["cover"],
-                    *(["-i", "sfx/radio_static.mp3"] if cl else []), "-filter_complex", vf, "-map", "[v]", "-map", "[aud]", "-t", f"{dur:.3f}", "-c:v", "libx264",
+                    *(["-i", "sfx/radio_static.mp3"] if cl else []),
+                    *[x for k_, _, _ in kits for x in ("-i", f"sfx/kit/{k_}.wav")], "-filter_complex", vf, "-map", "[v]", "-map", "[aud]", "-t", f"{dur:.3f}", "-c:v", "libx264",
                     "-preset", "veryfast", "-crf", "20", "-pix_fmt", "yuv420p", "-c:a", "aac", "-b:a", "160k",
                     "-ar", "48000", str(out)], check=True)
     return round(dur, 1)

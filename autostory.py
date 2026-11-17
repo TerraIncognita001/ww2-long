@@ -188,6 +188,28 @@ def write(topic, text):
     return d
 
 
+def openverse_candidates(vis, want, used):
+    """More pictures for a chapter from Openverse (Flickr Commons, LOC, Smithsonian... free licences): the chapter's
+    own 'visuals' searched there -> [(path, 'ov:<id>', credit, sentence)]; Gemini's look then keeps the right ones."""
+    import longform as L
+    import openverse
+    out, seen = [], set()
+    for n, v in enumerate(vis):
+        if len(out) >= want or openverse._calls["out"]:
+            break
+        for r in openverse.images(v, n=2):
+            name = "ov:" + r["id"]
+            if name in used or name in seen:
+                continue
+            got = L.commons_photo(name)
+            if got:
+                seen.add(name)
+                out.append((got[0], name, got[1], n))
+    if out:
+        print(f"  openverse: +{len(out)} pictures")
+    return out
+
+
 def pictures(d, topic):
     """{(chapter, sentence): [file names]}, subject files, cover file -> the story's shots and cover.
     Nov 15: CHAPTER BY CHAPTER (jurgen's finder was built for a 60 s Short: <= 30 pictures and one Gemini look at
@@ -204,6 +226,8 @@ def pictures(d, topic):
         except Exception as e:
             print(f"chapter {k}: pictures failed: {type(e).__name__}")
             continue
+        if len(cands) < len(sents):                    # OPENVERSE (Nov 17): Commons has too few for this chapter
+            cands += openverse_candidates(vis, len(sents) - len(cands), used)
         name_of = {str(p): n for p, n, cr, h in cands}
         cands = [x for x in cands if x[1] not in used]
         credit_of = {p: cr for p, n, cr, h in cands}
@@ -294,6 +318,35 @@ def shape(d, text):
             c["beats"] = beats
 
 
+SFX_WORDS = [   # Nov 17: the real recordings of sfx/ov (Openverse, ranked by earshot) + Mixkit's, by the sentence
+    (r"\bmorse|telegraph|radio (message|signal|traffic)|coded message|decod|intercept", "ov/morse_code"),
+    (r"machine.?gun|strafe|strafing", "ov/machine_gun"),
+    (r"cheer|celebrat|crowds?\b|liberat|jubilant", "ov/crowd_cheer"),
+    (r"\bbells?\b|church|cathedral", "ov/church_bells"),
+    (r"beach|\bwaves?\b|\bsurf\b|landing craft|shore", "ov/ocean_waves"),
+    (r"\bharbou?r|\bport\b|convoy|liner|sets sail|steam(s|ed)? (out|into)", "ov/ship_horn"),
+    (r"bomber|aircraft|airplanes?|planes?\b|flies|squadron|takes off", "ov/prop_plane"),
+    (r"artillery|shell(s|ing)|barrage|bombard", "artillery"),
+    (r"explo|bomb(s|ed|ing)?\b|blast", "explosion_far"),
+    (r"\btanks?\b|panzer|armou?r", "tank_engine"),
+    (r"storm|gale|blizzard|snow", "storm_wind"),
+]
+
+
+def auto_sfx(c):
+    """A sound on a chapter's shot when its sentence names one (SFX_WORDS); at most one every 3 shots, never the
+    same sound twice in a row (the sound bed must not turn into noise)."""
+    last, gap = None, 9
+    for sh in c.get("shots") or []:
+        gap += 1
+        if sh.get("sfx") or gap < 3:
+            continue
+        text = plain(c["sentences"][sh["s"] - 1]).lower() if 0 < sh.get("s", 0) <= len(c["sentences"]) else ""
+        name = next((n for rx, n in SFX_WORDS if re.search(rx, text)), None)
+        if name and name != last and (pathlib.Path("sfx") / f"{name}.mp3").exists():
+            sh["sfx"], last, gap = name, name, 0
+
+
 def rehearse(d):
     """Andrii's rules (Nov 15: a photo <= 10 s, <= 2 times, >= 6 pictures a minute) tried on an estimated timeline
     (2.45 words a second): a story that would be refused at the render is skipped now, and the next topic tried."""
@@ -381,6 +434,7 @@ def make_one(topic):
                        "a photo <= 10 s, <= 2 times, 6 a minute)")
         shown.update(have)
         c["shots"] = sorted(shots, key=lambda s: s["s"])
+        auto_sfx(c)
         c.pop("visuals", None)
     for c in d["chapters"]:                            # marker notes: only words that are in their sentence
         notes = c.pop("notes", None)

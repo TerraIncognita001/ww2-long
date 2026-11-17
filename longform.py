@@ -238,6 +238,13 @@ def commons_photo(name):
     meta = PHOTOS / (out.name + ".credit")
     if out.exists() and out.stat().st_size > 5000:
         return out.resolve(), meta.read_text(encoding="utf-8") if meta.exists() else name
+    if name.startswith("ov:"):                         # an Openverse picture (Nov 17): openverse.photo
+        import openverse
+        got = openverse.photo(name[3:], out)
+        if got:
+            meta.write_text(got[1], encoding="utf-8")
+            return out.resolve(), got[1]
+        return None
     item = None
     try:
         page = requests.get(S.COMMONS, headers=S.UA, timeout=60, params={
@@ -809,6 +816,9 @@ def cut_recording(d, p, name):
            f"afade=t=out:st={max(0.0, y - x - 0.15):.2f}:d=0.15", "-ar", "24000", "-ac", "1",
            "-c:a", "libmp3lame", "-b:a", "128k", cut.name)
         p["_cut"], p["_len"], p["_credit"] = cut, probe_duration(cut), src.get("credit")
+        import ears                                    # EARS (Nov 17): a voice, not newsreel hiss (Truman's 1st cut)
+        if ears.is_voice(cut) is False:
+            print(f"EARS: period audio {name} ({src['file'][:50]} {x:.1f}-{y:.1f} s): no voice heard in the cut")
         return True
     except Exception as e:
         print("period audio failed:", a, type(e).__name__, str(e)[:100])
@@ -1013,6 +1023,51 @@ def music_plan(d, segs):
     return out
 
 
+def _kit():
+    p = pathlib.Path("sfx/kit/kit.json")
+    return json.loads(p.read_text(encoding="utf-8"))["sounds"] if p.exists() else {}
+
+
+KIT = _kit()                                           # SFX Kit by Wyzowl (CC0): 24 sounds + their sync points
+ACCENTS = env("L_ACCENTS", "1") == "1"
+CLOCK = re.compile(r"\d{1,2}:\d{2}")
+
+
+def accents(d, segs, shots):
+    """SFX KIT (Andrii, Nov 17: 'впроваджуй всі три'): designed accents placed on the edit's own moments by each
+    sound's sync point -> [(kit id, moment s, level)] (level on the kit's loudest-150-ms LUFS scale; the bed is ducked
+    under the voice as all SFX). DATE / PLACE / chapter stamps = a riser into a drum hit; a clock stamp ('6:30 A.M.')
+    = ticking; the title card = a riser into a boom; a newspaper = paper sliding + a shutter when the red frame
+    arrives (80 % of the shot); a portrait reveal = a slow whoosh; a map with routes = a pen drawing."""
+    if not (ACCENTS and KIT):
+        return []
+    out = []
+    add = lambda kid, at, lv: out.append((kid, at, lv)) if kid in KIT and at >= 0 else None
+    for g in segs:
+        if g["kind"] == "title":
+            add("riser-2s-soft", g["start"], -27)
+            add("boom-hit-strong", g["start"], -22)
+    last = -9.0
+    for sh in shots:
+        a, dur = sh["start"], sh["dur"]
+        words = " ".join(sh.get("stamp") or [])
+        if words and CLOCK.search(words):
+            add("time-clock-fast" if sh.get("mode") == "action" else "time-clock", a, -30)
+        elif words:
+            if a - last > 2.0:                         # a run of stamps: one riser into the first
+                add("riser-1s-soft", a, -29)
+            add("cinematic-drum-big", a, -20)
+            last = a + dur
+        if sh.get("focus"):
+            add("foley-paper-slide", a + 0.05, -30)
+            add("mechanical-shutter-heavy", a + dur * 0.8, -28)
+        elif sh.get("reveal"):
+            add("whoosh-slow-soft", a + 0.6, -31)
+        elif sh["kind"] == "map" and (sh.get("spec") or {}).get("routes"):
+            add("writing-pen-draw", a + 0.4, -33)
+    return out
+
+
 def mix_audio(d, segs, shots, total):
     fmt = "aresample=44100,aformat=sample_fmts=fltp:channel_layouts=stereo"
     args, fc, vo, mu, fx = [], [], [], [], []
@@ -1059,6 +1114,14 @@ def mix_audio(d, segs, shots, total):
         fc.append(f"[{n}:a]{fmt},atrim=0:{dd:.3f},asetpts=N/SR/TB,volume={g:.1f}dB,afade=t=in:d=0.08,"
                   f"afade=t=out:st={max(0.0, dd - 0.4):.2f}:d=0.4,adelay={ms}|{ms}[x{n}]")
         fx.append(f"[x{n}]")
+    for kid, at, lv in accents(d, segs, shots):        # sfx-kit accents on the edit's own moments (Nov 17)
+        k_ = KIT[kid]
+        st = at - k_["sync"]                           # the kit's rule: start = the moment - its sync point
+        n = inp(pathlib.Path("sfx/kit") / f"{kid}.wav")
+        skip = max(0.0, -st)
+        ms = int(max(0.0, st) * 1000)
+        fc.append(f"[{n}:a]{fmt},atrim={skip:.3f},asetpts=N/SR/TB,volume={lv - k_['lufs']:.1f}dB,adelay={ms}|{ms}[k{n}]")
+        fx.append(f"[k{n}]")
     back = mu + fx
     fc.append(f"{''.join(back)}amix=inputs={len(back)}:duration=longest:normalize=0,apad,atrim=0:{total:.3f}[bk]")
     fc.append("[bk][key]sidechaincompress=threshold=0.03:ratio=5:attack=25:release=1500[bkd]")
@@ -1405,6 +1468,10 @@ def make_video(d):
            "-t", f"{total:.3f}", "-r", "30", "-c:v", "libx264", "-preset", env("L_FINAL_PRESET", "veryfast"),
            "-crf", "20", "-maxrate", "10M", "-bufsize", "20M", "-pix_fmt", "yuv420p", "-c:a", "copy",
            "-movflags", "+faststart", "final.mp4")
+    if not env("L_INTRO_ONLY"):                        # EARS (Nov 17): holes in the sound + earshot's listening
+        import ears
+        with stage("ears"):
+            d["_ears"] = ears.listen(W / "final.mp4", segs)
     credits = list(dict.fromkeys([s["credit"] for s in shots if s.get("credit")]
                                  + [p["_credit"] for p in d.get("pre") or [] if p.get("_credit")]
                                  + [b["_credit"] for c in chapters(d) for b in c.get("beats") or [] if b.get("_credit")]))
