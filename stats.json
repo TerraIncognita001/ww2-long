@@ -154,11 +154,7 @@
    "seconds": 806.7,
    "words": 1895,
    "tts": "edge",
-   "thumb": "ok",
-   "comment_due": {
-    "at": "2026-11-14T00:00:00Z",
-    "q": "Did the B-29 win the war against Japan?"
-   }
+   "thumb": "ok"
   },
   {
    "id": "gPt1c1C-UXI",
@@ -177,6 +173,37 @@
    "title": "Four B-29s Landed in the Soviet Union. Stalin Never Gave Them Back",
    "seconds": 41.9,
    "publish_at": "2026-11-14T03:00:00Z"
+  },
+  {
+   "id": "NlJV8qKSc1s",
+   "date": "2026-11-17",
+   "format": "long",
+   "title": "The ENTIRE History of D-Day in 11 Minutes",
+   "topic": "Normandy landings",
+   "seconds": 719.1,
+   "words": 1598,
+   "tts": "edge",
+   "thumb": "ok"
+  },
+  {
+   "id": "XjdkT5G3M-4",
+   "date": "2026-11-17",
+   "format": "short",
+   "promo": true,
+   "long": "NlJV8qKSc1s",
+   "title": "D-Day Depended on One Weather Forecast",
+   "seconds": 14.1,
+   "publish_at": "2026-11-17T00:33:07Z"
+  },
+  {
+   "id": "lCrC2oQxuNc",
+   "date": "2026-11-17",
+   "format": "short",
+   "promo": true,
+   "long": "NlJV8qKSc1s",
+   "title": "The Fake Army That Protected D-Day",
+   "seconds": 12.5,
+   "publish_at": "2026-11-17T03:03:07Z"
   }
  ],
  "metrics": {},
