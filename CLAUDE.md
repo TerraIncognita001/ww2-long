@@ -185,7 +185,8 @@ Reference analysed whole: `docs/reference/minutes_that_changed_ww2.md` (102 word
    sinking, a raid, a bombing, a surrender, a landing) shows 1-3 FRONT PAGES / CLIPPINGS OF THOSE DAYS ABOUT THAT
    EVENT, not just film: each a beat shot {"file": the scan, "focus": [x0, y0, x1, y1] = its headline in 0-1 of the
    page, "dur": 4-5, "sfx": "typewriter"} -> render_paper(): the whole page on its blurred copy, then an eased push
-   into the headline with a red frame round it (80 % of the shot, then it holds). Sources: public domain only
+   into the headline (80 % of the shot, then it holds); NO red frame round it (Andrii, Nov 17: the push-in
+   isolates the headline already). Sources: public domain only
    (Wikimedia Commons front pages, Library of Congress Chronicling America, Internet Archive; credit them). Find the
    headline box on a grid (the 'Plain Dealer Aug 7 1945' test: '125 Superfortresses Pound Naval Arsenal' =
    [0.37, 0.59, 0.71, 0.64]); LOOK at the frames. NEVER a headline with a slur of the time ('Japs' etc., common in
@@ -208,7 +209,7 @@ the article. Local test: `work/test7/final.mp4` (B-29 cut to 3 chapters).
    (+ kit.json: sync, level). longform.accents() places them on the EDIT'S OWN MOMENTS by each sound's sync point
    (start = moment - sync): DATE / PLACE / chapter stamps = a riser into `cinematic-drum-big`; a clock stamp =
    `time-clock(-fast)`; the title card = `riser-2s-soft` into `boom-hit-strong`; a newspaper = `foley-paper-slide` +
-   `mechanical-shutter-heavy` when the red frame arrives; a portrait reveal = `whoosh-slow-soft`; a map with routes =
+   `mechanical-shutter-heavy` when the push-in lands; a portrait reveal = `whoosh-slow-soft`; a map with routes =
    `writing-pen-draw`. Teasers: `reverse-whoosh-short-strong` into the cliff cut, `bass-sub-drop-medium` under the
    glitch, `whoosh-medium-soft` as the thumbnail slides up. NOT used: the UI clicks, phones, notifications, money
    (modern). `L_ACCENTS=0` turns them off.

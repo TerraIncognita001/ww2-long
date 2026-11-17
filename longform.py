@@ -751,9 +751,9 @@ def render_reveal(m, d, k):
 
 def render_paper(m, d, k):
     """NEWSPAPERS (Andrii, Nov 15): a scanned front page / clipping of those days: the whole page on its blurred
-    copy, then an eased push into the headline (`focus` [x0, y0, x1, y1] of the page, 0-1) that fills the frame,
-    with a red frame drawn round it as the camera arrives."""
-    from PIL import Image, ImageDraw
+    copy, then an eased push into the headline (`focus` [x0, y0, x1, y1] of the page, 0-1) that fills the frame
+    (no red frame since Nov 17: the push-in isolates the headline)."""
+    from PIL import Image
     out = W / f"s{k:04d}.mp4"
     im = Image.open(m["path"]).convert("RGB")         # the page as it is: the focus box is in its own fractions
     CW, CH = SIZE[0] * 2, SIZE[1] * 2                  # 2x canvas: zoompan rounds to whole pixels (no jitter)
@@ -764,7 +764,7 @@ def render_paper(m, d, k):
     bg.paste(page, (px, py))
     x0, y0, x1, y1 = m["focus"]
     bx0, by0, bx1, by1 = px + x0 * page.width, py + y0 * page.height, px + x1 * page.width, py + y1 * page.height
-    ImageDraw.Draw(bg).rectangle((bx0 - 8, by0 - 8, bx1 + 8, by1 + 8), outline=(200, 26, 26), width=10)
+    # Andrii, Nov 17: NO red frame round the headline (the push-in isolates it already)
     fp = W / f"f{k:04d}.jpg"
     bg.save(fp, quality=93)
     zt = min(CW / (bx1 - bx0 + 80), CH / (by1 - by0 + 80), 6.0)
@@ -1037,8 +1037,8 @@ def accents(d, segs, shots):
     """SFX KIT (Andrii, Nov 17: 'впроваджуй всі три'): designed accents placed on the edit's own moments by each
     sound's sync point -> [(kit id, moment s, level)] (level on the kit's loudest-150-ms LUFS scale; the bed is ducked
     under the voice as all SFX). DATE / PLACE / chapter stamps = a riser into a drum hit; a clock stamp ('6:30 A.M.')
-    = ticking; the title card = a riser into a boom; a newspaper = paper sliding + a shutter when the red frame
-    arrives (80 % of the shot); a portrait reveal = a slow whoosh; a map with routes = a pen drawing."""
+    = ticking; the title card = a riser into a boom; a newspaper = paper sliding + a shutter when the push-in
+    lands on the headline (80 % of the shot); a portrait reveal = a slow whoosh; a map with routes = a pen drawing."""
     if not (ACCENTS and KIT):
         return []
     out = []
