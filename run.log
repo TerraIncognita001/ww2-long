@@ -1,0 +1,8 @@
+Traceback (most recent call last):
+  File "/home/runner/work/ww2-long/ww2-long/longform.py", line 1031, in <module>
+    KIT = _kit()                                           # SFX Kit by Wyzowl (CC0): 24 sounds + their sync points
+          ^^^^^^
+  File "/home/runner/work/ww2-long/ww2-long/longform.py", line 1028, in _kit
+    return json.loads(p.read_text(encoding="utf-8"))["sounds"] if p.exists() else {}
+           ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^
+KeyError: 'sounds'
