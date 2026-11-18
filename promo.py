@@ -22,8 +22,13 @@ MAX_S = 15.0
 FONT = "Bebas Neue"
 STAMP = "&H1E1EBE&"                                  # the red of the long video's stamps (a touch lighter)
 KEY, WHITE = r"{\c&H1E1EBE&}", r"{\c&HFFFFFF&}"
-KIT = ((lambda f: json.loads(f.read_text(encoding="utf-8"))["sounds"] if f.exists() else {})
-       (pathlib.Path("sfx/kit/kit.json")))               # SFX Kit by Wyzowl (CC0)
+
+def _kit():
+    import longform as L                               # one loader (tolerates ww2-bot's flat kit.json)
+    return L.KIT
+
+
+KIT = None                                             # SFX Kit by Wyzowl (CC0): filled on the first render
 
 
 def t_(t):
@@ -127,6 +132,8 @@ def render(p, out):
     vin = "[v1g]" if cl else "[v1]"
     rise = f"+max(0,220*(1-(t-{g:.3f})/0.35))" if cl else ""
     # SFX KIT (Nov 17): air drawn in to the cut, a sub drop under the glitch, a whoosh as the thumbnail slides up
+    global KIT
+    KIT = KIT if KIT is not None else _kit()
     kits = [(k_, at, lv) for k_, at, lv in (("reverse-whoosh-short-strong", cut, -19), ("bass-sub-drop-medium", cut, -17),
                                             ("whoosh-medium-soft", g + 0.15, -26)) if k_ in KIT] if cl else []
     kit_fc = "".join(f"[{4 + i}:a]atrim={max(0.0, KIT[k_]['sync'] - at):.3f},asetpts=PTS-STARTPTS,"

@@ -66,7 +66,7 @@ jobs:
           sparse-checkout: |
             music
             sfx
-      - run: cp -r _assets/music _assets/sfx . && rm -rf _assets && ls music/jurgen sfx | head -5
+      - run: cp -rn _assets/music _assets/sfx . && rm -rf _assets   # -n: our sfx/kit + sfx/ov win (Nov 18) && ls music/jurgen sfx | head -5
       - uses: actions/setup-python@v5
         with:
           python-version: "3.12"

@@ -1025,7 +1025,13 @@ def music_plan(d, segs):
 
 def _kit():
     p = pathlib.Path("sfx/kit/kit.json")
-    return json.loads(p.read_text(encoding="utf-8"))["sounds"] if p.exists() else {}
+    try:                                               # ww2-bot's own sfx/kit/kit.json (flat {id: ...}) may land
+        js = json.loads(p.read_text(encoding="utf-8"))   # here too (Nov 18: it overwrote ours and the run died)
+        js = js.get("sounds", js)
+        return {k: v for k, v in js.items() if isinstance(v, dict) and "sync" in v and "lufs" in v
+                and (p.parent / f"{k}.wav").exists()}
+    except (OSError, ValueError, AttributeError):
+        return {}
 
 
 KIT = _kit()                                           # SFX Kit by Wyzowl (CC0): 24 sounds + their sync points
