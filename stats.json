@@ -204,6 +204,41 @@
    "title": "The Fake Army That Protected D-Day",
    "seconds": 12.5,
    "publish_at": "2026-11-17T03:03:07Z"
+  },
+  {
+   "id": "jaDL-dDZSmk",
+   "date": "2026-11-18",
+   "format": "long",
+   "title": "The ENTIRE History of Pearl Harbor in 12 Minutes",
+   "topic": "Attack on Pearl Harbor",
+   "seconds": 767.2,
+   "words": 1612,
+   "tts": "edge",
+   "thumb": "ok",
+   "comment_due": {
+    "at": "2026-11-19T00:00:00Z",
+    "q": "Should Nagumo have launched the third strike?"
+   }
+  },
+  {
+   "id": "lG-hI650toI",
+   "date": "2026-11-18",
+   "format": "short",
+   "promo": true,
+   "long": "jaDL-dDZSmk",
+   "title": "Radar Saw the Pearl Harbor Attack Coming",
+   "seconds": 14.0,
+   "publish_at": "2026-11-19T00:30:00Z"
+  },
+  {
+   "id": "ZepX3gcrKR0",
+   "date": "2026-11-18",
+   "format": "short",
+   "promo": true,
+   "long": "jaDL-dDZSmk",
+   "title": "The Third Strike That Never Hit Pearl Harbor",
+   "seconds": 14.1,
+   "publish_at": "2026-11-19T03:00:00Z"
   }
  ],
  "metrics": {},
