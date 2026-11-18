@@ -1,0 +1,1472 @@
+{
+ "priority": 8,
+ "format": "entire",
+ "topic": "Attack on Pearl Harbor",
+ "sources": [
+  "Day of Infamy speech",
+  "USS Arizona (BB-39)"
+ ],
+ "title": "The ENTIRE History of Pearl Harbor in {N} Minutes",
+ "question": "Should Nagumo have launched the third strike?",
+ "summary": "On December 7, 1941, 353 Japanese aircraft from six carriers strike the US Pacific Fleet at Pearl Harbor. From the oil embargo and Yamamoto's plan to the radar at Opana Point, the explosion of the USS Arizona, the third strike that never came and Roosevelt's 'date which will live in infamy', this is the whole story, told with the US Navy's own film of the attack, the voices of the time and the newspapers of December 1941.",
+ "tags": [
+  "Pearl Harbor",
+  "Attack on Pearl Harbor",
+  "December 7 1941",
+  "USS Arizona",
+  "Yamamoto",
+  "Nagumo",
+  "Day of Infamy",
+  "Franklin D. Roosevelt",
+  "Kido Butai",
+  "Battleship Row",
+  "WW2 documentary",
+  "World War 2",
+  "Pacific War",
+  "Opana radar"
+ ],
+ "pronounce": {
+  "Oahu": "Oh-ah-hoo",
+  "Hittokapu": "Hit-toh-kah-poo",
+  "Kido Butai": "Kee-doh Boo-tie",
+  "Sōryū": "Soh-ryoo",
+  "Hiryū": "Hee-ryoo",
+  "Shōkaku": "Show-kah-koo",
+  "Zuikaku": "Zoo-ee-kah-koo",
+  "Chūichi": "Choo-ee-chee",
+  "Fuchida": "Foo-chee-dah",
+  "Konoe": "Koh-noh-eh",
+  "Opana": "Oh-pah-nah",
+  "Yoshikawa": "Yoh-shee-kah-wah",
+  "Genda": "Gen-dah",
+  "Bennion": "Ben-yon"
+ },
+ "films": {
+  "attack": {
+   "url": "https://archive.org/download/NPC-1730/NPC-1730.mov",
+   "mono": true,
+   "crop": "1012:570:134:0",
+   "credit": "Japanese Planes Bomb Pearl Harbor, USS Arizona Explodes and Sinks, 12/07/1941: US Navy / NARA NPC-1730 (public domain, via Internet Archive)"
+  },
+  "afire": {
+   "url": "https://archive.org/download/NPC-1733/428-npc-1733%20Over-Turned%20And%20Wrecked%20Ships%20Others%20Afire%20Pearl%20Harbor%2012-07-1941.mp4",
+   "mono": true,
+   "crop": "1012:570:134:0",
+   "credit": "Over-Turned & Wrecked Ships, Others Afire, Pearl Harbor, 12/07/1941: US Navy / NARA 428-NPC-1733 (public domain, via Internet Archive)"
+  },
+  "after": {
+   "url": "https://archive.org/download/NPC-1732/NPC-1732.mov",
+   "mono": true,
+   "crop": "1012:570:134:0",
+   "credit": "Damaged Planes, Hangars & Sunken Ships, Pearl Harbor, 12/08/1941: US Navy / NARA NPC-1732 (public domain, via Internet Archive)"
+  },
+  "japan": {
+   "url": "https://archive.org/download/NPC-4266/NPC-4266.mp4",
+   "mono": true,
+   "crop": "496:279:72:0",
+   "credit": "'Sea Battles off Hawaii and Malaya', Japanese film, captured: NARA NPC-4266 (public domain, via Internet Archive)"
+  }
+ },
+ "period_audio": {
+  "fdr": {
+   "file": "Roosevelt Infamy.ogg",
+   "speaker": "Franklin D. Roosevelt",
+   "date": "DECEMBER 8, 1941",
+   "credit": "Franklin D. Roosevelt, address to Congress ('Day of Infamy'), 8 December 1941 (public domain, via Wikimedia Commons)",
+   "text": "December 7th, 1941, a date which will live in infamy"
+  }
+ },
+ "pre": [
+  {
+   "dur": 2.6,
+   "film": "attack",
+   "from": 35,
+   "to": 39,
+   "sfx": "plane_flyby"
+  },
+  {
+   "dur": 2.8,
+   "film": "attack",
+   "from": 108,
+   "to": 111.5,
+   "stamp": [
+    "DECEMBER 7",
+    "1941"
+   ],
+   "sfx": "explosion_massive"
+  },
+  {
+   "dur": 3.0,
+   "film": "afire",
+   "from": 294,
+   "to": 298,
+   "stamp": [
+    "PEARL HARBOR"
+   ],
+   "hush": true,
+   "audio": {
+    "src": "fdr",
+    "from": 2.75,
+    "to": 12.9
+   },
+   "source": "PRESIDENT ROOSEVELT · CONGRESS, DECEMBER 8, 1941"
+  },
+  {
+   "dur": 2.6,
+   "film": "attack",
+   "from": 112,
+   "to": 116,
+   "source": "PRESIDENT ROOSEVELT · CONGRESS, DECEMBER 8, 1941"
+  },
+  {
+   "dur": 2.8,
+   "film": "afire",
+   "from": 341,
+   "to": 345,
+   "source": "PRESIDENT ROOSEVELT · CONGRESS, DECEMBER 8, 1941"
+  },
+  {
+   "dur": 2.6,
+   "film": "attack",
+   "from": 117,
+   "to": 121,
+   "source": "PRESIDENT ROOSEVELT · CONGRESS, DECEMBER 8, 1941"
+  }
+ ],
+ "whole": [
+  "ChuichiHara.jpg"
+ ],
+ "thumb": {
+  "file": "USS Shaw Pearl Harbor-7Dec41.jpg"
+ },
+ "cover": {
+  "file": "USS Shaw Pearl Harbor-7Dec41.jpg",
+  "x": 0.5,
+  "y": 0.55,
+  "zoom": 1.0,
+  "color": false,
+  "text": [
+   "HISTORY OF",
+   "PEARL HARBOR",
+   "IN {N} MINUTES"
+  ],
+  "key": [
+   "PEARL",
+   "HARBOR"
+  ],
+  "sizes": [
+   96,
+   150,
+   96
+  ],
+  "mono": true
+ },
+ "promos": [
+  {
+   "id": "pearl_radar",
+   "chapter": 4,
+   "sentences": [
+    "Before Pearl Harbor is hit, an American radar sees the Japanese planes coming.",
+    "Two privates report the biggest formation they have ever seen.",
+    "The officer on duty has his answer: six American B-17 bombers from California."
+   ],
+   "shots": [
+    {
+     "s": 1,
+     "file": "Opana SCR-270 radar display Dec 7, 1941.jpeg"
+    },
+    {
+     "s": 2,
+     "file": "Opana Radar Original Plot Dec 7, 1941.jpg",
+     "card": true
+    },
+    {
+     "s": 3,
+     "file": "Kermit Tyler.jpg",
+     "name": "KERMIT TYLER"
+    }
+   ],
+   "top": "RADAR SAW|PEARL HARBOR",
+   "key": [
+    "PEARL",
+    "HARBOR"
+   ],
+   "cta": {
+    "kind": "redacted",
+    "line": "HE SAYS IT'S",
+    "hidden": "B-17s"
+   },
+   "end": "WHAT DID HE SAY?",
+   "name": "Radar Saw the Pearl Harbor Attack Coming"
+  },
+  {
+   "id": "pearl_third",
+   "chapter": 7,
+   "sentences": [
+    "After Pearl Harbor, the Japanese carriers are ready for one more strike.",
+    "This time, the targets would be the oil tanks and the repair shops.",
+    "Admiral Nagumo makes his decision: he withdraws."
+   ],
+   "shots": [
+    {
+     "s": 1,
+     "file": "Akagi Pearl Harbor Second Wave Prep.jpg"
+    },
+    {
+     "s": 2,
+     "file": "Pearl Harbor Navy Yard in October 1941.jpg"
+    },
+    {
+     "s": 3,
+     "file": "Chuichi Nagumo in the bridge of Akagi heading to attack Pearl Harbor.jpg"
+    }
+   ],
+   "top": "PEARL HARBOR'S|LAST STRIKE",
+   "key": [
+    "PEARL",
+    "HARBOR'S"
+   ],
+   "cta": {
+    "kind": "timestamp"
+   },
+   "end": "WHAT DID HE DECIDE?",
+   "name": "The Third Strike That Never Hit Pearl Harbor"
+  }
+ ],
+ "chapters": [
+  {
+   "title": "",
+   "mode": "action",
+   "sentences": [
+    "This is Pearl Harbor, the base of the United States Pacific Fleet, on the morning of December 7, 1941.",
+    "In ninety minutes, 353 Japanese aircraft from six carriers damage every one of the eight battleships in the harbor.",
+    "2,403 Americans are killed, and a country that was neutral is at war the next day.",
+    "The man who planned it, Admiral Isoroku Yamamoto, hopes it will lead to a quick peace.",
+    "But the American carriers are at sea, and the oil tanks are not even attacked.",
+    "This is the entire history of Pearl Harbor."
+   ],
+   "shots": [
+    {
+     "s": 1,
+     "file": "Pearl Harbor Japanese recon photo of battleship row 80G30551.jpg",
+     "label": "PEARL HARBOR · 7 DECEMBER 1941"
+    },
+    {
+     "s": 2,
+     "film": "attack",
+     "from": 40,
+     "to": 45,
+     "note": "353 AIRCRAFT",
+     "sfx": "plane_flyby"
+    },
+    {
+     "s": 3,
+     "film": "afire",
+     "from": 302,
+     "to": 307
+    },
+    {
+     "s": 4,
+     "file": "Admiral Isoroku Yamamoto.jpg",
+     "reveal": [
+      0.62,
+      0.22
+     ],
+     "name": "ISOROKU YAMAMOTO",
+     "role": "ADMIRAL, COMBINED FLEET"
+    },
+    {
+     "s": 5,
+     "file": "USS Enterprise (CV-6) underway in the Pacific Ocean, in June 1941 (80-G-K-14254).jpg",
+     "note": "THE CARRIERS"
+    },
+    {
+     "s": 6,
+     "film": "attack",
+     "from": 157,
+     "to": 159
+    }
+   ]
+  },
+  {
+   "title": "An Oil Embargo",
+   "mode": "people",
+   "stamp": [
+    "CHINA",
+    "1937"
+   ],
+   "sentences": [
+    "In 1937, Japan goes to war with China, and to fight it, Japan relies heavily on American oil.",
+    "It needs iron and oil that its home islands cannot supply.",
+    "In mid-1940, President Franklin D. Roosevelt moves the Pacific Fleet from San Diego to Hawaii.",
+    "He hopes it will discourage Japanese aggression in the Far East.",
+    "The fleet's commander, Admiral James Richardson, protests the move, and is removed from command.",
+    "That year, Japan invades French Indochina.",
+    "The United States stops shipping it airplanes, machine tools and aviation gasoline.",
+    "In July 1941, it stops oil exports to Japan as well.",
+    "Japan's answer is a plan to take the oil-rich Dutch East Indies.",
+    "Talks go on through the autumn, and the Japanese prime minister, Konoe, offers to meet Roosevelt.",
+    "Roosevelt insists on an agreement first, and Konoe's government collapses.",
+    "On November 26, the American Hull note demands that Japan evacuate China completely.",
+    "By then, the Japanese attack fleet has already left port.",
+    "In Tokyo, it is seen as a strike before the oil gauge runs empty."
+   ],
+   "shots": [
+    {
+     "s": 1,
+     "film": "japan",
+     "from": 15,
+     "to": 20
+    },
+    {
+     "s": 2,
+     "film": "japan",
+     "from": 51,
+     "to": 56,
+     "sfx": "plane_vintage"
+    },
+    {
+     "s": 3,
+     "file": "Aerail view of Pearl Harbor on 3 May 1940.jpg",
+     "label": "PEARL HARBOR · 1940"
+    },
+    {
+     "s": 4,
+     "file": "Aerial view of Ford Island, Pearl Harbor, on 10 November 1941 (80-G-279385).jpg",
+     "zoom": 1.3,
+     "x": 0.4
+    },
+    {
+     "s": 5,
+     "film": "attack",
+     "from": 0,
+     "to": 5
+    },
+    {
+     "s": 6,
+     "file": "Japanese troops entering Saigon in 1941.jpg",
+     "label": "SAIGON · 1941"
+    },
+    {
+     "s": 7,
+     "film": "japan",
+     "from": 57,
+     "to": 62
+    },
+    {
+     "s": 8,
+     "file": "Pearl Harbor Navy Yard in October 1941.jpg",
+     "note": "OIL EMBARGO"
+    },
+    {
+     "s": 9,
+     "film": "japan",
+     "from": 480,
+     "to": 485,
+     "sfx": "plane_vintage"
+    },
+    {
+     "s": 10,
+     "file": "Fumimaro Konoe.jpg",
+     "name": "FUMIMARO KONOE",
+     "role": "PRIME MINISTER OF JAPAN"
+    },
+    {
+     "s": 11,
+     "file": "Fumimaro Konoe.jpg",
+     "zoom": 1.3,
+     "y": 0.3
+    },
+    {
+     "s": 12,
+     "file": "Hull, Nomura and Kurusu on 7 December 1941.jpg",
+     "label": "WASHINGTON · 1941"
+    },
+    {
+     "s": 13,
+     "film": "japan",
+     "from": 507,
+     "to": 512
+    },
+    {
+     "s": 14,
+     "film": "japan",
+     "from": 531,
+     "to": 536
+    }
+   ]
+  },
+  {
+   "title": "Yamamoto's Gamble",
+   "mode": "people",
+   "stamp": [
+    "EARLY 1941"
+   ],
+   "sentences": [
+    "Early in 1941, Admiral Isoroku Yamamoto, commander of the Combined Fleet, begins to plan an attack on Pearl Harbor.",
+    "To get it approved, he even threatens to resign his command.",
+    "His planners study the British air attack on the Italian fleet at Taranto in 1940.",
+    "To work in the shallow water of Pearl Harbor, the Type 91 torpedoes get an anti-roll mechanism and a rudder extension.",
+    "A Japanese spy in Honolulu, Takeo Yoshikawa, reports on the fleet in the harbor.",
+    "The main targets are the battleships, the prestige ships of every navy at the time.",
+    "Over the next months, pilots are trained, equipment is adapted, and intelligence is collected.",
+    "At first, Emperor Hirohito hesitates to go to war.",
+    "He approves the plan on November 5.",
+    "His final authorization comes on December 1.",
+    "Yamamoto wants Washington to be told that the talks are over thirty minutes before the attack.",
+    "But the notice will be delivered more than an hour after the attack has begun."
+   ],
+   "shots": [
+    {
+     "s": 1,
+     "file": "Portrait of Yamamoto Isoroku.jpg",
+     "name": "ISOROKU YAMAMOTO",
+     "role": "COMMANDER, COMBINED FLEET"
+    },
+    {
+     "s": 2,
+     "film": "japan",
+     "from": 207,
+     "to": 213
+    },
+    {
+     "s": 3,
+     "file": "Taranto 1940.jpg",
+     "label": "TARANTO · 1940"
+    },
+    {
+     "s": 4,
+     "file": "B5N Type 97 Carrier Attack Bomber Kate B5N-31.jpg",
+     "note": "TYPE 91 TORPEDO"
+    },
+    {
+     "s": 5,
+     "file": "Aerial view of Ford Island, Pearl Harbor, on 10 November 1941 (80-G-279385).jpg",
+     "note": "TAKEO YOSHIKAWA"
+    },
+    {
+     "s": 6,
+     "file": "Aerail view of Pearl Harbor on 3 May 1940.jpg",
+     "zoom": 1.3,
+     "x": 0.6
+    },
+    {
+     "s": 7,
+     "film": "japan",
+     "from": 444,
+     "to": 449
+    },
+    {
+     "s": 8,
+     "film": "japan",
+     "from": 455,
+     "to": 460
+    },
+    {
+     "s": 9,
+     "file": "Imperial Rescript Declaring the Pacific War.jpg",
+     "card": true
+    },
+    {
+     "s": 10,
+     "film": "japan",
+     "from": 21,
+     "to": 26
+    },
+    {
+     "s": 11,
+     "file": "Admiral Isoroku Yamamoto.jpg",
+     "zoom": 1.25,
+     "y": 0.3
+    },
+    {
+     "s": 12,
+     "film": "japan",
+     "from": 264,
+     "to": 267,
+     "note": "MORE THAN AN HOUR LATE"
+    }
+   ]
+  },
+  {
+   "title": "The Strike Force",
+   "mode": "action",
+   "stamp": [
+    "KURIL ISLANDS"
+   ],
+   "sentences": [
+    "On November 26, 1941, the strike force, Kido Butai, leaves Hittokapu Bay in the Kuril Islands.",
+    "It has six aircraft carriers: Akagi, Kaga, Sōryū, Hiryū, Shōkaku and Zuikaku.",
+    "Two battleships, three cruisers, eleven destroyers and eight oilers sail with them.",
+    "Chūichi Nagumo commands the force.",
+    "They steam to a position northwest of Hawaii, about 360 aircraft ready for two waves.",
+    "Five large submarines bring five midget submarines to the mouth of the harbor.",
+    "At 6:37 a.m., the destroyer Ward sinks one of them.",
+    "These are the first American shots in the Pacific.",
+    "Another midget submarine runs aground, and its officer, Ensign Kazuo Sakamaki, swims ashore.",
+    "He becomes the first Japanese prisoner of war.",
+    "North of Oahu, the first wave of 183 aircraft is launched, led by Commander Mitsuo Fuchida.",
+    "Torpedo bombers, dive bombers and Zero fighters head for Pearl Harbor.",
+    "As they approach Oahu, they shoot down several small American civilian aircraft.",
+    "At least one of them radios a warning, but it makes little sense."
+   ],
+   "shots": [
+    {
+     "s": 1,
+     "file": "Zuikaku Hitokappu Bay November 1941.jpg",
+     "label": "HITTOKAPU BAY · NOVEMBER 1941"
+    },
+    {
+     "s": 2,
+     "file": "Kaga and Zuikaku Pearl Harbor.jpg",
+     "note": "6 CARRIERS"
+    },
+    {
+     "s": 3,
+     "file": "Akagi Hiei Kirishima Pearl Harbor.jpg"
+    },
+    {
+     "s": 4,
+     "file": "Chuichi Nagumo.jpg",
+     "name": "CHŪICHI NAGUMO",
+     "role": "COMMANDER, STRIKE FORCE"
+    },
+    {
+     "s": 5,
+     "map": {
+      "places": [
+       {
+        "label": "HITTOKAPU BAY",
+        "lat": 44.93,
+        "lon": 147.62
+       },
+       {
+        "label": "PEARL HARBOR",
+        "lat": 21.35,
+        "lon": -157.95,
+        "side": "blue"
+       }
+      ],
+      "routes": [
+       [
+        0,
+        1,
+        "red",
+        0.22
+       ]
+      ],
+      "pad": 0.25
+     }
+    },
+    {
+     "s": 6,
+     "file": "HA-19 Japanese midget submarine grounded on an Oahu Beach, December 1941.jpg"
+    },
+    {
+     "s": 7,
+     "file": "Gun crew of USS Ward (DD-139), circa in December 1941 (NH 97446).jpg",
+     "stamp": [
+      "6:37 A.M."
+     ]
+    },
+    {
+     "s": 8,
+     "file": "Gun crew of USS Ward (DD-139), circa in December 1941 (NH 97446).jpg",
+     "zoom": 1.3
+    },
+    {
+     "s": 9,
+     "file": "HA-19 Japanese midget submarine grounded on an Oahu Beach, December 1941.jpg",
+     "zoom": 1.3
+    },
+    {
+     "s": 10,
+     "film": "attack",
+     "from": 23,
+     "to": 26
+    },
+    {
+     "s": 11,
+     "file": "Fuchida at Kagoshima Air Base, October 1941.jpg",
+     "name": "MITSUO FUCHIDA",
+     "role": "COMMANDER, FIRST WAVE"
+    },
+    {
+     "s": 12,
+     "file": "B5N2 from Zuikaku over Pearl Harbor 1941.jpg",
+     "sfx": "plane_vintage"
+    },
+    {
+     "s": 13,
+     "film": "japan",
+     "from": 462,
+     "to": 467,
+     "sfx": "ov/machine_gun"
+    },
+    {
+     "s": 14,
+     "film": "attack",
+     "from": 30,
+     "to": 34,
+     "sfx": "ov/morse_code"
+    }
+   ],
+   "beats": [
+    {
+     "after": 11,
+     "shots": [
+      {
+       "dur": 3.5,
+       "file": "A6M taking off from aircraft carrier.jpg",
+       "sfx": "plane_flyby"
+      },
+      {
+       "dur": 3.5,
+       "film": "japan",
+       "from": 480,
+       "to": 484,
+       "sfx": "plane_vintage"
+      },
+      {
+       "dur": 3.5,
+       "film": "japan",
+       "from": 507,
+       "to": 511
+      },
+      {
+       "dur": 3.5,
+       "file": "Zuikaku Pearl Harbor Zero Pilots.jpg"
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "title": "Opana Point",
+   "mode": "people",
+   "stamp": [
+    "OPANA POINT"
+   ],
+   "sentences": [
+    "At Opana Point, near the northern tip of Oahu, an Army radar picks up the incoming planes.",
+    "The set has been in training mode for months, and is not yet operational.",
+    "Privates George Elliot and Joseph Lockard have never seen such a large formation on radar.",
+    "They report it to the Intercept Center at Fort Shafter.",
+    "The officer on duty, Lieutenant Kermit Tyler, is newly assigned there.",
+    "He presumes it is a flight of six B-17 bombers due from California.",
+    "The bombers are coming from almost the same direction.",
+    "And nobody tells him how big the formation is.",
+    "In Washington, American code breakers have already read most of Japan's final message.",
+    "It is to be delivered at one in the afternoon on a Sunday, which is half past seven in the morning in Hawaii.",
+    "Naval intelligence tries to alert Pearl Harbor.",
+    "But because of communication problems, the warning does not arrive before the attack."
+   ],
+   "shots": [
+    {
+     "s": 1,
+     "file": "Opana SCR-270 radar display Dec 7, 1941.jpeg",
+     "label": "OPANA POINT · 7 DECEMBER 1941"
+    },
+    {
+     "s": 2,
+     "film": "japan",
+     "from": 471,
+     "to": 476
+    },
+    {
+     "s": 3,
+     "file": "Opana Radar Original Plot Dec 7, 1941.jpg",
+     "card": true,
+     "note": "A HUGE FORMATION"
+    },
+    {
+     "s": 4,
+     "film": "japan",
+     "from": 474,
+     "to": 479
+    },
+    {
+     "s": 5,
+     "file": "Kermit Tyler.jpg",
+     "name": "KERMIT TYLER",
+     "role": "LIEUTENANT, INTERCEPT CENTER"
+    },
+    {
+     "s": 6,
+     "file": "B-17s at Hickam 7 Dec 1941.jpg",
+     "note": "SIX B-17s"
+    },
+    {
+     "s": 7,
+     "film": "japan",
+     "from": 482,
+     "to": 486,
+     "sfx": "plane_vintage"
+    },
+    {
+     "s": 8,
+     "file": "Opana Radar Original Plot Dec 7, 1941.jpg",
+     "card": true,
+     "zoom": 1.4,
+     "y": 0.3
+    },
+    {
+     "s": 9,
+     "file": "Hull, Nomura and Kurusu on 7 December 1941.jpg",
+     "zoom": 1.3
+    },
+    {
+     "s": 10,
+     "film": "attack",
+     "from": 8,
+     "to": 13,
+     "stamp": [
+      "7:30 A.M."
+     ]
+    },
+    {
+     "s": 11,
+     "film": "attack",
+     "from": 13,
+     "to": 18
+    },
+    {
+     "s": 12,
+     "film": "attack",
+     "from": 18,
+     "to": 23
+    }
+   ]
+  },
+  {
+   "title": "Battleship Row",
+   "mode": "action",
+   "stamp": [
+    "7:48 A.M."
+   ],
+   "sentences": [
+    "At 7:48 a.m., the attack begins.",
+    "Men on the ships wake to alarms, bombs and gunfire, and dress as they run to their stations.",
+    "Slow torpedo bombers go in first, straight for the battleships.",
+    "Dive bombers strike the air bases, starting with Hickam Field, the largest.",
+    "American aircraft are parked wingtip to wingtip in the open, to prevent sabotage.",
+    "Ammunition lockers are locked, and most of the guns are unmanned.",
+    "From the headquarters of Patrol Wing Two, a message goes out.",
+    "Thirteen of the forty torpedoes hit battleships.",
+    "Oklahoma is hit by four torpedoes, and capsizes.",
+    "West Virginia is hit by seven torpedoes, and sinks.",
+    "Her captain, Mervyn Bennion, leads his men until he is cut down by fragments from a bomb.",
+    "At 8:06, a bomb hits Arizona near her forward turret.",
+    "About seven seconds later, her forward magazines explode.",
+    "The blast tears the ship in two.",
+    "1,177 of her crew are killed, about half of all the lives lost that day.",
+    "The fires burn for two days."
+   ],
+   "shots": [
+    {
+     "s": 1,
+     "film": "attack",
+     "from": 44,
+     "to": 49,
+     "sfx": "plane_flyby"
+    },
+    {
+     "s": 2,
+     "film": "attack",
+     "from": 76,
+     "to": 81,
+     "sfx": "artillery"
+    },
+    {
+     "s": 3,
+     "file": "Battleship-row-torpedos.jpg"
+    },
+    {
+     "s": 4,
+     "file": "Hickam Field flag with burning barracks 1941.jpg",
+     "label": "HICKAM FIELD · 7 DECEMBER 1941"
+    },
+    {
+     "s": 5,
+     "film": "afire",
+     "from": 384,
+     "to": 390
+    },
+    {
+     "s": 6,
+     "film": "attack",
+     "from": 68,
+     "to": 73,
+     "sfx": "ov/machine_gun"
+    },
+    {
+     "s": 7,
+     "film": "attack",
+     "from": 60,
+     "to": 64
+    },
+    {
+     "s": 8,
+     "file": "Pearl harbor 12-7-41 from attacking plane Nara 80-G-30550.png",
+     "note": "13 TORPEDOES"
+    },
+    {
+     "s": 9,
+     "film": "afire",
+     "from": 188,
+     "to": 193,
+     "label": "USS OKLAHOMA"
+    },
+    {
+     "s": 10,
+     "file": "USS West Virginia (BB-48) burning at Pearl Harbor 1941.jpg"
+    },
+    {
+     "s": 11,
+     "file": "Mervyn Sharp Bennion.jpg",
+     "name": "MERVYN BENNION",
+     "role": "CAPTAIN, USS WEST VIRGINIA"
+    },
+    {
+     "s": 12,
+     "film": "attack",
+     "from": 99,
+     "to": 104,
+     "stamp": [
+      "8:06 A.M."
+     ]
+    },
+    {
+     "s": 13,
+     "film": "attack",
+     "from": 107.5,
+     "to": 112,
+     "sfx": "explosion_massive"
+    },
+    {
+     "s": 14,
+     "film": "attack",
+     "from": 112,
+     "to": 117
+    },
+    {
+     "s": 15,
+     "file": "The USS Arizona (BB-39) burning after the Japanese attack on Pearl Harbor - NARA 195617 - Edit.jpg",
+     "note": "1,177 KILLED"
+    },
+    {
+     "s": 16,
+     "film": "afire",
+     "from": 52,
+     "to": 57
+    }
+   ],
+   "beats": [
+    {
+     "after": 7,
+     "quote": {
+      "text": "Air raid Pearl Harbor. This is not drill.",
+      "name": "PATROL WING TWO",
+      "role": "RADIO MESSAGE, 7 DECEMBER 1941"
+     },
+     "shots": [
+      {
+       "dur": 4,
+       "film": "attack",
+       "from": 64,
+       "to": 68,
+       "sfx": "ov/morse_code"
+      }
+     ]
+    },
+    {
+     "after": 14,
+     "shots": [
+      {
+       "dur": 3.5,
+       "film": "attack",
+       "from": 117,
+       "to": 122,
+       "sfx": "explosion_far"
+      },
+      {
+       "dur": 3.5,
+       "film": "afire",
+       "from": 294,
+       "to": 300
+      },
+      {
+       "dur": 3.5,
+       "film": "afire",
+       "from": 340,
+       "to": 346,
+       "sfx": "explosion_battle"
+      },
+      {
+       "dur": 3.5,
+       "film": "attack",
+       "from": 124,
+       "to": 129
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "title": "The Second Wave",
+   "mode": "action",
+   "stamp": [
+    "FORD ISLAND"
+   ],
+   "sentences": [
+    "The second wave of 171 planes strikes the air bases and Ford Island.",
+    "Nevada, already torpedoed and on fire, tries to get out of the harbor.",
+    "Japanese bombers target her as she gets underway.",
+    "She is deliberately beached, so that she cannot block the harbor entrance.",
+    "In the dry dock, the destroyers Cassin and Downes burn out.",
+    "Two bombs reach the forward magazine of the destroyer Shaw.",
+    "Of the 402 American aircraft in Hawaii, 188 are destroyed.",
+    "Only a handful of Army Air Forces pilots manage to get airborne.",
+    "Friendly fire brings down some American planes too, including four from the carrier Enterprise.",
+    "Ninety minutes after it began, the attack is over.",
+    "2,403 Americans are dead, and 1,178 are wounded.",
+    "Among the civilian casualties are nine Honolulu firefighters, who went to Hickam Field during the bombing.",
+    "Eighteen ships are sunk or run aground.",
+    "The Japanese lose 29 aircraft.",
+    "One damaged Zero from the carrier Hiryū comes down on the small island of Niihau.",
+    "Its people have no telephones or radios, and know nothing of the attack.",
+    "A Native Hawaiian takes the pilot's pistol, maps, codes and other documents.",
+    "The pilot, Shigenori Nishikaichi, gets three Japanese-American residents to help him get them back.",
+    "In the struggle that follows, he is killed.",
+    "And the help he got worries many, who now say the local Japanese cannot be trusted."
+   ],
+   "shots": [
+    {
+     "s": 1,
+     "film": "afire",
+     "from": 408,
+     "to": 414,
+     "label": "FORD ISLAND · 7 DECEMBER 1941"
+    },
+    {
+     "s": 2,
+     "film": "attack",
+     "from": 136,
+     "to": 141,
+     "sfx": "artillery"
+    },
+    {
+     "s": 3,
+     "film": "afire",
+     "from": 354,
+     "to": 360
+    },
+    {
+     "s": 4,
+     "file": "USS Nevada temporarily beached on hospital point 925AM NARA-80-G-19940.jpg",
+     "label": "HOSPITAL POINT · 9:25 A.M."
+    },
+    {
+     "s": 5,
+     "file": "USS Cassin (DD-372) and USS Downes (DD-375) wrecked 1941.jpg"
+    },
+    {
+     "s": 6,
+     "file": "USS Shaw Pearl Harbor-7Dec41.jpg",
+     "sfx": "explosion_close"
+    },
+    {
+     "s": 7,
+     "film": "afire",
+     "from": 394,
+     "to": 400,
+     "note": "188 AIRCRAFT DESTROYED"
+    },
+    {
+     "s": 8,
+     "film": "after",
+     "from": 24,
+     "to": 30
+    },
+    {
+     "s": 9,
+     "film": "attack",
+     "from": 130,
+     "to": 135
+    },
+    {
+     "s": 10,
+     "film": "attack",
+     "from": 159,
+     "to": 163
+    },
+    {
+     "s": 11,
+     "film": "afire",
+     "from": 218,
+     "to": 224,
+     "note": "2,403 DEAD"
+    },
+    {
+     "s": 12,
+     "file": "Hickam Field flag with burning barracks 1941.jpg",
+     "zoom": 1.3
+    },
+    {
+     "s": 13,
+     "file": "Damaged U.S.S. California and U.S.S. Oklahoma, Pearl Harbor, HI 8e01811u original.jpg"
+    },
+    {
+     "s": 14,
+     "file": "Shokaku fighter pilots 1941.jpg",
+     "note": "29 AIRCRAFT LOST"
+    },
+    {
+     "s": 15,
+     "map": {
+      "places": [
+       {
+        "label": "PEARL HARBOR",
+        "lat": 21.35,
+        "lon": -157.95,
+        "side": "blue"
+       },
+       {
+        "label": "NIIHAU",
+        "lat": 21.9,
+        "lon": -160.15
+       }
+      ],
+      "routes": [
+       [
+        0,
+        1,
+        "red",
+        0.2
+       ]
+      ],
+      "pad": 0.6
+     }
+    },
+    {
+     "s": 16,
+     "file": "Hawaii - Niihau Island - NARA - 23938425.jpg",
+     "label": "NIIHAU · DECEMBER 1941"
+    },
+    {
+     "s": 17,
+     "file": "Nishikaichi's Zero BII-120.jpg"
+    },
+    {
+     "s": 18,
+     "file": "Shigenori Nishikaichi, The Niihau Incident.jpg",
+     "name": "SHIGENORI NISHIKAICHI",
+     "role": "PILOT, CARRIER HIRYŪ"
+    },
+    {
+     "s": 19,
+     "file": "Nishikaichi's Zero BII-120.jpg",
+     "zoom": 1.35
+    },
+    {
+     "s": 20,
+     "file": "Hawaii - Niihau Island - NARA - 23938425.jpg",
+     "zoom": 1.3,
+     "x": 0.4
+    }
+   ],
+   "beats": [
+    {
+     "after": 10,
+     "source": "HONOLULU · RALEIGH · FRONT PAGES, 7-8 DECEMBER 1941",
+     "shots": [
+      {
+       "dur": 4.5,
+       "file": "Honolulu Star-Bulletin December 7th 1941.jpg",
+       "trim": [
+        0.03,
+        0.18,
+        0.08,
+        0.16
+       ],
+       "focus": [
+        0.08,
+        0.33,
+        0.88,
+        0.81
+       ],
+       "sfx": "typewriter"
+      },
+      {
+       "dur": 4.5,
+       "file": "NO 41 395 Front page of the Raleigh N and O-Japan Declares War (23511704466).jpg",
+       "focus": [
+        0.08,
+        0.325,
+        0.89,
+        0.43
+       ]
+      },
+      {
+       "dur": 4.5,
+       "file": "NO 41 395 Front page of the Raleigh N and O-Japan Declares War (23511704466).jpg",
+       "focus": [
+        0.47,
+        0.45,
+        0.89,
+        0.535
+       ]
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "title": "No Third Strike",
+   "mode": "people",
+   "stamp": [
+    "AKAGI"
+   ],
+   "sentences": [
+    "Aboard his flagship Akagi, Nagumo hears that the captains of the other five carriers are ready for a third strike.",
+    "It could hit the dry docks, the repair shops and the oil tanks.",
+    "According to some accounts, Fuchida and Minoru Genda urge Nagumo to launch it.",
+    "Genda himself will later deny it.",
+    "Nagumo decides to withdraw.",
+    "American anti-aircraft fire has improved, and two-thirds of Japan's losses came in the second wave.",
+    "The three American carriers are somewhere at sea, and nobody knows where.",
+    "A third wave would mean landing at night, and his fuel is running low.",
+    "He believes the main objective is done, and the Pacific Fleet is out of action.",
+    "So the oil tank farm, the repair yards and the submarine base are left untouched.",
+    "Admiral Chester Nimitz, soon to command the Pacific Fleet, will later judge what that strike would have meant.",
+    "Yamamoto will later call it a great mistake not to order a third strike."
+   ],
+   "shots": [
+    {
+     "s": 1,
+     "file": "Akagi Pearl Harbor Second Wave Prep.jpg"
+    },
+    {
+     "s": 2,
+     "file": "Pearl Harbor Navy Yard in October 1941.jpg",
+     "zoom": 1.3,
+     "note": "THE OIL TANKS"
+    },
+    {
+     "s": 3,
+     "file": "Minoru Genda.jpg",
+     "name": "MINORU GENDA",
+     "role": "COMMANDER, STRIKE PLANNER"
+    },
+    {
+     "s": 4,
+     "file": "Minoru Genda.jpg",
+     "zoom": 1.3,
+     "y": 0.3
+    },
+    {
+     "s": 5,
+     "file": "Chuichi Nagumo in the bridge of Akagi heading to attack Pearl Harbor.jpg",
+     "label": "AKAGI · 7 DECEMBER 1941"
+    },
+    {
+     "s": 6,
+     "film": "attack",
+     "from": 124,
+     "to": 128,
+     "sfx": "artillery"
+    },
+    {
+     "s": 7,
+     "file": "USS Enterprise (CV-6) underway in the Pacific Ocean, in June 1941 (80-G-K-14254).jpg",
+     "zoom": 1.3
+    },
+    {
+     "s": 8,
+     "film": "japan",
+     "from": 312,
+     "to": 318
+    },
+    {
+     "s": 9,
+     "film": "afire",
+     "from": 314,
+     "to": 320
+    },
+    {
+     "s": 10,
+     "film": "after",
+     "from": 15,
+     "to": 21
+    },
+    {
+     "s": 11,
+     "film": "after",
+     "from": 34,
+     "to": 39
+    },
+    {
+     "s": 12,
+     "file": "Portrait of Yamamoto Isoroku.jpg",
+     "zoom": 1.25,
+     "y": 0.3
+    }
+   ],
+   "beats": [
+    {
+     "after": 11,
+     "quote": {
+      "text": "It would have prolonged the war another two years.",
+      "name": "CHESTER NIMITZ",
+      "role": "COMMANDER IN CHIEF, PACIFIC FLEET"
+     },
+     "shots": [
+      {
+       "dur": 4.5,
+       "film": "after",
+       "from": 50,
+       "to": 55
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "title": "Infamy",
+   "mode": "people",
+   "stamp": [
+    "DECEMBER 8",
+    "1941"
+   ],
+   "sentences": [
+    "On December 8, 1941, Roosevelt speaks to a joint session of Congress.",
+    "His speech lasts about six and a half minutes.",
+    "Over 81 per cent of adult American listeners tune in, the largest audience in American radio history.",
+    "Thirty-three minutes after he finishes, Congress declares war on Japan.",
+    "Only one member, Representative Jeannette Rankin, votes against it.",
+    "Recruiting stations are jammed with volunteers.",
+    "The United Kingdom has already declared war on Japan, nine hours earlier.",
+    "On December 11, Germany and Italy declare war on the United States.",
+    "Congress declares war on them later that same day.",
+    "Within hours of the attack, hundreds of Japanese-American leaders in Hawaii are rounded up.",
+    "Eventually, more than 110,000 Japanese Americans are forced into camps."
+   ],
+   "shots": [
+    {
+     "s": 1,
+     "file": "FDR addressing Congress on the Declaration of War, December 8, 1941.jpg",
+     "label": "WASHINGTON · 8 DECEMBER 1941"
+    },
+    {
+     "s": 2,
+     "file": "FDR asks Congress for a declaration of war December 8, 1941.jpg"
+    },
+    {
+     "s": 3,
+     "file": "Message to Congress (Speech File 1400) of December 8, 1941 - DPLA - d9dadaff1d0c3f51d6177548dd9c3407 (page 9).jpg",
+     "card": true,
+     "note": "81 PER CENT"
+    },
+    {
+     "s": 4,
+     "file": "Franklin Roosevelt signing declaration of war against Japan.jpg",
+     "note": "33 MINUTES"
+    },
+    {
+     "s": 5,
+     "file": "Jeannette Rankin, Bain News Service, facing front - crop.jpg",
+     "name": "JEANNETTE RANKIN",
+     "role": "REPRESENTATIVE, MONTANA"
+    },
+    {
+     "s": 6,
+     "file": "\"I Want You For The U.S. Army Enlist Now\" - NARA - 513533.jpg"
+    },
+    {
+     "s": 7,
+     "film": "attack",
+     "from": 159,
+     "to": 163
+    },
+    {
+     "s": 8,
+     "file": "Franklin Roosevelt signing declaration of war against Germany.jpg"
+    },
+    {
+     "s": 9,
+     "file": "Franklin Roosevelt signing declaration of war against Germany.jpg",
+     "zoom": 1.3
+    },
+    {
+     "s": 10,
+     "file": "Street scene on Terminal Island (Calif.) on December 8, 1941.jpg"
+    },
+    {
+     "s": 11,
+     "file": "Photograph of Members of the Mochida Family Awaiting Evacuation - NARA - 537505 - Restoration.jpg",
+     "note": "110,000 INTERNED"
+    }
+   ],
+   "beats": [
+    {
+     "after": 3,
+     "audio": {
+      "src": "fdr",
+      "from": 14.2,
+      "to": 25.1
+     },
+     "source": "PRESIDENT ROOSEVELT · CONGRESS, DECEMBER 8, 1941",
+     "shots": [
+      {
+       "dur": 4,
+       "file": "FDR addressing Congress on the Declaration of War, December 8, 1941.jpg",
+       "zoom": 1.35,
+       "y": 0.4
+      },
+      {
+       "dur": 4,
+       "file": "FDR asks Congress for a declaration of war December 8, 1941.jpg",
+       "zoom": 1.3
+      },
+      {
+       "dur": 4,
+       "film": "afire",
+       "from": 346,
+       "to": 351
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "title": "A Tactical Victory",
+   "mode": "people",
+   "stamp": [
+    "ARIZONA"
+   ],
+   "sentences": [
+    "In the shallow water of the harbor, most of the sunken ships can be raised, Arizona excepted.",
+    "Navy divers spend some 20,000 man-hours under water.",
+    "All but Arizona and Utah are refloated, and six of the battleships return to service during the war.",
+    "But they are slow and use too much fuel, and serve mainly to bombard enemy shores.",
+    "Arizona stays where she sank, and becomes a war memorial.",
+    "Fifteen Medals of Honor are awarded for that morning.",
+    "The repair shops and fuel depots the Japanese spared keep the fleet supplied, for the Coral Sea and for Midway.",
+    "In the basement of the old administration building, the code breakers help to set the ambush at Midway.",
+    "From the submarine base the Japanese left untouched, American submarines go after Japan's shipping.",
+    "By the end of 1942, Japan's oil imports have almost completely stopped.",
+    "The oil that started the war is gone.",
+    "And Yamamoto's battleships wait for a decisive battle that never happens.",
+    "The quick peace that Yamamoto hoped for never comes.",
+    "Rear Admiral Chūichi Hara sums it up.",
+    "This is the morning that brings the United States into the Second World War."
+   ],
+   "shots": [
+    {
+     "s": 1,
+     "file": "USS California (BB-44) during salvage at Pearl Harbor early 1942.jpg"
+    },
+    {
+     "s": 2,
+     "film": "afire",
+     "from": 78,
+     "to": 84,
+     "note": "20,000 HOURS UNDER WATER"
+    },
+    {
+     "s": 3,
+     "film": "after",
+     "from": 64,
+     "to": 70
+    },
+    {
+     "s": 4,
+     "file": "USS California (BB-44) during salvage at Pearl Harbor early 1942.jpg",
+     "zoom": 1.3
+    },
+    {
+     "s": 5,
+     "film": "afire",
+     "from": 288,
+     "to": 293
+    },
+    {
+     "s": 6,
+     "film": "afire",
+     "from": 168,
+     "to": 174,
+     "note": "15 MEDALS OF HONOR"
+    },
+    {
+     "s": 7,
+     "file": "Aerial view of Pearl Harbor in May 1942.jpeg",
+     "label": "PEARL HARBOR · MAY 1942"
+    },
+    {
+     "s": 8,
+     "file": "USS Yorktown (CV-5) in a dry dock at the Pearl Harbor Naval Shipyard, 29 May 1942 (80-G-13065).jpg"
+    },
+    {
+     "s": 9,
+     "file": "Aerial view of Pearl Harbor in May 1942.jpeg",
+     "zoom": 1.35,
+     "x": 0.4
+    },
+    {
+     "s": 10,
+     "film": "japan",
+     "from": 507,
+     "to": 511,
+     "note": "OIL ALMOST STOPPED"
+    },
+    {
+     "s": 11,
+     "film": "japan",
+     "from": 21,
+     "to": 25
+    },
+    {
+     "s": 12,
+     "file": "Akagi Hiei Kirishima Pearl Harbor.jpg",
+     "zoom": 1.3
+    },
+    {
+     "s": 13,
+     "film": "japan",
+     "from": 534,
+     "to": 539
+    },
+    {
+     "s": 14,
+     "file": "ChuichiHara.jpg",
+     "name": "CHŪICHI HARA",
+     "role": "REAR ADMIRAL, JAPANESE NAVY"
+    },
+    {
+     "s": 15,
+     "film": "afire",
+     "from": 296,
+     "to": 301
+    }
+   ],
+   "beats": [
+    {
+     "after": 14,
+     "quote": {
+      "text": "We won a great tactical victory at Pearl Harbor and thereby lost the war.",
+      "name": "CHŪICHI HARA",
+      "role": "REAR ADMIRAL, JAPANESE NAVY"
+     },
+     "shots": [
+      {
+       "dur": 5.5,
+       "film": "afire",
+       "from": 340,
+       "to": 346
+      }
+     ]
+    }
+   ]
+  }
+ ]
+}

@@ -655,7 +655,8 @@ def render_film(m, d, k):
     if held:                                           # eased push-in of up to 8% across the shot
         ease = f"(1-cos(PI*min(t/{d:.3f},1)))/2"
         size = (f"scale={w}:{h}:force_original_aspect_ratio=increase:flags=bicubic,"
-                f"scale=w='trunc({w}*(1+0.08*{ease})/2)*2':h=-2:eval=frame:flags=bicubic,")
+                f"scale=w='trunc(iw*(1+0.08*{ease})/2)*2':h='trunc(ih*(1+0.08*{ease})/2)*2'"
+                f":eval=frame:flags=bicubic,")             # both sides from the input: never under the frame
     else:
         size = f"scale={w}:{h}:force_original_aspect_ratio=increase:flags=bicubic,"
     fc = (f"[0:v]{pre}fps=30{hold},{size}"
@@ -756,13 +757,19 @@ def render_paper(m, d, k):
     from PIL import Image
     out = W / f"s{k:04d}.mp4"
     im = Image.open(m["path"]).convert("RGB")         # the page as it is: the focus box is in its own fractions
+    fx0, fy0, fx1, fy1 = m["focus"]
+    if m.get("trim"):                                  # [l, t, r, b] cut off each side (a page photographed on a
+        l, t, r, b = m["trim"]                         # museum table): the focus box (of the whole picture) follows
+        im = im.crop((round(l * im.width), round(t * im.height), round((1 - r) * im.width), round((1 - b) * im.height)))
+        fx0, fx1 = [(v - l) / (1 - l - r) for v in (fx0, fx1)]
+        fy0, fy1 = [(v - t) / (1 - t - b) for v in (fy0, fy1)]
     CW, CH = SIZE[0] * 2, SIZE[1] * 2                  # 2x canvas: zoompan rounds to whole pixels (no jitter)
     bg = blurred(im).resize((CW, CH), Image.LANCZOS)
     s = min(CH * 0.96 / im.height, CW * 0.96 / im.width)
     page = im.resize((round(im.width * s), round(im.height * s)), Image.LANCZOS)
     px, py = (CW - page.width) // 2, (CH - page.height) // 2
     bg.paste(page, (px, py))
-    x0, y0, x1, y1 = m["focus"]
+    x0, y0, x1, y1 = fx0, fy0, fx1, fy1
     bx0, by0, bx1, by1 = px + x0 * page.width, py + y0 * page.height, px + x1 * page.width, py + y1 * page.height
     # Andrii, Nov 17: NO red frame round the headline (the push-in isolates it already)
     fp = W / f"f{k:04d}.jpg"

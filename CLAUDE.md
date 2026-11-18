@@ -186,7 +186,8 @@ Reference analysed whole: `docs/reference/minutes_that_changed_ww2.md` (102 word
    EVENT, not just film: each a beat shot {"file": the scan, "focus": [x0, y0, x1, y1] = its headline in 0-1 of the
    page, "dur": 4-5, "sfx": "typewriter"} -> render_paper(): the whole page on its blurred copy, then an eased push
    into the headline (80 % of the shot, then it holds); NO red frame round it (Andrii, Nov 17: the push-in
-   isolates the headline already). Sources: public domain only
+   isolates the headline already); a page photographed on a table or a flag takes `trim` [l, t, r, b] (cut
+   away, 0-1; `focus` stays in the WHOLE picture's 0-1, Pearl Harbor's Star-Bulletin). Sources: public domain only
    (Wikimedia Commons front pages, Library of Congress Chronicling America, Internet Archive; credit them). Find the
    headline box on a grid (the 'Plain Dealer Aug 7 1945' test: '125 Superfortresses Pound Naval Arsenal' =
    [0.37, 0.59, 0.71, 0.64]); LOOK at the frames. NEVER a headline with a slur of the time ('Japs' etc., common in
