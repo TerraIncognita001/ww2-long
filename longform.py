@@ -867,7 +867,8 @@ def hush_mix(d, segs):
         fc.append(f"[{n}:a]aresample=44100,aformat=channel_layouts=stereo,volume=8.5dB,alimiter=limit=0.9,"
                   f"adelay={ms}|{ms}[p{n}]")
     fc.append("".join(["[bg]"] + [f"[p{n}]" for n in range(1, len(alone) + 1)])
-              + f"amix=inputs={len(alone) + 1}:duration=first:normalize=0[a]")
+              + f"amix=inputs={len(alone) + 1}:duration=first:normalize=0,"
+              "alimiter=limit=0.8:attack=1:release=50:level=false[a]")
     ff("-i", "mix.m4a", *[x for p in alone for x in ("-i", p["_cut"].name)], "-filter_complex", ";".join(fc),
        "-map", "[a]", "-c:a", "aac", "-b:a", "192k", "-ar", "44100", "mix_hush.m4a")
     (W / "mix_hush.m4a").replace(W / "mix.m4a")
@@ -1139,7 +1140,8 @@ def mix_audio(d, segs, shots, total):
     fc.append(f"{''.join(back)}amix=inputs={len(back)}:duration=longest:normalize=0,apad,atrim=0:{total:.3f}[bk]")
     fc.append("[bk][key]sidechaincompress=threshold=0.03:ratio=5:attack=25:release=1500[bkd]")
     fc.append(f"[vo][bkd]amix=inputs=2:duration=longest:normalize=0,afade=t=out:st={total - 3:.2f}:d=3,"
-              f"loudnorm=I={S.LOUDNESS}:TP=-1.5:LRA=11,aresample=44100[a]")
+              f"loudnorm=I={S.LOUDNESS}:TP=-1.5:LRA=11,aresample=44100,"
+              "alimiter=limit=0.8:attack=1:release=50:level=false[a]")    # Nov 19: ears heard +0.7..+1.4 dBTP
     script = W / "mix.txt"
     script.write_text(";\n".join(fc), encoding="utf-8")
     ver = re.search(r"version n?(\d+)", subprocess.run(["ffmpeg", "-version"], capture_output=True,

@@ -82,6 +82,12 @@ chapters = pastrak pacing (film 2-4 s, SFX up, music down). Story field `mode: "
   works here (Oct 27), fonts/BebasNeue-Regular.ttf (OFL).
 
 ## QUEUE, RELEASE, AUTO STORY (Nov 9)
+- QUEUE AHEAD (Andrii, Nov 19: 'став всі відео у чергу на вихід у ютуб'): workflow input `release_date` (New York
+  'YYYY-MM-DD') + story = rendered and uploaded private NOW, YouTube releases it at 19:00 NY that day (teasers +30 min
+  / +3 h); stats 'release'; the cron skips a day whose video already waits on YouTube. Queued: Dunkirk (Fri Nov 20),
+  the atomic bomb (Mon Nov 23).
+- Sound (Nov 19): ears heard true peaks of +0.7..+1.4 dBTP -> alimiter 0.8 after the final loudnorm and after the
+  hush mix (peak -1.0 dBTP).
 - Channel: TheWarStoryTeller (UCU0uYGfqYM33oRS4g2_aLag), OAuth via the shorts' Google Cloud project ww2p-510823
   (the new project ww2-long's uploads risked 'Private (locked)'); tools/auth_secrets.py sets YT_* secrets.
 - Released: Indianapolis (y3sS2sn4dXU, Oct 29), Hitler (5ZzERzxmmuo, Oct 30), Nuremberg/Göring (YH8vVS2NOCs, Nov 9).
