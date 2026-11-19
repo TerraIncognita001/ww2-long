@@ -271,6 +271,42 @@
    "title": "The Titanic Officer Who Sailed to Dunkirk",
    "seconds": 13.8,
    "publish_at": "2026-11-21T03:00:00Z"
+  },
+  {
+   "id": "Ms1Djh3RGug",
+   "date": "2026-11-19",
+   "format": "long",
+   "title": "The ENTIRE History of the Atomic Bomb in 13 Minutes",
+   "topic": "Atomic bombings of Hiroshima and Nagasaki",
+   "seconds": 796.3,
+   "words": 1605,
+   "tts": "edge",
+   "release": "2026-11-24T00:00:00Z",
+   "thumb": "ok",
+   "comment_due": {
+    "at": "2026-11-24T00:00:00Z",
+    "q": "Were the atomic bombings necessary to end the war?"
+   }
+  },
+  {
+   "id": "n9_FuDnYk4Q",
+   "date": "2026-11-19",
+   "format": "short",
+   "promo": true,
+   "long": "Ms1Djh3RGug",
+   "title": "The City That Escaped the Atomic Bomb",
+   "seconds": 12.5,
+   "publish_at": "2026-11-24T00:30:00Z"
+  },
+  {
+   "id": "MVrhc39_2Vs",
+   "date": "2026-11-19",
+   "format": "short",
+   "promo": true,
+   "long": "Ms1Djh3RGug",
+   "title": "The First Atomic Bomb Test",
+   "seconds": 12.5,
+   "publish_at": "2026-11-24T03:00:00Z"
   }
  ],
  "metrics": {},
