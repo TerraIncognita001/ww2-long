@@ -1531,8 +1531,14 @@ def main():
     if env("GITHUB_EVENT_NAME") == "schedule":         # Nov 11: the cron starts up to 8 h late; when the release was
         from datetime import date, timedelta           # sent by hand meanwhile, the late run must not release the next
         since = (date.today() - timedelta(days=1)).isoformat()
-        if any(v.get("format") == "long" and v.get("date", "") >= since for v in stats.get("videos", [])):
+        today_ny = ny_day()
+        if any(v.get("format") == "long" and v.get("date", "") >= since and not v.get("release")
+               for v in stats.get("videos", [])):
             print("a long video was uploaded in the last day: this scheduled run has nothing to do")
+            return
+        if any(v.get("format") == "long" and v.get("release") and ny_day(v["release"]) == today_ny
+               for v in stats.get("videos", [])):          # Nov 19: queued on YouTube ahead for today's slot
+            print("today's long video is already waiting on YouTube: this scheduled run has nothing to do")
             return
     story = env("L_STORY") or ready_story()
     if not story and env("L_AUTO", "1") == "1":       # Andrii, Nov 9: the queue is empty -> the bot writes one
@@ -1589,20 +1595,33 @@ def make_promos(d, ends, marks):
         promo.finish(d, ends, marks, int(m.group(1)) if m else int(d.get("seconds", 0) // 60), W / "cover.png")
 
 
-def publish_at(local=None, zone="America/New_York", lead_min=20):
+def publish_at(local=None, zone="America/New_York", lead_min=20, day=None):
     """YouTube's scheduled release (Andrii, Oct 29: every video at 19:00 New York time): today's L_PUBLISH_NY in New
-    York as UTC ISO; None when it is less than `lead_min` minutes away (then the video goes out as it is)."""
-    from datetime import datetime, timedelta, timezone
+    York as UTC ISO; None when it is less than `lead_min` minutes away (then the video goes out as it is).
+    L_RELEASE_DATE 'YYYY-MM-DD' (New York, Andrii Nov 19: 'став всі відео у чергу на вихід') = that day instead of
+    today: the video waits on YouTube as private until then."""
+    from datetime import date, datetime, timedelta, timezone
     from zoneinfo import ZoneInfo
     local = local if local is not None else env("L_PUBLISH_NY", "")
     if not local:
         return None
+    day = day if day is not None else env("L_RELEASE_DATE", "")
     tz = ZoneInfo(zone)
     hh, mm = (int(x) for x in local.split(":"))
     t = datetime.now(tz).replace(hour=hh, minute=mm, second=0, microsecond=0)
+    if day:
+        t = t.replace(**{k: v for k, v in zip(("year", "month", "day"), date.fromisoformat(day).timetuple()[:3])})
     if t < datetime.now(tz) + timedelta(minutes=lead_min):
         return None
     return t.astimezone(timezone.utc).strftime("%Y-%m-%dT%H:%M:%SZ")
+
+
+def ny_day(utc_iso=None):
+    """The New York date (YYYY-MM-DD) of a UTC ISO time, or of now."""
+    from datetime import datetime, timezone
+    from zoneinfo import ZoneInfo
+    t = datetime.fromisoformat(utc_iso.replace("Z", "+00:00")) if utc_iso else datetime.now(timezone.utc)
+    return t.astimezone(ZoneInfo("America/New_York")).date().isoformat()
 
 
 def publish(stats, body, data, d):
@@ -1623,7 +1642,7 @@ def publish(stats, body, data, d):
     stats["videos"].append({"id": vid, "date": date.today().isoformat(), "format": "long", "title": plain(d["title"]),
                             "topic": d["topic"], "seconds": d.get("seconds"),
                             "words": len(" ".join(all_sentences(d)).split()),
-                            "tts": S.TTS_USED[0] if S.TTS_USED else None})
+                            "tts": S.TTS_USED[0] if S.TTS_USED else None, **({"release": at} if at else {})})
     S.save_stats(stats)
     with stage("thumbnail, captions, comment"):
         stats["videos"][-1]["thumb"] = S.set_thumbnail(yt, vid, "cover.png")

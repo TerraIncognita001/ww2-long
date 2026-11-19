@@ -28,6 +28,10 @@ on:
         description: "Release time, New York (HH:MM): uploaded private, YouTube makes it public then. Empty = now"
         type: string
         default: "19:00"
+      release_date:
+        description: "Queue ahead: the release DAY, New York 'YYYY-MM-DD' (at publish_ny). Empty = today"
+        type: string
+        default: ""
       clips_for:
         description: "Only the 2 promo teasers of an uploaded long video: its YouTube id (+ story). Released +30 min / +3 h"
         type: string
@@ -116,6 +120,7 @@ jobs:
           L_PUBLISH: ${{ inputs.publish_run != '' && '1' || '0' }}
           L_PRIVACY: ${{ inputs.privacy || 'public' }}
           L_PUBLISH_NY: ${{ github.event_name == 'schedule' && '19:00' || inputs.publish_ny }}
+          L_RELEASE_DATE: ${{ inputs.release_date }}
           L_CLIPS_FOR: ${{ inputs.clips_for }}
           L_CLIPS_NY: ${{ inputs.clips_ny }}
           L_SET_THUMB: ${{ inputs.set_thumb && '1' || '0' }}
