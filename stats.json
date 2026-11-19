@@ -214,11 +214,7 @@
    "seconds": 767.2,
    "words": 1612,
    "tts": "edge",
-   "thumb": "ok",
-   "comment_due": {
-    "at": "2026-11-19T00:00:00Z",
-    "q": "Should Nagumo have launched the third strike?"
-   }
+   "thumb": "ok"
   },
   {
    "id": "lG-hI650toI",
@@ -239,6 +235,42 @@
    "title": "The Third Strike That Never Hit Pearl Harbor",
    "seconds": 14.1,
    "publish_at": "2026-11-19T03:00:00Z"
+  },
+  {
+   "id": "VkfaeXGYkCA",
+   "date": "2026-11-19",
+   "format": "long",
+   "title": "The ENTIRE History of Dunkirk in 12 Minutes",
+   "topic": "Dunkirk evacuation",
+   "seconds": 775.6,
+   "words": 1660,
+   "tts": "edge",
+   "release": "2026-11-21T00:00:00Z",
+   "thumb": "ok",
+   "comment_due": {
+    "at": "2026-11-21T00:00:00Z",
+    "q": "Was Hitler's halt order the biggest mistake of the war in the West?"
+   }
+  },
+  {
+   "id": "D8nV39f8RJU",
+   "date": "2026-11-19",
+   "format": "short",
+   "promo": true,
+   "long": "VkfaeXGYkCA",
+   "title": "Why Hitler's Tanks Stopped at Dunkirk",
+   "seconds": 12.7,
+   "publish_at": "2026-11-21T00:30:00Z"
+  },
+  {
+   "id": "djYZNY3XhTQ",
+   "date": "2026-11-19",
+   "format": "short",
+   "promo": true,
+   "long": "VkfaeXGYkCA",
+   "title": "The Titanic Officer Who Sailed to Dunkirk",
+   "seconds": 13.8,
+   "publish_at": "2026-11-21T03:00:00Z"
   }
  ],
  "metrics": {},
