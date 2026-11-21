@@ -21,8 +21,17 @@ jobs:
           YT_CLIENT_ID: ${{ secrets.YT_CLIENT_ID }}
           YT_CLIENT_SECRET: ${{ secrets.YT_CLIENT_SECRET }}
           YT_REFRESH_TOKEN: ${{ secrets.YT_REFRESH_TOKEN }}
+      - run: python -u tools/yt_reach.py
+        if: ${{ !cancelled() }}
+        env:
+          YT_CLIENT_ID: ${{ secrets.YT_CLIENT_ID }}
+          YT_CLIENT_SECRET: ${{ secrets.YT_CLIENT_SECRET }}
+          YT_REFRESH_TOKEN: ${{ secrets.YT_REFRESH_TOKEN }}
       - uses: actions/upload-artifact@v4
         if: ${{ !cancelled() }}
         with:
           name: yt-stats
-          path: work/yt_stats.json
+          path: |
+            work/yt_stats.json
+            work/yt_reach.json
+          if-no-files-found: ignore
