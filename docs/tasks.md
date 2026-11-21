@@ -55,6 +55,7 @@
 
 ## Відкрите — Андрій робить сам
 
+- [ ] **P2** Pearl Harbor: Content ID від Sony (SME) на 0:05–0:16 = промова Рузвельта (запис NARA, «Unrestricted», публічне надбання) → Андрій подає оскарження «Public domain» (текст у чаті); зараз без наслідків
 - [ ] **P1** «Related video» (тизер → довге відео) у Studio для кожного тизера: Data API цього не вміє
 - [ ] **P2** Нова обкладинка для 4 відео, що вийшли з «case file» (Indianapolis, Hitler, Göring, Midway): тільки вручну в Studio
 - [ ] **P3** Test & compare обкладинок у Studio (cover_2 / cover_3): публічного API немає
