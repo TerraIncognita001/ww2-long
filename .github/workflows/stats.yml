@@ -1,0 +1,28 @@
+name: stats
+# Read-only channel numbers (tools/yt_stats.py): views, retention, traffic sources, impressions when the API has
+# them. Manual only; changes nothing on YouTube or in the repo. The table is in the log, the JSON in the artifact.
+on:
+  workflow_dispatch:
+permissions:
+  contents: read
+jobs:
+  stats:
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+          cache: pip
+      - run: pip install -q -r requirements.txt
+      - run: python -u tools/yt_stats.py
+        env:
+          YT_CLIENT_ID: ${{ secrets.YT_CLIENT_ID }}
+          YT_CLIENT_SECRET: ${{ secrets.YT_CLIENT_SECRET }}
+          YT_REFRESH_TOKEN: ${{ secrets.YT_REFRESH_TOKEN }}
+      - uses: actions/upload-artifact@v4
+        if: ${{ !cancelled() }}
+        with:
+          name: yt-stats
+          path: work/yt_stats.json
