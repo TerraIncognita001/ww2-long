@@ -17,7 +17,14 @@ TYPE = "channel_reach_basic_a1"
 creds = S.credentials()
 yr = build("youtubereporting", "v1", credentials=creds)
 
-jobs = [j for j in yr.jobs().list().execute().get("jobs", []) if j["reportTypeId"] == TYPE]
+try:
+    jobs = [j for j in yr.jobs().list().execute().get("jobs", []) if j["reportTypeId"] == TYPE]
+except Exception as e:                                 # the API is off in the Google Cloud project: say how, stay green
+    if "has not been used" in str(e) or "disabled" in str(e):
+        print("::warning::YouTube Reporting API is OFF in the OAuth project (ww2p-510823). Enable it once: "
+              "https://console.developers.google.com/apis/api/youtubereporting.googleapis.com/overview?project=554486714526")
+        sys.exit(0)
+    raise
 if not jobs:
     types = [t["id"] for t in yr.reportTypes().list().execute().get("reportTypes", [])]
     if TYPE not in types:
