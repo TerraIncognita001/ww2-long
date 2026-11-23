@@ -309,10 +309,10 @@
    "seconds": 699.5,
    "words": 1529,
    "tts": "edge",
-   "release": "2026-11-24T00:00:00Z",
+   "release": "2026-11-23T21:00:00Z",
    "thumb": "ok",
    "comment_due": {
-    "at": "2026-11-24T00:00:00Z",
+    "at": "2026-11-23T21:00:00Z",
     "q": "Could the U-boats have won the war for Germany if Dönitz had his 300 boats in 1939?"
    }
   },
@@ -324,7 +324,7 @@
    "long": "iKe25TaTXU4",
    "title": "The U-boat That Found New York With Tourist Guides",
    "seconds": 13.4,
-   "publish_at": "2026-11-24T00:30:00Z"
+   "publish_at": "2026-11-23T21:30:00Z"
   },
   {
    "id": "OV1b6PKv-vM",
@@ -334,7 +334,7 @@
    "long": "iKe25TaTXU4",
    "title": "The U-boat Admiral Who Lost His Own Son",
    "seconds": 14.5,
-   "publish_at": "2026-11-24T03:00:00Z"
+   "publish_at": "2026-11-24T00:00:00Z"
   }
  ],
  "metrics": {},
