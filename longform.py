@@ -334,6 +334,28 @@ def pack_voice(voice, text, path):
     return words
 
 
+def snap_starts(sentences, words, starts, near=3.0):
+    """Nov 23 (U-boat intro): the letter-by-letter alignment drifts when the voice says more than the text ('14' is
+    heard 'the 14th of'), so a beat cut the voice before 'Long Island' and it was said after Roosevelt. Each sentence
+    start moves to the Whisper word that follows the previous sentence's LAST word (+ its own first word when it
+    matches), the one nearest the estimate within `near` s; no such word = the estimate stays."""
+    norm = lambda x: re.sub(r"[^0-9a-z]", "", x.lower())
+    ws = [(norm(w), float(t)) for w, t, *_ in words if norm(w)]
+    out = list(starts)
+    for k in range(1, len(sentences)):
+        prev, first = plain(sentences[k - 1]).split(), plain(sentences[k]).split()
+        last, head = norm(prev[-1]) if prev else "", norm(first[0]) if first else ""
+        if not last:
+            continue
+        cand = [(abs(ws[j + 1][1] - starts[k]) - (0.5 if ws[j + 1][0] == head else 0), ws[j + 1][1])
+                for j in range(len(ws) - 1) if ws[j][0] == last and abs(ws[j + 1][1] - starts[k]) <= near]
+        if cand:
+            out[k] = min(cand)[1]
+    for k in range(1, len(out)):                       # never out of order
+        out[k] = max(out[k], out[k - 1])
+    return out
+
+
 def narrate(d):
     """One voice file per chapter (Edge's word timings stay exact on short texts), pauses calmed -> [(path, words,
     duration, sentence start times)]."""
@@ -359,7 +381,7 @@ def narrate(d):
             starts.append(times[i] if i < len(times) else dur)
             i += len(plain(s).split())
         starts[0] = 0.0
-        return path, words, dur, starts
+        return path, words, dur, snap_starts(c["sentences"], words, starts)
     said = pmap(say, list(enumerate(chapters(d))), workers=3)
     if speak is not S.speak:                           # free Whisper's ~1 GB before the shots are rendered
         import gc, voice_c5
@@ -562,13 +584,17 @@ def portraits(d, shots):
         return
     from PIL import Image
     done = {}
-    for sh in shots:
+    tone = tuple(re.sub(r"[^A-Za-z0-9.-]", "_", f) for f in d.get("tone") or [])   # story `tone`: files DDColor
+    for sh in shots:                                   # paints badly (Dönitz cyan/red, Nov 23): the warm grade
         if sh["kind"] != "photo" or not sh.get("name") or sh.get("card"):
             continue
         src = str(sh["path"])
         if src not in done:
             try:
-                new = S.colorize(pathlib.Path(src)) if S.toned(src) else pathlib.Path(src)
+                if tone and pathlib.Path(src).name.startswith(tone) and S.toned(src):
+                    new = S.warm_tone(pathlib.Path(src))
+                else:
+                    new = S.colorize(pathlib.Path(src)) if S.toned(src) else pathlib.Path(src)
                 if str(new) == src and S.toned(src):
                     new = S.warm_tone(pathlib.Path(src))
             except Exception as e:
@@ -865,8 +891,8 @@ def cut_recording(d, p, name):
     try:
         raw = W / ("period_" + re.sub(r"[^A-Za-z0-9._-]+", "_", src["file"]))
         if not raw.exists():
-            r = requests.get("https://commons.wikimedia.org/wiki/Special:FilePath/"
-                             + requests.utils.quote(src["file"].replace(" ", "_")), headers=S.UA, timeout=120)
+            r = requests.get(src.get("url") or "https://commons.wikimedia.org/wiki/Special:FilePath/"   # url: NARA/IA
+                             + requests.utils.quote(src["file"].replace(" ", "_")), headers=S.UA, timeout=300)
             r.raise_for_status()
             raw.write_bytes(r.content)
         cut = W / f"{name}.mp3"
