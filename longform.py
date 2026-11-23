@@ -321,6 +321,10 @@ def narrate(d):
         starts[0] = 0.0
         return path, words, dur, starts
     said = pmap(say, list(enumerate(chapters(d))), workers=3)
+    if speak is not S.speak:                           # free Whisper's ~1 GB before the shots are rendered
+        import gc, voice_c5
+        voice_c5._model.clear()
+        gc.collect()
     return [one(c, p, w) for c, (p, w) in zip(chapters(d), said)]
 
 

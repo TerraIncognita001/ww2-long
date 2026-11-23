@@ -112,8 +112,11 @@ def generate(text, seed, out):
             break
         except urllib.error.HTTPError as e:
             body = e.read()[:300].decode("utf-8", "replace")
-            print(f"  voice server HTTP {e.code} (try {k + 1}/4): {body}")
-            if k == 3:
+            print(f"  voice server HTTP {e.code} (try {k + 1}/4): {body[:160]}")
+            if "memory" in body or "mid-generation" in body:
+                if k >= 1:                             # out of GPU memory twice: the phrase is too long for 8 GB
+                    raise MemoryError(text[:60])
+            elif k == 3:
                 raise
             time.sleep(20 * (k + 1))
     tmp = out.with_suffix(".part")
@@ -164,13 +167,28 @@ def phrase_wav(text):
     return best[1]
 
 
+def phrase_wavs(text):
+    """phrase_wav, or (out of GPU memory on a long phrase, Nov 23) its halves, split at a sentence end or a comma."""
+    try:
+        return [phrase_wav(text)]
+    except MemoryError:
+        cut = [m.end() for m in re.finditer(r"[.!?;:,]\s+", text)]
+        if not cut:
+            raise
+        at = min(cut, key=lambda x: abs(x - len(text) / 2))
+        print(f"  c5: too long for the GPU, in two halves: {text[:60]}")
+        return phrase_wavs(text[:at].strip()) + phrase_wavs(text[at:].strip())
+
+
 def speak(text, path, voice=None):
     """longform's voice call: text -> path (mp3), returns [(word, start s)] like S.speak."""
     global VOICE
     VOICE = voice or VOICE
     health()
     path = Path(path)
-    wavs = [phrase_wav(p) for p in phrases(spoken(text))]
+    wavs = []
+    for p in phrases(spoken(text)):
+        wavs += phrase_wavs(p)
     ins, chain = [], []
     for i, w in enumerate(wavs):
         ins += ["-i", str(w)]
