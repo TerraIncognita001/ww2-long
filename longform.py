@@ -298,10 +298,15 @@ def narrate(d):
     duration, sentence start times)]."""
     pron = d.get("pronounce") if isinstance(d.get("pronounce"), dict) else None
 
+    speak = S.speak
+    if env("L_TTS", "") in ("c5", "andrii"):            # Andrii, Nov 23: cloned narrators, local VoiceStudio only
+        import voice_c5
+        speak = lambda text, path: voice_c5.speak(text, path, voice=env("L_TTS"))
+
     def say(a):
         k, c = a
         path = W / f"voice{k:02d}.mp3"
-        return path, S.speak(S.respell(" ".join(plain(s) for s in c["sentences"]), pron), path)
+        return path, speak(S.respell(" ".join(plain(s) for s in c["sentences"]), pron), path)
 
     def one(c, path, words):
         words = voicecut.calm_pauses(path, words, keep=PAUSE)   # sample-exact (ww2-bot v2.33/v2.42: captions ran ahead)
