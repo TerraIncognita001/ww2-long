@@ -114,7 +114,8 @@ def check(d, text, facts_hard=True):
             soft.append("intro: no `pre` (film with no narrator: DATE stamp, PLACE stamp, the period speech)")
         elif sum(bool(p.get("stamp")) for p in pre) < 2:
             soft.append("intro: `pre` wants 2 stamps: ['MONTH DAY', 'YEAR'] then ['PLACE']")
-        if not any(p.get("audio") for p in pre):      # Andrii, Nov 15: HARD - no video without the speech
+        intro_audio = d.get("intro_beats") and any(b.get("audio") for b in chapters(d)[0].get("beats") or [])
+        if not any(p.get("audio") for p in pre) and not intro_audio:   # Andrii, Nov 15: HARD - no video without it
             hard.append("intro: no period speech in `pre` (a known person about the topic: speech.py / by hand)")
         for k_, a_ in (d.get("period_audio") or {}).items():
             if not (a_.get("speaker") and a_.get("file")):
@@ -329,6 +330,8 @@ def timeline(d, voices):
     chapter]... -> outro. INTRO rule (Andrii, Nov 15): with `pre` the cold open's last line ('This is the entire
     history of X.') is said over the title card that shows it (`title_on_last`, default on with `pre`)."""
     segs, t = [], 0.0
+    # retention test (Andrii, Nov 23: 'погане утримання'): a story may shorten the wordless parts
+    card_s, title_s = float(d.get("card_s", CARD_S)), float(d.get("title_s", TITLE_S))
     if d.get("pre"):
         dur = sum(float(p["dur"]) for p in d["pre"]) + 0.3
         segs.append({"kind": "pre", "start": 0.0, "dur": dur, "chapter": 0})
@@ -339,16 +342,16 @@ def timeline(d, voices):
     on_last = d.get("title_on_last", bool(d.get("pre")))
     for k, (c, v) in enumerate(zip(chapters(d), voices)):
         if k == 1 and not on_last:
-            segs.append({"kind": "title", "start": t, "dur": TITLE_S, "chapter": 1})
-            t += TITLE_S
+            segs.append({"kind": "title", "start": t, "dur": title_s, "chapter": 1})
+            t += title_s
         if k >= 1:
-            segs.append({"kind": "card", "start": t, "dur": CARD_S, "chapter": k})
-            t += CARD_S
+            segs.append({"kind": "card", "start": t, "dur": card_s, "chapter": k})
+            t += card_s
         # Andrii, Nov 15 (the HISTORY reference, change 2): `beats` = montages with NO narrator inside a chapter
         # (film + sound, or a period recording / a quote in a second voice): the chapter's voice is cut at the
         # sentence a beat follows and goes on after it
         n = len(c["sentences"])
-        cuts = sorted({min(n, max(1, int(b_["after"]))) for b_ in c.get("beats") or [] if k and str(b_.get("after", "")).isdigit()
+        cuts = sorted({min(n, max(1, int(b_["after"]))) for b_ in c.get("beats") or [] if (k or d.get("intro_beats")) and str(b_.get("after", "")).isdigit()
                        and int(b_["after"]) < n})
         bounds = [0] + cuts + [n]
         for a_, b_ in zip(bounds, bounds[1:]):
@@ -373,16 +376,17 @@ def timeline(d, voices):
                     t += dur
         if k == 0 and on_last:
             g["cut_at"] = g["sent"][-1]                # the pictures stop here: the title card takes the last line
-            ttl = {"kind": "title", "start": g["cut_at"], "dur": max(TITLE_S, t - g["cut_at"] + 1.2), "chapter": 1}
+            ttl = {"kind": "title", "start": g["cut_at"], "dur": max(title_s, t - g["cut_at"] + 1.2), "chapter": 1}
             segs.append(ttl)
             t = ttl["start"] + ttl["dur"]
         if env("L_INTRO_ONLY") == "1":                 # tools/intro_render.py: the intro + its title card only
             if not on_last:
-                segs.append({"kind": "title", "start": t, "dur": TITLE_S, "chapter": 1})
-                t += TITLE_S
+                segs.append({"kind": "title", "start": t, "dur": title_s, "chapter": 1})
+                t += title_s
             return segs, round(t, 3)
-    segs.append({"kind": "outro", "start": t, "dur": OUTRO_S, "chapter": len(voices) - 1})
-    return segs, round(t + OUTRO_S, 3)
+    outro = float(d.get("outro_s", OUTRO_S))
+    segs.append({"kind": "outro", "start": t, "dur": outro, "chapter": len(voices) - 1})
+    return segs, round(t + outro, 3)
 
 
 def plan(d, segs, films, got):
@@ -931,7 +935,9 @@ def build_ass(d, shots, segs):
             "Italic, Underline, StrikeOut, ScaleX, ScaleY, Spacing, Angle, BorderStyle, Outline, Shadow, Alignment, "
             "MarginL, MarginR, MarginV, Encoding\n"
             "Style: Name,Bebas Neue,96,&H00FFFFFF,&H00FFFFFF,&H00000000,&H64000000,0,0,0,0,100,100,2,0,1,0,3,1,0,0,0,1\n"
-            "Style: Role,Bebas Neue,44,&H0070D7F5,&H00FFFFFF,&H00000000,&H64000000,0,0,0,0,100,100,3,0,1,0,2,1,0,0,0,1\n"
+            "Style: Role,Bebas Neue,50,&H00F0F0F0,&H00FFFFFF,&H00000000,&H78000000,0,0,0,0,100,100,4,0,1,0,3,1,0,0,0,1\n"
+            "Style: StampName,Bebas Neue,150,&H001A1AA8,&H00FFFFFF,&H00000000,&H64000000,0,0,0,0,100,100,3,0,1,0,3,1,0,0,0,1\n"
+            "Style: StampNote,Bebas Neue,260,&H001A1AA8,&H00FFFFFF,&H00000000,&H64000000,0,0,0,0,100,100,4,0,1,0,4,5,0,0,0,1\n"
             "Style: Label,Bebas Neue,48,&H00FFFFFF,&H00FFFFFF,&H00000000,&H78000000,0,0,0,0,100,100,6,0,1,0,2,7,0,0,0,1\n"
             "Style: Part,Bebas Neue,60,&H0045B8E8,&H00FFFFFF,&H00000000,&H00000000,0,0,0,0,100,100,12,0,1,0,0,5,0,0,0,1\n"
             "Style: Card,Bebas Neue,150,&H00FFFFFF,&H00FFFFFF,&H00000000,&H64000000,0,0,0,0,100,100,6,0,1,0,4,5,0,0,0,1\n"
@@ -945,24 +951,23 @@ def build_ass(d, shots, segs):
     ev, chs = [], chapters(d)
     for sh in shots:
         a, b = sh["start"], sh["start"] + sh["dur"]
+        # Andrii, Nov 23: names and notes in the STAMP look (the dark red Bebas of the DATE / PLACE stamps, slightly
+        # see-through, growing slowly), not white text with a red underline / a yellow bar.
         if sh.get("name"):
-            a1, b1 = a + 0.35, min(b - 0.1, a + 5.5)
-            ev.append(f"Dialogue: 3,{t(a1)},{t(b1)},Name,,0,0,0,,{{\\pos(110,930)\\fad(300,300)}}{ass_esc(sh['name'])}")
-            ev.append(f"Dialogue: 3,{t(a1)},{t(b1)},Role,,0,0,0,,{{\\pos(114,990)\\fad(400,300)}}"
-                      f"{ass_esc(sh.get('role') or '')}")
-            ev.append(f"Dialogue: 2,{t(a1)},{t(b1)},Role,,0,0,0,,{{\\pos(110,840)\\fad(300,300)\\p1\\c&H0045B8E8&}}"
-                      "m 0 0 l 90 0 90 6 0 6{\\p0}")
-        if sh.get("note"):                             # The Entire War: a name / number, red underline; Bebas Neue
-            from PIL import ImageFont                  # like the title card (Andrii, Nov 14; was Permanent Marker)
+            a1, b1 = a + 0.35, min(b - 0.1, a + 5.0)
+            grow = "\\t(0,{0},\\fscx103\\fscy103)".format(round((b1 - a1) * 1000))
+            ev.append(f"Dialogue: 6,{t(a1)},{t(b1)},StampName,,0,0,0,,{{\\an1\\pos(100,958)"
+                      f"\\fs{fit(str(sh['name']).upper(), 150, 1300)}\\alpha&H18&\\fad(120,300){grow}}}"
+                      f"{ass_esc(str(sh['name']).upper())}")
+            if sh.get("role"):
+                ev.append(f"Dialogue: 6,{t(a1 + 0.15)},{t(b1)},Role,,0,0,0,,{{\\an1\\pos(108,1020)\\fad(250,300)}}"
+                          f"{ass_esc(str(sh['role']).upper())}")
+        if sh.get("note"):                             # a key name / number of the sentence ('ONE BOMB')
             txt = ass_esc(str(sh["note"]).upper())
-            f_ = ImageFont.truetype(str(FONT), 120)
-            tw = f_.getlength(txt) * 120 / sum(f_.getmetrics()) + 6 * len(txt) + 30   # libass: size = ascent + descent
-            x0, a1, b1 = round(960 - tw / 2), a + 0.2, min(b - 0.1, a + 4.0)
-            ev.append(f"Dialogue: 5,{t(a1)},{t(b1)},Note,,0,0,0,,{{\\pos(960,62)\\fad(200,250)}}{txt}")
-            ev.append(f"Dialogue: 5,{t(a1)},{t(b1)},Note,,0,0,0,,{{\\an7\\pos({x0},170)\\bord0\\shad0"
-                      f"\\c&H1C1CC4&\\fad(0,250)\\clip({x0},150,{x0},210)\\t(150,550,\\clip({x0},150,{x0 + round(tw)},210))"
-                      f"\\p1}}m 0 6 b {tw / 3:.0f} 0 {2 * tw / 3:.0f} 12 {tw:.0f} 4 l {tw:.0f} 14 b {2 * tw / 3:.0f} 22 "
-                      f"{tw / 3:.0f} 10 0 18{{\\p0}}")
+            a1, b1 = a + 0.2, min(b - 0.1, a + 3.2)
+            grow = "\\t(0,{0},\\fscx104\\fscy104)".format(round((b1 - a1) * 1000))
+            ev.append(f"Dialogue: 6,{t(a1)},{t(b1)},StampNote,,0,0,0,,{{\\pos(960,560)\\fs{fit(txt, 260, 1600)}"
+                      f"\\alpha&H18&\\fad(120,250){grow}}}{txt}")
         if sh.get("label"):
             a1, b1 = a + 0.25, min(b - 0.1, a + 4.5)
             ev.append(f"Dialogue: 3,{t(a1)},{t(b1)},Label,,0,0,0,,{{\\pos(96,72)\\fad(250,300)}}{ass_esc(sh['label'])}")

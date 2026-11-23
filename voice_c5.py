@@ -8,7 +8,7 @@ VoiceStudio): longform uses it with L_TTS=c5.
   again with seed 31, 57, 77, 91 (nothing else changes); the closest one is kept;
 - cache: the same text + settings = the same file (work/c5cache);
 - loudness: loudnorm I=-15 TP=-1.5; word times for the captions from Whisper on the joined file."""
-import difflib, hashlib, json, re, subprocess, threading, urllib.request, uuid
+import difflib, hashlib, json, re, subprocess, threading, time, urllib.error, urllib.request, uuid
 from pathlib import Path
 
 VOICES = {   # L_TTS=<name>: the reference recording (ref.wav + ref.txt, kept OUTSIDE the public repo) + the instruct
@@ -37,10 +37,37 @@ def health():
     return h
 
 
+TITLES = {"Gen": "General", "Lt": "Lieutenant", "Col": "Colonel", "Capt": "Captain", "Adm": "Admiral", "Maj": "Major",
+          "Sgt": "Sergeant", "Cmdr": "Commander", "Cdr": "Commander", "Cpl": "Corporal", "Pvt": "Private",
+          "Dr": "Doctor", "Mr": "Mister", "Mrs": "Missus", "St": "Saint", "Jr": "Junior", "Sr": "Senior",
+          "Gov": "Governor", "Sen": "Senator", "Pres": "President", "Prof": "Professor", "Lt Gen": "Lieutenant General",
+          "No": "number", "vs": "versus", "approx": "about"}
+DOTTED = {"U.S.": "United States", "U.K.": "United Kingdom", "U.S.S.R.": "Soviet Union", "a.m.": "A-M", "p.m.": "P-M",
+          "A.M.": "A-M", "P.M.": "P-M", "e.g.": "for example", "i.e.": "that is"}
+
+
+def unabbreviate(text):
+    """Andrii, Nov 23: the voice stops at every full stop, so 'J. Smith' sounded 'J [pause] Smith'. Dotted shortenings
+    go: ranks/titles in full, 'U.S.' -> 'United States', initials without the dot ('J. Robert' -> 'J Robert')."""
+    t = text
+    for k, v in sorted(DOTTED.items(), key=lambda x: -len(x[0])):     # U.S.S.R. before U.S.
+        stop = "." if k.lower() in ("a.m.", "p.m.") else ""            # 'at 8 a.m. The city...' ends a sentence
+        t = re.sub(rf"(?<![\w.]){re.escape(k)}(?=\s+[A-Z])", v + stop, t)
+        t = re.sub(rf"(?<![\w.]){re.escape(k)}(?=\s*$)", v + ".", t)
+        t = re.sub(rf"(?<![\w.]){re.escape(k)}", v, t)
+    for k in ("Jr", "Sr"):                                             # suffixes: anything may follow
+        t = re.sub(rf"\b{k}\.(?=\s+[a-z,;]|[,;])", TITLES[k], t)
+        t = re.sub(rf"\b{k}\.", TITLES[k] + ".", t)
+    for k, v in sorted(TITLES.items(), key=lambda x: -len(x[0])):
+        t = re.sub(rf"\b{re.escape(k)}\.(?=\s*[A-Z0-9])", v, t)
+    t = re.sub(r"(?<![\w-])((?:[A-Z]\.){2,})", lambda m: "-".join(m.group(1).rstrip(".").split(".")), t)  # J.R.R. -> J-R-R
+    return re.sub(r"(?<![\w-])([A-Z])\.\s+(?=[A-Z][a-z]|[A-Z]\.)", r"\1 ", t)  # initials: 'J. Smith' -> 'J Smith'
+
+
 def spoken(text):
-    """What the model must hear: years, dates and every other number as words."""
+    """What the model must hear: no dotted shortenings, years, dates and every other number as words."""
     import shorts as S
-    t = S.kokoro_say(text)                            # '1944' -> 'nineteen forty four', '6 August' -> 'the sixth of August'
+    t = S.kokoro_say(unabbreviate(text))                          # '1944' -> 'nineteen forty four', '6 August' -> 'the sixth of August'
     t = re.sub(r"(\d+)\s*%", r"\1 percent", t)
     t = re.sub(r"\b(\d{1,2}):(\d\d)\b", lambda m: S.spell_num(int(m.group(1))) + (
         " o'clock" if m.group(2) == "00" else " oh " + S.ONES[int(m.group(2))] if m.group(2)[0] == "0"
@@ -77,8 +104,18 @@ def generate(text, seed, out):
     parts.append(f"--{b}--\r\n".encode())
     req = urllib.request.Request(URL + "/generate", data=b"".join(parts), method="POST",
                                  headers={"Content-Type": f"multipart/form-data; boundary={b}"})
-    with _server, urllib.request.urlopen(req, timeout=900) as r:   # one request at a time
-        data = r.read()
+
+    for k in range(4):                                 # a busy / out-of-memory server answers 500: wait and retry
+        try:
+            with _server, urllib.request.urlopen(req, timeout=900) as r:   # one request at a time
+                data = r.read()
+            break
+        except urllib.error.HTTPError as e:
+            body = e.read()[:300].decode("utf-8", "replace")
+            print(f"  voice server HTTP {e.code} (try {k + 1}/4): {body}")
+            if k == 3:
+                raise
+            time.sleep(20 * (k + 1))
     tmp = out.with_suffix(".part")
     tmp.write_bytes(data)
     tmp.replace(out)

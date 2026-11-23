@@ -1,0 +1,1531 @@
+{
+ "priority": 0,
+ "format": "entire",
+ "topic": "Atomic bombings of Hiroshima and Nagasaki",
+ "sources": [
+  "Manhattan Project",
+  "Trinity (nuclear test)",
+  "Little Boy",
+  "Fat Man"
+ ],
+ "title": "The ENTIRE History of the Atomic Bomb in {N} Minutes",
+ "question": "Were the atomic bombings necessary to end the war?",
+ "summary": "From a letter signed by Albert Einstein in 1939 to the Manhattan Project's secret cities, the Trinity test in the New Mexico desert and the bombings of Hiroshima and Nagasaki in August 1945, this is the whole story of the first atomic bombs, told with the archive film of the time, President Truman's own voice and the newspapers of August 1945.",
+ "tags": [
+  "atomic bomb",
+  "Manhattan Project",
+  "Hiroshima",
+  "Nagasaki",
+  "Trinity test",
+  "Oppenheimer",
+  "Enola Gay",
+  "Little Boy",
+  "Fat Man",
+  "Truman",
+  "WW2 documentary",
+  "World War 2",
+  "Pacific War",
+  "history"
+ ],
+ "pronounce": {
+  "Szilard": "Zil-ard",
+  "Strassmann": "Strass-man",
+  "Hiroshima": "Hee-roh-shee-mah",
+  "Nagasaki": "Nah-gah-sah-kee",
+  "Kokura": "Koh-koo-rah",
+  "Niigata": "Nee-ee-gah-tah",
+  "Urakami": "Oo-rah-kah-mee",
+  "Aioi": "Ah-ee-oh-ee",
+  "Tinian": "Tin-ee-an",
+  "hibakusha": "hee-bah-koo-shah",
+  "Hirohito": "Hee-roh-hee-toh",
+  "Bhagavad Gita": "Bah-gah-vahd Gee-tah",
+  "Bockscar": "Box-car"
+ },
+ "films": {
+  "trinity": {
+   "url": "https://archive.org/download/gov.doe.0800001/gov.doe.0800001.mpeg",
+   "crop": "720:360:0:60",
+   "credit": "Nuclear Test Film - Trinity Shot (1945): US Department of Energy (public domain, via Internet Archive)"
+  },
+  "strikes": {
+   "url": "https://archive.org/download/AtomStrikes/AtomStrikes.mp4",
+   "mono": true,
+   "crop": "640:360:0:60",
+   "credit": "The Atom Strikes! (1945): US War Department, Misc. 1235 (public domain, via Internet Archive)"
+  },
+  "naga": {
+   "url": "https://archive.org/download/428Npc2586NagasakiBurst/428-npc-2586%20Nagasaki%20Burst.mp4",
+   "crop": "1088:612:96:0",
+   "credit": "Atomic Bomb: Nagasaki Burst (1945): US Navy / NARA 428-NPC-2586 (public domain, via Internet Archive)"
+  },
+  "airwar": {
+   "url": "https://archive.org/download/gov.dod.dimoc.26162/gov.dod.dimoc.26162_512kb.mp4",
+   "mono": true,
+   "crop": "320:180:0:30",
+   "credit": "The Air Force Story: Air War Against Japan (1953): US Department of Defense, DIMOC 26162 (public domain, via Internet Archive)"
+  },
+  "vj": {
+   "url": "https://archive.org/download/gov.archives.arc.23976/gov.archives.arc.23976.mpeg",
+   "mono": true,
+   "crop": "720:360:0:60",
+   "credit": "World Celebrates Peace, VJ Day (1945): US Army Signal Corps / NARA ARC 23976 (public domain, via Internet Archive)"
+  },
+  "surr": {
+   "url": "https://archive.org/download/gov.archives.arc.39075/gov.archives.arc.39075.mpeg",
+   "mono": true,
+   "crop": "720:360:0:60",
+   "credit": "Japan Surrenders (1945): Universal Newsreel / NARA 208-UN-168 (public domain, via Internet Archive)"
+  }
+ },
+ "period_audio": {
+  "truman": {
+   "file": "President Harry S. Truman Talks on Atomic Bombs.ogg",
+   "speaker": "Harry S. Truman",
+   "date": "AUGUST 1945",
+   "credit": "President Harry S. Truman Talks on Atomic Bombs (August 1945): US Government newsreel recording, NARA 23630 (public domain, via Wikimedia Commons)",
+   "text": "A short time ago, an American airplane dropped one bomb on Hiroshima and destroyed its usefulness to the enemy."
+  }
+ },
+ "pre": [
+  {
+   "dur": 2.8,
+   "film": "naga",
+   "from": 2,
+   "to": 6,
+   "stamp": [
+    "AUGUST 6",
+    "1945"
+   ],
+   "sfx": "explosion_massive"
+  }
+ ],
+ "whole": [
+  "FDR 1944 Color Portrait.jpg",
+  "Emperor Hirohito announcing the surrender of Japan.jpg"
+ ],
+ "thumb": {
+  "file": "Nagasakibomb.jpg"
+ },
+ "cover": {
+  "file": "Nagasakibomb.jpg",
+  "x": 0.5,
+  "y": 0.45,
+  "zoom": 1.0,
+  "color": false,
+  "text": [
+   "HISTORY OF THE",
+   "ATOMIC BOMB",
+   "IN {N} MINUTES"
+  ],
+  "key": [
+   "ATOMIC",
+   "BOMB"
+  ],
+  "sizes": [
+   96,
+   150,
+   96
+  ],
+  "mono": true
+ },
+ "promos": [
+  {
+   "id": "atomic_kokura",
+   "chapter": 8,
+   "sentences": [
+    "The second atomic bomb is not meant for Nagasaki.",
+    "Clouds and smoke hide its first target, and the fuel runs low.",
+    "Major Sweeney makes his decision: he turns to the secondary target."
+   ],
+   "shots": [
+    {
+     "s": 1,
+     "file": "Bockscar triangle N tail marking.jpg"
+    },
+    {
+     "s": 2,
+     "film": "strikes",
+     "from": 237,
+     "to": 242
+    },
+    {
+     "s": 3,
+     "file": "Major Charles W. Sweeney, pilot of B-29 Bockscar.jpg",
+     "name": "CHARLES SWEENEY"
+    }
+   ],
+   "top": "THE CITY THAT|ESCAPED THE BOMB",
+   "key": [
+    "BOMB"
+   ],
+   "cta": {
+    "kind": "redacted",
+    "line": "THE FIRST TARGET WAS",
+    "hidden": "KOKURA"
+   },
+   "end": "WHICH CITY?",
+   "name": "The City That Escaped the Atomic Bomb"
+  },
+  {
+   "id": "atomic_trinity",
+   "chapter": 5,
+   "sentences": [
+    "Nobody is sure that the first atomic bomb will even work.",
+    "Rain and lightning delay the test in the desert.",
+    "At 5:29 a.m., they find out: the device explodes."
+   ],
+   "shots": [
+    {
+     "s": 1,
+     "film": "trinity",
+     "from": 480,
+     "to": 487
+    },
+    {
+     "s": 2,
+     "film": "trinity",
+     "from": 30,
+     "to": 36
+    },
+    {
+     "s": 3,
+     "film": "trinity",
+     "from": 538,
+     "to": 543
+    }
+   ],
+   "top": "THE FIRST|ATOMIC BOMB",
+   "key": [
+    "ATOMIC",
+    "BOMB"
+   ],
+   "cta": {
+    "kind": "timestamp"
+   },
+   "end": "DID IT WORK?",
+   "name": "The First Atomic Bomb Test"
+  }
+ ],
+ "chapters": [
+  {
+   "title": "",
+   "mode": "action",
+   "sentences": [
+    "At 8:15 in the morning, one bomb destroys the city of Hiroshima.",
+    "Building it takes three years, secret cities and nearly 130,000 people.",
+    "Its bomb laboratory is led by the physicist J. Robert Oppenheimer.",
+    "Three days later, a second bomb is meant for a different city, yet it falls on Nagasaki.",
+    "And it all begins with a letter to the president."
+   ],
+   "shots": [
+    {
+     "s": 1,
+     "film": "airwar",
+     "from": 699,
+     "to": 703.5,
+     "stamp": [
+      "HIROSHIMA"
+     ]
+    },
+    {
+     "s": 2,
+     "film": "vj",
+     "from": 343,
+     "to": 348,
+     "note": "130,000 PEOPLE"
+    },
+    {
+     "s": 3,
+     "file": "J. R. Oppenheimer Los Alamos ID.jpg",
+     "reveal": [
+      0.7,
+      0.25
+     ],
+     "name": "J. Robert Oppenheimer",
+     "role": "Director, Los Alamos Laboratory"
+    },
+    {
+     "s": 4,
+     "film": "naga",
+     "from": 28,
+     "to": 34,
+     "sfx": "explosion_far"
+    },
+    {
+     "s": 5,
+     "film": "trinity",
+     "from": 547,
+     "to": 551
+    }
+   ],
+   "beats": [
+    {
+     "after": 1,
+     "audio": {
+      "src": "truman",
+      "from": 23.3,
+      "to": 32.55
+     },
+     "shots": [
+      {
+       "dur": 3.4,
+       "film": "airwar",
+       "from": 704,
+       "to": 707.8,
+       "source": "PRESIDENT TRUMAN · STATEMENT ON THE ATOMIC BOMB, AUGUST 1945"
+      },
+      {
+       "dur": 3.0,
+       "film": "strikes",
+       "from": 264,
+       "to": 268,
+       "source": "PRESIDENT TRUMAN · STATEMENT ON THE ATOMIC BOMB, AUGUST 1945"
+      },
+      {
+       "dur": 3.2,
+       "film": "airwar",
+       "from": 689,
+       "to": 693.5,
+       "source": "PRESIDENT TRUMAN · STATEMENT ON THE ATOMIC BOMB, AUGUST 1945"
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "title": "A Letter to the President",
+   "mode": "people",
+   "stamp": [
+    "1938"
+   ],
+   "sentences": [
+    "In 1938, Otto Hahn and Fritz Strassmann discover nuclear fission, and an atomic bomb becomes possible in theory.",
+    "Scientists who have fled Nazi Germany fear that the Germans will build one first.",
+    "In August 1939, Leo Szilard and Eugene Wigner draft a letter to President Franklin D. Roosevelt.",
+    "It warns of extremely powerful bombs of a new type.",
+    "It urges the United States to stockpile uranium ore and speed up the research of Enrico Fermi.",
+    "To be sure it is read, they have it signed by Albert Einstein.",
+    "Roosevelt sets up an Advisory Committee on Uranium.",
+    "In November, it reports that uranium could give bombs with a destructiveness vastly greater than anything now known.",
+    "In February 1940, the Navy gives Columbia University 6,000 dollars, and Fermi and Szilard spend most of it on graphite.",
+    "In Britain, Otto Frisch and Rudolf Peierls have worked out the critical mass of uranium-235.",
+    "But progress is slow, until a report arrives from Britain in late 1941.",
+    "The MAUD Committee says that only five to ten kilograms of pure uranium-235 would be needed.",
+    "Not tons of it, as many had feared.",
+    "The work is speeded up, and Roosevelt hands it to the United States Army."
+   ],
+   "shots": [
+    {
+     "s": 1,
+     "film": "strikes",
+     "from": 80,
+     "to": 86
+    },
+    {
+     "s": 2,
+     "film": "strikes",
+     "from": 100,
+     "to": 106
+    },
+    {
+     "s": 3,
+     "file": "Leo Szilard.jpg",
+     "name": "LEO SZILARD",
+     "role": "PHYSICIST"
+    },
+    {
+     "s": 4,
+     "file": "Einstein Szilard p1.jpg",
+     "card": true,
+     "label": "2 AUGUST 1939"
+    },
+    {
+     "s": 5,
+     "file": "Einstein Szilard p1.jpg",
+     "card": true,
+     "zoom": 1.5,
+     "y": 0.35
+    },
+    {
+     "s": 6,
+     "file": "Einstein at Newark Airport in April 1939.jpg",
+     "name": "ALBERT EINSTEIN",
+     "role": "PHYSICIST"
+    },
+    {
+     "s": 7,
+     "file": "FDR 1944 Color Portrait.jpg",
+     "name": "FRANKLIN D. ROOSEVELT",
+     "role": "PRESIDENT OF THE UNITED STATES"
+    },
+    {
+     "s": 8,
+     "film": "strikes",
+     "from": 120,
+     "to": 126,
+     "note": "VASTLY GREATER"
+    },
+    {
+     "s": 9,
+     "file": "Informal Portrait of Enrico Fermi.jpg",
+     "zoom": 1.3,
+     "x": 0.4
+    },
+    {
+     "s": 10,
+     "film": "strikes",
+     "from": 150,
+     "to": 156
+    },
+    {
+     "s": 11,
+     "film": "strikes",
+     "from": 165,
+     "to": 171
+    },
+    {
+     "s": 12,
+     "film": "vj",
+     "from": 370,
+     "to": 375,
+     "note": "5-10 KILOGRAMS"
+    },
+    {
+     "s": 13,
+     "film": "strikes",
+     "from": 160,
+     "to": 166
+    },
+    {
+     "s": 14,
+     "file": "FDR 1944 Color Portrait.jpg",
+     "zoom": 1.3,
+     "y": 0.3
+    }
+   ]
+  },
+  {
+   "title": "The Manhattan District",
+   "mode": "people",
+   "stamp": [
+    "JUNE 1942"
+   ],
+   "sentences": [
+    "In June 1942, the work becomes an Army project.",
+    "Its first headquarters are in Manhattan, so it is called the Manhattan District.",
+    "In September, Leslie Groves of the Army Corps of Engineers takes command.",
+    "He is promoted to brigadier general, because the title is expected to impress the academic scientists.",
+    "Groves compares the scientists' estimates to telling a caterer to prepare for between ten and a thousand guests.",
+    "On November 16, Groves and the physicist J. Robert Oppenheimer tour the area around the Los Alamos Ranch School, in New Mexico.",
+    "It becomes the bomb laboratory, known as Site Y, or the Hill.",
+    "Oppenheimer is its director.",
+    "On December 2, 1942, in Chicago, a team led by Enrico Fermi starts the first artificial self-sustaining nuclear chain reaction.",
+    "It runs in an experimental reactor called Chicago Pile-1.",
+    "Now the bomb needs fuel, in amounts nobody has ever made."
+   ],
+   "shots": [
+    {
+     "s": 1,
+     "film": "strikes",
+     "from": 188,
+     "to": 194
+    },
+    {
+     "s": 2,
+     "film": "vj",
+     "from": 325,
+     "to": 331
+    },
+    {
+     "s": 3,
+     "file": "Leslie Groves 1942.jpg",
+     "name": "LESLIE GROVES",
+     "role": "DIRECTOR, MANHATTAN PROJECT"
+    },
+    {
+     "s": 4,
+     "file": "Leslie Groves 1942.jpg",
+     "zoom": 1.35,
+     "y": 0.3,
+     "note": "BRIGADIER GENERAL"
+    },
+    {
+     "s": 5,
+     "film": "vj",
+     "from": 18,
+     "to": 21
+    },
+    {
+     "s": 6,
+     "file": "Members of the Army's Special Engineer Detachment (SED) at Los Alamos, NM, in 1945.jpg",
+     "label": "LOS ALAMOS · NEW MEXICO"
+    },
+    {
+     "s": 7,
+     "file": "Members of the Army's Special Engineer Detachment (SED) at Los Alamos, NM, in 1945.jpg",
+     "zoom": 1.3
+    },
+    {
+     "s": 8,
+     "file": "Trinity Test - Oppenheimer and Groves at Ground Zero 001.jpg"
+    },
+    {
+     "s": 9,
+     "file": "Informal Portrait of Enrico Fermi.jpg",
+     "name": "ENRICO FERMI",
+     "role": "PHYSICIST",
+     "label": "CHICAGO · 2 DECEMBER 1942"
+    },
+    {
+     "s": 10,
+     "file": "HD.5A.025 (10692802156).jpg"
+    },
+    {
+     "s": 11,
+     "film": "vj",
+     "from": 365,
+     "to": 369
+    }
+   ]
+  },
+  {
+   "title": "Secret Cities",
+   "mode": "action",
+   "stamp": [
+    "OAK RIDGE"
+   ],
+   "sentences": [
+    "At Oak Ridge, in Tennessee, the Clinton Engineer Works produces enriched uranium.",
+    "Its town grows to 75,000 people by May 1945.",
+    "Operators sit at the controls of machines called calutrons.",
+    "Another plant, K-25, enriches uranium by gaseous diffusion.",
+    "In Washington State, the Hanford Engineer Works builds the world's first industrial-scale nuclear reactors.",
+    "They produce plutonium.",
+    "Over 80 per cent of the project's cost goes into these fuel plants.",
+    "At its peak in June 1944, the Manhattan Project employs about 129,000 workers.",
+    "In all, it costs nearly two billion dollars.",
+    "The British project, Tube Alloys, is absorbed into it, and Canada joins the work.",
+    "Despite all the secrecy, Soviet atomic spies get inside the program.",
+    "In Europe, the Alsos mission hunts for the German bomb, sometimes behind enemy lines."
+   ],
+   "shots": [
+    {
+     "s": 1,
+     "film": "vj",
+     "from": 341,
+     "to": 343,
+     "label": "OAK RIDGE · TENNESSEE"
+    },
+    {
+     "s": 2,
+     "film": "vj",
+     "from": 349,
+     "to": 355
+    },
+    {
+     "s": 3,
+     "file": "\"The Calutron Girls\" Y-12 Oak Ridge 1944 (9069726602).jpg"
+    },
+    {
+     "s": 4,
+     "file": "1945-K-25-Plant-Aerial-Oak-Ridge-Tennessee.jpg",
+     "note": "K-25"
+    },
+    {
+     "s": 5,
+     "file": "Hanford B-Reactor Area 1944.jpg",
+     "label": "HANFORD · 1944"
+    },
+    {
+     "s": 6,
+     "film": "vj",
+     "from": 338,
+     "to": 341
+    },
+    {
+     "s": 7,
+     "file": "K-25 Control Board 1945 Oak Ridge (28472192883).jpg",
+     "note": "80 PER CENT"
+    },
+    {
+     "s": 8,
+     "film": "vj",
+     "from": 343,
+     "to": 347,
+     "note": "129,000 WORKERS"
+    },
+    {
+     "s": 9,
+     "file": "1945-K-25-Plant-Aerial-Oak-Ridge-Tennessee.jpg",
+     "zoom": 1.4,
+     "x": 0.6
+    },
+    {
+     "s": 10,
+     "film": "vj",
+     "from": 352,
+     "to": 356
+    },
+    {
+     "s": 11,
+     "film": "vj",
+     "from": 346,
+     "to": 349
+    },
+    {
+     "s": 12,
+     "film": "surr",
+     "from": 75,
+     "to": 81
+    }
+   ],
+   "beats": [
+    {
+     "after": 6,
+     "shots": [
+      {
+       "dur": 4,
+       "film": "vj",
+       "from": 361,
+       "to": 365,
+       "sfx": "low_rumble"
+      },
+      {
+       "dur": 4,
+       "film": "vj",
+       "from": 370,
+       "to": 375
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "title": "Two Designs",
+   "mode": "people",
+   "stamp": [
+    "LOS ALAMOS"
+   ],
+   "sentences": [
+    "At Los Alamos, the scientists design the bombs.",
+    "The uranium bomb is a gun-type weapon, later called Little Boy.",
+    "It is simple, and considered almost certain to work, so it is never tested before it is used.",
+    "In 1943, the plan for plutonium is a gun-type bomb too, called Thin Man.",
+    "But in 1944, it is confirmed that plutonium from Hanford is not suitable for a gun-type bomb.",
+    "It has too high a proportion of plutonium-240.",
+    "So a low priority fallback becomes the main plan: the implosion bomb, Fat Man.",
+    "It is complex, and it needs explosive lenses.",
+    "Nobody is sure that it will work.",
+    "So it must be tested first.",
+    "In case of a fizzle, a steel vessel called Jumbo is built to recover the plutonium.",
+    "In the end, Jumbo is not used."
+   ],
+   "shots": [
+    {
+     "s": 1,
+     "film": "trinity",
+     "from": 125,
+     "to": 131,
+     "label": "LOS ALAMOS · SITE Y"
+    },
+    {
+     "s": 2,
+     "file": "Atombombe Little Boy 2.jpg",
+     "note": "LITTLE BOY"
+    },
+    {
+     "s": 3,
+     "file": "Atombombe Little Boy 2.jpg",
+     "zoom": 1.3
+    },
+    {
+     "s": 4,
+     "film": "trinity",
+     "from": 400,
+     "to": 406
+    },
+    {
+     "s": 5,
+     "file": "Hanford B-Reactor Area 1944.jpg",
+     "zoom": 1.3
+    },
+    {
+     "s": 6,
+     "film": "trinity",
+     "from": 300,
+     "to": 306
+    },
+    {
+     "s": 7,
+     "file": "Fat Man Assembled Tinian 1945.jpg",
+     "note": "FAT MAN"
+    },
+    {
+     "s": 8,
+     "film": "trinity",
+     "from": 440,
+     "to": 446
+    },
+    {
+     "s": 9,
+     "film": "trinity",
+     "from": 330,
+     "to": 336
+    },
+    {
+     "s": 10,
+     "film": "trinity",
+     "from": 466,
+     "to": 472
+    },
+    {
+     "s": 11,
+     "file": "Trinity - Jumbo brought to site.jpg",
+     "note": "JUMBO"
+    },
+    {
+     "s": 12,
+     "film": "trinity",
+     "from": 70,
+     "to": 76
+    }
+   ]
+  },
+  {
+   "title": "Trinity",
+   "mode": "action",
+   "stamp": [
+    "JULY 16",
+    "1945"
+   ],
+   "sentences": [
+    "On July 16, 1945, the test bomb, called the gadget, sits on top of a 100-foot tower in the New Mexico desert.",
+    "Oppenheimer has named the test Trinity.",
+    "425 people are there that weekend, among them Enrico Fermi, Richard Feynman and Edward Teller.",
+    "Rain and lightning delay it.",
+    "At 5:29 a.m., the device explodes.",
+    "For one or two seconds, the mountains are brighter than daytime.",
+    "The roar of the shock wave takes 40 seconds to reach the observers.",
+    "The tower is completely vaporized.",
+    "The desert sand melts into a light green glass, later named trinitite.",
+    "The mushroom cloud rises seven and a half miles.",
+    "The blast equals about 25 kilotons of TNT.",
+    "To keep the secret, the Army says that an ammunition magazine has exploded.",
+    "Oppenheimer later remembers a line from the Hindu scripture, the Bhagavad Gita.",
+    "Now I am become Death, the destroyer of worlds."
+   ],
+   "shots": [
+    {
+     "s": 1,
+     "film": "trinity",
+     "from": 480,
+     "to": 487,
+     "label": "TRINITY SITE · NEW MEXICO"
+    },
+    {
+     "s": 2,
+     "file": "Trinity Hoisting Gadget TR-384.jpg"
+    },
+    {
+     "s": 3,
+     "film": "trinity",
+     "from": 100,
+     "to": 106
+    },
+    {
+     "s": 4,
+     "film": "trinity",
+     "from": 30,
+     "to": 36,
+     "sfx": "storm_wind"
+    },
+    {
+     "s": 5,
+     "film": "trinity",
+     "from": 538,
+     "to": 543,
+     "stamp": [
+      "5:29 A.M."
+     ]
+    },
+    {
+     "s": 6,
+     "film": "trinity",
+     "from": 543.5,
+     "to": 547,
+     "sfx": "explosion_massive"
+    },
+    {
+     "s": 7,
+     "film": "trinity",
+     "from": 547,
+     "to": 552
+    },
+    {
+     "s": 8,
+     "file": "Trinity Test Fireball 16ms.jpg",
+     "note": "VAPORIZED"
+    },
+    {
+     "s": 9,
+     "film": "trinity",
+     "from": 626,
+     "to": 632
+    },
+    {
+     "s": 10,
+     "film": "trinity",
+     "from": 602,
+     "to": 608
+    },
+    {
+     "s": 11,
+     "film": "vj",
+     "from": 309,
+     "to": 317,
+     "note": "25 KILOTONS"
+    },
+    {
+     "s": 12,
+     "file": "Trinity crater.jpg"
+    },
+    {
+     "s": 13,
+     "file": "J. R. Oppenheimer Los Alamos ID.jpg",
+     "zoom": 1.25,
+     "y": 0.3
+    },
+    {
+     "s": 14,
+     "film": "trinity",
+     "from": 613,
+     "to": 620
+    }
+   ],
+   "beats": [
+    {
+     "after": 7,
+     "shots": [
+      {
+       "dur": 4,
+       "film": "trinity",
+       "from": 590,
+       "to": 596,
+       "sfx": "explosion_far"
+      },
+      {
+       "dur": 4,
+       "film": "trinity",
+       "from": 606,
+       "to": 612
+      }
+     ]
+    },
+    {
+     "after": 12,
+     "quote": {
+      "text": "We knew the world would not be the same. A few people laughed, a few people cried. Most people were silent.",
+      "name": "J. ROBERT OPPENHEIMER",
+      "role": "DIRECTOR, LOS ALAMOS LABORATORY"
+     },
+     "shots": [
+      {
+       "dur": 4.5,
+       "film": "trinity",
+       "from": 620,
+       "to": 626
+      },
+      {
+       "dur": 4.5,
+       "film": "trinity",
+       "from": 626,
+       "to": 632
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "title": "Prompt and Utter Destruction",
+   "mode": "people",
+   "stamp": [
+    "POTSDAM"
+   ],
+   "sentences": [
+    "At the Potsdam Conference, the news from New Mexico reaches the new president, Harry S. Truman.",
+    "Truman tells Joseph Stalin that the United States has a new weapon of unusual destructive force.",
+    "Stalin shows no special interest, and Truman wrongly assumes that he does not understand.",
+    "A Target Committee has chosen large cities that also hold military facilities.",
+    "Hiroshima is an embarkation port and industrial center, with a major military headquarters.",
+    "Kyoto is on the list, until the Secretary of War, Henry Stimson, saves it.",
+    "On July 25, the order is issued: Hiroshima, Kokura, Niigata and Nagasaki.",
+    "The 509th Composite Group is waiting on the island of Tinian, with specially modified B-29 bombers.",
+    "American bombers have already dropped more than 63 million leaflets across Japan, warning of air raids.",
+    "On July 26, the Allies call for Japan's unconditional surrender in the Potsdam Declaration.",
+    "The alternative is prompt and utter destruction.",
+    "The Japanese government ignores the ultimatum."
+   ],
+   "shots": [
+    {
+     "s": 1,
+     "file": "L to R, British Prime Minister Winston Churchill, President Harry S. Truman, and Soviet leader Josef Stalin in the... - NARA - 198958.jpg",
+     "label": "POTSDAM · JULY 1945"
+    },
+    {
+     "s": 2,
+     "file": "Harry S Truman, bw half-length photo portrait, facing front, 1945.jpg",
+     "name": "HARRY S. TRUMAN",
+     "role": "PRESIDENT OF THE UNITED STATES"
+    },
+    {
+     "s": 3,
+     "file": "L to R, British Prime Minister Winston Churchill, President Harry S. Truman, and Soviet leader Josef Stalin in the... - NARA - 198958.jpg",
+     "zoom": 1.4,
+     "x": 0.8
+    },
+    {
+     "s": 4,
+     "film": "strikes",
+     "from": 242,
+     "to": 246
+    },
+    {
+     "s": 5,
+     "film": "strikes",
+     "from": 246,
+     "to": 252
+    },
+    {
+     "s": 6,
+     "file": "Henry Lewis Stimson 1944.jpg",
+     "name": "HENRY STIMSON",
+     "role": "SECRETARY OF WAR"
+    },
+    {
+     "s": 7,
+     "film": "strikes",
+     "from": 200,
+     "to": 206,
+     "note": "4 TARGETS"
+    },
+    {
+     "s": 8,
+     "file": "Northfield-tinian-1945.jpg",
+     "label": "TINIAN · MARIANA ISLANDS"
+    },
+    {
+     "s": 9,
+     "film": "surr",
+     "from": 220,
+     "to": 225
+    },
+    {
+     "s": 10,
+     "film": "strikes",
+     "from": 210,
+     "to": 216
+    },
+    {
+     "s": 11,
+     "film": "strikes",
+     "from": 220,
+     "to": 226,
+     "note": "PROMPT AND UTTER DESTRUCTION"
+    },
+    {
+     "s": 12,
+     "film": "surr",
+     "from": 40,
+     "to": 46
+    }
+   ]
+  },
+  {
+   "title": "Hiroshima",
+   "mode": "action",
+   "stamp": [
+    "TINIAN"
+   ],
+   "sentences": [
+    "At 2:45 in the morning on August 6, the B-29 Enola Gay takes off from Tinian.",
+    "Its pilot is Colonel Paul Tibbets, and it is named after his mother.",
+    "The bomb, Little Boy, is armed in flight, in case the plane crashes on takeoff.",
+    "Two more B-29s fly with it, one with instruments, one to take photographs.",
+    "Over Hiroshima, the sky is clear.",
+    "At 8:15 a.m., the bomb is released.",
+    "It falls for 44 seconds, and explodes about 1,900 feet above the city.",
+    "It misses its aiming point, the Aioi Bridge, by about 800 feet.",
+    "The radius of total destruction is about one mile, and fires spread across more than four square miles.",
+    "Some 90 per cent of the dead are civilians.",
+    "Enola Gay is more than eleven miles away before it feels the shock waves.",
+    "The photo plane's cameras all fail, and the only film of the attack comes from a camera smuggled aboard.",
+    "On Tinian, Tibbets tells reporters what he has seen.",
+    "Sixteen hours after the bombing, a statement in Truman's name announces the new weapon.",
+    "It warns Japan to expect a rain of ruin from the air.",
+    "On August 7, the physicist Yoshio Nishina examines the city, and tells the cabinet it was a nuclear weapon.",
+    "The navy chief estimates that the Americans can have only one or two more bombs ready.",
+    "In Tokyo, the leaders decide to endure the attacks, and the war goes on."
+   ],
+   "shots": [
+    {
+     "s": 1,
+     "file": "Loading of the Little Boy nuclear bomb into the Boeing B-29 on Tinian, Mariana Island, 5 August 1945 (76048611).jpg",
+     "label": "TINIAN · 6 AUGUST 1945"
+    },
+    {
+     "s": 2,
+     "file": "Col Paul W. Tibbets, Pilot Of B-29 Superfortress 'Enola Gay'.jpg",
+     "name": "PAUL TIBBETS",
+     "role": "COLONEL, PILOT OF THE ENOLA GAY"
+    },
+    {
+     "s": 3,
+     "file": "Deak Parsons supervises loading of Little Boy into Enola Gay.jpg"
+    },
+    {
+     "s": 4,
+     "film": "strikes",
+     "from": 227,
+     "to": 232,
+     "sfx": "ov/prop_plane"
+    },
+    {
+     "s": 5,
+     "map": {
+      "places": [
+       {
+        "label": "TINIAN",
+        "lat": 15.0,
+        "lon": 145.63,
+        "side": "blue"
+       },
+       {
+        "label": "IWO JIMA",
+        "lat": 24.78,
+        "lon": 141.32,
+        "side": "blue"
+       },
+       {
+        "label": "HIROSHIMA",
+        "lat": 34.39,
+        "lon": 132.45
+       }
+      ],
+      "routes": [
+       [
+        0,
+        1,
+        "blue",
+        0.15
+       ],
+       [
+        1,
+        2,
+        "blue",
+        0.2
+       ]
+      ],
+      "pad": 0.3
+     }
+    },
+    {
+     "s": 6,
+     "film": "strikes",
+     "from": 239,
+     "to": 242,
+     "stamp": [
+      "8:15 A.M."
+     ]
+    },
+    {
+     "s": 7,
+     "film": "airwar",
+     "from": 689,
+     "to": 694,
+     "sfx": "explosion_massive"
+    },
+    {
+     "s": 8,
+     "file": "Hiroshima aerial view after atomic bomb 8-1945.jpeg",
+     "note": "800 FEET OFF"
+    },
+    {
+     "s": 9,
+     "film": "strikes",
+     "from": 288,
+     "to": 294
+    },
+    {
+     "s": 10,
+     "film": "strikes",
+     "from": 296,
+     "to": 302,
+     "note": "90% CIVILIANS"
+    },
+    {
+     "s": 11,
+     "file": "Firestorm cloud over Hiroshima (from Matsuyama).jpg"
+    },
+    {
+     "s": 12,
+     "file": "Atomic cloud over Hiroshima - NARA 542192 - Edit.jpg",
+     "zoom": 1.3,
+     "y": 0.35
+    },
+    {
+     "s": 13,
+     "file": "Enola Gay2.jpg"
+    },
+    {
+     "s": 14,
+     "file": "Harry S Truman, bw half-length photo portrait, facing front, 1945.jpg",
+     "zoom": 1.3,
+     "y": 0.3,
+     "label": "WASHINGTON · 6 AUGUST 1945"
+    },
+    {
+     "s": 15,
+     "film": "strikes",
+     "from": 232,
+     "to": 236
+    },
+    {
+     "s": 16,
+     "file": "Hiroshima aerial view after atomic bomb 8-1945.jpeg",
+     "zoom": 1.35,
+     "x": 0.4
+    },
+    {
+     "s": 17,
+     "film": "surr",
+     "from": 116,
+     "to": 121
+    },
+    {
+     "s": 18,
+     "film": "surr",
+     "from": 64,
+     "to": 70
+    }
+   ],
+   "beats": [
+    {
+     "after": 10,
+     "shots": [
+      {
+       "dur": 4,
+       "film": "strikes",
+       "from": 272,
+       "to": 278
+      },
+      {
+       "dur": 4,
+       "film": "strikes",
+       "from": 280,
+       "to": 286
+      }
+     ]
+    },
+    {
+     "after": 13,
+     "quote": {
+      "text": "It was hard to believe what we saw.",
+      "name": "PAUL TIBBETS",
+      "role": "COLONEL, PILOT OF THE ENOLA GAY"
+     },
+     "shots": [
+      {
+       "dur": 4,
+       "file": "Flight crew of the Enola Gay for the Hiroshima bombing.jpg"
+      }
+     ]
+    },
+    {
+     "after": 14,
+     "source": "LOS ANGELES TIMES · FRONT PAGE, 7 AUGUST 1945",
+     "shots": [
+      {
+       "dur": 5,
+       "file": "1945-08-07-Los-Angeles-Times-front-page.jpg",
+       "trim": [
+        0,
+        0,
+        0,
+        0.785
+       ],
+       "focus": [
+        0.02,
+        0.115,
+        0.98,
+        0.21
+       ],
+       "sfx": "typewriter"
+      }
+     ]
+    },
+    {
+     "after": 15,
+     "audio": {
+      "src": "truman",
+      "from": 128.2,
+      "to": 137.4
+     },
+     "source": "PRESIDENT TRUMAN · STATEMENT ON THE ATOMIC BOMB, AUGUST 1945",
+     "shots": [
+      {
+       "dur": 3.2,
+       "film": "strikes",
+       "from": 743,
+       "to": 747
+      },
+      {
+       "dur": 3.2,
+       "film": "strikes",
+       "from": 760,
+       "to": 764
+      },
+      {
+       "dur": 3.2,
+       "film": "strikes",
+       "from": 773,
+       "to": 777
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "title": "Nagasaki",
+   "mode": "action",
+   "stamp": [
+    "KOKURA"
+   ],
+   "sentences": [
+    "On August 9, the B-29 Bockscar, flown by Major Charles Sweeney, heads for its primary target, Kokura.",
+    "The same night, the Soviet Union attacks the Japanese in Manchuria.",
+    "Before takeoff, a broken fuel pump traps 640 gallons of reserve fuel on board.",
+    "Sweeney waits forty minutes for a plane that never makes the meeting point.",
+    "Over Kokura, clouds and drifting smoke cover the city.",
+    "Three bomb runs fail, and the fuel runs low.",
+    "Japanese anti-aircraft fire is getting close.",
+    "Sweeney turns to the secondary target, Nagasaki.",
+    "At 11:01, a last-minute break in the clouds lets the bombardier see the city.",
+    "Fat Man explodes at 11:02, over the Urakami Valley.",
+    "The hills around the valley protect a major part of the city.",
+    "By coincidence, it explodes almost directly over the factory that made the torpedoes used at Pearl Harbor.",
+    "Bockscar lands on Okinawa, with fuel for only a single approach.",
+    "Unlike the Enola Gay, nobody is there to greet the crew."
+   ],
+   "shots": [
+    {
+     "s": 1,
+     "file": "Major Charles W. Sweeney, pilot of B-29 Bockscar.jpg",
+     "name": "CHARLES SWEENEY",
+     "role": "MAJOR, PILOT OF BOCKSCAR"
+    },
+    {
+     "s": 2,
+     "film": "surr",
+     "from": 85,
+     "to": 91,
+     "label": "MANCHURIA · 9 AUGUST 1945"
+    },
+    {
+     "s": 3,
+     "file": "Bockscar triangle N tail marking.jpg",
+     "note": "640 GALLONS"
+    },
+    {
+     "s": 4,
+     "film": "strikes",
+     "from": 227,
+     "to": 231
+    },
+    {
+     "s": 5,
+     "map": {
+      "places": [
+       {
+        "label": "KOKURA",
+        "lat": 33.88,
+        "lon": 130.88
+       },
+       {
+        "label": "NAGASAKI",
+        "lat": 32.75,
+        "lon": 129.88
+       },
+       {
+        "label": "OKINAWA",
+        "lat": 26.33,
+        "lon": 127.8,
+        "side": "blue"
+       }
+      ],
+      "routes": [
+       [
+        0,
+        1,
+        "blue",
+        0.25
+       ],
+       [
+        1,
+        2,
+        "blue",
+        0.2
+       ]
+      ],
+      "pad": 0.5
+     }
+    },
+    {
+     "s": 6,
+     "film": "strikes",
+     "from": 237,
+     "to": 239,
+     "sfx": "ov/prop_plane"
+    },
+    {
+     "s": 7,
+     "film": "surr",
+     "from": 180,
+     "to": 185,
+     "sfx": "artillery"
+    },
+    {
+     "s": 8,
+     "file": "Fat Man Assembled Tinian 1945.jpg",
+     "zoom": 1.3
+    },
+    {
+     "s": 9,
+     "film": "strikes",
+     "from": 239,
+     "to": 242
+    },
+    {
+     "s": 10,
+     "film": "naga",
+     "from": 1,
+     "to": 9,
+     "stamp": [
+      "11:02 A.M."
+     ],
+     "sfx": "explosion_massive"
+    },
+    {
+     "s": 11,
+     "film": "naga",
+     "from": 36,
+     "to": 43
+    },
+    {
+     "s": 12,
+     "file": "Nagasaki temple destroyed.jpg"
+    },
+    {
+     "s": 13,
+     "file": "Nagasaki mission crew.jpg"
+    },
+    {
+     "s": 14,
+     "file": "Nagasaki mission crew.jpg",
+     "zoom": 1.35
+    }
+   ],
+   "beats": [
+    {
+     "after": 10,
+     "shots": [
+      {
+       "dur": 4,
+       "film": "naga",
+       "from": 9,
+       "to": 13,
+       "sfx": "explosion_far"
+      },
+      {
+       "dur": 4,
+       "file": "Nagasakibomb.jpg"
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "title": "Surrender",
+   "mode": "people",
+   "stamp": [
+    "TOKYO"
+   ],
+   "sentences": [
+    "In Tokyo, on August 9, the cabinet debates surrender all day, and reaches no decision.",
+    "Close to midnight, Emperor Hirohito holds an imperial conference.",
+    "At two in the morning, he gives his sacred decision: Japan will accept the Allied terms, on one condition.",
+    "He records his announcement, and on August 15 it is broadcast to the nation.",
+    "Militarists opposed to the surrender attempt a coup d'état, and fail.",
+    "He says that the enemy has begun to employ a new and most cruel bomb.",
+    "In the United States, the news brings crowds into the streets.",
+    "On September 2, Japan signs the instrument of surrender, and the war is over."
+   ],
+   "shots": [
+    {
+     "s": 1,
+     "film": "surr",
+     "from": 60,
+     "to": 66,
+     "label": "TOKYO · 9 AUGUST 1945"
+    },
+    {
+     "s": 2,
+     "file": "Emperor Hirohito and General MacArthur.jpg",
+     "zoom": 1.5,
+     "x": 0.72,
+     "y": 0.35
+    },
+    {
+     "s": 3,
+     "file": "Emperor Hirohito announcing the surrender of Japan.jpg",
+     "name": "HIROHITO",
+     "role": "EMPEROR OF JAPAN"
+    },
+    {
+     "s": 4,
+     "film": "surr",
+     "from": 110,
+     "to": 116
+    },
+    {
+     "s": 5,
+     "film": "surr",
+     "from": 45,
+     "to": 51
+    },
+    {
+     "s": 6,
+     "file": "Emperor Hirohito announcing the surrender of Japan.jpg",
+     "zoom": 1.3,
+     "y": 0.3,
+     "note": "A NEW AND MOST CRUEL BOMB"
+    },
+    {
+     "s": 7,
+     "film": "vj",
+     "from": 12,
+     "to": 17
+    },
+    {
+     "s": 8,
+     "file": "Mamoru Shigemitsu signs the Instrument of Surrender, officially ending the Second World War.jpg",
+     "label": "TOKYO BAY · 2 SEPTEMBER 1945"
+    }
+   ],
+   "beats": [
+    {
+     "after": 7,
+     "shots": [
+      {
+       "dur": 4.5,
+       "file": "War Ends.jpg",
+       "focus": [
+        0.66,
+        0.6,
+        0.89,
+        0.79
+       ],
+       "sfx": "ov/crowd_cheer"
+      },
+      {
+       "dur": 3.5,
+       "film": "vj",
+       "from": 22,
+       "to": 27
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "title": "The Atomic Age",
+   "mode": "people",
+   "stamp": [
+    "HIROSHIMA"
+   ],
+   "sentences": [
+    "In Hiroshima and Nagasaki, the two bombs kill between 150,000 and 246,000 people, most of them civilians.",
+    "Roughly half of them die on the first day.",
+    "For months afterward, many more die of burns, radiation sickness and other injuries.",
+    "In the years that follow, the survivors are studied for cancer and birth defects.",
+    "The survivors become known as hibakusha.",
+    "Supporters of the bombings argue that they ended the war with fewer lives lost on both sides.",
+    "Critics argue that they were unnecessary, and a war crime.",
+    "The debate goes on to this day.",
+    "Hiroshima and Nagasaki remain the first and only uses of nuclear weapons in an armed conflict.",
+    "This is how the atomic age begins."
+   ],
+   "shots": [
+    {
+     "s": 1,
+     "file": "View of Hiroshima in October 1945.png",
+     "label": "HIROSHIMA · OCTOBER 1945"
+    },
+    {
+     "s": 2,
+     "film": "strikes",
+     "from": 794,
+     "to": 799
+    },
+    {
+     "s": 3,
+     "film": "strikes",
+     "from": 784,
+     "to": 790
+    },
+    {
+     "s": 4,
+     "film": "strikes",
+     "from": 470,
+     "to": 476
+    },
+    {
+     "s": 5,
+     "file": "View of Hiroshima in October 1945.png",
+     "zoom": 1.35,
+     "x": 0.4
+    },
+    {
+     "s": 6,
+     "file": "Surrender of Japan - USS Missouri (restored).jpg"
+    },
+    {
+     "s": 7,
+     "film": "strikes",
+     "from": 420,
+     "to": 426
+    },
+    {
+     "s": 8,
+     "film": "strikes",
+     "from": 430,
+     "to": 436
+    },
+    {
+     "s": 9,
+     "file": "Atomic cloud over Nagasaki from B-29.jpg"
+    },
+    {
+     "s": 10,
+     "film": "trinity",
+     "from": 547,
+     "to": 551
+    }
+   ]
+  }
+ ],
+ "intro_beats": true,
+ "title_s": 2.5,
+ "card_s": 2.0,
+ "outro_s": 6
+}
