@@ -277,12 +277,8 @@
    "seconds": 796.3,
    "words": 1605,
    "tts": "edge",
-   "release": "2026-11-24T00:00:00Z",
    "thumb": "ok",
-   "comment_due": {
-    "at": "2026-11-24T00:00:00Z",
-    "q": "Were the atomic bombings necessary to end the war?"
-   }
+   "held": "Andrii, Nov 23: taken out of the queue (private, not deleted)"
   },
   {
    "id": "n9_FuDnYk4Q",
@@ -292,7 +288,7 @@
    "long": "Ms1Djh3RGug",
    "title": "The City That Escaped the Atomic Bomb",
    "seconds": 12.5,
-   "publish_at": "2026-11-24T00:30:00Z"
+   "held": "Andrii, Nov 23: taken out of the queue (private, not deleted)"
   },
   {
    "id": "MVrhc39_2Vs",
@@ -302,7 +298,7 @@
    "long": "Ms1Djh3RGug",
    "title": "The First Atomic Bomb Test",
    "seconds": 12.5,
-   "publish_at": "2026-11-24T03:00:00Z"
+   "held": "Andrii, Nov 23: taken out of the queue (private, not deleted)"
   },
   {
    "id": "iKe25TaTXU4",
@@ -313,10 +309,10 @@
    "seconds": 699.5,
    "words": 1529,
    "tts": "edge",
-   "release": "2026-11-26T00:00:00Z",
+   "release": "2026-11-24T00:00:00Z",
    "thumb": "ok",
    "comment_due": {
-    "at": "2026-11-26T00:00:00Z",
+    "at": "2026-11-24T00:00:00Z",
     "q": "Could the U-boats have won the war for Germany if Dönitz had his 300 boats in 1939?"
    }
   },
@@ -328,7 +324,7 @@
    "long": "iKe25TaTXU4",
    "title": "The U-boat That Found New York With Tourist Guides",
    "seconds": 13.4,
-   "publish_at": "2026-11-26T00:30:00Z"
+   "publish_at": "2026-11-24T00:30:00Z"
   },
   {
    "id": "OV1b6PKv-vM",
@@ -338,7 +334,7 @@
    "long": "iKe25TaTXU4",
    "title": "The U-boat Admiral Who Lost His Own Son",
    "seconds": 14.5,
-   "publish_at": "2026-11-26T03:00:00Z"
+   "publish_at": "2026-11-24T03:00:00Z"
   }
  ],
  "metrics": {},
