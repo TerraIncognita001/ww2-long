@@ -129,7 +129,40 @@ archive film + photos only, no AI pictures).
   lines, yellow text/boxes, slab/square fonts. thumbs.py `entire` + fonts stay in the code, not used.
 - Shorts: 2 PROMO TEASERS per long video (below; the old clips.py Shorts stopped Nov 14).
 
-## INTRO (Andrii, Nov 15: 'candidate 2' chosen) - HARD RULE
+## NEW FORMAT (Andrii, Nov 23: 'зберігаємо це як новий формат. всі нові відео випускатимуться саме за ним') - HARD RULE
+Model: `docs/retention/atomic_r.json` (built by tools/stories/atomic_retention.py), test render
+`work/atomic_retention_test_720p.mp4`. Why: our retention curves (tools/yt_stats.py, Nov 23) lose HALF the viewers in
+the first ~25 s (D-Day 50 % at 0:26, B-29 72 % at 0:23, Göring 46 % at 0:30); research (Rene Ritchie / YouTube,
+George Blackman, Mario Joos, vidIQ: 0:30 intro target >= 60 %) = pay off the title in WORDS at once, no trailer of the
+chapters, never restate the title, short wordless parts, a fast ending. It REPLACES the Nov 15 INTRO below where they
+differ (the stamps, the speech, the reveal, the title card stay):
+1. VOICE No. 3 = Andrii's own cloned voice (story `"voice": "andrii"`; voice_c5.py, VoiceStudio voxcpm2 on Andrii's
+   PC, ref in D:/ytb_bots/voices/voice_andrii, NEVER in the repo; prompt for other bots: PROMPT_andrii_ww2.md there).
+   Text for it: initials/ranks/U.S./a.m. without stops ('J. Smith' paused at the dot), numbers and years as words
+   (voice_c5.spoken). VOICE PACK: GitHub has no VoiceStudio -> render the story LOCALLY first (dry run, L_PROMOS on:
+   the teasers' sentences too); every narration lands in `voice/<hash>.mp3 + .json`; COMMIT voice/ -> the cron render
+   takes it. No pack + no VoiceStudio = the run stops (no Ryan video by mistake).
+   VoiceStudio is shared with Sixth Star: one request at a time; out-of-memory 500s -> POST /system/flush-memory, and
+   local renders next to it use L_WORKERS=2 (RAM).
+2. INTRO: `pre` = ONE 2.8 s film shot with the DATE stamp + a big SFX; the narrator speaks from ~3 s: sentence 1 = the
+   moment with its date and place (the PLACE stamp on its shot: 'At 8:15 in the morning, one bomb destroys the city of
+   Hiroshima.'); then the PERIOD SPEECH as a beat after sentence 1 (`intro_beats: true`, beat {after: 1, audio, shots
+   with `source`}); sentence 2 = the scale in one fact, 3 = the key person (reveal + name), 4 = ONE open question a
+   later chapter answers, LAST = a line leading into chapter 1 ('And it all begins with a letter to the president.')
+   said over the title card. NO summary of every chapter, NO 'This is the entire history of X'. Intro ~40 s.
+3. NAMES AND NOTES in the STAMP look: the dark red Bebas of the DATE/PLACE stamps (#A81A1A, alpha 18, growing):
+   a note ('ONE BOMB', '130,000 PEOPLE') huge in the centre (fit 1600 px, <= 260); a name bottom left (<= 150) with
+   the role small in white under it. No white text with a red underline, no yellow bar. Prompt for other bots:
+   D:/ytb_bots/styles/PROMPT_stamps_ww2.md.
+4. WORDLESS PARTS SHORT (the defaults now): title card >= 2.5 s (was 4.5), chapter stamp 2.0 s (was 3.2), outro 6 s
+   (was 12: the end screen goes over the last seconds), silent FILM beats 5-8 s (were 10-20; papers keep one page,
+   quotes and period recordings stay).
+5. WRITING: chapter sentence 1 = a TURN or a PROBLEM ('But...'), never 'and then'; every chapter follows one named
+   person and what he stands to lose (autostory's prompt says so).
+check(): soft on the old intro, `pre` > 4 s, a silent beat > 8 s, no voice No. 3, a last intro line restating the title;
+hard without the speech (pre or the intro beat). autostory writes this format (its speech = the intro beat).
+
+## INTRO (Andrii, Nov 15: 'candidate 2' chosen) - HARD RULE (changed by the NEW FORMAT above, Nov 23)
 Model: HISTORY 'The Minutes that Changed World War II' (WWII with Tom Hanks), first 75 s analysed second by second.
 Built for B-29: `docs/intro/cand2_b29.json` (47 s); `python tools/intro_render.py <story or candidate>` renders only
 the intro through longform's own code. Maket A (`docs/intro/maket_a_b29.json`, a 30 s summary) is archived.

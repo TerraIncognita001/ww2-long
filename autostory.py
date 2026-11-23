@@ -43,7 +43,7 @@ J_KEYS = ('{"name": "the Afrika Korps", "title": "The ENTIRE History of the Afri
           '"name": "..."}, ...], '
           '"shorts": [{"chapter": 0, "from": 1, "to": 5, "title": "...", "key": ["NAME"], "name": "..."}, ...], '
           '"chapters": [{"title": "", "mode": "action", "sentences": ["..."], "visuals": ["..."], '
-          '"stamp": ["JUNE 4", "1942"], "stamps": ["", "6:30 A.M.", ...], "beat": {"after": 5, "seconds": 15}, '
+          '"stamp": ["JUNE 4", "1942"], "stamps": ["", "6:30 A.M.", ...], "beat": {"after": 5, "seconds": 6}, '
           '"quote": {"after": 3, "text": "...", "name": "CHESTER NIMITZ", "role": "ADMIRAL"}, '
           '"notes": ["", "ERWIN ROMMEL", ...], "map": {"sentence": 3, "places": ["Wikipedia title", ...], '
           '"labels": ["TRIPOLI", ...], "routes": [[0, 1]]}}, ...]}')
@@ -87,17 +87,21 @@ def rules(topic):
         "rejects anything else). Clear narration for an English-speaking audience, told in the PRESENT tense ('In "
         "February 1941, a German general lands in Tripoli...'), no hype words, no 'you', no rhetorical questions "
         "except the last line.\n"
-        "STRUCTURE: chapter 1 = cold open with title '' and mode 'action': 4-6 sentences, ONE odd, visible detail of "
-        "the story's most famous moment first (sentence 1 = what the viewer has just seen happen at that date and "
-        "place), then one sentence per main chapter going back to how it came to this, then as its LAST sentence "
-        "'This is the entire history of <name>.' (said over the title card). 'intro' = that moment as the screen "
-        "shows it before the narrator: date ('AUGUST 6'), year ('1945'), place ('HIROSHIMA'), all in the article "
-        "AND all written in sentence 1; the moment belongs to the topic itself (the Korean War: its start on 25 June "
-        "1950 at the 38th parallel, not an event of another war). "
+        "STRUCTURE (viewers leave in the first 30 seconds unless the first words pay off the title): chapter 1 = cold "
+        "open with title '' and mode 'action', 4-5 sentences: sentence 1 = the story's most famous moment as it "
+        "happens, with its date and place ('At 8:15 in the morning, one bomb destroys the city of Hiroshima.'); "
+        "sentence 2 = the scale or the stakes in ONE fact; sentence 3 = the key person; sentence 4 = ONE open "
+        "question or surprise that a LATER chapter answers ('Three days later, a second bomb is meant for a different "
+        "city, yet it falls on Nagasaki.'); the LAST sentence leads into chapter 2 ('And it all begins with a letter "
+        "to the president.'). NO summary of every chapter, NO 'This is the entire history of...' (never restate the "
+        "title). 'intro' = that moment as the screen shows it: date ('AUGUST 6'), year ('1945'), place "
+        "('HIROSHIMA'), all in the article AND all written in sentence 1; the moment belongs to the topic itself (the "
+        "Korean War: its start on 25 June 1950 at the 38th parallel, not an event of another war). "
         "Then 7-10 "
         "chapters in time order with short titles (2-4 words), each 8-14 sentences; mode 'people' for decisions and "
-        "leaders, 'action' for battles. Open each chapter with a re-hook. ONE open question per chapter, answered "
-        "in the same chapter. The last chapter ends with a quiet closing fact and then ONE short VERDICT sentence "
+        "leaders, 'action' for battles. Sentence 1 of every chapter is a TURN or a PROBLEM ('But...', 'Then the plan "
+        "fails.'), never 'and then'; every chapter follows ONE named person and what he stands to lose. ONE open "
+        "question per chapter, answered in the same chapter. The last chapter ends with a quiet closing fact and then ONE short VERDICT sentence "
         "on what it meant ('This is a turning point.'): no question to the viewer in the narration (the debate "
         "'question' goes into a pinned comment).\n"
         "STAMPS: per chapter 'stamp' = 1-2 short lines shown huge in red over film as the chapter opens: the place "
@@ -105,7 +109,7 @@ def rules(topic):
         "CLOCK: in the chapter of the decisive battle tell the key moments by the clock when the article gives the "
         "times ('At 6:30 a.m.', 'Thirty minutes later', 'In four minutes'), and give those sentences a 'stamps' "
         "entry ('6:30 A.M.'), one per sentence like 'notes' ('' for none).\n"
-        "SILENCE: in every 'action' chapter ONE 'beat': {'after': n, 'seconds': 10-20} = after sentence n the "
+        "SILENCE: in every 'action' chapter ONE 'beat': {'after': n, 'seconds': 5-8} = after sentence n the "
         "narrator stops and only the pictures and the sound of the battle play (choose the most violent moment).\n"
         "QUOTES: in 2-3 chapters a 'quote': {'after': n, 'text': the exact words of a participant QUOTED IN THE "
         "ARTICLE (copy them), 'name': his name in capitals, 'role': his rank or job in capitals}, heard in a second "
@@ -293,7 +297,7 @@ def shape(d, text):
         b = c.pop("beat", None)
         if k and c.get("mode") == "action" and isinstance(b, dict) and len(pics) >= 3:
             try:
-                after, sec = int(b.get("after")), min(20.0, max(10.0, float(b.get("seconds", 15))))
+                after, sec = int(b.get("after")), min(8.0, max(5.0, float(b.get("seconds", 6))))   # Nov 23: short
             except (TypeError, ValueError):
                 after = 0
             if 1 <= after < len(c["sentences"]):
@@ -466,22 +470,24 @@ def make_one(topic):
     if isinstance(intro, dict) and len(pics) >= 2 and intro.get("year") and intro.get("place") and \
             str(intro["year"]) in text and str(intro["place"]).lower() in text.lower() and \
             str(intro["year"]) in s1 and str(intro["place"]).lower() in s1:   # names (Korea: not HIROSHIMA 1945)
-        date = str(intro.get("date") or "").upper()[:20]
-        stamp1 = [date, str(intro["year"])[:9]] if date else [str(intro["year"])[:9]]
-        d["pre"] = [{"dur": 2.6, "file": pics[0], "sfx": "explosion_far"},
-                    {"dur": 2.8, "file": pics[1], "stamp": stamp1},
-                    {"dur": 3.0, "file": pics[2 % len(pics)], "stamp": [str(intro["place"]).upper()[:14]]}]
-    else:                                              # no date/place of the article: the speech without stamps
-        d["pre"] = [{"dur": 2.6, "file": pics[0], "sfx": "explosion_far"},
-                    {"dur": 3.0, "file": pics[1 % len(pics)]}]
+        date = str(intro.get("date") or "").upper()[:20]   # NEW FORMAT (Andrii, Nov 23): the DATE over the first
+        stamp1 = [date, str(intro["year"])[:9]] if date else [str(intro["year"])[:9]]   # 2.8 s, then the narrator
+        d["pre"] = [{"dur": 2.8, "file": pics[0], "stamp": stamp1, "sfx": "explosion_massive"}]
+        first = next((s for s in d["chapters"][0]["shots"] if s.get("s") == 1), None)
+        if first is not None and not first.get("stamp"):   # the PLACE over sentence 1's picture
+            first["stamp"] = [str(intro["place"]).upper()[:14]]
+    else:                                              # no date/place of the article: straight to the narrator
+        d["pre"] = [{"dur": 2.6, "file": pics[0], "sfx": "explosion_far"}]
     src = " · ".join(x for x in (sp["speaker"].upper(), sp["date"].upper()) if x)
     d["period_audio"] = {"speech": {k_: sp[k_] for k_ in ("file", "credit", "speaker", "text", "date")}}
-    d["pre"][-1].update({"hush": True, "audio": {"src": "speech", "from": sp["from"], "to": sp["to"]}, "source": src})
-    rest = sp["to"] - sp["from"] - d["pre"][-1]["dur"] + 0.8   # the speech alone, over 1-2 more pictures
+    shots, rest, n = [], sp["to"] - sp["from"] + 0.6, 1   # the speech right after sentence 1 (a beat of the intro)
     while rest > 0.3:
-        dur = min(4.0, rest)
-        d["pre"].append({"dur": round(dur, 2), "file": pics[len(d["pre"]) % len(pics)], "source": src})
-        rest -= dur
+        dur = min(3.5, rest)
+        shots.append({"dur": round(dur, 2), "file": pics[n % len(pics)], "source": src})
+        rest, n = rest - dur, n + 1
+    d["chapters"][0]["beats"] = [{"after": 1, "audio": {"src": "speech", "from": sp["from"], "to": sp["to"]},
+                                  "shots": shots}] + [b for b in d["chapters"][0].get("beats") or [] if b.get("after") != 1]
+    d["intro_beats"] = True
     promos = []                                       # PROMO TEASERS (Nov 15): Gemini's 2 -> story `promos`
     for n, g in enumerate(d.pop("promos", None) or []):
         try:

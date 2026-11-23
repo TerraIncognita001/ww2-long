@@ -14,7 +14,7 @@ ROOT = pathlib.Path(__file__).resolve().parents[2]
 d = json.loads((ROOT / "stories/long/atomic.json").read_text(encoding="utf-8"))
 src = "PRESIDENT TRUMAN · STATEMENT ON THE ATOMIC BOMB, AUGUST 1945"
 d["pre"] = [{"dur": 2.8, "film": "naga", "from": 2, "to": 6, "stamp": ["AUGUST 6", "1945"], "sfx": "explosion_massive"}]
-d["intro_beats"], d["title_s"], d["card_s"], d["outro_s"] = True, 2.5, 2.0, 6
+d["intro_beats"], d["voice"] = True, "andrii"          # title card 2.5 s, stamps 2 s, outro 6 s: the defaults since Nov 23
 ch0 = d["chapters"][0]
 ch0["sentences"] = [
     "At 8:15 in the morning, one bomb destroys the city of Hiroshima.",

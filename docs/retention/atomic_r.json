@@ -1525,7 +1525,5 @@
   }
  ],
  "intro_beats": true,
- "title_s": 2.5,
- "card_s": 2.0,
- "outro_s": 6
+ "voice": "andrii"
 }

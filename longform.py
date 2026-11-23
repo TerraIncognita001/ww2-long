@@ -13,7 +13,7 @@ an outro for the end screen.
 Run: python longform.py (L_STORY=stories/long/x.json, DRY_RUN=1 = no upload);
      python longform.py check stories/long/x.json sources/a.txt [b.txt ...]  -> story check against the full articles.
 """
-import json, math, pathlib, random, re, subprocess, sys
+import hashlib, json, math, pathlib, random, re, shutil, subprocess, sys
 
 import requests
 
@@ -34,7 +34,7 @@ FIRST_MAX = 2.4                                         # the first shot of the 
 PHOTO_MAX, PHOTO_FILL = 10.0, 8.0                       # Andrii, Nov 15 (HARD): a photo <= 10 s; plan() aims at 8
 PHOTO_USES, PER_MIN = 2, 6                              # Andrii, Nov 15 (HARD, rule 3): a photo <= 2 times a video,
                                                         # >= 6 different pictures in every minute of narration
-TITLE_S, CARD_S, GAP_S, OUTRO_S = 4.5, 3.2, 0.5, float(env("L_OUTRO", "12"))   # outro = room for the end screen
+TITLE_S, CARD_S, GAP_S, OUTRO_S = 2.5, 2.0, 0.5, float(env("L_OUTRO", "6"))   # Nov 23 (retention): short wordless parts
 WORDS_LO, WORDS_HI = 1400, 2600                         # ~140 words a minute: 10-18 min
 NUM_WORDS, NUM_MAX = 33, 3                              # Andrii's standard: at most 3 numbers in ~12 s of speech
 MUSIC_LUFS = {"people": -29.0, "action": -33.0}         # before the ducking under the voice
@@ -110,13 +110,25 @@ def check(d, text, facts_hard=True):
             soft.append(f"entire: {past} of {len(ss)} sentences in the past tense (the format tells it in the present)")
     if d.get("format") == "entire" or d.get("pre"):    # INTRO rule (Andrii, Nov 15: candidate 2)
         pre = d.get("pre") or []
-        if not pre:
-            soft.append("intro: no `pre` (film with no narrator: DATE stamp, PLACE stamp, the period speech)")
-        elif sum(bool(p.get("stamp")) for p in pre) < 2:
-            soft.append("intro: `pre` wants 2 stamps: ['MONTH DAY', 'YEAR'] then ['PLACE']")
-        intro_audio = d.get("intro_beats") and any(b.get("audio") for b in chapters(d)[0].get("beats") or [])
+        v2 = bool(d.get("intro_beats"))                # Andrii, Nov 23: the NEW FORMAT (retention) for every new video
+        stamps_ = [p for p in pre if p.get("stamp")] + [s for s in (chapters(d)[0].get("shots") or []) if s.get("stamp")]
+        if not v2:
+            soft.append("intro: the old intro (Nov 15); new videos use the Nov 23 format: `intro_beats`, the narrator "
+                        "at ~3 s, the speech as a beat after sentence 1 (tools/stories/atomic_retention.py)")
+        elif sum(float(p.get("dur", 0)) for p in pre) > 4.0:
+            soft.append("intro: `pre` over 4 s: the narrator must speak by ~3 s (Nov 23)")
+        if len(stamps_) < 2:
+            soft.append("intro: wants 2 stamps: ['MONTH DAY', 'YEAR'] then ['PLACE'] (on `pre` / chapter 0's shots)")
+        intro_audio = v2 and any(b.get("audio") and str(b.get("after")) == "1" for b in chapters(d)[0].get("beats") or [])
         if not any(p.get("audio") for p in pre) and not intro_audio:   # Andrii, Nov 15: HARD - no video without it
-            hard.append("intro: no period speech in `pre` (a known person about the topic: speech.py / by hand)")
+            hard.append("intro: no period speech (new format: a beat with `audio` after the intro's sentence 1)")
+        if v2:
+            for k_, c_ in enumerate(chapters(d)):
+                for b_ in c_.get("beats") or []:
+                    if not (b_.get("audio") or b_.get("quote")) and sum(float(s.get("dur", 0)) for s in b_.get("shots") or []) > 8.5:
+                        soft.append(f"chapter {k_}: a silent beat over 8 s (Nov 23: ~6-8 s, viewers leave in silence)")
+            if (d.get("voice") or env("L_TTS", "")) not in ("andrii",):
+                soft.append("voice: new videos are read by voice No. 3 (story \"voice\": \"andrii\")")
         for k_, a_ in (d.get("period_audio") or {}).items():
             if not (a_.get("speaker") and a_.get("file")):
                 hard.append(f"intro: period_audio '{k_}' needs file + speaker (a known person)")
@@ -139,7 +151,10 @@ def check(d, text, facts_hard=True):
             soft.append("ending: the last line is a question; the HISTORY ending is a quiet verdict (the question "
                         "goes into the pinned comment)")
         last = plain(chapters(d)[0]["sentences"][-1]) if chapters(d) else ""
-        if not re.search(r"entire history of|explained", last, re.I):
+        if d.get("intro_beats"):                       # Nov 23: never restate the title (viewers skip it)
+            if re.search(r"entire history of|explained", last, re.I):
+                soft.append(f"intro: the last line '{last[:50]}' restates the title: lead into chapter 1 instead")
+        elif not re.search(r"entire history of|explained", last, re.I):
             soft.append(f"intro: the last line '{last[:50]}' should be 'This is the entire history of <X>.' "
                         "(said over the title card)")
     c = d.get("cover") or {}                           # Andrii, Nov 10: one photo + the topic's name + a fact
@@ -294,15 +309,40 @@ def fetch_media(d):
 
 
 # ---- the voice ------------------------------------------------------------------------------------------
+VOICE_PACK = pathlib.Path("voice")                     # committed: <hash>.mp3 + <hash>.json (the words' times)
+
+
+def pack_voice(voice, text, path):
+    """VOICE PACK (Andrii, Nov 23: voice No. 3 for every new video): the cloned voice is made by VoiceStudio on
+    Andrii's PC only. A local render saves every narration it makes in voice/ (by the voice + text hash) and the
+    pack is committed; the GitHub render takes the same file from there. No pack and no VoiceStudio = no video."""
+    key = hashlib.sha1(f"{voice}|{text}".encode()).hexdigest()[:16]
+    mp3, js = VOICE_PACK / f"{key}.mp3", VOICE_PACK / f"{key}.json"
+    if mp3.exists() and js.exists():
+        shutil.copy(mp3, path)
+        return [tuple(w) for w in json.loads(js.read_text(encoding="utf-8"))]
+    import voice_c5
+    try:
+        voice_c5.health()
+    except Exception as e:
+        raise SystemExit(f"voice '{voice}': no voice pack for '{text[:70]}' and no VoiceStudio here "
+                         f"({type(e).__name__}): render the story on Andrii's PC first and commit voice/")
+    words = voice_c5.speak(text, path, voice=voice)
+    VOICE_PACK.mkdir(exist_ok=True)
+    shutil.copy(path, mp3)
+    js.write_text(json.dumps([[w, round(float(t), 3)] for w, t in words]), encoding="utf-8")
+    return words
+
+
 def narrate(d):
     """One voice file per chapter (Edge's word timings stay exact on short texts), pauses calmed -> [(path, words,
     duration, sentence start times)]."""
     pron = d.get("pronounce") if isinstance(d.get("pronounce"), dict) else None
 
     speak = S.speak
-    if env("L_TTS", "") in ("c5", "andrii"):            # Andrii, Nov 23: cloned narrators, local VoiceStudio only
-        import voice_c5
-        speak = lambda text, path: voice_c5.speak(text, path, voice=env("L_TTS"))
+    voice = env("L_TTS", "") or d.get("voice") or ""
+    if voice in ("c5", "andrii"):                       # Andrii, Nov 23: cloned narrators (voice No. 3 = 'andrii')
+        speak = lambda text, path: pack_voice(voice, text, path)
 
     def say(a):
         k, c = a
