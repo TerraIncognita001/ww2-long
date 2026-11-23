@@ -42,6 +42,12 @@ for v in vids:
         o["sources"] = {row[0]: row[1] for row in r.get("rows", [])}
     except Exception as e:
         o["error"] = str(e)[:160]
+    if v.get("format") == "long":                          # retention curve: share of viewers left at each 1 % of the video
+        try:
+            r = query("audienceWatchRatio,relativeRetentionPerformance", "elapsedVideoTimeRatio", v["id"])
+            o["curve"] = [[row[0], round(row[1], 3), round(row[2], 3)] for row in r.get("rows", [])]
+        except Exception as e:
+            o["curve_error"] = str(e)[:160]
     if tried_imp is not False:                            # impressions: not every API version has them
         try:
             r = query("videoThumbnailImpressions,videoThumbnailImpressionsClickRate", "video", v["id"])
@@ -64,3 +70,9 @@ for v in vids:
           f"{round(o.get('averageViewDuration') or 0):>5} {o.get('subscribersGained', '-'):>4} "
           f"{o.get('impressions', '-'):>6} {o.get('ctr', '-'):>5}  {src} | {o.get('privacy', '')} {v['title'][:60]}"
           + (f" | {o['error']}" if o.get("error") else ""))
+print("\nretention (share of viewers still watching at 5/10/20/30/50/75 % of the long videos; dur s):")
+for v in vids:
+    c = out.get(v["id"], {}).get("curve") or []
+    if c:
+        at = lambda x: next((round(100 * r[1]) for r in c if r[0] >= x), "-")
+        print(f"{v['title'][:44]:44} " + " ".join(f"{at(x):>4}" for x in (0.01, 0.05, 0.1, 0.2, 0.3, 0.5, 0.75)))
