@@ -363,6 +363,42 @@
    "title": "The Destroyer That Survived Six Kamikazes",
    "seconds": 14.3,
    "held": "Andrii, Nov 23: taken out of the queue (private, not deleted)"
+  },
+  {
+   "id": "c_MztnEllgA",
+   "date": "2026-11-24",
+   "format": "long",
+   "title": "The ENTIRE History of the Kamikaze in 11 Minutes",
+   "topic": "Kamikaze",
+   "seconds": 691.4,
+   "words": 1609,
+   "tts": "edge",
+   "release": "2026-11-25T21:00:00Z",
+   "thumb": "ok",
+   "comment_due": {
+    "at": "2026-11-25T21:00:00Z",
+    "q": "Were the kamikaze pilots heroes, victims, or both?"
+   }
+  },
+  {
+   "id": "mRmxjFZPcj4",
+   "date": "2026-11-24",
+   "format": "short",
+   "promo": true,
+   "long": "c_MztnEllgA",
+   "title": "The Kamikaze Pilot the USS Missouri Buried at Sea",
+   "seconds": 13.4,
+   "publish_at": "2026-11-25T21:30:00Z"
+  },
+  {
+   "id": "_GwwmYyjU5A",
+   "date": "2026-11-24",
+   "format": "short",
+   "promo": true,
+   "long": "c_MztnEllgA",
+   "title": "The Destroyer That Survived Six Kamikazes",
+   "seconds": 14.3,
+   "publish_at": "2026-11-26T00:00:00Z"
   }
  ],
  "metrics": {},
