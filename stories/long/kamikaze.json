@@ -187,6 +187,46 @@
   ],
   "mono": true
  },
+ "thumbs_test": [
+  {
+   "style": "photo",
+   "file": "72nd Shinbu 1945 Kamikaze.jpg",
+   "x": 0.5,
+   "y": 0.5,
+   "color": false,
+   "mono": true,
+   "text": [
+    "ORDERED TO DIE?"
+   ],
+   "key": [
+    "ORDERED"
+   ],
+   "sizes": [
+    150
+   ],
+   "note": "Seki: 'I am going because I was ordered to.'"
+  },
+  {
+   "style": "photo",
+   "file": "Explosion on USS St. Lo (CVE-63) during Battle off Samar, 25 October 1944 (80-G-270516).jpg",
+   "x": 0.5,
+   "y": 0.45,
+   "color": false,
+   "mono": true,
+   "text": [
+    "ONE PLANE",
+    "SANK THIS SHIP"
+   ],
+   "key": [
+    "ONE"
+   ],
+   "sizes": [
+    150,
+    96
+   ],
+   "note": "St. Lo: sunk after one Zero's hit"
+  }
+ ],
  "promos": [
   {
    "id": "kamikaze_missouri",

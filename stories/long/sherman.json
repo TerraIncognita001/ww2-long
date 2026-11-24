@@ -1,0 +1,1830 @@
+{
+ "priority": 10,
+ "format": "entire",
+ "voice": "andrii",
+ "intro_beats": true,
+ "topic": "M4 Sherman",
+ "sources": [
+  "M4 Sherman",
+  "M3 Lee",
+  "Lesley J. McNair",
+  "Battle of Sidi Bou Zid",
+  "Duplex Drive tank",
+  "Curtis G. Culin",
+  "Rhino tank",
+  "Operation Cobra",
+  "Sherman Firefly",
+  "Joe Ekins",
+  "Battle of Arracourt",
+  "Creighton Abrams",
+  "Siege of Bastogne",
+  "Battle of the Bulge",
+  "761st Tank Battalion (United States)",
+  "Belton Y. Cooper",
+  "M26 Pershing",
+  "Detroit Arsenal (Warren, Michigan)",
+  "Second Battle of El Alamein"
+ ],
+ "title": "The ENTIRE History of the Sherman Tank in {N} Minutes",
+ "question": "The Sherman: death trap, or the tank that won the war?",
+ "summary": "From Detroit and El Alamein to Omaha Beach, the hedgerows, the Firefly, Arracourt, Bastogne and the tank duel at Cologne Cathedral, this is the whole story of the M4 Sherman, told with archive film and President Roosevelt's own voice.",
+ "tags": [
+  "Sherman tank",
+  "M4 Sherman",
+  "Sherman Firefly",
+  "tank battle",
+  "Battle of Arracourt",
+  "Cobra King",
+  "Cologne tank duel",
+  "M26 Pershing",
+  "Panther tank",
+  "Tiger tank",
+  "Creighton Abrams",
+  "Lesley McNair",
+  "D-Day",
+  "WW2 documentary",
+  "World War 2",
+  "history"
+ ],
+ "pronounce": {
+  "Sidi Bou Zid": "Sidi Boo Zeed",
+  "Saint-Aignan-de-Cramesnil": "San Ten-yon duh Krah-meh-neel",
+  "Arracourt": "Arra-koor",
+  "Bastogne": "Bas-tone",
+  "Tillet": "Tee-yay",
+  "Ekins": "Eekins",
+  "Wittmann": "Vitt-mahn",
+  "Culin": "Kew-lin",
+  "Straussler": "Strowss-ler",
+  "Smoyer": "Smoy-er",
+  "McNair's": "Mac-Nair's",
+  "McNair": "Mac-Nair",
+  "Fredendall": "Freh-den-dall",
+  "Devers": "Dee-vers",
+  "Witheridge": "With-er-idge",
+  "Tobruk": "Toh-brook"
+ },
+ "films": {
+  "sh_cologne": {
+   "url": "https://archive.org/download/1945-03-26_Allies_Drive_Across_Rhine_To_Victory/1945-03-26_Allies_Drive_Across_Rhine_To_Victory.mp4",
+   "mono": true,
+   "crop": "590:332:18:75",
+   "credit": "Universal newsreel, 26 March 1945, Allies Drive Across Rhine (public domain, via Internet Archive)"
+  },
+  "sh_rhino": {
+   "url": "https://archive.org/download/ADC-1677/111-ADC-1677%20Tanks%20In%20France%20%2B%20Road%20Repair%20Of%20Tanks%20At%20St%20Jean%20De%20Daye%20%2B%20Tanks%20And%20Track%20Vehicles%20On%20Move%20France%20%2B%202ND%20Armored%20DIV%20Advance%20Normandy%20France.mp4",
+   "mono": true,
+   "credit": "Tanks in France, 2nd Armored Division (1944): US Army Signal Corps / NARA 111-ADC-1677 (public domain, via Internet Archive)"
+  },
+  "sh_canisy": {
+   "url": "https://archive.org/download/ADC-1672a/ADC-1672a.mov",
+   "mono": true,
+   "credit": "Canisy, France (1944): US Army Signal Corps / NARA 111-ADC-1672 (public domain, via Internet Archive)"
+  },
+  "sh_panther": {
+   "url": "https://archive.org/download/ADC-1970c/ADC-1970c.mov",
+   "mono": true,
+   "credit": "Knocked-out Panther, France (1944): US Army Signal Corps / NARA 111-ADC-1970 (public domain, via Internet Archive)"
+  },
+  "sh_snow": {
+   "url": "https://archive.org/download/ADC-3124c/ADC-3124c.mov",
+   "mono": true,
+   "credit": "Houffalize, Belgium (January 1945): US Army Signal Corps / NARA 111-ADC-3124 (public domain, via Internet Archive)"
+  },
+  "sh_plant": {
+   "url": "https://archive.org/download/ARC-38910/ARC-38910.mov",
+   "mono": true,
+   "credit": "United News, June 1942: US Office of War Information / NARA ARC 38910 (public domain, via Internet Archive)"
+  },
+  "sh_test": {
+   "url": "https://archive.org/download/ARC-38922/ARC-38922.mov",
+   "mono": true,
+   "credit": "United News, September 1942: US Office of War Information / NARA ARC 38922 (public domain, via Internet Archive)"
+  },
+  "sh_tunis": {
+   "url": "https://archive.org/download/ARC-38954/ARC-38954.mov",
+   "mono": true,
+   "credit": "United News, Tunisia 1943: US Office of War Information / NARA ARC 38954 (public domain, via Internet Archive)"
+  },
+  "sh_mods": {
+   "url": "https://archive.org/download/CB-39/CB-39.mp4",
+   "mono": true,
+   "crop": "1180:664:50:28",
+   "credit": "Combat Bulletin No. 39 (1945): US Army Signal Corps / NARA 111-CB-39 (public domain, via Internet Archive)"
+  },
+  "sh_counter": {
+   "url": "https://archive.org/download/1944-12-20_Allies_Fight_Fierce_Nazi_Counter-Blow/1944-12-20_Allies_Fight_Fierce_Nazi_Counter-Blow.mp4",
+   "mono": true,
+   "crop": "580:326:20:90",
+   "credit": "Universal newsreel, 20 December 1944 (public domain, via Internet Archive)"
+  },
+  "sh_fdr": {
+   "url": "https://archive.org/download/gov.fdr.283/gov.fdr.283.ogv",
+   "mono": true,
+   "crop": "240:135:86:50",
+   "credit": "President Roosevelt, State of the Union, 6 January 1942: FDR Presidential Library, video 283 (public domain, via Internet Archive)"
+  },
+  "news": {
+   "url": "https://archive.org/download/ARC-39013/ARC-39013.mp4",
+   "mono": true,
+   "credit": "United News, D-Day (1944): US Office of War Information / NARA ARC 39013 (public domain, via Internet Archive)"
+  }
+ },
+ "period_audio": {
+  "fdr": {
+   "file": "FDR State of the Union 1942 tanks.mp3",
+   "url": "https://archive.org/download/gov.fdr.283/period_excerpt_is_in_the_repo",
+   "speaker": "President Franklin D. Roosevelt",
+   "date": "JANUARY 1942",
+   "credit": "President Franklin D. Roosevelt, State of the Union, 6 January 1942 (FDR Presidential Library, video 283, public domain)",
+   "text": "In this year, 1942, we shall produce 45,000 tanks."
+  }
+ },
+ "pre": [
+  {
+   "dur": 2.8,
+   "film": "sh_cologne",
+   "from": 73,
+   "to": 76,
+   "stamp": [
+    "MARCH 6",
+    "1945"
+   ],
+   "sfx": "explosion_massive"
+  }
+ ],
+ "whole": [
+  "Creighton William Abrams Jr. - Cadet Photo.jpg"
+ ],
+ "tone": [
+  "Lesley J. McNair Purple Heart 1943 (1).jpg",
+  "Lieutenant general Lesley J. McNair.jpg",
+  "General Jacob Devers 1944.jpg",
+  "Creighton William Abrams Jr. - Cadet Photo.jpg"
+ ],
+ "thumb": {
+  "file": "Sherman II tanks of the Queen's Bays (2nd Dragoon Guards), 2nd Armoured Brigade, moving up to the Alamein line, 24 October 1942. E18380.jpg"
+ },
+ "cover": {
+  "file": "Sherman II tanks of the Queen's Bays (2nd Dragoon Guards), 2nd Armoured Brigade, moving up to the Alamein line, 24 October 1942. E18380.jpg",
+  "x": 0.5,
+  "y": 0.28,
+  "zoom": 1.0,
+  "color": false,
+  "text": [
+   "HISTORY OF",
+   "THE SHERMAN",
+   "IN {N} MINUTES"
+  ],
+  "key": [
+   "SHERMAN"
+  ],
+  "sizes": [
+   96,
+   150,
+   96
+  ],
+  "mono": true
+ },
+ "promos": [
+  {
+   "id": "sherman_swim",
+   "chapter": 5,
+   "sentences": [
+    "On D-Day, 29 tanks swim to Omaha Beach.",
+    "They are made for one-foot waves. These are six feet high.",
+    "Only two arrive, because their commanders know one thing: how to sail."
+   ],
+   "shots": [
+    {
+     "s": 1,
+     "film": "news",
+     "from": 496,
+     "to": 498.5
+    },
+    {
+     "s": 2,
+     "file": "DD-Tank.jpg"
+    },
+    {
+     "s": 3,
+     "film": "news",
+     "from": 499,
+     "to": 504
+    }
+   ],
+   "top": "THE TANKS|THAT SWAM",
+   "key": [
+    "TANKS"
+   ],
+   "cta": {
+    "kind": "number",
+    "big": "27",
+    "line": "OF 29 SANK. WHAT SAVED TWO?"
+   },
+   "end": "WHAT SAVED TWO?",
+   "name": "29 Sherman Tanks Tried to Swim to Omaha Beach"
+  },
+  {
+   "id": "sherman_ekins",
+   "chapter": 8,
+   "sentences": [
+    "A British gunner has never fired his gun in action.",
+    "Then three German Tigers come into his sight.",
+    "He destroys all three, and one belongs to a famous tank commander: Michael Wittmann."
+   ],
+   "shots": [
+    {
+     "s": 1,
+     "file": "British Sherman Firefly Namur.jpg"
+    },
+    {
+     "s": 2,
+     "file": "Knocked-out German Tiger I tank at Béja, Tunisia, 23 April 1943 (111-SC-171649).jpg"
+    },
+    {
+     "s": 3,
+     "film": "sh_panther",
+     "from": 142,
+     "to": 146
+    }
+   ],
+   "top": "THREE TIGERS|ONE SHERMAN",
+   "key": [
+    "TIGERS"
+   ],
+   "cta": {
+    "kind": "redacted",
+    "line": "TIGER 007 BELONGED TO",
+    "hidden": "WITTMANN"
+   },
+   "end": "WHOSE TANK?",
+   "name": "The Sherman Gunner Who Destroyed Three Tigers"
+  }
+ ],
+ "chapters": [
+  {
+   "title": "",
+   "mode": "action",
+   "sentences": [
+    "On 6 March 1945, in front of Cologne Cathedral, a German Panther knocks out an American Sherman, and three of its five crew are killed.",
+    "America builds 49,324 of these tanks, more than any other tank it makes in this war.",
+    "General Lesley McNair believes the Sherman is good enough, and refuses to send a heavier tank.",
+    "So is the Sherman a death trap, or the tank that wins the war?",
+    "It begins with a tank that cannot even turn its gun around."
+   ],
+   "shots": [
+    {
+     "s": 1,
+     "film": "sh_cologne",
+     "from": 93,
+     "to": 95.2,
+     "stamp": [
+      "COLOGNE"
+     ]
+    },
+    {
+     "s": 1,
+     "film": "sh_cologne",
+     "from": 7,
+     "to": 12
+    },
+    {
+     "s": 2,
+     "film": "sh_plant",
+     "from": 440,
+     "to": 446,
+     "note": "49,324 TANKS"
+    },
+    {
+     "s": 2,
+     "film": "sh_plant",
+     "from": 568,
+     "to": 574
+    },
+    {
+     "s": 3,
+     "file": "Lesley J. McNair Purple Heart 1943 (1).jpg",
+     "reveal": [
+      0.72,
+      0.2
+     ],
+     "name": "LESLEY McNAIR",
+     "role": "COMMANDER, ARMY GROUND FORCES"
+    },
+    {
+     "s": 4,
+     "film": "sh_rhino",
+     "from": 216,
+     "to": 219.5
+    },
+    {
+     "s": 5,
+     "film": "sh_plant",
+     "from": 420,
+     "to": 426
+    }
+   ],
+   "beats": [
+    {
+     "after": 1,
+     "audio": {
+      "src": "fdr",
+      "from": 22.35,
+      "to": 29.6
+     },
+     "source": "PRESIDENT ROOSEVELT · STATE OF THE UNION, 6 JANUARY 1942",
+     "shots": [
+      {
+       "dur": 4.4,
+       "film": "sh_fdr",
+       "from": 1157.4,
+       "to": 1161.8,
+       "source": "PRESIDENT ROOSEVELT · STATE OF THE UNION, 6 JANUARY 1942"
+      },
+      {
+       "dur": 2.85,
+       "film": "sh_plant",
+       "from": 456,
+       "to": 459,
+       "source": "PRESIDENT ROOSEVELT · STATE OF THE UNION, 6 JANUARY 1942"
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "title": "The Gun That Cannot Turn",
+   "mode": "people",
+   "stamp": [
+    "1939"
+   ],
+   "sentences": [
+    "But in 1939, the U.S. Army has about 400 tanks, and only its 18 M2 Mediums are considered modern.",
+    "Two years later, America is arming for a war, and it needs thousands of them.",
+    "In Detroit, Chrysler runs the first American plant ever built for the mass production of tanks.",
+    "The first tanks roll out before the building is even finished.",
+    "They are M3s, with a 75-millimeter gun set in the side of the hull.",
+    "It can hardly swing, and it cannot be aimed at anything on the other side of the tank.",
+    "The M3 is only a stopgap, until there is a turret for the big gun.",
+    "On 18 April 1941, the Armored Force Board looks at five designs, and chooses the simplest.",
+    "It is called the T6: the body of the M3, with one new turret on top.",
+    "Everything about it is made for the factory: standard parts, easy repairs, and a size that fits on ships.",
+    "The prototype is completed on 2 September 1941.",
+    "The British name the tank after an American general of the Civil War, William Tecumseh Sherman."
+   ],
+   "shots": [
+    {
+     "s": 1,
+     "film": "sh_plant",
+     "from": 426,
+     "to": 432
+    },
+    {
+     "s": 2,
+     "film": "sh_plant",
+     "from": 508,
+     "to": 514
+    },
+    {
+     "s": 3,
+     "file": "US Army Detroit Tank Plant.jpg",
+     "label": "DETROIT TANK ARSENAL"
+    },
+    {
+     "s": 4,
+     "file": "M3 tank production LOC fsa.8b00695.jpg"
+    },
+    {
+     "s": 5,
+     "file": "M3 tank production LOC fsa.8e10700.jpg"
+    },
+    {
+     "s": 6,
+     "file": "1stArmorDivKasserineTunisia1943.jpg"
+    },
+    {
+     "s": 7,
+     "file": "R-975 engines for M-3 tanks.png",
+     "trim": [
+      0.04,
+      0.03,
+      0.03,
+      0.08
+     ]
+    },
+    {
+     "s": 8,
+     "film": "sh_test",
+     "from": 72,
+     "to": 78,
+     "note": "FIVE DESIGNS"
+    },
+    {
+     "s": 9,
+     "file": "M-4 tank, Ft Knox, Ky.jpg",
+     "y": 0.45
+    },
+    {
+     "s": 10,
+     "film": "sh_plant",
+     "from": 536,
+     "to": 542
+    },
+    {
+     "s": 11,
+     "film": "sh_test",
+     "from": 82,
+     "to": 88
+    },
+    {
+     "s": 12,
+     "film": "sh_test",
+     "from": 94,
+     "to": 100
+    }
+   ]
+  },
+  {
+   "title": "Give Us Shermans",
+   "mode": "action",
+   "stamp": [
+    "WASHINGTON"
+   ],
+   "sentences": [
+    "But on 21 June 1942, Winston Churchill is with Roosevelt in Washington when the news comes: Tobruk has fallen.",
+    "Egypt and the Suez Canal are now in danger.",
+    "Roosevelt asks what he can do to help, and Churchill answers at once.",
+    "America's own divisions have only a few Shermans yet.",
+    "More than 300 are shipped to Egypt, and by September they are there.",
+    "They are given shields over their tracks, for the desert.",
+    "In October 1942, the Second Battle of El Alamein begins.",
+    "The Eighth Army has 252 Shermans fit for action.",
+    "They meet Panzer Threes and Panzer Fours, and open fire at 2,000 yards.",
+    "There are losses on both sides.",
+    "But the Sherman's gun and armor give the Allies an edge, and after 13 days, Rommel's army is crushed.",
+    "The Americans are sure now: their tank is better than the German ones.",
+    "It is true in 1942, and that is the problem."
+   ],
+   "shots": [
+    {
+     "s": 1,
+     "film": "sh_plant",
+     "from": 21.5,
+     "to": 25.5,
+     "label": "WASHINGTON · JUNE 1942"
+    },
+    {
+     "s": 2,
+     "map": {
+      "places": [
+       {
+        "label": "TOBRUK",
+        "lat": 32.08,
+        "lon": 23.96,
+        "side": "red"
+       },
+       {
+        "label": "EL ALAMEIN",
+        "lat": 30.83,
+        "lon": 28.95,
+        "side": "blue"
+       },
+       {
+        "label": "SUEZ CANAL",
+        "lat": 30.4,
+        "lon": 32.4,
+        "side": "blue"
+       }
+      ],
+      "routes": [
+       [
+        0,
+        1,
+        "red",
+        0.15
+       ]
+      ],
+      "pad": 0.5
+     }
+    },
+    {
+     "s": 3,
+     "film": "sh_plant",
+     "from": 26,
+     "to": 30
+    },
+    {
+     "s": 4,
+     "film": "sh_test",
+     "from": 76,
+     "to": 82
+    },
+    {
+     "s": 5,
+     "film": "sh_plant",
+     "from": 548,
+     "to": 554,
+     "note": "300 SHERMANS"
+    },
+    {
+     "s": 6,
+     "file": "Crews climb aboard Sherman tanks of The Queen's Bays (2nd Dragoon Guards), 1st Armoured Division at El Alamein, 24 October 1942. E18376.jpg"
+    },
+    {
+     "s": 7,
+     "file": "Sherman II tanks of the Queen's Bays (2nd Dragoon Guards), 2nd Armoured Brigade, moving up to the Alamein line, 24 October 1942. E18380.jpg",
+     "label": "EL ALAMEIN · OCTOBER 1942"
+    },
+    {
+     "s": 8,
+     "file": "The British Army in North Africa 1942 E18377.jpg",
+     "note": "252 SHERMANS"
+    },
+    {
+     "s": 9,
+     "file": "Sherman tanks of 9th Queen's Royal Lancers during the Battle of El Alamein, 5 November 1942. E18972.jpg"
+    },
+    {
+     "s": 10,
+     "film": "sh_tunis",
+     "from": 284,
+     "to": 287
+    },
+    {
+     "s": 11,
+     "file": "Sherman tanks of the Eighth Army move across the desert.jpg"
+    },
+    {
+     "s": 12,
+     "file": "The British Army in North Africa 1942 E18379.jpg"
+    },
+    {
+     "s": 13,
+     "film": "sh_tunis",
+     "from": 356,
+     "to": 362
+    }
+   ],
+   "beats": [
+    {
+     "after": 3,
+     "quote": {
+      "text": "Give us as many Sherman tanks as you can spare and ship them to the Middle East as quickly as possible.",
+      "name": "WINSTON CHURCHILL",
+      "role": "BRITISH PRIME MINISTER, JUNE 1942"
+     },
+     "shots": [
+      {
+       "dur": 7.0,
+       "film": "sh_plant",
+       "from": 30,
+       "to": 35
+      }
+     ]
+    },
+    {
+     "after": 10,
+     "shots": [
+      {
+       "dur": 3.2,
+       "film": "sh_tunis",
+       "from": 435,
+       "to": 438.2,
+       "sfx": "explosion_far"
+      },
+      {
+       "dur": 3.0,
+       "film": "sh_tunis",
+       "from": 380,
+       "to": 383.0,
+       "sfx": "low_rumble"
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "title": "Sidi Bou Zid",
+   "mode": "action",
+   "stamp": [
+    "TUNISIA"
+   ],
+   "sentences": [
+    "But in Tunisia, on 14 February 1943, the Americans find out how wrong they are.",
+    "At four in the morning, 140 German tanks begin to come through the passes to Sidi Bou Zid, covered by a sandstorm.",
+    "On one hill stands Lieutenant Colonel John Waters, the son-in-law of General Patton.",
+    "By ten o'clock, his hill is surrounded.",
+    "On another hill, Colonel Thomas Drake asks for permission to retreat.",
+    "General Fredendall tells him to hold on, and wait for help.",
+    "It never arrives.",
+    "By 5 p.m., the Americans have lost 44 tanks.",
+    "The next day, they counter-attack, over flat, open country.",
+    "They are bombed from the air, and then they find themselves between two Panzer divisions.",
+    "More than 80 German tanks are waiting, and some of them are Tigers.",
+    "Another 46 medium tanks are lost.",
+    "America has met the Tiger, and its generals decide that there are too few of them to matter."
+   ],
+   "shots": [
+    {
+     "s": 1,
+     "film": "sh_tunis",
+     "from": 304,
+     "to": 309,
+     "label": "SIDI BOU ZID · FEBRUARY 1943"
+    },
+    {
+     "s": 2,
+     "film": "sh_tunis",
+     "from": 334,
+     "to": 338,
+     "stamp": [
+      "4:00 A.M."
+     ],
+     "sfx": "explosion_far"
+    },
+    {
+     "s": 2,
+     "film": "sh_tunis",
+     "from": 396,
+     "to": 401
+    },
+    {
+     "s": 3,
+     "film": "sh_tunis",
+     "from": 516,
+     "to": 520
+    },
+    {
+     "s": 4,
+     "film": "sh_tunis",
+     "from": 429,
+     "to": 434
+    },
+    {
+     "s": 5,
+     "film": "sh_tunis",
+     "from": 528,
+     "to": 533
+    },
+    {
+     "s": 6,
+     "film": "sh_tunis",
+     "from": 308,
+     "to": 313
+    },
+    {
+     "s": 7,
+     "film": "sh_tunis",
+     "from": 352,
+     "to": 355
+    },
+    {
+     "s": 8,
+     "film": "sh_tunis",
+     "from": 338,
+     "to": 343,
+     "note": "44 TANKS LOST"
+    },
+    {
+     "s": 9,
+     "film": "sh_tunis",
+     "from": 360,
+     "to": 365
+    },
+    {
+     "s": 10,
+     "film": "sh_tunis",
+     "from": 444,
+     "to": 448
+    },
+    {
+     "s": 11,
+     "file": "Knocked-out German Tiger I tank at Béja, Tunisia, 23 April 1943 (111-SC-171649).jpg",
+     "label": "TIGER I · TUNISIA 1943"
+    },
+    {
+     "s": 12,
+     "film": "sh_tunis",
+     "from": 388,
+     "to": 393,
+     "note": "46 MORE"
+    },
+    {
+     "s": 13,
+     "file": "Knocked-out German Tiger I tank at Béja, Tunisia, 23 April 1943 (111-SC-171649).jpg",
+     "zoom": 1.35,
+     "x": 0.35,
+     "y": 0.45
+    }
+   ],
+   "beats": [
+    {
+     "after": 8,
+     "shots": [
+      {
+       "dur": 3.0,
+       "film": "sh_tunis",
+       "from": 376,
+       "to": 379.0,
+       "sfx": "low_rumble"
+      },
+      {
+       "dur": 3.0,
+       "film": "sh_tunis",
+       "from": 392,
+       "to": 395.0
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "title": "The Man Who Said No",
+   "mode": "people",
+   "stamp": [
+    "FALL 1943"
+   ],
+   "sentences": [
+    "But in the fall of 1943, the man at the head of the Army Ground Forces still says the Sherman is enough.",
+    "Lesley McNair is an old artilleryman, and he believes in his own plan.",
+    "Tanks are there to break through, and to support the infantry.",
+    "Enemy tanks are the work of another weapon, the tank destroyer.",
+    "General Jacob Devers does not agree.",
+    "For the invasion of France, he asks for 250 T26s, a new tank with a 90-millimeter gun.",
+    "McNair refuses.",
+    "The new tank is not battle worthy, he says, and there is no battle need for it.",
+    "He has his reasons: it breaks down, and Europe's bridges are not made for such heavy loads.",
+    "Devers goes over his head, to the War Department, and in December 1943 the tanks are ordered.",
+    "Still, in April 1944, McNair's command asks for a smaller gun on them.",
+    "General George Marshall orders the tanks to Europe as soon as possible.",
+    "They will not be there for D-Day."
+   ],
+   "shots": [
+    {
+     "s": 1,
+     "file": "Lieutenant general Lesley J. McNair.jpg",
+     "label": "ARMY GROUND FORCES"
+    },
+    {
+     "s": 2,
+     "file": "Lesley J. McNair Purple Heart 1943 (1).jpg",
+     "zoom": 1.5,
+     "y": 0.15
+    },
+    {
+     "s": 3,
+     "film": "sh_test",
+     "from": 100,
+     "to": 106
+    },
+    {
+     "s": 4,
+     "film": "sh_rhino",
+     "from": 246,
+     "to": 251
+    },
+    {
+     "s": 5,
+     "file": "General Jacob Devers 1944.jpg",
+     "name": "JACOB DEVERS",
+     "role": "U.S. COMMANDER IN EUROPE, 1943"
+    },
+    {
+     "s": 6,
+     "file": "M26-Pershing-Vettweiss-194503.jpg",
+     "note": "250 NEW TANKS"
+    },
+    {
+     "s": 7,
+     "file": "General Bradley and General McNair.jpg",
+     "x": 0.6
+    },
+    {
+     "s": 8,
+     "film": "sh_mods",
+     "from": 752,
+     "to": 756
+    },
+    {
+     "s": 9,
+     "film": "sh_mods",
+     "from": 774,
+     "to": 778
+    },
+    {
+     "s": 10,
+     "film": "sh_plant",
+     "from": 516,
+     "to": 521
+    },
+    {
+     "s": 11,
+     "film": "sh_plant",
+     "from": 462,
+     "to": 467
+    },
+    {
+     "s": 12,
+     "file": "General Omar Bradley and General George C. Marshall.jpg",
+     "x": 0.6
+    },
+    {
+     "s": 13,
+     "film": "sh_counter",
+     "from": 311,
+     "to": 316
+    }
+   ]
+  },
+  {
+   "title": "The Tanks That Swim",
+   "mode": "action",
+   "stamp": [
+    "OMAHA BEACH"
+   ],
+   "sentences": [
+    "But at Omaha Beach, on 6 June 1944, the first Shermans have to swim.",
+    "The idea comes from Nicholas Straussler, an engineer born in Hungary.",
+    "He wraps the tank in a folding screen of waterproof canvas, and propellers drive it through the water.",
+    "It is made for waves of up to one foot.",
+    "On D-Day, the waves are up to six feet high.",
+    "At 5:40 a.m., one battalion puts 29 of them into the sea, too far from the shore.",
+    "The landing craft are drifting, and the tanks must turn their sides to the waves.",
+    "The canvas folds, and one after another they go down.",
+    "Some crews radio back a warning: do not launch so far out.",
+    "27 of the 29 tanks sink.",
+    "Two reach the beach, because their commanders know how to sail, and never turn their sides to the waves.",
+    "Most of the crews are rescued, but five men are known to have died.",
+    "The rest of the Shermans are landed directly on the beach, starting at about 6:40.",
+    "On the other four beaches, the swimming tanks have no such problems."
+   ],
+   "shots": [
+    {
+     "s": 1,
+     "film": "news",
+     "from": 535,
+     "to": 537
+    },
+    {
+     "s": 1,
+     "film": "news",
+     "from": 496,
+     "to": 498
+    },
+    {
+     "s": 2,
+     "file": "DD-Tank.jpg",
+     "note": "STRAUSSLER'S TANK"
+    },
+    {
+     "s": 3,
+     "file": "DD-Tank.jpg",
+     "zoom": 1.35,
+     "y": 0.65
+    },
+    {
+     "s": 4,
+     "film": "news",
+     "from": 506,
+     "to": 509
+    },
+    {
+     "s": 5,
+     "film": "news",
+     "from": 499,
+     "to": 503,
+     "note": "SIX-FOOT WAVES"
+    },
+    {
+     "s": 6,
+     "film": "news",
+     "from": 456,
+     "to": 461,
+     "stamp": [
+      "5:40 A.M."
+     ]
+    },
+    {
+     "s": 7,
+     "film": "news",
+     "from": 468,
+     "to": 471
+    },
+    {
+     "s": 8,
+     "film": "news",
+     "from": 474,
+     "to": 479
+    },
+    {
+     "s": 9,
+     "film": "news",
+     "from": 514,
+     "to": 516
+    },
+    {
+     "s": 10,
+     "file": "Into the Jaws of Death 23-0455M edit.jpg",
+     "label": "OMAHA BEACH · 6 JUNE 1944",
+     "note": "27 OF 29 SINK"
+    },
+    {
+     "s": 11,
+     "film": "news",
+     "from": 510,
+     "to": 513
+    },
+    {
+     "s": 12,
+     "film": "news",
+     "from": 532,
+     "to": 535
+    },
+    {
+     "s": 13,
+     "file": "NormandySupply edit.jpg"
+    },
+    {
+     "s": 14,
+     "file": "Sherman DD tanks of 'B' Squadron, 13th-18th Royal Hussars support men of No. 4 Army Commando advancing towards Ouistreham on D-Day, 6 June 1944. MH2011.jpg"
+    }
+   ],
+   "beats": [
+    {
+     "after": 10,
+     "shots": [
+      {
+       "dur": 3.2,
+       "film": "news",
+       "from": 503,
+       "to": 506.2,
+       "sfx": "ov/ocean_waves"
+      },
+      {
+       "dur": 3.0,
+       "film": "news",
+       "from": 516,
+       "to": 519.0
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "title": "The Sergeant's Idea",
+   "mode": "people",
+   "stamp": [
+    "NORMANDY"
+   ],
+   "sentences": [
+    "But behind the beaches, Normandy stops the Sherman with something older than any gun: the hedgerow.",
+    "It is a thick bank of earth around every field, with hedges on top.",
+    "A tank that climbs over it shows its vulnerable underside.",
+    "One day, a man from Tennessee asks: why not put saw teeth on the tank, and cut through?",
+    "The others laugh, but Sergeant Curtis Culin does not.",
+    "He has steel teeth welded to the front of a tank.",
+    "The steel is German scrap: it comes from the obstacles on the invasion beaches.",
+    "On 14 July, it is shown to General Omar Bradley.",
+    "Bradley watches a hedgerow explode, and a Sherman come bursting through.",
+    "He forbids anyone to use the teeth until the great attack, Operation Cobra.",
+    "By then, 60 percent of the First Army's tanks have them.",
+    "On 25 July, as Cobra begins, American bombers drop some of their bombs on their own men.",
+    "111 are killed, and among them is the man who said no, Lesley McNair.",
+    "Then the Shermans break out of Normandy.",
+    "Four months after his invention, Culin loses a leg to a land mine."
+   ],
+   "shots": [
+    {
+     "s": 1,
+     "film": "sh_rhino",
+     "from": 21,
+     "to": 25
+    },
+    {
+     "s": 2,
+     "film": "sh_rhino",
+     "from": 3,
+     "to": 7
+    },
+    {
+     "s": 3,
+     "file": "American tank in Carentan.jpg"
+    },
+    {
+     "s": 4,
+     "film": "sh_rhino",
+     "from": 170,
+     "to": 175
+    },
+    {
+     "s": 5,
+     "film": "sh_rhino",
+     "from": 78,
+     "to": 84
+    },
+    {
+     "s": 6,
+     "film": "sh_rhino",
+     "from": 90,
+     "to": 96,
+     "label": "NORMANDY · JULY 1944"
+    },
+    {
+     "s": 7,
+     "film": "sh_rhino",
+     "from": 123,
+     "to": 129
+    },
+    {
+     "s": 8,
+     "file": "Eisenhower & Bradley with a member of the French Resistance in Normandy.jpg",
+     "x": 0.55,
+     "name": "OMAR BRADLEY",
+     "role": "COMMANDER, U.S. FIRST ARMY"
+    },
+    {
+     "s": 9,
+     "film": "sh_rhino",
+     "from": 143,
+     "to": 147.5
+    },
+    {
+     "s": 10,
+     "film": "sh_rhino",
+     "from": 104,
+     "to": 110,
+     "note": "SECRET WEAPON"
+    },
+    {
+     "s": 11,
+     "film": "sh_rhino",
+     "from": 148,
+     "to": 153
+    },
+    {
+     "s": 12,
+     "film": "sh_tunis",
+     "from": 444,
+     "to": 448
+    },
+    {
+     "s": 13,
+     "file": "Lieutenant general Lesley J. McNair.jpg",
+     "zoom": 1.3,
+     "x": 0.7
+    },
+    {
+     "s": 14,
+     "file": "SC 192042 - U.S. tanks pass through the wrecked streets of Coutances, France, on their way to the sea beyond the town. 30 July, 1944.jpg",
+     "label": "COUTANCES · 30 JULY 1944"
+    },
+    {
+     "s": 15,
+     "film": "sh_canisy",
+     "from": 111,
+     "to": 114
+    }
+   ],
+   "beats": [
+    {
+     "after": 5,
+     "quote": {
+      "text": "There was a little sergeant. His name was Culin, and he had an idea.",
+      "name": "DWIGHT D. EISENHOWER",
+      "role": "SPEECH OF JANUARY 1961"
+     },
+     "shots": [
+      {
+       "dur": 6.0,
+       "file": "Dwight D. Eisenhower, Omar N. Bradley, and George S. Patton.jpg",
+       "x": 0.5
+      }
+     ]
+    },
+    {
+     "after": 14,
+     "shots": [
+      {
+       "dur": 3.2,
+       "film": "sh_rhino",
+       "from": 366,
+       "to": 369.2,
+       "sfx": "low_rumble"
+      },
+      {
+       "dur": 3.0,
+       "film": "sh_rhino",
+       "from": 344,
+       "to": 347.0
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "title": "Did It Burn?",
+   "mode": "people",
+   "stamp": [
+    "JULY 1944"
+   ],
+   "sentences": [
+    "But from June to July 1944, British researchers study the wrecks of Normandy, and count.",
+    "They examine 40 Shermans, and 33 of them have burned.",
+    "That is 82 percent.",
+    "A story is told that the tank is called the Ronson, after a cigarette lighter that lights every time.",
+    "It is almost certainly made up: the company's slogan is from the 1950s.",
+    "And there is a real Ronson, a Sherman with a flamethrower.",
+    "The major reason for the fires is the ammunition, stored above the tracks.",
+    "Often, after a fire, the fuel tank is found intact.",
+    "So the shells are moved to the floor of the hull, inside jackets of water.",
+    "Now only 10 to 15 percent of the Shermans burn when they are penetrated.",
+    "German tanks burn too: of five Panzer Fours in the same study, four burned.",
+    "Yet the losses are terrible.",
+    "Belton Cooper, of the Third Armored Division, writes that his division enters Normandy with 232 Shermans.",
+    "By the end, 648 are destroyed, and hundreds more are knocked out, repaired, and sent back.",
+    "He calls his book Death Traps, and historians still argue with it."
+   ],
+   "shots": [
+    {
+     "s": 1,
+     "file": "The remains of Sherman tanks and carriers waiting to be broken up at a British vehicle dump in Normandy, 1 August 1944. B8394.jpg",
+     "label": "NORMANDY · 1944"
+    },
+    {
+     "s": 2,
+     "file": "Firefly burned out.jpg",
+     "note": "33 OF 40 BURNED"
+    },
+    {
+     "s": 3,
+     "file": "Damaged M4, Normandy 1944-06-09.jpg"
+    },
+    {
+     "s": 4,
+     "film": "sh_rhino",
+     "from": 152,
+     "to": 154
+    },
+    {
+     "s": 4,
+     "film": "sh_rhino",
+     "from": 328,
+     "to": 332
+    },
+    {
+     "s": 5,
+     "film": "sh_rhino",
+     "from": 288,
+     "to": 294
+    },
+    {
+     "s": 6,
+     "file": "Ronson flame tank Iwo Jima.jpg",
+     "label": "IWO JIMA · 1945"
+    },
+    {
+     "s": 7,
+     "film": "sh_canisy",
+     "from": 72,
+     "to": 76
+    },
+    {
+     "s": 8,
+     "film": "sh_panther",
+     "from": 112,
+     "to": 117
+    },
+    {
+     "s": 9,
+     "file": "M4A2 Lend-Lease Tank at Grabow Germany May 1945.jpg"
+    },
+    {
+     "s": 10,
+     "film": "sh_mods",
+     "from": 783,
+     "to": 788,
+     "note": "10 TO 15 PERCENT"
+    },
+    {
+     "s": 11,
+     "film": "sh_panther",
+     "from": 137,
+     "to": 143
+    },
+    {
+     "s": 12,
+     "file": "The remains of Sherman tanks and carriers waiting to be broken up at a British vehicle dump in Normandy, 1 August 1944. B8394.jpg",
+     "zoom": 1.4,
+     "x": 0.4
+    },
+    {
+     "s": 13,
+     "film": "sh_rhino",
+     "from": 290,
+     "to": 293
+    },
+    {
+     "s": 13,
+     "film": "sh_rhino",
+     "from": 300,
+     "to": 302.6
+    },
+    {
+     "s": 14,
+     "film": "sh_rhino",
+     "from": 114,
+     "to": 120,
+     "note": "648 DESTROYED"
+    },
+    {
+     "s": 15,
+     "film": "sh_canisy",
+     "from": 92,
+     "to": 97
+    }
+   ],
+   "beats": [
+    {
+     "after": 14,
+     "shots": [
+      {
+       "dur": 3.0,
+       "film": "sh_rhino",
+       "from": 149,
+       "to": 152.0,
+       "sfx": "low_rumble"
+      },
+      {
+       "dur": 3.0,
+       "film": "sh_rhino",
+       "from": 267,
+       "to": 270.0
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "title": "The Firefly",
+   "mode": "action",
+   "stamp": [
+    "8 AUGUST 1944"
+   ],
+   "sentences": [
+    "But on 8 August 1944, near Saint-Aignan-de-Cramesnil, in Normandy, one kind of Sherman can stop a Tiger.",
+    "It begins with two British officers, Major Brighty and Lieutenant Colonel Witheridge.",
+    "They put the British 17-pounder into the Sherman, though the turret is too small for the long recoil of the gun.",
+    "The idea is rejected, until Churchill gives it the highest priority.",
+    "The gunner of one of these Fireflies is Joe Ekins, a 21-year-old from the shoe factories of Rushden.",
+    "He has yet to fire his gun in action.",
+    "Then a group of Tigers comes up from the south.",
+    "His troop can see three of them.",
+    "Ekins fires, and in almost 12 minutes, he destroys all three.",
+    "One of them is the tank of Michael Wittmann, the famous German tank commander.",
+    "That is the widely accepted version, and some still dispute it.",
+    "Ekins then destroys a Panzer Four, before his own tank is hit.",
+    "He is made a radio operator, and stays one for the rest of the war.",
+    "Then he goes back to the shoe factories."
+   ],
+   "shots": [
+    {
+     "s": 1,
+     "file": "Sherman Firefly in Field.jpg",
+     "label": "NORMANDY · AUGUST 1944"
+    },
+    {
+     "s": 2,
+     "file": "British Sherman Firefly Namur.jpg"
+    },
+    {
+     "s": 3,
+     "file": "Loading 17 pounder rounds into Sherman Firefly 1944 IWM B 8793.jpg",
+     "note": "17-POUNDER"
+    },
+    {
+     "s": 4,
+     "file": "British Sherman Firefly.jpg"
+    },
+    {
+     "s": 5,
+     "file": "British Sherman Firefly Namur.jpg",
+     "zoom": 1.35,
+     "x": 0.65,
+     "note": "JOE EKINS"
+    },
+    {
+     "s": 6,
+     "file": "British Sherman Firefly.jpg",
+     "zoom": 1.3
+    },
+    {
+     "s": 7,
+     "film": "sh_counter",
+     "from": 92.5,
+     "to": 94.5
+    },
+    {
+     "s": 8,
+     "film": "sh_rhino",
+     "from": 12,
+     "to": 16
+    },
+    {
+     "s": 9,
+     "file": "Sherman Firefly in Field.jpg",
+     "zoom": 1.5,
+     "x": 0.4,
+     "y": 0.6,
+     "sfx": "explosion_far",
+     "note": "12 MINUTES"
+    },
+    {
+     "s": 10,
+     "file": "Panthers Knocked-out Normandy.jpg",
+     "note": "TIGER 007"
+    },
+    {
+     "s": 11,
+     "film": "sh_panther",
+     "from": 150,
+     "to": 155
+    },
+    {
+     "s": 12,
+     "film": "news",
+     "from": 541,
+     "to": 543
+    },
+    {
+     "s": 12,
+     "film": "sh_panther",
+     "from": 127,
+     "to": 130
+    },
+    {
+     "s": 13,
+     "film": "sh_panther",
+     "from": 162,
+     "to": 166
+    },
+    {
+     "s": 14,
+     "file": "Loading 17 pounder rounds into Sherman Firefly 1944 IWM B 8793.jpg",
+     "zoom": 1.3
+    }
+   ],
+   "beats": [
+    {
+     "after": 12,
+     "quote": {
+      "text": "He might have been a hero to the Germans, but not to me.",
+      "name": "JOE EKINS",
+      "role": "ON MICHAEL WITTMANN"
+     },
+     "shots": [
+      {
+       "dur": 5.0,
+       "film": "sh_panther",
+       "from": 142,
+       "to": 146
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "title": "Arracourt",
+   "mode": "action",
+   "stamp": [
+    "ARRACOURT"
+   ],
+   "sentences": [
+    "But at Arracourt, in September 1944, the Germans send 262 tanks and assault guns into battle.",
+    "Many are new Panthers, better than the Sherman in gun and armor.",
+    "Their crews have had two weeks of training, and they cannot read maps.",
+    "On the morning of the 19th, there is thick fog.",
+    "The Panthers come forward blind.",
+    "The Shermans slip around them, fire into their weaker sides, and knock out 11.",
+    "The 37th Tank Battalion is led by Lieutenant Colonel Creighton Abrams.",
+    "Overhead flies Major Charles Carpenter, in a Piper Cub armed with bazookas.",
+    "When the fog lifts, he dives on the Panthers, and is credited with two that day.",
+    "In a week of fighting, 86 of the German tanks and assault guns are destroyed, and 114 are damaged or broken down.",
+    "The combat command in their way loses 25 tanks and seven tank destroyers.",
+    "The better tank has lost to the better crews."
+   ],
+   "shots": [
+    {
+     "s": 1,
+     "film": "sh_panther",
+     "from": 188,
+     "to": 192,
+     "label": "LORRAINE · SEPTEMBER 1944"
+    },
+    {
+     "s": 2,
+     "film": "sh_panther",
+     "from": 155,
+     "to": 160
+    },
+    {
+     "s": 3,
+     "file": "Two knocked-out German Panzer V Panther tanks in Krinkelt, Belgium, 17 December 1944 (111-SC-198204).jpg"
+    },
+    {
+     "s": 4,
+     "film": "sh_rhino",
+     "from": 345,
+     "to": 348,
+     "stamp": [
+      "SEPTEMBER 19"
+     ]
+    },
+    {
+     "s": 5,
+     "film": "sh_panther",
+     "from": 180,
+     "to": 185
+    },
+    {
+     "s": 6,
+     "film": "sh_rhino",
+     "from": 301,
+     "to": 303.5,
+     "note": "11 PANZERS"
+    },
+    {
+     "s": 7,
+     "file": "Creighton William Abrams Jr. - Cadet Photo.jpg",
+     "card": true,
+     "name": "CREIGHTON ABRAMS",
+     "role": "COMMANDER, 37TH TANK BATTALION"
+    },
+    {
+     "s": 8,
+     "film": "sh_rhino",
+     "from": 377,
+     "to": 381
+    },
+    {
+     "s": 9,
+     "film": "sh_panther",
+     "from": 166,
+     "to": 171
+    },
+    {
+     "s": 10,
+     "file": "Five damaged German Panzer V Panthers and two U.S. M4A3 Shermans near Guébling, Moselle, France, 25 November 1944 (111-SC-197160).jpg",
+     "note": "86 DESTROYED"
+    },
+    {
+     "s": 11,
+     "file": "M4 Abrams.jpg"
+    },
+    {
+     "s": 12,
+     "file": "Five damaged German Panzer V Panthers and two U.S. M4A3 Shermans near Guébling, Moselle, France, 25 November 1944 (111-SC-197160).jpg",
+     "zoom": 1.5,
+     "x": 0.7,
+     "y": 0.55
+    }
+   ],
+   "beats": [
+    {
+     "after": 7,
+     "quote": {
+      "text": "I'm supposed to be the best tank commander in the Army, but I have one peer—Abe Abrams. He's the world champion.",
+      "name": "GEORGE S. PATTON",
+      "role": "ON CREIGHTON ABRAMS"
+     },
+     "shots": [
+      {
+       "dur": 8.0,
+       "film": "sh_tunis",
+       "from": 297.3,
+       "to": 301.3
+      }
+     ]
+    },
+    {
+     "after": 11,
+     "shots": [
+      {
+       "dur": 3.0,
+       "film": "sh_panther",
+       "from": 135,
+       "to": 138.0,
+       "sfx": "explosion_far"
+      },
+      {
+       "dur": 3.0,
+       "film": "sh_panther",
+       "from": 118,
+       "to": 121.0,
+       "sfx": "low_rumble"
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "title": "First in Bastogne",
+   "mode": "action",
+   "stamp": [
+    "BASTOGNE"
+   ],
+   "sentences": [
+    "But in December 1944, Bastogne is surrounded by the Germans, with the 101st Airborne Division inside.",
+    "Abrams and his battalion fight their way toward it.",
+    "One of their tanks is a Jumbo, a Sherman with very thick armor, and only 254 of them are made.",
+    "The crew call it Cobra King.",
+    "On 26 December, at 4:50 in the afternoon, it is the first tank to reach the lines of the defenders.",
+    "The siege is over.",
+    "In early January, west of the town, the 761st Tank Battalion attacks Tillet.",
+    "Its men are Black, and they are not permitted to serve in the same units as white troops.",
+    "Their motto is: Come out fighting.",
+    "They go in with 11 tanks, and lose nine, but after two days the town is taken.",
+    "They are in action for 183 days.",
+    "That same month, Eisenhower asks that no more Shermans with the old 75-millimeter gun be sent to Europe.",
+    "After the Battle of the Bulge, it is no longer enough."
+   ],
+   "shots": [
+    {
+     "s": 1,
+     "film": "sh_snow",
+     "from": 66,
+     "to": 72
+    },
+    {
+     "s": 2,
+     "map": {
+      "places": [
+       {
+        "label": "ARRACOURT",
+        "lat": 48.73,
+        "lon": 6.53,
+        "side": "blue"
+       },
+       {
+        "label": "BASTOGNE",
+        "lat": 50.0,
+        "lon": 5.72,
+        "side": "red"
+       },
+       {
+        "label": "COLOGNE",
+        "lat": 50.94,
+        "lon": 6.96,
+        "side": "red"
+       }
+      ],
+      "routes": [
+       [
+        0,
+        1,
+        "blue",
+        0.2
+       ]
+      ],
+      "pad": 0.6
+     }
+    },
+    {
+     "s": 3,
+     "file": "1944 Cobra King first in Bastogne.jpg",
+     "note": "254 JUMBOS"
+    },
+    {
+     "s": 4,
+     "file": "Cobra King, first tank in Bastogne.jpg",
+     "zoom": 1.3,
+     "x": 0.55,
+     "y": 0.45,
+     "label": "COBRA KING · DECEMBER 1944"
+    },
+    {
+     "s": 5,
+     "film": "sh_snow",
+     "from": 42,
+     "to": 47,
+     "stamp": [
+      "4:50 P.M."
+     ]
+    },
+    {
+     "s": 6,
+     "file": "Cobra King, first tank in Bastogne.jpg"
+    },
+    {
+     "s": 7,
+     "film": "sh_snow",
+     "from": 48,
+     "to": 51,
+     "label": "TILLET · JANUARY 1945"
+    },
+    {
+     "s": 8,
+     "file": "US 761st Tank Battalion - Black Panther.jpg",
+     "card": true
+    },
+    {
+     "s": 9,
+     "file": "US 761st Tank Battalion - Black Panther.jpg",
+     "card": true,
+     "zoom": 1.2
+    },
+    {
+     "s": 10,
+     "film": "sh_snow",
+     "from": 60,
+     "to": 63,
+     "note": "9 OF 11 LOST"
+    },
+    {
+     "s": 11,
+     "film": "sh_snow",
+     "from": 29,
+     "to": 34
+    },
+    {
+     "s": 12,
+     "file": "Dwight D. Eisenhower, Omar N. Bradley, and George S. Patton.jpg",
+     "zoom": 1.3
+    },
+    {
+     "s": 12,
+     "film": "sh_mods",
+     "from": 746.5,
+     "to": 749.5
+    },
+    {
+     "s": 13,
+     "film": "sh_mods",
+     "from": 762,
+     "to": 766
+    },
+    {
+     "s": 13,
+     "film": "sh_snow",
+     "from": 88,
+     "to": 93
+    }
+   ],
+   "beats": [
+    {
+     "after": 6,
+     "shots": [
+      {
+       "dur": 3.0,
+       "film": "sh_snow",
+       "from": 74,
+       "to": 77.0,
+       "sfx": "low_rumble"
+      },
+      {
+       "dur": 3.0,
+       "film": "sh_snow",
+       "from": 92,
+       "to": 95.0
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "title": "Cologne",
+   "mode": "action",
+   "stamp": [
+    "6 MARCH 1945"
+   ],
+   "sentences": [
+    "But on 6 March 1945, the Panther in front of Cologne Cathedral does not know what is in the next street.",
+    "It is one of the new tanks that McNair had refused, a Pershing named Eagle 7.",
+    "Its gunner is Corporal Clarence Smoyer.",
+    "He expects to see the Panther's side, but its gun is already turning toward him.",
+    "Smoyer fires on the move, then the tank stops, and he fires twice more.",
+    "All three shells go through.",
+    "A Signal Corps cameraman, Sergeant Jim Bates, records it all.",
+    "But only a small number of Pershings see combat in Europe.",
+    "The tank of the Western Allies is still the Sherman.",
+    "By 1945, it is not the strongest tank on the battlefield.",
+    "But it is reliable, it is quickly repaired, and there are always more of them.",
+    "It fights on in Korea, and in other people's wars.",
+    "Death trap, or war winner?",
+    "To the generals it was a number, and the number was enough, but for the five men inside, it was the only tank they had."
+   ],
+   "shots": [
+    {
+     "s": 1,
+     "film": "sh_cologne",
+     "from": 147,
+     "to": 152
+    },
+    {
+     "s": 2,
+     "file": "M26Cologne.jpg",
+     "label": "COLOGNE · 6 MARCH 1945"
+    },
+    {
+     "s": 3,
+     "file": "M26Cologne.jpg",
+     "zoom": 1.4,
+     "y": 0.75
+    },
+    {
+     "s": 4,
+     "film": "sh_cologne",
+     "from": 64,
+     "to": 66
+    },
+    {
+     "s": 5,
+     "film": "sh_cologne",
+     "from": 42,
+     "to": 46,
+     "sfx": "explosion_far"
+    },
+    {
+     "s": 6,
+     "film": "sh_cologne",
+     "from": 73,
+     "to": 76,
+     "note": "THREE SHELLS"
+    },
+    {
+     "s": 7,
+     "file": "Burning German Panzer V Panther in front of Köln Cathedral, 6 March 1945 (342-FH-3A21086-B56707AC).jpg"
+    },
+    {
+     "s": 8,
+     "file": "M26-Pershing-Vettweiss-194503.jpg"
+    },
+    {
+     "s": 9,
+     "film": "sh_cologne",
+     "from": 8,
+     "to": 12
+    },
+    {
+     "s": 10,
+     "file": "Sherman Arlene III.jpg"
+    },
+    {
+     "s": 11,
+     "film": "sh_mods",
+     "from": 786,
+     "to": 791
+    },
+    {
+     "s": 12,
+     "file": "Korea – Tanks - DPLA - e36f8de727b23f5c10863e84614a4a30 (page 1).jpg",
+     "trim": [
+      0.06,
+      0.06,
+      0.06,
+      0.06
+     ],
+     "label": "KOREA"
+    },
+    {
+     "s": 13,
+     "film": "sh_rhino",
+     "from": 3,
+     "to": 7
+    },
+    {
+     "s": 14,
+     "film": "sh_cologne",
+     "from": 33,
+     "to": 36
+    },
+    {
+     "s": 14,
+     "film": "sh_cologne",
+     "from": 16.2,
+     "to": 19.2
+    }
+   ],
+   "beats": [
+    {
+     "after": 7,
+     "shots": [
+      {
+       "dur": 3.4,
+       "film": "sh_cologne",
+       "from": 75,
+       "to": 78.4,
+       "sfx": "explosion_massive"
+      },
+      {
+       "dur": 2.6,
+       "film": "sh_cologne",
+       "from": 96,
+       "to": 98.6
+      }
+     ]
+    }
+   ]
+  }
+ ]
+}

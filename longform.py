@@ -606,7 +606,7 @@ def portraits(d, shots):
             w, h = Image.open(sh["path"]).size
         except Exception:
             continue
-        if not sh.get("reveal") and h >= w * 1.05 and sh["dur"] >= 3.0:
+        if not (sh.get("reveal") or sh.get("whole") or sh.get("card")) and h >= w * 1.05 and sh["dur"] >= 3.0:
             sh["reveal"] = [0.62, 0.22]
     for sh in shots:                                   # the same portrait elsewhere (its closer crop too): coloured too
         if sh["kind"] == "photo" and str(sh.get("path")) in done:

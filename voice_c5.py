@@ -64,9 +64,18 @@ def unabbreviate(text):
     return re.sub(r"(?<![\w-])([A-Z])\.\s+(?=[A-Z][a-z]|[A-Z]\.)", r"\1 ", t)  # initials: 'J. Smith' -> 'J Smith'
 
 
+def ordinal(n):
+    """3 -> third, 37 -> thirty-seventh, 101 -> hundred and first (Sherman, Nov 24)."""
+    import shorts as S
+    if n % 100 == 0:
+        return S.spell_num(n) + "th"
+    return (S.spell_num(n // 100) + " hundred and " if n > 100 else "") + S.say_ordinal(n % 100)
+
+
 def spoken(text):
     """What the model must hear: no dotted shortenings, years, dates and every other number as words."""
     import shorts as S
+    text = re.sub(r"\b(\d{1,3})(?:st|nd|rd|th)\b", lambda m: ordinal(int(m.group(1))), text)   # 101st: not 'one hundred onest'
     t = S.kokoro_say(unabbreviate(text))                          # '1944' -> 'nineteen forty four', '6 August' -> 'the sixth of August'
     t = re.sub(r"(\d+)\s*%", r"\1 percent", t)
     t = re.sub(r"\b(\d{1,2}):(\d\d)\b", lambda m: S.spell_num(int(m.group(1))) + (

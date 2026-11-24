@@ -457,6 +457,12 @@ STORY = {
  "cover": {"file": STLO, "x": 0.5, "y": 0.45, "zoom": 1.0, "color": False,
            "text": ["HISTORY OF", "THE KAMIKAZE", "IN {N} MINUTES"], "key": ["KAMIKAZE"], "sizes": [96, 150, 96],
            "mono": True},
+ # Andrii, Nov 24: 2 covers for YouTube's Test & compare against the template (words = facts of the story)
+ "thumbs_test": [
+  {"style": "photo", "file": PUPPY, "x": 0.5, "y": 0.5, "color": False, "mono": True, "text": ["ORDERED TO DIE?"],
+   "key": ["ORDERED"], "sizes": [150], "note": "Seki: 'I am going because I was ordered to.'"},
+  {"style": "photo", "file": STLO, "x": 0.5, "y": 0.45, "color": False, "mono": True, "text": ["ONE PLANE", "SANK THIS SHIP"],
+   "key": ["ONE"], "sizes": [150, 96], "note": "St. Lo: sunk after one Zero's hit"}],
  "promos": [
   {"id": "kamikaze_missouri", "chapter": 7,
    "sentences": ["A kamikaze crashes into the battleship Missouri.",
