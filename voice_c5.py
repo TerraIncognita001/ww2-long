@@ -111,10 +111,17 @@ def generate(text, seed, out):
                 data = r.read()
             break
         except urllib.error.HTTPError as e:
-            body = e.read()[:300].decode("utf-8", "replace")
+            body = e.read()[:300].decode("utf-8", "replace").encode("ascii", "replace").decode()   # cp1252 console
             print(f"  voice server HTTP {e.code} (try {k + 1}/4): {body[:160]}")
             if "memory" in body or "mid-generation" in body:
-                if k >= 1:                             # out of GPU memory twice: the phrase is too long for 8 GB
+                if k == 0:                             # Nov 23: CUDA out of memory = the sidecar kept 5.7 GB: unload
+                    try:                               # the model (it reloads on the next request) and try again
+                        urllib.request.urlopen(urllib.request.Request(
+                            URL + "/system/flush-memory?unload_model=true", method="POST"), timeout=120).read()
+                        print("  voice server: model unloaded to free the GPU")
+                    except Exception as fe:
+                        print("  voice server: flush failed", type(fe).__name__)
+                elif k >= 1:                           # out of GPU memory twice: the phrase is too long for 8 GB
                     raise MemoryError(text[:60])
             elif k == 3:
                 raise
@@ -155,13 +162,21 @@ def phrase_wav(text):
     best = None
     for seed in SEEDS:
         key = hashlib.sha1(json.dumps([text, seed, VOICE, *map(str, VOICES[VOICE]), 20, "raw"]).encode()).hexdigest()[:16]
-        wav = generate(text, seed, CACHE / f"{key}.wav")
+        try:
+            wav = generate(text, seed, CACHE / f"{key}.wav")
+        except MemoryError:                            # Nov 23: a SHORT phrase that stops mid-generation is the
+            if len(text) > 120:                        # seed, not the GPU: try the next seed (a long one is halved)
+                raise
+            print(f"  c5: seed {seed} stopped mid-generation, next seed: {text[:60]}")
+            continue
         r = score(heard(wav), text)
         if best is None or r > best[0]:
             best = (r, wav, seed)
         if r >= GOOD:
             break
         print(f"  c5: seed {seed} said something else ({r:.2f}): {text[:60]}")
+    if best is None:
+        raise MemoryError(text[:60])
     if best[0] < GOOD:
         print(f"  c5: kept seed {best[2]} ({best[0]:.2f}) for: {text[:70]}")
     return best[1]
