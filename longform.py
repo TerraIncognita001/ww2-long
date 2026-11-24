@@ -890,9 +890,18 @@ def cut_recording(d, p, name):
     src = (d.get("period_audio") or {}).get(a.get("src")) or {}
     try:
         raw = W / ("period_" + re.sub(r"[^A-Za-z0-9._-]+", "_", src["file"]))
-        if not raw.exists():
+        keep = pathlib.Path(__file__).resolve().parent / "period" / raw.name   # the repo's copy (public domain)
+        if not raw.exists() and keep.exists():          # Kamikaze, Nov 24: Commons answered 429 on the runner and
+            raw.write_bytes(keep.read_bytes())          # the video went up without Hirohito's words
+        for k in range(4):
+            if raw.exists():
+                break
             r = requests.get(src.get("url") or "https://commons.wikimedia.org/wiki/Special:FilePath/"   # url: NARA/IA
                              + requests.utils.quote(src["file"].replace(" ", "_")), headers=S.UA, timeout=300)
+            if r.status_code == 429 and k < 3:          # too many requests: wait and try again
+                print(f"period audio: 429, retry in {30 * (k + 1)} s")
+                __import__("time").sleep(30 * (k + 1))
+                continue
             r.raise_for_status()
             raw.write_bytes(r.content)
         cut = W / f"{name}.mp3"
@@ -908,6 +917,8 @@ def cut_recording(d, p, name):
         return True
     except Exception as e:
         print("period audio failed:", a, type(e).__name__, str(e)[:100])
+        if not S.DRY_RUN and not env("L_AUTO"):        # VIDEO STANDARDS 2: a hand story never goes out
+            raise SystemExit("period audio missing: the video is NOT made (speech rule)")   # without its speech
         return False
 
 
