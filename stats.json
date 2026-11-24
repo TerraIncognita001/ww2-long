@@ -399,6 +399,42 @@
    "title": "The Destroyer That Survived Six Kamikazes",
    "seconds": 14.3,
    "publish_at": "2026-11-26T00:00:00Z"
+  },
+  {
+   "id": "sQVkPRM2Qq4",
+   "date": "2026-11-24",
+   "format": "long",
+   "title": "The ENTIRE History of the Sherman Tank in 13 Minutes",
+   "topic": "M4 Sherman",
+   "seconds": 824.4,
+   "words": 1962,
+   "tts": "edge",
+   "release": "2026-11-27T21:00:00Z",
+   "thumb": "ok",
+   "comment_due": {
+    "at": "2026-11-27T21:00:00Z",
+    "q": "The Sherman: death trap, or the tank that won the war?"
+   }
+  },
+  {
+   "id": "5aDQ_uzKzyU",
+   "date": "2026-11-24",
+   "format": "short",
+   "promo": true,
+   "long": "sQVkPRM2Qq4",
+   "title": "29 Sherman Tanks Tried to Swim to Omaha Beach",
+   "seconds": 13.9,
+   "publish_at": "2026-11-27T21:30:00Z"
+  },
+  {
+   "id": "41StPvCm2uY",
+   "date": "2026-11-24",
+   "format": "short",
+   "promo": true,
+   "long": "sQVkPRM2Qq4",
+   "title": "The Sherman Gunner Who Destroyed Three Tigers",
+   "seconds": 13.7,
+   "publish_at": "2026-11-28T00:00:00Z"
   }
  ],
  "metrics": {},
