@@ -310,11 +310,7 @@
    "words": 1529,
    "tts": "edge",
    "release": "2026-11-23T21:00:00Z",
-   "thumb": "ok",
-   "comment_due": {
-    "at": "2026-11-23T21:00:00Z",
-    "q": "Could the U-boats have won the war for Germany if Dönitz had his 300 boats in 1939?"
-   }
+   "thumb": "ok"
   },
   {
    "id": "PH1XYaRbrsM",
@@ -335,6 +331,42 @@
    "title": "The U-boat Admiral Who Lost His Own Son",
    "seconds": 14.5,
    "publish_at": "2026-11-24T00:00:00Z"
+  },
+  {
+   "id": "LC3f39BXIK8",
+   "date": "2026-11-24",
+   "format": "long",
+   "title": "The ENTIRE History of the Kamikaze in 11 Minutes",
+   "topic": "Kamikaze",
+   "seconds": 690.5,
+   "words": 1609,
+   "tts": "edge",
+   "release": "2026-11-25T21:00:00Z",
+   "thumb": "ok",
+   "comment_due": {
+    "at": "2026-11-25T21:00:00Z",
+    "q": "Were the kamikaze pilots heroes, victims, or both?"
+   }
+  },
+  {
+   "id": "aKZ-u7boTNs",
+   "date": "2026-11-24",
+   "format": "short",
+   "promo": true,
+   "long": "LC3f39BXIK8",
+   "title": "The Kamikaze Pilot the USS Missouri Buried at Sea",
+   "seconds": 13.4,
+   "publish_at": "2026-11-25T21:30:00Z"
+  },
+  {
+   "id": "oYbYcempD-Q",
+   "date": "2026-11-24",
+   "format": "short",
+   "promo": true,
+   "long": "LC3f39BXIK8",
+   "title": "The Destroyer That Survived Six Kamikazes",
+   "seconds": 14.3,
+   "publish_at": "2026-11-26T00:00:00Z"
   }
  ],
  "metrics": {},
