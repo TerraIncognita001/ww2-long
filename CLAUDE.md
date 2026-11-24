@@ -12,6 +12,17 @@ Base: the Shorts bot `ww2-bot` (Classified 1945), its CLAUDE.md is the source of
 - 10-15 min videos, 3 a week (Mon/Wed/Fri, ~1,800-2,300 words, 5-7 chapters).
 - Style = MIX of jurgen + pastrak: the strongest moments of both (below).
 
+## THREE GENRES, TWO VIDEOS A DAY (Andrii, Nov 24) - HARD RULE (replaces Mon/Wed/Fri)
+- Releases every day at 21:00 and 02:00 LONDON (= 16:00 and 21:00 New York: workflow release_date = the NEW YORK day,
+  publish_ny 16:00 / 21:00; London's 02:00 is the New York evening BEFORE). Teasers +30 min / +3 h as before.
+- The genres take turns: 1 MACHINES (The Entire War: Sherman, Kamikaze, U-boats), 2 SEA DISASTERS (Wilhelm Gustloff, Operation
+  Deadlight), 3 TRIALS AND POST-WAR SECRETS (Goering and his psychiatrist Kelley, the Ratlines).
+- The voice, the NEW FORMAT (Nov 23) and the video standards stay. Genres 2 and 3 tell ONE STORY: named title, `format`
+  other than 'entire', the cover = the house photo + name + one fact.
+- The plan's hooks (pasted, from an outside chat) are ideas, NOT facts: every claim is checked against the articles first.
+- Plan: Tue 24.11 Sherman (out) | Wed 25.11 21:00 Kamikaze | Thu 26.11 02:00 Wilhelm Gustloff | then genre 3 (Kelley and
+  Goering), genre 1, genre 2 (Deadlight), genre 3 (Ratlines) ...
+
 ## What we take from each format
 | From | Kept |
 |---|---|
