@@ -467,6 +467,42 @@
    "title": "373 Women in the Pool of the Wilhelm Gustloff",
    "seconds": 13.0,
    "publish_at": "2026-11-26T05:00:00Z"
+  },
+  {
+   "id": "nVIHiCFlExM",
+   "date": "2026-11-25",
+   "format": "long",
+   "title": "Göring and His Psychiatrist: Two Men Who Died of the Same Poison",
+   "topic": "Douglas Kelley",
+   "seconds": 602.8,
+   "words": 1483,
+   "tts": "edge",
+   "release": "2026-11-26T21:00:00Z",
+   "thumb": "ok",
+   "comment_due": {
+    "at": "2026-11-26T21:00:00Z",
+    "q": "Kelley found no Nazi illness, only ordinary men. Was he right?"
+   }
+  },
+  {
+   "id": "qEfbHsKXK3A",
+   "date": "2026-11-25",
+   "format": "short",
+   "promo": true,
+   "long": "nVIHiCFlExM",
+   "title": "The Psychiatrist Who Studied 22 Nazi Leaders",
+   "seconds": 13.5,
+   "publish_at": "2026-11-26T21:30:00Z"
+  },
+  {
+   "id": "hnqROSqvE08",
+   "date": "2026-11-25",
+   "format": "short",
+   "promo": true,
+   "long": "nVIHiCFlExM",
+   "title": "Göring's Last Secret at Nuremberg",
+   "seconds": 11.4,
+   "publish_at": "2026-11-27T00:00:00Z"
   }
  ],
  "metrics": {},
