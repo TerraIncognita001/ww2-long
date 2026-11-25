@@ -410,11 +410,7 @@
    "words": 1962,
    "tts": "edge",
    "release": "2026-11-24T21:46:00Z",
-   "thumb": "ok",
-   "comment_due": {
-    "at": "2026-11-24T21:46:00Z",
-    "q": "The Sherman: death trap, or the tank that won the war?"
-   }
+   "thumb": "ok"
   },
   {
    "id": "5aDQ_uzKzyU",
@@ -435,6 +431,42 @@
    "title": "The Sherman Gunner Who Destroyed Three Tigers",
    "seconds": 13.7,
    "publish_at": "2026-11-24T21:46:00Z"
+  },
+  {
+   "id": "BO7cp6KvmCg",
+   "date": "2026-11-25",
+   "format": "long",
+   "title": "Wilhelm Gustloff: The Deadliest Sinking in History, and Who Was to Blame",
+   "topic": "MV Wilhelm Gustloff",
+   "seconds": 747.6,
+   "words": 1809,
+   "tts": "edge",
+   "release": "2026-11-26T02:00:00Z",
+   "thumb": "ok",
+   "comment_due": {
+    "at": "2026-11-26T02:00:00Z",
+    "q": "The Wilhelm Gustloff: whose fault was it, Petersen's lights, Marinesko's torpedoes, or Koch's orders?"
+   }
+  },
+  {
+   "id": "3nQBcFZXdWY",
+   "date": "2026-11-25",
+   "format": "short",
+   "promo": true,
+   "long": "BO7cp6KvmCg",
+   "title": "Four Captains, One Doomed Ship: the Wilhelm Gustloff",
+   "seconds": 12.0,
+   "publish_at": "2026-11-26T02:30:00Z"
+  },
+  {
+   "id": "3Sbit0Nx0V8",
+   "date": "2026-11-25",
+   "format": "short",
+   "promo": true,
+   "long": "BO7cp6KvmCg",
+   "title": "373 Women in the Pool of the Wilhelm Gustloff",
+   "seconds": 13.0,
+   "publish_at": "2026-11-26T05:00:00Z"
   }
  ],
  "metrics": {},
