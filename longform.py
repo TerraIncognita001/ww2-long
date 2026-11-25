@@ -248,6 +248,9 @@ def ready_story():
 # ---- media ----------------------------------------------------------------------------------------------
 def commons_photo(name):
     """A hand-picked Commons file at up to 2400 px (16:9 at 1080p needs ~1900) -> (path, credit) or None."""
+    if str(name).startswith("pics/"):                  # a picture kept in the repo (a Commons file, upscaled) + .credit
+        own = pathlib.Path(__file__).resolve().parent / str(name)
+        return own, own.with_name(own.name + ".credit").read_text(encoding="utf-8")
     name = str(name).replace(" ", "_")
     PHOTOS.mkdir(parents=True, exist_ok=True)
     out = PHOTOS / (re.sub(r"[^A-Za-z0-9._-]+", "_", name)[:120] + ".jpg")

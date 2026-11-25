@@ -18,8 +18,8 @@ HOSP_BEDS = 'Bundesarchiv Bild 183-L12208, Lazarettschiff "Wilhelm Gustloff".jpg
 OSLO = 'Bundesarchiv Bild 121-0665, Oslo, "Wilhelm Gustloff".jpg'
 MAN = "Wilhelm-Gustloff.jpg"
 FELDPOST = "Feldpost 6 1945.png"
-STAMP_M = "RUSMARKA-1926.jpg"
-STAMP_S13 = "Russian stamp 304 S-13 1996.jpg"
+STAMP_M = "pics/stamp_moldova_marinescu.jpg"
+S33 = "S-33 at sea.jpg"
 UKAZ = "Указ Президента СССР о присвоении звания Героя Советского Союза.png"
 CREW = "Shch-402's crew (1942).jpg"
 S54 = "Soviet submarine S-54 in 1942.jpg"
@@ -78,7 +78,7 @@ C = [
    film(1, "wg_752", 230.9, 3, stamp=["BALTIC SEA"]),
    film(1, "wg_752", 219.5, 4),
    film(2, "wg_752", 215.9, 3.4, note="10,000 ON BOARD"),
-   pic(3, STAMP_M, zoom=1.5, x=0.5, y=0.45, name="ALEXANDER MARINESKO", role="CAPTAIN, SUBMARINE S-13"),
+   pic(3, STAMP_M, card=True, name="ALEXANDER MARINESKO", role="CAPTAIN, SUBMARINE S-13"),
    film(4, "wg_752", 261.8, 2.2),
    film(4, "wg_ship", 1253, 4),
    film(5, "wg_ship", 208, 6)],
@@ -267,7 +267,7 @@ C = [
    pic(3, M1, label="SOVIET M-CLASS SUBMARINE"),
    pic(4, CREW, x=0.4, label="A SOVIET SUBMARINE CREW · 1942"),
    pic(5, CREW, zoom=1.5, x=0.7, y=0.55),
-   pic(6, STAMP_S13, card=True, note="S-13"),
+   pic(6, S33, x=0.5, y=0.45, label="SOVIET S-CLASS SUBMARINE · 1942"),
    pic(7, S55, trim=[0, 0.12, 0, 0.1]),
    pic(8, S54, trim=[0, 0.12, 0, 0.12]),
    film(9, "wg_639", 182, 2),
@@ -386,7 +386,7 @@ C = [
   "shots": [
    pic(1, S54, zoom=1.5, x=0.6, y=0.45, trim=[0, 0.12, 0, 0.12]),
    pic(2, S54B, zoom=1.4, x=0.6, y=0.5),
-   pic(3, STAMP_S13, zoom=1.3, x=0.4),
+   pic(3, S33, zoom=1.35, x=0.45, y=0.5),
    film(4, "wg_639", 188, 1),
    film(4, "wg_639", 255, 2),
    film(5, "menace", 64, 4),
@@ -483,7 +483,7 @@ STORY = {
              "credit": "Adolf Hitler, radio address, 30 January 1945 (Internet Archive, public domain mark)",
              "text": "Ich erwarte von allen Frauen und Mädchen, dass sie diesen Kampf mit äußerstem Fanatismus unterstützen."}},
  "pre": [{"dur": 2.8, "film": "wg_ship", "from": 1256, "to": 1259, "stamp": ["JANUARY 30", "1945"], "sfx": "explosion_massive"}],
- "whole": [STAMP_M, STAMP_S13, UKAZ],
+ "whole": [STAMP_M, UKAZ],
  "tone": [MAN, DOENITZ],
  "thumb": {"file": DANZIG},
  "cover": {"file": DANZIG, "x": 0.5, "y": 0.0, "zoom": 1.0, "color": False, "mono": True, "sizes": [120, 90],
