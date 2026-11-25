@@ -441,12 +441,8 @@
    "seconds": 747.6,
    "words": 1809,
    "tts": "edge",
-   "release": "2026-11-26T02:00:00Z",
    "thumb": "ok",
-   "comment_due": {
-    "at": "2026-11-26T02:00:00Z",
-    "q": "The Wilhelm Gustloff: whose fault was it, Petersen's lights, Marinesko's torpedoes, or Koch's orders?"
-   }
+   "held": "Andrii, Nov 23: taken out of the queue (private, not deleted)"
   },
   {
    "id": "3nQBcFZXdWY",
@@ -456,7 +452,7 @@
    "long": "BO7cp6KvmCg",
    "title": "Four Captains, One Doomed Ship: the Wilhelm Gustloff",
    "seconds": 12.0,
-   "publish_at": "2026-11-26T02:30:00Z"
+   "held": "Andrii, Nov 23: taken out of the queue (private, not deleted)"
   },
   {
    "id": "3Sbit0Nx0V8",
@@ -466,7 +462,7 @@
    "long": "BO7cp6KvmCg",
    "title": "373 Women in the Pool of the Wilhelm Gustloff",
    "seconds": 13.0,
-   "publish_at": "2026-11-26T05:00:00Z"
+   "held": "Andrii, Nov 23: taken out of the queue (private, not deleted)"
   },
   {
    "id": "nVIHiCFlExM",
