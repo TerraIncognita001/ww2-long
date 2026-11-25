@@ -24,6 +24,9 @@ HESS = "Rudolf Hess at Nuremberg prison.jpg"
 RIBB = "Joachim von Ribbentrop in his cell Nuremberg Trials 1945.jpeg"
 BLOT = "Rorschach blot 08.jpg"
 BLOTS = "Rorschach inkblots.jpg"
+CELLS = "German War Crimes Trials. Nuernberg & Dachau - NARA - 292605.jpg"
+DOCK2 = "Nuremberg trials 28-1431M original.jpg"
+BLOT3, BLOT4 = "Rorschach blot 03.jpg", "Rorschach blot 04.jpg"
 PRISON = "Prison used to hold defendants at the Nuremberg trial.jpg"
 YARD = "Nazi war criminals and American guards in the exercise yard of Nuremberg prison.jpg"
 JACKSON = "Prosecutor Robert Jackson at Nuremberg Trials.jpg"
@@ -71,7 +74,7 @@ C = [
   "shots": [
    film(1, "kl_await", 438.6, 3, stamp=["NUREMBERG"]),
    film(1, "kl_press", 110.5, 5, name="HERMANN GÖRING", role="COMMANDER OF THE LUFTWAFFE"),
-   {"s": 2, "file": OBIT1, "x": 0.3, "y": 0.0, "zoom": 1.0, "card": True},
+   {"s": 2, "file": OBIT1, "trim": [0, 0, 0, 0.795], "card": True},
    pic(3, KELLEY, reveal=[0.62, 0.28], name="DOUGLAS KELLEY", role="U.S. ARMY PSYCHIATRIST"),
    pic(4, BLOT, card=True),
    film(5, "kl_loot", 208.3, 3.5)],
@@ -141,7 +144,7 @@ C = [
   "In all, he spends 80 to 90 hours in their company."],
   "shots": [
    film(1, "kl_await", 368, 4, label="NUREMBERG · 1945"),
-   pic(2, KELLEY, zoom=1.2, y=0.25),
+   pic(2, CELLS, y=0.45, note="MAJOR KELLEY"),
    film(3, "kl_await", 426.2, 2.6),
    pic(4, BLOTS, card=True),
    film(5, "kl_await", 422, 1.4),
@@ -206,7 +209,7 @@ C = [
    film(5, "kl_await", 453.8, 1.1),
    pic(6, LEY, zoom=1.4, y=0.2, note="THE ONLY ONE"),
    film(7, "kl_await", 442, 3),
-   pic(8, BLOTS, zoom=1.3, y=0.3),
+   pic(8, BLOT4),
    film(9, "kl_await", 390, 2.6),
    pic(10, GUARD, zoom=1.4, y=0.3, note="24 HOURS A DAY"),
    film(11, "kl_await", 468, 2.6),
@@ -268,7 +271,7 @@ C = [
    pic(9, DOCK, zoom=1.5, x=0.35, y=0.4),
    pic(10, STAND, y=0.4)],
   "beats": [quote(8, "They were simply creatures of their environment, as all humans are.",
-                  "DOUGLAS KELLEY", "22 CELLS IN NUREMBERG", {"dur": 4.8, "file": KELLEY, "zoom": 1.0, "card": True})]},
+                  "DOUGLAS KELLEY", "22 CELLS IN NUREMBERG", {"dur": 4.8, "file": DOCK2, "zoom": 1.0, "y": 0.4})]},
 
  {"title": "His Guilt Is Unique", "mode": "people", "stamp": ["MARCH 1946"], "sentences": [
   "But in March 1946, Göring finally gets what he wants, and he is allowed to speak.",
@@ -348,20 +351,20 @@ C = [
   "He went to Nuremberg to find out what made them different, and he found almost nothing."],
   "shots": [
    pic(1, KELLEY, zoom=1.5, y=0.2),
-   pic(2, OBIT1, zoom=1.0, x=0.3, y=0.0, card=True),
+   pic(2, OBIT2, card=True),
    film(3, "kl_await", 387, 2.6),
-   pic(3, BLOT, zoom=1.6, x=0.4),
+   pic(3, BLOT3),
    film(4, "kl_await", 406.5, 4),
    film(5, "kl_loot", 102.5, 2),
    film(5, "kl_await", 430, 3),
    film(6, "kl_loot", 19.3, 2.6),
    film(7, "kl_await", 434.2, 2.2, note="1912 · 1958"),
-   pic(8, OBIT2, zoom=1.2, y=0.0),
+   pic(8, CELLS, zoom=1.5, x=0.75, y=0.5),
    film(9, "kl_await", 462.3, 1.7),
    pic(10, DOCK_UP, y=0.5),
    pic(11, BACKROW, zoom=1.4, x=0.4, y=0.5),
    film(11, "kl_await", 438.7, 3)],
-  "beats": [{"after": 7, "shots": [{"dur": 5.5, "file": OBIT1, "focus": [0.32, 0.005, 1.0, 0.085], "sfx": "typewriter"}]}]},
+  "beats": [{"after": 7, "shots": [{"dur": 5.5, "file": OBIT1, "trim": [0, 0, 0, 0.795], "focus": [0.32, 0.005, 1.0, 0.085], "sfx": "typewriter"}]}]},
 ]
 
 IA = "https://archive.org/download/"
@@ -412,7 +415,7 @@ STORY = {
  "pre": [{"dur": 2.8, "film": "kl_await", "from": 448.4, "to": 450.9, "stamp": ["OCTOBER 15", "1946"], "sfx": "low_rumble"}],
  "whole": [REPORT],
  "tone": [G_PORT, ANDRUS, KELLEY, LEY, STREICHER, HESS],
- "thumb": {"file": G_DOCK},
+ "thumb": {"file": G_HESS2},
  "cover": {"file": G_DOCK, "x": 0.5, "y": 0.0, "zoom": 1.0, "color": False, "mono": True, "sizes": [120, 90],
            "text": ["GÖRING", "ONE POISON, TWO MEN"], "key": ["GÖRING"], "note": "Göring 1946, Kelley 1958: potassium cyanide"},
  "promos": [

@@ -130,7 +130,7 @@
   "Rudolf Hess at Nuremberg prison.jpg"
  ],
  "thumb": {
-  "file": "Göring in the dock at the Nuremberg Trials (cropped).jpg"
+  "file": "Proces Neurenberg. Herman Goering en Rudolf Hess, Bestanddeelnr 901-1886.jpg"
  },
  "cover": {
   "file": "Göring in the dock at the Nuremberg Trials (cropped).jpg",
@@ -264,9 +264,12 @@
     {
      "s": 2,
      "file": "Douglas McGlashan Kelley (1912-1958) obituary in the Berkeley Daily Gazette of Berkeley, California, page 1.jpg",
-     "x": 0.3,
-     "y": 0.0,
-     "zoom": 1.0,
+     "trim": [
+      0,
+      0,
+      0,
+      0.795
+     ],
      "card": true
     },
     {
@@ -531,9 +534,9 @@
     },
     {
      "s": 2,
-     "file": "Douglas McGlashan Kelley (1912-1958) portrait.webp",
-     "zoom": 1.2,
-     "y": 0.25
+     "file": "German War Crimes Trials. Nuernberg & Dachau - NARA - 292605.jpg",
+     "y": 0.45,
+     "note": "MAJOR KELLEY"
     },
     {
      "s": 3,
@@ -813,9 +816,7 @@
     },
     {
      "s": 8,
-     "file": "Rorschach inkblots.jpg",
-     "zoom": 1.3,
-     "y": 0.3
+     "file": "Rorschach blot 04.jpg"
     },
     {
      "s": 9,
@@ -1067,9 +1068,9 @@
      "shots": [
       {
        "dur": 4.8,
-       "file": "Douglas McGlashan Kelley (1912-1958) portrait.webp",
+       "file": "Nuremberg trials 28-1431M original.jpg",
        "zoom": 1.0,
-       "card": true
+       "y": 0.4
       }
      ]
     }
@@ -1367,10 +1368,7 @@
     },
     {
      "s": 2,
-     "file": "Douglas McGlashan Kelley (1912-1958) obituary in the Berkeley Daily Gazette of Berkeley, California, page 1.jpg",
-     "zoom": 1.0,
-     "x": 0.3,
-     "y": 0.0,
+     "file": "Douglas McGlashan Kelley (1912-1958) obituary in the Berkeley Daily Gazette of Berkeley, California, page 2.jpg",
      "card": true
     },
     {
@@ -1381,9 +1379,7 @@
     },
     {
      "s": 3,
-     "file": "Rorschach blot 08.jpg",
-     "zoom": 1.6,
-     "x": 0.4
+     "file": "Rorschach blot 03.jpg"
     },
     {
      "s": 4,
@@ -1418,9 +1414,10 @@
     },
     {
      "s": 8,
-     "file": "Douglas McGlashan Kelley (1912-1958) obituary in the Berkeley Daily Gazette of Berkeley, California, page 2.jpg",
-     "zoom": 1.2,
-     "y": 0.0
+     "file": "German War Crimes Trials. Nuernberg & Dachau - NARA - 292605.jpg",
+     "zoom": 1.5,
+     "x": 0.75,
+     "y": 0.5
     },
     {
      "s": 9,
@@ -1454,6 +1451,12 @@
       {
        "dur": 5.5,
        "file": "Douglas McGlashan Kelley (1912-1958) obituary in the Berkeley Daily Gazette of Berkeley, California, page 1.jpg",
+       "trim": [
+        0,
+        0,
+        0,
+        0.795
+       ],
        "focus": [
         0.32,
         0.005,
