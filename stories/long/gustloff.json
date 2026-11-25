@@ -1,0 +1,1855 @@
+{
+ "priority": 10,
+ "format": "story",
+ "voice": "andrii",
+ "intro_beats": true,
+ "topic": "MV Wilhelm Gustloff",
+ "sources": [
+  "MV Wilhelm Gustloff",
+  "Alexander Marinesko",
+  "Soviet submarine S-13",
+  "Operation Hannibal",
+  "Evacuation of East Prussia",
+  "Wilhelm Gustloff",
+  "SS General von Steuben",
+  "MV Goya",
+  "Strength Through Joy",
+  "SS Cap Arcona",
+  "East Prussian offensive"
+ ],
+ "title": "Wilhelm Gustloff: The Deadliest Sinking in History, and Who Was to Blame",
+ "question": "The Wilhelm Gustloff: whose fault was it, Petersen's lights, Marinesko's torpedoes, or Koch's orders?",
+ "summary": "On 30 January 1945, the Soviet submarine S-13 sank the Wilhelm Gustloff in the Baltic Sea, a former Nazi cruise ship full of refugees from East Prussia. This is the story of the ship, the four captains who could not agree, the submarine captain awaiting his own trial, and the question of who was to blame.",
+ "tags": [
+  "Wilhelm Gustloff",
+  "deadliest shipwreck",
+  "Operation Hannibal",
+  "Alexander Marinesko",
+  "S-13 submarine",
+  "East Prussia 1945",
+  "sea disaster",
+  "Steuben",
+  "Goya",
+  "Baltic Sea",
+  "Titanic",
+  "Strength Through Joy",
+  "WW2 documentary",
+  "World War 2",
+  "history"
+ ],
+ "pronounce": {
+  "Wilhelm Gustloff": "Vill-helm Goost-loff",
+  "Gustloff": "Goost-loff",
+  "Wilhelm": "Vill-helm",
+  "Marinesko": "Mah-ree-ness-ko",
+  "Gotenhafen": "Goat-en-hah-fen",
+  "Löwe": "Lurr-veh",
+  "Zahn": "Tsahn",
+  "Schön's": "Shurns",
+  "Schön": "Shurn",
+  "Dönitz": "Durr-nits",
+  "Tributs": "Tree-boots",
+  "Lübbe": "Loo-beh",
+  "Steuben": "Shtoy-ben",
+  "Gauleiter": "Gow-lighter",
+  "Koch": "Kokh",
+  "Gdynia": "Guh-din-ya",
+  "Elbing": "El-bing",
+  "Grass": "Grahss",
+  "Günter": "Goon-ter",
+  "Reich": "Rike",
+  "Hansa": "Han-za",
+  "Morozov": "Mah-roh-zoff",
+  "Turku": "Toor-koo",
+  "Blohm and Voss": "Blome and Foss",
+  "T36": "T thirty-six",
+  "S-13": "S thirteen"
+ },
+ "films": {
+  "wg_ship": {
+   "url": "https://archive.org/download/1938-SchiffOhneKlassen-DieWilhelmGustloff/1938-SchiffOhneKlassen-DieWilhelmGustloff.avi",
+   "mono": true,
+   "crop": "464:261:86:20",
+   "credit": "Schiff ohne Klassen: Die Wilhelm Gustloff (1938) (via Internet Archive)"
+  },
+  "wg_752": {
+   "url": "https://archive.org/download/1945-02-17-Die-Deutsche-Wochenschau-752/1945-02-17-DieDeutscheWochenschauNr.75210m16s720x544.mkv",
+   "mono": true,
+   "crop": "690:388:15:75",
+   "credit": "Die Deutsche Wochenschau 752 (February 1945) (via Internet Archive)"
+  },
+  "wg_754": {
+   "url": "https://archive.org/download/1945-03-16-Die-Deutsche-Wochenschau-754/1945-03-16-DieDeutscheWochenschauNr.75413m18s720x544.mkv",
+   "mono": true,
+   "crop": "690:388:15:75",
+   "credit": "Die Deutsche Wochenschau 754 (March 1945) (via Internet Archive)"
+  },
+  "wg_751": {
+   "url": "https://archive.org/download/1945-02-10-Die-Deutsche-Wochenschau-751/1945-02-10-DieDeutscheWochenschauNr.75110m16s720x544.mkv",
+   "mono": true,
+   "crop": "690:388:15:75",
+   "credit": "Die Deutsche Wochenschau 751 (February 1945) (via Internet Archive)"
+  },
+  "wg_639": {
+   "url": "https://archive.org/download/1942-12-02-Die-Deutsche-Wochenschau-639/1942-12-02-DieDeutscheWochenschauNr.63918m26s720x544.mkv",
+   "mono": true,
+   "crop": "690:388:15:75",
+   "credit": "Die Deutsche Wochenschau 639 (December 1942) (via Internet Archive)"
+  },
+  "wg_silent": {
+   "url": "https://archive.org/download/NPC-3844/428-npc-3844%20Supplements%20Silent%20Service.mp4",
+   "mono": true,
+   "credit": "Supplements to 'Silent Service' (1945): US Navy / NARA 428-NPC-3844 (public domain, via Internet Archive)"
+  },
+  "wg_sub": {
+   "url": "https://archive.org/download/NPC-3641b/NPC-3641b.mov",
+   "mono": true,
+   "crop": "1008:567:136:0",
+   "credit": "Submarine scenes: US Navy / NARA 428-NPC-3641 (public domain, via Internet Archive)"
+  },
+  "menace": {
+   "url": "https://archive.org/download/1945-05-17_U-Boat_Menace_Ended/1945-05-17_U-Boat_Menace_Ended.mpeg",
+   "mono": true,
+   "crop": "688:344:16:68",
+   "credit": "U-Boat Menace Ended (17 May 1945): Universal Newsreel (public domain, via Internet Archive)"
+  }
+ },
+ "period_audio": {
+  "hitler": {
+   "file": "Hitler 30 January 1945.mp3",
+   "url": "https://archive.org/download/adolf-hitlers-last-speech_202205/period_excerpt_is_in_the_repo",
+   "speaker": "Adolf Hitler",
+   "date": "30 JANUARY 1945",
+   "credit": "Adolf Hitler, radio address, 30 January 1945 (Internet Archive, public domain mark)",
+   "text": "Ich erwarte von allen Frauen und Mädchen, dass sie diesen Kampf mit äußerstem Fanatismus unterstützen."
+  }
+ },
+ "pre": [
+  {
+   "dur": 2.8,
+   "film": "wg_ship",
+   "from": 1256,
+   "to": 1259,
+   "stamp": [
+    "JANUARY 30",
+    "1945"
+   ],
+   "sfx": "explosion_massive"
+  }
+ ],
+ "whole": [
+  "RUSMARKA-1926.jpg",
+  "Russian stamp 304 S-13 1996.jpg",
+  "Указ Президента СССР о присвоении звания Героя Советского Союза.png"
+ ],
+ "tone": [
+  "Wilhelm-Gustloff.jpg",
+  "Karl Dönitz.jpg"
+ ],
+ "thumb": {
+  "file": "Bundesarchiv Bild 183-H27992, Lazarettschiff \"Wilhelm Gustloff\" in Danzig.jpg"
+ },
+ "cover": {
+  "file": "Bundesarchiv Bild 183-H27992, Lazarettschiff \"Wilhelm Gustloff\" in Danzig.jpg",
+  "x": 0.5,
+  "y": 0.0,
+  "zoom": 1.0,
+  "color": false,
+  "mono": true,
+  "sizes": [
+   120,
+   90
+  ],
+  "text": [
+   "GUSTLOFF",
+   "DEADLIER THAN TITANIC"
+  ],
+  "key": [
+   "GUSTLOFF"
+  ],
+  "note": "even the lowest count of the dead is more than twice the Titanic's"
+ },
+ "promos": [
+  {
+   "id": "gustloff_lights",
+   "chapter": 5,
+   "sentences": [
+    "Four captains command one ship.",
+    "One is a submariner, and he wants no lights.",
+    "But her master does the opposite, and in the dark he turns on: the navigation lights."
+   ],
+   "shots": [
+    {
+     "s": 1,
+     "film": "wg_752",
+     "from": 232,
+     "to": 235
+    },
+    {
+     "s": 2,
+     "film": "wg_639",
+     "from": 112,
+     "to": 115
+    },
+    {
+     "s": 3,
+     "film": "wg_ship",
+     "from": 1254,
+     "to": 1259
+    }
+   ],
+   "top": "FOUR CAPTAINS|ONE SHIP",
+   "key": [
+    "CAPTAINS"
+   ],
+   "cta": {
+    "kind": "redacted",
+    "line": "IN THE DARK HE TURNED ON",
+    "hidden": "THE LIGHTS"
+   },
+   "end": "WHAT DID HE TURN ON?",
+   "name": "Four Captains, One Doomed Ship: the Wilhelm Gustloff"
+  },
+  {
+   "id": "gustloff_pool",
+   "chapter": 7,
+   "sentences": [
+    "373 women live in a ship's empty swimming pool.",
+    "A Soviet submarine follows in the dark.",
+    "A torpedo hits the pool, and these are the survivors: three."
+   ],
+   "shots": [
+    {
+     "s": 1,
+     "film": "wg_ship",
+     "from": 796,
+     "to": 799
+    },
+    {
+     "s": 2,
+     "film": "wg_silent",
+     "from": 84,
+     "to": 88
+    },
+    {
+     "s": 3,
+     "film": "wg_ship",
+     "from": 812,
+     "to": 816
+    }
+   ],
+   "top": "THE WOMEN|IN THE POOL",
+   "key": [
+    "POOL"
+   ],
+   "cta": {
+    "kind": "number",
+    "big": "373",
+    "line": "WOMEN. HOW MANY SURVIVED?"
+   },
+   "end": "HOW MANY SURVIVED?",
+   "name": "373 Women in the Pool of the Wilhelm Gustloff"
+  }
+ ],
+ "chapters": [
+  {
+   "title": "",
+   "mode": "action",
+   "sentences": [
+    "On 30 January 1945, in the Baltic Sea, three torpedoes hit the Wilhelm Gustloff, a ship full of people running from the war.",
+    "More than 10,000 may be on board, and 1,252 are rescued.",
+    "The man who fires is Alexander Marinesko, a Soviet captain who is waiting for his own trial.",
+    "This is the deadliest sinking of a single ship in history, and who is to blame for it?",
+    "It all begins with a ship built for holidays."
+   ],
+   "shots": [
+    {
+     "s": 1,
+     "film": "wg_752",
+     "from": 230.9,
+     "to": 233.9,
+     "stamp": [
+      "BALTIC SEA"
+     ]
+    },
+    {
+     "s": 1,
+     "film": "wg_752",
+     "from": 219.5,
+     "to": 223.5
+    },
+    {
+     "s": 2,
+     "film": "wg_752",
+     "from": 215.9,
+     "to": 219.3,
+     "note": "10,000 ON BOARD"
+    },
+    {
+     "s": 3,
+     "file": "RUSMARKA-1926.jpg",
+     "zoom": 1.5,
+     "x": 0.5,
+     "y": 0.45,
+     "name": "ALEXANDER MARINESKO",
+     "role": "CAPTAIN, SUBMARINE S-13"
+    },
+    {
+     "s": 4,
+     "film": "wg_752",
+     "from": 261.8,
+     "to": 264.0
+    },
+    {
+     "s": 4,
+     "film": "wg_ship",
+     "from": 1253,
+     "to": 1257
+    },
+    {
+     "s": 5,
+     "film": "wg_ship",
+     "from": 208,
+     "to": 214
+    }
+   ],
+   "beats": [
+    {
+     "after": 1,
+     "audio": {
+      "src": "hitler",
+      "from": 12.25,
+      "to": 19.95
+     },
+     "source": "ADOLF HITLER · RADIO, 30 JANUARY 1945 · 'I EXPECT ALL WOMEN AND GIRLS TO SUPPORT THIS FIGHT'",
+     "shots": [
+      {
+       "dur": 4.0,
+       "film": "wg_754",
+       "from": 308.6,
+       "to": 312,
+       "source": "ADOLF HITLER · RADIO, 30 JANUARY 1945 · 'I EXPECT ALL WOMEN AND GIRLS TO SUPPORT THIS FIGHT'"
+      },
+      {
+       "dur": 3.7,
+       "film": "wg_754",
+       "from": 319,
+       "to": 322,
+       "source": "ADOLF HITLER · RADIO, 30 JANUARY 1945 · 'I EXPECT ALL WOMEN AND GIRLS TO SUPPORT THIS FIGHT'"
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "title": "The Holiday Ship",
+   "mode": "people",
+   "stamp": [
+    "5 MAY 1937"
+   ],
+   "sentences": [
+    "But on 5 May 1937, the ship that is launched at Blohm and Voss is made to be loved.",
+    "She is the first cruise ship built for Strength Through Joy, the Nazi organization that gives workers their holidays.",
+    "There are concerts, sunny decks and a swimming pool.",
+    "Her real job is to show the world a more acceptable image of the Reich.",
+    "She is meant to be called the Adolf Hitler.",
+    "Then Wilhelm Gustloff, the leader of the Swiss Nazis, is shot dead by a Jewish student, David Frankfurter.",
+    "At the memorial service Hitler sits next to the widow, and the ship gets the dead man's name.",
+    "In April 1938, in a storm, the British freighter Pegaway is sinking, and it is the Gustloff that comes.",
+    "One by one, 19 men jump into the sea, and her lifeboat takes them all.",
+    "That same month she anchors off Tilbury, in England, as a floating polling station.",
+    "Germans and Austrians vote on board for the union of their countries: 1,968 for it, and ten against.",
+    "On the cruise to Madeira, her captain, Carl Lübbe, dies on the bridge of a heart attack.",
+    "First Officer Friedrich Petersen takes over, and he will be her captain again, on the last voyage.",
+    "By August 1939, she has carried over 80,000 people on 60 voyages."
+   ],
+   "shots": [
+    {
+     "s": 1,
+     "film": "wg_ship",
+     "from": 188,
+     "to": 194
+    },
+    {
+     "s": 2,
+     "film": "wg_ship",
+     "from": 603,
+     "to": 607
+    },
+    {
+     "s": 3,
+     "film": "wg_ship",
+     "from": 810,
+     "to": 815
+    },
+    {
+     "s": 4,
+     "file": "KdF-Schiff Wilhelm Gustloff 1938.jpg",
+     "label": "ABOARD THE WILHELM GUSTLOFF · 1938"
+    },
+    {
+     "s": 5,
+     "film": "wg_ship",
+     "from": 1242,
+     "to": 1247
+    },
+    {
+     "s": 6,
+     "file": "Wilhelm-Gustloff.jpg",
+     "reveal": [
+      0.6,
+      0.25
+     ],
+     "name": "WILHELM GUSTLOFF",
+     "role": "LEADER OF THE SWISS NAZI PARTY"
+    },
+    {
+     "s": 7,
+     "film": "wg_ship",
+     "from": 950.9,
+     "to": 956.9
+    },
+    {
+     "s": 8,
+     "film": "wg_639",
+     "from": 269.5,
+     "to": 273.0,
+     "sfx": "storm_wind"
+    },
+    {
+     "s": 9,
+     "film": "wg_639",
+     "from": 273,
+     "to": 276,
+     "note": "19 MEN SAVED"
+    },
+    {
+     "s": 10,
+     "film": "wg_ship",
+     "from": 211,
+     "to": 214.2
+    },
+    {
+     "s": 11,
+     "file": "Bundesarchiv Bild 121-0665, Oslo, \"Wilhelm Gustloff\".jpg"
+    },
+    {
+     "s": 12,
+     "film": "wg_ship",
+     "from": 147.9,
+     "to": 150.9,
+     "label": "1938"
+    },
+    {
+     "s": 13,
+     "film": "wg_ship",
+     "from": 250,
+     "to": 252.5
+    },
+    {
+     "s": 13,
+     "film": "wg_ship",
+     "from": 1239,
+     "to": 1242
+    },
+    {
+     "s": 14,
+     "film": "wg_ship",
+     "from": 824,
+     "to": 831,
+     "note": "80,000 PASSENGERS"
+    }
+   ]
+  },
+  {
+   "title": "Grey",
+   "mode": "people",
+   "stamp": [
+    "SEPTEMBER 1939"
+   ],
+   "sentences": [
+    "But in September 1939, the holidays are over, and the white ship becomes a hospital.",
+    "For a year she takes the wounded on board, with a green stripe along her side.",
+    "Then, in November 1940, the beds are carried off, and she is painted the grey of the navy.",
+    "She is tied up at Gdynia, a Polish port that the Germans have taken, and renamed Gotenhafen.",
+    "About 1,000 trainees live on her, the men of the Second Submarine Training Division.",
+    "They are learning how to sink ships.",
+    "In 1942, a film crew comes to the harbor.",
+    "The Nazis are making a movie about the Titanic, and another liner, the Cap Arcona, plays the doomed ship.",
+    "The submarine men are the extras.",
+    "They act in the most famous shipwreck in the world, and then they go back to their own ship.",
+    "The Gustloff lies at that pier for more than four years."
+   ],
+   "shots": [
+    {
+     "s": 1,
+     "file": "Bundesarchiv Bild 183-H27992, Lazarettschiff \"Wilhelm Gustloff\" in Danzig.jpg",
+     "label": "HOSPITAL SHIP · DANZIG 1939"
+    },
+    {
+     "s": 2,
+     "file": "Bundesarchiv Bild 183-L12208, Lazarettschiff \"Wilhelm Gustloff\".jpg"
+    },
+    {
+     "s": 3,
+     "file": "Bundesarchiv Bild 183-L05763, Lazarettschiff \"Wilhelm Gustloff\".jpg",
+     "y": 0.4
+    },
+    {
+     "s": 4,
+     "file": "Aerial reconnaissance photo of Gdynia, Poland, in June 1942 (NH 91655).jpg",
+     "label": "GOTENHAFEN · 1942"
+    },
+    {
+     "s": 5,
+     "film": "wg_639",
+     "from": 17.5,
+     "to": 19.5,
+     "note": "1,000 TRAINEES"
+    },
+    {
+     "s": 5,
+     "film": "wg_639",
+     "from": 236.8,
+     "to": 239.8
+    },
+    {
+     "s": 6,
+     "film": "wg_639",
+     "from": 26,
+     "to": 31
+    },
+    {
+     "s": 7,
+     "file": "Henryk Poddębski - Gdynia - port (131-D-1-4).jpg",
+     "trim": [
+      0,
+      0,
+      0,
+      0.03
+     ]
+    },
+    {
+     "s": 8,
+     "film": "wg_639",
+     "from": 157.8,
+     "to": 160.0
+    },
+    {
+     "s": 8,
+     "film": "wg_639",
+     "from": 152.4,
+     "to": 155.4
+    },
+    {
+     "s": 9,
+     "film": "wg_639",
+     "from": 240,
+     "to": 243
+    },
+    {
+     "s": 10,
+     "film": "wg_639",
+     "from": 246,
+     "to": 249.5
+    },
+    {
+     "s": 10,
+     "file": "Bundesarchiv Bild 183-L12212, Lazarettschiff \"Wilhelm Gustloff\".jpg",
+     "y": 0.35
+    },
+    {
+     "s": 11,
+     "file": "Bundesarchiv B 145 Bild-P094443, Stettin, \"Wilhelm Gustloff\" als Lazarettschiff.jpg"
+    }
+   ]
+  },
+  {
+   "title": "Over the Ice",
+   "mode": "action",
+   "stamp": [
+    "EAST PRUSSIA"
+   ],
+   "sentences": [
+    "But in January 1945, in East Prussia, it is already too late to leave.",
+    "The Red Army attacks on the 13th, and it comes fast.",
+    "Nazi propaganda has shown everyone what Soviet soldiers did in the village of Nemmersdorf.",
+    "Still, the man who rules here, Gauleiter Erich Koch, forbids the people to go.",
+    "Anyone who tries to flee without permission is to be shot.",
+    "He waits until 20 January.",
+    "Three days later, Soviet troops reach the coast near Elbing, and the land route to the west is cut.",
+    "There is one way left: over the frozen water of the Vistula Lagoon.",
+    "Long columns of wagons go out on the ice, most of them with women and children.",
+    "Soviet planes attack them.",
+    "Many wagons break through the ice where the bombs have fallen.",
+    "Thousands die on the way.",
+    "The others reach the harbors, Danzig and Gotenhafen, and look for a ship."
+   ],
+   "shots": [
+    {
+     "s": 1,
+     "film": "wg_754",
+     "from": 301.9,
+     "to": 305.4,
+     "label": "VISTULA LAGOON · 1945"
+    },
+    {
+     "s": 2,
+     "film": "wg_752",
+     "from": 197,
+     "to": 201
+    },
+    {
+     "s": 3,
+     "film": "wg_751",
+     "from": 137,
+     "to": 142
+    },
+    {
+     "s": 4,
+     "film": "wg_751",
+     "from": 148.8,
+     "to": 150.4
+    },
+    {
+     "s": 4,
+     "film": "wg_751",
+     "from": 153,
+     "to": 157
+    },
+    {
+     "s": 5,
+     "film": "wg_752",
+     "from": 192,
+     "to": 197
+    },
+    {
+     "s": 6,
+     "film": "wg_751",
+     "from": 142.7,
+     "to": 146.2
+    },
+    {
+     "s": 7,
+     "map": {
+      "places": [
+       {
+        "label": "KÖNIGSBERG",
+        "lat": 54.71,
+        "lon": 20.51,
+        "side": "blue"
+       },
+       {
+        "label": "ELBING",
+        "lat": 54.16,
+        "lon": 19.4,
+        "side": "red"
+       },
+       {
+        "label": "GOTENHAFEN",
+        "lat": 54.52,
+        "lon": 18.53,
+        "side": "blue"
+       }
+      ],
+      "routes": [
+       [
+        0,
+        2,
+        "blue",
+        0.12
+       ]
+      ],
+      "pad": 0.5
+     }
+    },
+    {
+     "s": 8,
+     "film": "wg_754",
+     "from": 295,
+     "to": 300
+    },
+    {
+     "s": 9,
+     "film": "wg_754",
+     "from": 311.7,
+     "to": 313.3
+    },
+    {
+     "s": 9,
+     "film": "wg_754",
+     "from": 314.7,
+     "to": 316.5
+    },
+    {
+     "s": 10,
+     "film": "wg_754",
+     "from": 306,
+     "to": 308,
+     "sfx": "explosion_far"
+    },
+    {
+     "s": 11,
+     "film": "wg_754",
+     "from": 303,
+     "to": 306
+    },
+    {
+     "s": 12,
+     "file": "Bundesarchiv Bild 146-1979-084-06, Flüchtlingstreck.jpg"
+    },
+    {
+     "s": 13,
+     "film": "wg_751",
+     "from": 165.9,
+     "to": 168.20000000000002
+    },
+    {
+     "s": 13,
+     "file": "Bundesarchiv Bild 175-S00-00326, Flüchtlinge aus Ostpreußen auf Pferdewagen.jpg"
+    }
+   ],
+   "beats": [
+    {
+     "after": 12,
+     "shots": [
+      {
+       "dur": 3.0,
+       "film": "wg_754",
+       "from": 316,
+       "to": 319.0,
+       "sfx": "storm_wind"
+      },
+      {
+       "dur": 3.2,
+       "film": "wg_754",
+       "from": 297,
+       "to": 300.2
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "title": "The Passengers",
+   "mode": "people",
+   "stamp": [
+    "GOTENHAFEN"
+   ],
+   "sentences": [
+    "But in Gotenhafen, the biggest hope is a ship that has not moved for four years.",
+    "On 23 January, Grand Admiral Karl Dönitz gives the order to evacuate by sea: Operation Hannibal.",
+    "The Gustloff has to go, and everyone wants to be on her.",
+    "There are 918 men of the training division, going to Kiel.",
+    "There are 373 women of the naval auxiliary, and they are lodged in the drained swimming pool.",
+    "There are wounded soldiers, Gestapo men, Nazi officials with their families, and thousands of refugees.",
+    "The lists say 6,050, but many people board without being on any list.",
+    "Heinz Schön is a member of the crew, and he will survive to count them.",
+    "After years of research, his number is 10,582.",
+    "The German documents say 4,922, and the argument goes on to this day.",
+    "Inside it is so hot and so full that people take off their life jackets, against orders.",
+    "At 12:30 in the afternoon of 30 January, she leaves.",
+    "It is the birthday of the man whose name is on her bow."
+   ],
+   "shots": [
+    {
+     "s": 1,
+     "file": "Aerial reconnaissance photo of Gdynia, Poland, in June 1942 (NH 91655).jpg",
+     "zoom": 1.5,
+     "x": 0.3,
+     "y": 0.6
+    },
+    {
+     "s": 2,
+     "file": "Karl Dönitz.jpg",
+     "reveal": [
+      0.25,
+      0.6
+     ],
+     "name": "KARL DÖNITZ",
+     "role": "GRAND ADMIRAL, GERMAN NAVY"
+    },
+    {
+     "s": 3,
+     "file": "Bundesarchiv Bild 146-1972-093-59, Pillau, Einschiffung von Flüchtlingen.jpg",
+     "label": "REFUGEES · 1945"
+    },
+    {
+     "s": 4,
+     "film": "wg_639",
+     "from": 203.9,
+     "to": 206.5,
+     "note": "918 SUBMARINERS"
+    },
+    {
+     "s": 5,
+     "file": "Bundesarchiv Bild 146-1988-107-05, KdF-Schiff \"Wilhelm Gustloff\", Schwimmbad.jpg",
+     "card": true,
+     "note": "373 WOMEN"
+    },
+    {
+     "s": 6,
+     "file": "Bundesarchiv Bild 183-L12211, Lazarettschiff \"Wilhelm Gustloff\".jpg"
+    },
+    {
+     "s": 6,
+     "film": "wg_751",
+     "from": 168.8,
+     "to": 171.0
+    },
+    {
+     "s": 7,
+     "film": "wg_751",
+     "from": 179,
+     "to": 183,
+     "note": "6,050?"
+    },
+    {
+     "s": 8,
+     "file": "Bundesarchiv Bild 146-1972-093-51, Pillau, Einschiffung von Flüchtlingen.jpg"
+    },
+    {
+     "s": 9,
+     "file": "Bundesarchiv Bild 146-1972-092-33, Flüchtlinge auf Schiff.jpg",
+     "note": "10,582?"
+    },
+    {
+     "s": 10,
+     "film": "wg_751",
+     "from": 182.9,
+     "to": 185.9,
+     "note": "4,922?"
+    },
+    {
+     "s": 11,
+     "film": "wg_ship",
+     "from": 262.9,
+     "to": 264.7
+    },
+    {
+     "s": 11,
+     "film": "wg_ship",
+     "from": 247,
+     "to": 249.5
+    },
+    {
+     "s": 12,
+     "film": "wg_752",
+     "from": 212.9,
+     "to": 214.9,
+     "stamp": [
+      "12:30 P.M."
+     ],
+     "sfx": "ov/ship_horn"
+    },
+    {
+     "s": 13,
+     "film": "wg_ship",
+     "from": 200.7,
+     "to": 202.5
+    }
+   ],
+   "beats": [
+    {
+     "after": 7,
+     "shots": [
+      {
+       "dur": 5.0,
+       "film": "wg_752",
+       "from": 216.5,
+       "to": 221.5
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "title": "Four Captains",
+   "mode": "action",
+   "stamp": [
+    "30 JANUARY 1945"
+   ],
+   "sentences": [
+    "But on 30 January 1945, the Gustloff has four captains, and they do not agree.",
+    "Friedrich Petersen, the man who once replaced the dead captain, commands the ship.",
+    "Two more come from the merchant marine.",
+    "The fourth, Lieutenant Commander Wilhelm Zahn, leads the submarine men, and he knows how a submarine hunts.",
+    "Zahn wants to stay close to the shore, in shallow water, with no lights.",
+    "Petersen says no, and turns out into deep water.",
+    "Another liner should be with them, the Hansa, and two torpedo boats.",
+    "The Hansa breaks down, and so does one of the torpedo boats.",
+    "One escort is left, the Löwe, and ice has put her submarine sensor out of action.",
+    "Her anti-aircraft guns are frozen too.",
+    "Then a radio message comes: German minesweepers are on the way toward them.",
+    "Petersen is afraid of a collision in the dark.",
+    "He turns on the navigation lights, red and green.",
+    "Now she is easy to see."
+   ],
+   "shots": [
+    {
+     "s": 1,
+     "film": "wg_752",
+     "from": 229,
+     "to": 230.2
+    },
+    {
+     "s": 1,
+     "film": "wg_752",
+     "from": 232,
+     "to": 236
+    },
+    {
+     "s": 2,
+     "film": "wg_ship",
+     "from": 151,
+     "to": 152.4
+    },
+    {
+     "s": 2,
+     "film": "wg_ship",
+     "from": 143,
+     "to": 145.5
+    },
+    {
+     "s": 3,
+     "film": "wg_ship",
+     "from": 117.8,
+     "to": 119.3
+    },
+    {
+     "s": 4,
+     "film": "wg_639",
+     "from": 112,
+     "to": 115,
+     "note": "WILHELM ZAHN"
+    },
+    {
+     "s": 4,
+     "film": "wg_639",
+     "from": 123,
+     "to": 125.5
+    },
+    {
+     "s": 5,
+     "film": "wg_639",
+     "from": 128,
+     "to": 132,
+     "note": "NO LIGHTS"
+    },
+    {
+     "s": 6,
+     "map": {
+      "places": [
+       {
+        "label": "GOTENHAFEN",
+        "lat": 54.52,
+        "lon": 18.53,
+        "side": "blue"
+       },
+       {
+        "label": "S-13",
+        "lat": 55.07,
+        "lon": 17.42,
+        "side": "red"
+       },
+       {
+        "label": "KIEL",
+        "lat": 54.32,
+        "lon": 10.14,
+        "side": "blue"
+       }
+      ],
+      "routes": [
+       [
+        0,
+        1,
+        "blue",
+        -0.2
+       ]
+      ],
+      "pad": 0.4
+     }
+    },
+    {
+     "s": 7,
+     "film": "wg_752",
+     "from": 226.2,
+     "to": 228.6
+    },
+    {
+     "s": 8,
+     "film": "wg_ship",
+     "from": 159.8,
+     "to": 163.8
+    },
+    {
+     "s": 9,
+     "film": "wg_752",
+     "from": 255,
+     "to": 258
+    },
+    {
+     "s": 10,
+     "film": "wg_752",
+     "from": 245,
+     "to": 247
+    },
+    {
+     "s": 11,
+     "film": "wg_639",
+     "from": 120.8,
+     "to": 122.8,
+     "sfx": "ov/morse_code"
+    },
+    {
+     "s": 12,
+     "film": "wg_752",
+     "from": 238,
+     "to": 239.5
+    },
+    {
+     "s": 13,
+     "film": "wg_ship",
+     "from": 1256,
+     "to": 1260,
+     "note": "LIGHTS ON"
+    },
+    {
+     "s": 14,
+     "film": "wg_ship",
+     "from": 1259,
+     "to": 1262
+    }
+   ],
+   "beats": [
+    {
+     "after": 13,
+     "shots": [
+      {
+       "dur": 2.2,
+       "film": "wg_752",
+       "from": 261.8,
+       "to": 264.0,
+       "sfx": "ov/ocean_waves"
+      },
+      {
+       "dur": 3.0,
+       "film": "wg_ship",
+       "from": 1253.5,
+       "to": 1256.5
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "title": "The Captain on Trial",
+   "mode": "people",
+   "stamp": [
+    "HANKO"
+   ],
+   "sentences": [
+    "But in Hanko, in Finland, on 5 January, a Soviet captain goes missing.",
+    "Alexander Marinesko is 32, the son of a Romanian sailor and a Ukrainian mother, born in Odessa.",
+    "His first boat was rated the best of its brigade in torpedo firing, and the head of the navy gave him a gold watch.",
+    "He also drinks.",
+    "The party threw him out for it, and took him back.",
+    "Now he leaves his submarine, S-13, without permission, and is caught drinking with another officer.",
+    "In wartime this counts as desertion, and he can be sentenced to death.",
+    "The fleet decides to put him before a tribunal.",
+    "Marinesko asks for one thing: to make up for it in battle.",
+    "No new captain can be found quickly, so Admiral Vladimir Tributs puts off the trial until after the next patrol.",
+    "S-13 is later described as the only penal submarine in the Soviet Navy.",
+    "On 11 January she sails.",
+    "From the 21st to the 29th, Marinesko finds several targets, and attacks none.",
+    "He has nothing yet to show his judges."
+   ],
+   "shots": [
+    {
+     "s": 1,
+     "file": "Soviet submarine S-54 in 1942 2.jpg",
+     "label": "SOVIET S-CLASS SUBMARINE"
+    },
+    {
+     "s": 2,
+     "file": "RUSMARKA-1926.jpg",
+     "card": true,
+     "name": "ALEXANDER MARINESKO",
+     "role": "CAPTAIN, SUBMARINE S-13"
+    },
+    {
+     "s": 3,
+     "file": "Soviet submarine M-1 1934.jpg",
+     "label": "SOVIET M-CLASS SUBMARINE"
+    },
+    {
+     "s": 4,
+     "file": "Shch-402's crew (1942).jpg",
+     "x": 0.4,
+     "label": "A SOVIET SUBMARINE CREW · 1942"
+    },
+    {
+     "s": 5,
+     "file": "Shch-402's crew (1942).jpg",
+     "zoom": 1.5,
+     "x": 0.7,
+     "y": 0.55
+    },
+    {
+     "s": 6,
+     "file": "Russian stamp 304 S-13 1996.jpg",
+     "card": true,
+     "note": "S-13"
+    },
+    {
+     "s": 7,
+     "file": "Soviet submarine S-55 in 1942.jpg",
+     "trim": [
+      0,
+      0.12,
+      0,
+      0.1
+     ]
+    },
+    {
+     "s": 8,
+     "file": "Soviet submarine S-54 in 1942.jpg",
+     "trim": [
+      0,
+      0.12,
+      0,
+      0.12
+     ]
+    },
+    {
+     "s": 9,
+     "film": "wg_639",
+     "from": 182,
+     "to": 184
+    },
+    {
+     "s": 10,
+     "film": "menace",
+     "from": 40,
+     "to": 43
+    },
+    {
+     "s": 10,
+     "film": "menace",
+     "from": 36,
+     "to": 40
+    },
+    {
+     "s": 11,
+     "film": "wg_639",
+     "from": 172,
+     "to": 177
+    },
+    {
+     "s": 12,
+     "film": "wg_silent",
+     "from": 96,
+     "to": 100
+    },
+    {
+     "s": 13,
+     "film": "wg_639",
+     "from": 141,
+     "to": 144
+    },
+    {
+     "s": 13,
+     "film": "wg_639",
+     "from": 166.9,
+     "to": 170.4
+    },
+    {
+     "s": 14,
+     "film": "wg_silent",
+     "from": 126,
+     "to": 131
+    }
+   ]
+  },
+  {
+   "title": "Three Torpedoes",
+   "mode": "action",
+   "stamp": [
+    "S-13"
+   ],
+   "sentences": [
+    "But that evening, S-13 is on the surface, and she sees a ship with its lights on.",
+    "The Gustloff goes straight ahead, at a constant speed, without zigzagging.",
+    "For two hours, Marinesko follows.",
+    "He is on the side of the open sea, where an attack can be expected.",
+    "So he steers around her stern, to the side of the shore, where it is not.",
+    "At around nine in the evening, he orders four torpedoes.",
+    "Three leave their tubes, and all three hit.",
+    "The first hits the bow, and the watertight doors lock before the sleeping crew can get out.",
+    "The second hits the swimming pool.",
+    "The tiles are torn off, and fly through the room.",
+    "Of the 373 women there, three survive.",
+    "The third hits the engine room.",
+    "All power and all communications are gone."
+   ],
+   "shots": [
+    {
+     "s": 1,
+     "film": "wg_ship",
+     "from": 1257,
+     "to": 1261
+    },
+    {
+     "s": 2,
+     "film": "wg_ship",
+     "from": 932.5,
+     "to": 938.5
+    },
+    {
+     "s": 3,
+     "film": "wg_silent",
+     "from": 84,
+     "to": 89
+    },
+    {
+     "s": 4,
+     "film": "wg_639",
+     "from": 264.3,
+     "to": 266.8
+    },
+    {
+     "s": 5,
+     "film": "wg_silent",
+     "from": 111,
+     "to": 116
+    },
+    {
+     "s": 6,
+     "film": "wg_sub",
+     "from": 40,
+     "to": 44,
+     "stamp": [
+      "9:00 P.M."
+     ]
+    },
+    {
+     "s": 7,
+     "film": "wg_sub",
+     "from": 62,
+     "to": 66
+    },
+    {
+     "s": 8,
+     "film": "wg_ship",
+     "from": 194,
+     "to": 198,
+     "note": "THE BOW"
+    },
+    {
+     "s": 9,
+     "film": "wg_ship",
+     "from": 796,
+     "to": 799,
+     "note": "THE POOL",
+     "sfx": "submarine_hit"
+    },
+    {
+     "s": 10,
+     "file": "Bundesarchiv Bild 146-1988-107-05, KdF-Schiff \"Wilhelm Gustloff\", Schwimmbad.jpg",
+     "zoom": 1.0,
+     "y": 0.7
+    },
+    {
+     "s": 11,
+     "film": "wg_ship",
+     "from": 812,
+     "to": 815.5,
+     "note": "3 OF 373"
+    },
+    {
+     "s": 12,
+     "film": "wg_ship",
+     "from": 163,
+     "to": 167,
+     "note": "THE ENGINES",
+     "sfx": "submarine_hit"
+    },
+    {
+     "s": 13,
+     "film": "wg_ship",
+     "from": 175,
+     "to": 176.8
+    },
+    {
+     "s": 13,
+     "film": "wg_ship",
+     "from": 1259.2,
+     "to": 1262.2
+    }
+   ],
+   "beats": [
+    {
+     "after": 7,
+     "shots": [
+      {
+       "dur": 3.0,
+       "film": "wg_silent",
+       "from": 57,
+       "to": 60.0,
+       "sfx": "explosion_massive"
+      },
+      {
+       "dur": 3.0,
+       "film": "wg_ship",
+       "from": 1257,
+       "to": 1260.0,
+       "sfx": "explosion_far"
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "title": "Fifty Minutes",
+   "mode": "action",
+   "stamp": [
+    "FIFTY MINUTES"
+   ],
+   "sentences": [
+    "But it takes about fifty minutes for the Gustloff to go down, and for those inside it is not enough.",
+    "On the stairs, people are trampled in the panic.",
+    "Reportedly, only nine lifeboats can be lowered, because the others are frozen in place.",
+    "After 20 minutes, the ship leans over so far that boats from the high side crash against her hull.",
+    "The people in them fall into the sea.",
+    "The air is at least ten degrees below zero, and ice floes cover the water.",
+    "Most of the victims die of the cold.",
+    "In less than 40 minutes, she is lying on her side.",
+    "Ten minutes later she sinks, bow first, in 44 meters of water.",
+    "The heavy cruiser Admiral Hipper arrives, fears a submarine attack, and leaves.",
+    "Her torpedo boat, the T36, stays, and saves 564 people.",
+    "The Löwe saves 472.",
+    "A patrol boat finds one survivor: a baby.",
+    "In all, 1,252 are rescued, and 13 of them die soon after."
+   ],
+   "shots": [
+    {
+     "s": 1,
+     "film": "wg_ship",
+     "from": 135.3,
+     "to": 136.8
+    },
+    {
+     "s": 1,
+     "film": "wg_ship",
+     "from": 1254,
+     "to": 1258
+    },
+    {
+     "s": 2,
+     "film": "wg_ship",
+     "from": 245,
+     "to": 249
+    },
+    {
+     "s": 3,
+     "file": "Bundesarchiv Bild 183-L12211, Lazarettschiff \"Wilhelm Gustloff\".jpg",
+     "zoom": 1.6,
+     "x": 0.45,
+     "y": 0.2,
+     "note": "NINE LIFEBOATS"
+    },
+    {
+     "s": 4,
+     "file": "Bundesarchiv Bild 183-L12207, Lazarettschiff \"Wilhelm Gustloff\".jpg",
+     "trim": [
+      0,
+      0,
+      0,
+      0.05
+     ]
+    },
+    {
+     "s": 5,
+     "file": "Bundesarchiv Bild 183-L12207, Lazarettschiff \"Wilhelm Gustloff\".jpg",
+     "zoom": 1.6,
+     "x": 0.6,
+     "y": 0.35
+    },
+    {
+     "s": 6,
+     "film": "wg_752",
+     "from": 224.8,
+     "to": 226.20000000000002
+    },
+    {
+     "s": 6,
+     "film": "wg_752",
+     "from": 226.6,
+     "to": 228.4
+    },
+    {
+     "s": 7,
+     "film": "wg_752",
+     "from": 233,
+     "to": 237
+    },
+    {
+     "s": 8,
+     "film": "wg_ship",
+     "from": 1260,
+     "to": 1262
+    },
+    {
+     "s": 9,
+     "film": "wg_752",
+     "from": 261.5,
+     "to": 263.9
+    },
+    {
+     "s": 10,
+     "film": "wg_752",
+     "from": 239.6,
+     "to": 241.9,
+     "label": "GERMAN HEAVY CRUISER · 1945"
+    },
+    {
+     "s": 10,
+     "file": "German cruiser Admiral Hipper off Norway 1942.jpg"
+    },
+    {
+     "s": 11,
+     "file": "T 35 as DD 935 in US seas August 1945.jpg",
+     "label": "SISTER SHIP OF T36",
+     "note": "564 SAVED"
+    },
+    {
+     "s": 12,
+     "film": "wg_752",
+     "from": 256,
+     "to": 259
+    },
+    {
+     "s": 13,
+     "film": "wg_752",
+     "from": 247,
+     "to": 249
+    },
+    {
+     "s": 13,
+     "film": "wg_639",
+     "from": 263,
+     "to": 265.5
+    },
+    {
+     "s": 14,
+     "file": "Bundesarchiv Bild 146-2001-019-10, Ausschiffung von Flüchtlingen.jpg",
+     "trim": [
+      0,
+      0,
+      0,
+      0.04
+     ],
+     "note": "1,252 RESCUED"
+    }
+   ],
+   "beats": [
+    {
+     "after": 9,
+     "shots": [
+      {
+       "dur": 2.2,
+       "film": "wg_752",
+       "from": 261.8,
+       "to": 264.0,
+       "sfx": "storm_wind"
+      },
+      {
+       "dur": 3.0,
+       "film": "wg_639",
+       "from": 272,
+       "to": 275.0,
+       "sfx": "ov/ocean_waves"
+      }
+     ]
+    },
+    {
+     "after": 13,
+     "shots": [
+      {
+       "dur": 5.5,
+       "file": "Feldpost 6 1945.png",
+       "focus": [
+        0.69,
+        0.55,
+        0.845,
+        0.71
+       ],
+       "sfx": "typewriter"
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "title": "Eleven Days Later",
+   "mode": "action",
+   "stamp": [
+    "10 FEBRUARY"
+   ],
+   "sentences": [
+    "But on 10 February, eleven days later, S-13 is still out there, and another liner comes.",
+    "She is the Steuben, full of wounded soldiers and refugees.",
+    "She is darkened, and she changes her course again and again.",
+    "Marinesko hunts her for more than four hours, much of the time by listening.",
+    "He thinks she is a cruiser, the Emden.",
+    "He fires two torpedoes, and she sinks.",
+    "About 4,500 people are killed.",
+    "In April, another submarine sinks the Goya, with the loss of over 6,000.",
+    "And still the ships go out.",
+    "In fifteen weeks, they carry more than 800,000 civilians and 350,000 soldiers over the Baltic Sea.",
+    "It is one of the largest evacuations by sea in history."
+   ],
+   "shots": [
+    {
+     "s": 1,
+     "film": "wg_silent",
+     "from": 102,
+     "to": 107
+    },
+    {
+     "s": 2,
+     "file": "General-Von-Steuben-Franz-Grasser0df hauptkatalog 0760980.jpg",
+     "label": "GENERAL VON STEUBEN"
+    },
+    {
+     "s": 3,
+     "file": "General-Von-Steuben-Franz-Grasser0df hauptkatalog 0760980.jpg",
+     "zoom": 1.5,
+     "x": 0.6,
+     "y": 0.5
+    },
+    {
+     "s": 4,
+     "film": "wg_639",
+     "from": 101,
+     "to": 105
+    },
+    {
+     "s": 5,
+     "film": "wg_639",
+     "from": 158.4,
+     "to": 159.9
+    },
+    {
+     "s": 6,
+     "film": "wg_sub",
+     "from": 73,
+     "to": 77,
+     "sfx": "submarine_hit"
+    },
+    {
+     "s": 7,
+     "film": "wg_639",
+     "from": 655.2,
+     "to": 657.2,
+     "note": "4,500 DEAD"
+    },
+    {
+     "s": 8,
+     "film": "wg_silent",
+     "from": 120,
+     "to": 125
+    },
+    {
+     "s": 9,
+     "file": "Bundesarchiv Bild 146-1989-033-33, Pillau, Hafen, Flüchtlinge.jpg",
+     "label": "PILLAU"
+    },
+    {
+     "s": 10,
+     "film": "wg_752",
+     "from": 226.2,
+     "to": 228.5
+    },
+    {
+     "s": 10,
+     "file": "Bundesarchiv Bild 146-1989-033-35, Pillau, Hafen, Marinesoldaten, Flüchtlinge.jpg"
+    },
+    {
+     "s": 11,
+     "file": "Bundesarchiv Bild 146-2004-0127, Ausschiffung von Flüchtlingen.jpg"
+    }
+   ],
+   "beats": [
+    {
+     "after": 6,
+     "shots": [
+      {
+       "dur": 3.0,
+       "film": "wg_silent",
+       "from": 60,
+       "to": 63.0,
+       "sfx": "explosion_far"
+      },
+      {
+       "dur": 3.0,
+       "film": "wg_639",
+       "from": 660,
+       "to": 663.0
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "title": "Not Suitable to Be a Hero",
+   "mode": "people",
+   "stamp": [
+    "TURKU"
+   ],
+   "sentences": [
+    "But in Turku, where S-13 comes home, they do not know what to do with her captain.",
+    "The trial is dropped, and his commander asks for the highest award, Hero of the Soviet Union.",
+    "He gets a lower one, the Order of the Red Banner.",
+    "Soviet propaganda says that the women on the Gustloff were SS personnel from the concentration camps, and it is not true.",
+    "In 1945, Marinesko goes on drinking, loses his submarine and is demoted.",
+    "In 1949, he is sentenced to three years for taking peat, and even a bed, from the institute where he works.",
+    "He dies of cancer in 1963, at the age of 50.",
+    "In 1990, Mikhail Gorbachev names him a Hero of the Soviet Union."
+   ],
+   "shots": [
+    {
+     "s": 1,
+     "file": "Soviet submarine S-54 in 1942.jpg",
+     "zoom": 1.5,
+     "x": 0.6,
+     "y": 0.45,
+     "trim": [
+      0,
+      0.12,
+      0,
+      0.12
+     ]
+    },
+    {
+     "s": 2,
+     "file": "Soviet submarine S-54 in 1942 2.jpg",
+     "zoom": 1.4,
+     "x": 0.6,
+     "y": 0.5
+    },
+    {
+     "s": 3,
+     "file": "Russian stamp 304 S-13 1996.jpg",
+     "zoom": 1.3,
+     "x": 0.4
+    },
+    {
+     "s": 4,
+     "film": "wg_639",
+     "from": 188,
+     "to": 189
+    },
+    {
+     "s": 4,
+     "film": "wg_639",
+     "from": 255,
+     "to": 257
+    },
+    {
+     "s": 5,
+     "film": "menace",
+     "from": 64,
+     "to": 68
+    },
+    {
+     "s": 6,
+     "file": "Soviet submarine S-55 in 1942.jpg",
+     "zoom": 1.5,
+     "x": 0.6,
+     "y": 0.5,
+     "trim": [
+      0,
+      0.12,
+      0,
+      0.1
+     ]
+    },
+    {
+     "s": 7,
+     "file": "Soviet submarine M-1 1934.jpg",
+     "zoom": 1.4,
+     "x": 0.55,
+     "y": 0.6
+    },
+    {
+     "s": 8,
+     "file": "Указ Президента СССР о присвоении звания Героя Советского Союза.png",
+     "card": true,
+     "note": "HERO, 1990"
+    }
+   ]
+  },
+  {
+   "title": "Who Is to Blame?",
+   "mode": "people",
+   "stamp": [
+    "GERMANY"
+   ],
+   "sentences": [
+    "But in Germany, the navy opens an inquiry against just one officer, Wilhelm Zahn, the captain who wanted no lights.",
+    "All four captains have survived.",
+    "The Reich collapses before there is an answer.",
+    "So was it a crime?",
+    "The Gustloff had anti-aircraft guns, and she was not marked as a hospital ship.",
+    "She carried men of the navy, and under international law, nothing protected her.",
+    "The naval historian Miroslav Morozov calls her a legitimate military target.",
+    "The German writer Günter Grass says it in his own way.",
+    "Nobody knows how many died.",
+    "It may be 3,700, and by Heinz Schön's count it is 9,343 men, women and children.",
+    "She lies off the Polish coast, as a war grave, and no one may dive within 500 meters.",
+    "And Gauleiter Koch, who had forbidden the people to leave, was among the first to flee.",
+    "She was built to show the happy face of the Reich, and she went down with the people it had told to stay."
+   ],
+   "shots": [
+    {
+     "s": 1,
+     "film": "wg_639",
+     "from": 224,
+     "to": 227
+    },
+    {
+     "s": 1,
+     "film": "wg_639",
+     "from": 134,
+     "to": 135.8
+    },
+    {
+     "s": 2,
+     "film": "wg_ship",
+     "from": 105,
+     "to": 109
+    },
+    {
+     "s": 3,
+     "film": "wg_751",
+     "from": 258,
+     "to": 263
+    },
+    {
+     "s": 4,
+     "film": "wg_ship",
+     "from": 932.5,
+     "to": 937.5
+    },
+    {
+     "s": 5,
+     "film": "wg_752",
+     "from": 253,
+     "to": 255
+    },
+    {
+     "s": 5,
+     "file": "Bundesarchiv Bild 121-0665, Oslo, \"Wilhelm Gustloff\".jpg",
+     "zoom": 1.4,
+     "x": 0.3,
+     "y": 0.5
+    },
+    {
+     "s": 6,
+     "film": "wg_639",
+     "from": 243.2,
+     "to": 245.79999999999998
+    },
+    {
+     "s": 7,
+     "file": "Bundesarchiv Bild 183-H27992, Lazarettschiff \"Wilhelm Gustloff\" in Danzig.jpg",
+     "zoom": 1.4,
+     "x": 0.4,
+     "y": 0.4
+    },
+    {
+     "s": 8,
+     "file": "Bundesarchiv Bild 146-1972-092-33, Flüchtlinge auf Schiff.jpg",
+     "zoom": 1.2,
+     "y": 0.3
+    },
+    {
+     "s": 9,
+     "file": "Bundesarchiv Bild 146-1972-093-51, Pillau, Einschiffung von Flüchtlingen.jpg",
+     "zoom": 1.4,
+     "x": 0.35,
+     "y": 0.6
+    },
+    {
+     "s": 10,
+     "film": "wg_752",
+     "from": 220,
+     "to": 223,
+     "note": "3,700 OR 9,343"
+    },
+    {
+     "s": 10,
+     "file": "Bundesarchiv Bild 146-1972-093-59, Pillau, Einschiffung von Flüchtlingen.jpg",
+     "zoom": 1.5,
+     "x": 0.4,
+     "y": 0.7
+    },
+    {
+     "s": 11,
+     "film": "wg_752",
+     "from": 261.8,
+     "to": 263.90000000000003,
+     "note": "WAR GRAVE"
+    },
+    {
+     "s": 11,
+     "film": "wg_639",
+     "from": 270,
+     "to": 273
+    },
+    {
+     "s": 12,
+     "film": "wg_754",
+     "from": 301.9,
+     "to": 305.29999999999995
+    },
+    {
+     "s": 13,
+     "film": "wg_ship",
+     "from": 625,
+     "to": 628.5
+    },
+    {
+     "s": 13,
+     "film": "wg_ship",
+     "from": 1253,
+     "to": 1257
+    }
+   ],
+   "beats": [
+    {
+     "after": 8,
+     "quote": {
+      "text": "They said the tragedy of Wilhelm Gustloff was a war crime. It wasn't. It was terrible, but it was a result of war, a terrible result of war.",
+      "name": "GÜNTER GRASS",
+      "role": "THE NEW YORK TIMES, 2003"
+     },
+     "shots": [
+      {
+       "dur": 5.0,
+       "film": "wg_752",
+       "from": 233,
+       "to": 237
+      },
+      {
+       "dur": 5.0,
+       "file": "Bundesarchiv Bild 146-2004-0127, Ausschiffung von Flüchtlingen.jpg",
+       "zoom": 1.4
+      }
+     ]
+    }
+   ]
+  }
+ ]
+}
