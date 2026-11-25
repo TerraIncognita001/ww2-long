@@ -17,6 +17,7 @@ Base: the Shorts bot `ww2-bot` (Classified 1945), its CLAUDE.md is the source of
   publish_ny 16:00 / 21:00; London's 02:00 is the New York evening BEFORE). Teasers +30 min / +3 h as before.
 - The genres take turns: 1 MACHINES (The Entire War: Sherman, Kamikaze, U-boats), 2 SEA DISASTERS (Wilhelm Gustloff, Operation
   Deadlight), 3 TRIALS AND POST-WAR SECRETS (Goering and his psychiatrist Kelley, the Ratlines).
+- NO CRON since Nov 25 (Andrii): long.yml runs only by hand (story + release_date + publish_ny); no auto stories by themselves.
 - The voice, the NEW FORMAT (Nov 23) and the video standards stay. Genres 2 and 3 tell ONE STORY: named title, `format`
   other than 'entire', the cover = the house photo + name + one fact.
 - The plan's hooks (pasted, from an outside chat) are ideas, NOT facts: every claim is checked against the articles first.
