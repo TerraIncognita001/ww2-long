@@ -503,6 +503,42 @@
    "title": "Göring's Last Secret at Nuremberg",
    "seconds": 11.4,
    "publish_at": "2026-11-27T00:00:00Z"
+  },
+  {
+   "id": "Nt2vZPSazr0",
+   "date": "2026-11-25",
+   "format": "long",
+   "title": "Wilhelm Gustloff: The Deadliest Sinking in History, and Who Was to Blame",
+   "topic": "MV Wilhelm Gustloff",
+   "seconds": 747.6,
+   "words": 1809,
+   "tts": "edge",
+   "release": "2026-11-26T02:00:00Z",
+   "thumb": "ok",
+   "comment_due": {
+    "at": "2026-11-26T02:00:00Z",
+    "q": "The Wilhelm Gustloff: whose fault was it, Petersen's lights, Marinesko's torpedoes, or Koch's orders?"
+   }
+  },
+  {
+   "id": "3EvzwjjSpgo",
+   "date": "2026-11-25",
+   "format": "short",
+   "promo": true,
+   "long": "Nt2vZPSazr0",
+   "title": "Four Captains, One Doomed Ship: the Wilhelm Gustloff",
+   "seconds": 12.0,
+   "publish_at": "2026-11-26T02:30:00Z"
+  },
+  {
+   "id": "78FYL7LI2Z8",
+   "date": "2026-11-25",
+   "format": "short",
+   "promo": true,
+   "long": "Nt2vZPSazr0",
+   "title": "373 Women in the Pool of the Wilhelm Gustloff",
+   "seconds": 13.0,
+   "publish_at": "2026-11-26T05:00:00Z"
   }
  ],
  "metrics": {},
