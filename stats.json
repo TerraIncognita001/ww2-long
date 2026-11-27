@@ -559,6 +559,42 @@
    "title": "Why the Ships of World War II Broke in Half",
    "seconds": 12.9,
    "publish_at": "2026-11-27T05:00:00Z"
+  },
+  {
+   "id": "2fuSgHajEhM",
+   "date": "2026-11-27",
+   "format": "long",
+   "title": "Operation Deadlight: Why Britain Sank 116 of Hitler's U-boats",
+   "topic": "Operation Deadlight",
+   "seconds": 619.8,
+   "words": 1449,
+   "tts": null,
+   "release": "2026-11-27T21:00:00Z",
+   "thumb": "ok",
+   "comment_due": {
+    "at": "2026-11-27T21:00:00Z",
+    "q": "Should the Allies have kept the U-boats as museums and memorials, or was sinking them right?"
+   }
+  },
+  {
+   "id": "KKPUBX3ROzw",
+   "date": "2026-11-27",
+   "format": "short",
+   "promo": true,
+   "long": "2fuSgHajEhM",
+   "title": "The Last Time the US Navy Said 'Away All Boarders': U-505",
+   "seconds": 12.8,
+   "publish_at": "2026-11-27T21:30:00Z"
+  },
+  {
+   "id": "ftJjeUiy5Nw",
+   "date": "2026-11-27",
+   "format": "short",
+   "promo": true,
+   "long": "2fuSgHajEhM",
+   "title": "Operation Rainbow: Hitler's U-boats Ordered to Sink Themselves",
+   "seconds": 14.6,
+   "publish_at": "2026-11-28T00:00:00Z"
   }
  ],
  "metrics": {},
