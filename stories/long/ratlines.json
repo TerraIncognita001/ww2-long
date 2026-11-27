@@ -1,0 +1,1345 @@
+{
+ "priority": 10,
+ "format": "story",
+ "voice": "andrii",
+ "intro_beats": true,
+ "topic": "Ratlines (World War II)",
+ "sources": [
+  "Ratlines (World War II)",
+  "Adolf Eichmann",
+  "Alois Hudal",
+  "Krunoslav Draganović",
+  "Adolf Eichmann's capture",
+  "Eichmann trial",
+  "Franz Stangl",
+  "Josef Mengele",
+  "Klaus Barbie",
+  "Erich Priebke"
+ ],
+ "title": "The Ratlines: How Adolf Eichmann Escaped to Argentina, and How He Was Caught",
+ "question": "The CIA and West Germany knew where Eichmann was and did nothing. Should they have been held to account?",
+ "summary": "After 1945, thousands of Nazi war criminals escaped to South America along the ratlines, helped by a bishop in Rome, Croatian priests, forged Red Cross papers and Perón's Argentina. This is the story of Adolf Eichmann: from an American camp under a false name to Genoa, ten years as Ricardo Klement in Buenos Aires, the Mossad capture on Garibaldi Street and the glass booth in Jerusalem.",
+ "tags": [
+  "Ratlines",
+  "Adolf Eichmann",
+  "Eichmann trial",
+  "Ricardo Klement",
+  "Mossad",
+  "Alois Hudal",
+  "Perón",
+  "Josef Mengele",
+  "Klaus Barbie",
+  "Nazi escape",
+  "Argentina",
+  "post-war secrets",
+  "WW2 documentary",
+  "World War 2",
+  "history"
+ ],
+ "pronounce": {
+  "Eichmann": "Ike-man",
+  "Eckmann": "Eck-man",
+  "Heninger": "Hen-ing-er",
+  "Lüneburg": "Loo-neh-burg",
+  "Höss": "Hurss",
+  "Hudal": "Hoo-dahl",
+  "Stangl": "Shtang-gle",
+  "Priebke": "Preeb-keh",
+  "Draganović": "Dra-gah-no-vitch",
+  "Ustaše": "Oo-sta-sheh",
+  "Pavelić": "Pa-veh-litch",
+  "San Girolamo": "San Jee-roh-la-mo",
+  "Perón": "Peh-rone",
+  "Mengele": "Meng-eh-leh",
+  "Klement": "Kleh-ment",
+  "Tucumán": "Too-koo-mahn",
+  "Sassen": "Sass-en",
+  "Hermann": "Hair-mahn",
+  "Bauer": "Bow-er",
+  "Harel": "Ha-rel",
+  "Aharoni": "A-ha-ro-nee",
+  "Ben-Gurion": "Ben Goo-ree-on",
+  "Garibaldi": "Gah-ree-bahl-dee",
+  "Malkin": "Mal-kin",
+  "Zeev Zichroni": "Zeh-ev Zick-ro-nee",
+  "Knesset": "Kness-et",
+  "Beit Ha'am": "Bait Ha-ahm",
+  "Hausner": "Howss-ner",
+  "Bertioga": "Bair-tee-oh-ga",
+  "Barbie": "Bar-bee",
+  "Cham": "Kahm",
+  "Treblinka": "Treh-blink-a",
+  "Wiesenthal": "Vee-zen-tahl",
+  "Mossad": "Mo-sahd",
+  "Reich": "Rike"
+ },
+ "films": {
+  "rl_trial": {
+   "url": "https://archive.org/download/1961-04-13_Eichmann_trial/1961-04-13_Eichmann_trial.mpeg",
+   "mono": true,
+   "crop": "720:405:0:37",
+   "credit": "Trial of Century: Eichmann Tried for War Crimes (April 1961): Universal-International News (public domain, via Internet Archive)"
+  },
+  "rl_verdict": {
+   "url": "https://commons.wikimedia.org/wiki/Special:FilePath/1961-04-13_Tale_Of_Century_-_Eichmann_Tried_For_War_Crimes.ogv",
+   "mono": true,
+   "crop": "392:220:0:28",
+   "credit": "Guilty! Eichmann to Hang (December 1961): Universal-International News / NARA (Wikimedia Commons, public domain)"
+  },
+  "rl_peron": {
+   "url": "https://commons.wikimedia.org/wiki/Special:FilePath/El_Presidente_de_la_Naci%C3%B3n_Juan_D._Per%C3%B3n_manejando_un_autom%C3%B3vil_INSTITEC_Justicialista_Sport._A%C3%B1o_1953.webm",
+   "crop": "568:320:36:100",
+   "credit": "President Juan D. Perón driving the Justicialista Sport, 1953 (Wikimedia Commons, public domain in Argentina)"
+  },
+  "kl_ruins": {
+   "url": "https://archive.org/download/ADC-9996/ADC-9996.mp4",
+   "mono": true,
+   "credit": "Reich Ruins, September 1945: US Army / NARA 111-ADC-9996 (public domain, via Internet Archive)"
+  },
+  "kl_sent": {
+   "url": "https://archive.org/download/ADC-10005/ADC-10005.mp4",
+   "mono": true,
+   "credit": "Sentencing of Nazi Leaders at Nuremberg, 1946: US Army / NARA 111-ADC-10005 (public domain, via Internet Archive)"
+  },
+  "kl_await": {
+   "url": "https://archive.org/download/ARC-39085/ARC-39085.mp4",
+   "mono": true,
+   "credit": "United Newsreel, October 1945: US Office of War Information / NARA ARC 39085 (public domain, via Internet Archive)"
+  },
+  "menace": {
+   "url": "https://archive.org/download/1945-05-17_U-Boat_Menace_Ended/1945-05-17_U-Boat_Menace_Ended.mpeg",
+   "mono": true,
+   "crop": "688:344:16:68",
+   "credit": "U-Boat Menace Ended (17 May 1945): Universal Newsreel (public domain, via Internet Archive)"
+  }
+ },
+ "period_audio": {
+  "herlihy": {
+   "file": "Herlihy Guilty Eichmann to Hang 1961.mp3",
+   "url": "https://commons.wikimedia.org/wiki/Special:FilePath/1961-04-13_Tale_Of_Century_-_Eichmann_Tried_For_War_Crimes.ogv",
+   "speaker": "Ed Herlihy",
+   "date": "DECEMBER 1961",
+   "credit": "Guilty! Eichmann to Hang (December 1961), voice Ed Herlihy: Universal-International News / NARA (Wikimedia Commons, public domain)",
+   "text": "A man who escaped the Nuremberg War Trials by fleeing to South America receives justice at the hands of the people whom he had aimed to wipe out."
+  }
+ },
+ "pre": [
+  {
+   "dur": 2.8,
+   "film": "rl_trial",
+   "from": 31,
+   "to": 34,
+   "stamp": [
+    "APRIL 11",
+    "1961"
+   ],
+   "sfx": "cinematic-drum-big"
+  }
+ ],
+ "whole": [
+  "WP Eichmann Passport.jpg",
+  "Eichmann documento identità.jpg",
+  "EichmannSSdoc.jpg",
+  "The first imprisonment order of Adolf Eichmann 1960-05-23.jpg",
+  "Eichmann ashes scattered at sea.jpg",
+  "Mengele2.jpg",
+  "Adolf Eichmann Red Cross photo.jpg",
+  "Erich Priebke Red Cross photo.png",
+  "Alois Hudal Santa Maria dell'Anima ca 1940.jpg",
+  "Adolf Eichmann Zentralstelle Wien 1939.jpg"
+ ],
+ "tone": [
+  "Adolf Eichmann, 1942 (cropped).jpg",
+  "Franz Paul Stangl.jpg",
+  "Klaus Barbie in uniform.jpg",
+  "Isser Harel.jpg",
+  "Питер Малкин 1960.jpg",
+  "David Ben-Gurion (D597-087).jpg",
+  "Simon Wiesenthal (1940-1945).jpg",
+  "WP Josef Mengele 1956.jpg",
+  "Perón montado a caballo.jpg"
+ ],
+ "thumb": {
+  "file": "Adolf Eichmann at Trial1961.jpg"
+ },
+ "cover": {
+  "file": "Adolf Eichmann at Trial1961.jpg",
+  "x": 0.5,
+  "y": 0.4,
+  "zoom": 1.0,
+  "color": false,
+  "mono": true,
+  "sizes": [
+   120,
+   90
+  ],
+  "text": [
+   "EICHMANN",
+   "THE RED CROSS PASSPORT"
+  ],
+  "key": [
+   "EICHMANN"
+  ],
+  "note": "he left Europe with a Red Cross passport as Ricardo Klement"
+ },
+ "promos": [
+  {
+   "id": "ratlines_ears",
+   "chapter": 7,
+   "sentences": [
+    "Ricardo Klement comes home by the same bus every evening.",
+    "Israeli agents are watching.",
+    "To be sure, they compare one thing with his SS file: the shape of his ears."
+   ],
+   "shots": [
+    {
+     "s": 1,
+     "film": "rl_peron",
+     "from": 26,
+     "to": 30
+    },
+    {
+     "s": 2,
+     "file": "David Ben-Gurion and the participants in the operation to capture Adolf Eichmann.jpg"
+    },
+    {
+     "s": 3,
+     "file": "EichmannSSdoc.jpg",
+     "zoom": 1.4
+    }
+   ],
+   "top": "HOW MOSSAD|FOUND EICHMANN",
+   "key": [
+    "EICHMANN"
+   ],
+   "cta": {
+    "kind": "redacted",
+    "line": "THEY COMPARED HIS",
+    "hidden": "EARS"
+   },
+   "end": "WHAT DID THEY COMPARE?",
+   "name": "How Mossad Made Sure It Was Eichmann"
+  },
+  {
+   "id": "ratlines_bishop",
+   "chapter": 2,
+   "sentences": [
+    "In 1948, a bishop in Rome writes to the President of Argentina.",
+    "He helps wanted Nazis escape with Red Cross papers.",
+    "And now he asks Juan Perón for one thing: five thousand visas."
+   ],
+   "shots": [
+    {
+     "s": 1,
+     "file": "Alois Hudal Santa Maria dell'Anima ca 1940.jpg"
+    },
+    {
+     "s": 2,
+     "file": "Adolf Eichmann Red Cross photo.jpg",
+     "card": true
+    },
+    {
+     "s": 3,
+     "file": "Perón y Evita desde el balcón saludan a la multitud.jpg"
+    }
+   ],
+   "top": "THE BISHOP|OF THE RATLINES",
+   "key": [
+    "RATLINES"
+   ],
+   "cta": {
+    "kind": "number",
+    "big": "5,000",
+    "line": "VISAS. FOR WHOM?"
+   },
+   "end": "FOR WHOM?",
+   "name": "The Bishop Who Asked Perón for 5,000 Visas"
+  }
+ ],
+ "chapters": [
+  {
+   "title": "",
+   "mode": "people",
+   "sentences": [
+    "On 11 April 1961, in Jerusalem, the man in the bulletproof glass booth is Adolf Eichmann.",
+    "As many as 9,000 Nazi war criminals and their collaborators reportedly escaped to South America.",
+    "Eichmann was one of them, and for ten years he lived in Argentina as Ricardo Klement.",
+    "So how does the man who ran the deportations of the Jews get a passport from the Red Cross?",
+    "It all begins in an American camp, under a false name."
+   ],
+   "shots": [
+    {
+     "s": 1,
+     "film": "rl_trial",
+     "from": 14,
+     "to": 17.5,
+     "stamp": [
+      "JERUSALEM"
+     ]
+    },
+    {
+     "s": 1,
+     "film": "rl_trial",
+     "from": 92,
+     "to": 95
+    },
+    {
+     "s": 2,
+     "film": "rl_trial",
+     "from": 9,
+     "to": 12,
+     "note": "9,000 ESCAPED"
+    },
+    {
+     "s": 2,
+     "file": "Haven van Genua en de omliggende bebouwing vooraan links het schip de Kedmah, Bestanddeelnr 255-0217.jpg",
+     "label": "GENOA · 1948"
+    },
+    {
+     "s": 3,
+     "file": "Adolf Eichmann, 1942 (cropped).jpg",
+     "reveal": [
+      0.62,
+      0.25
+     ],
+     "name": "ADOLF EICHMANN",
+     "role": "SS OFFICER"
+    },
+    {
+     "s": 3,
+     "file": "Eichmann documento identità.jpg",
+     "card": true,
+     "note": "RICARDO KLEMENT"
+    },
+    {
+     "s": 4,
+     "film": "rl_verdict",
+     "from": 36,
+     "to": 40
+    },
+    {
+     "s": 5,
+     "film": "rl_trial",
+     "from": 48,
+     "to": 52
+    }
+   ],
+   "beats": [
+    {
+     "after": 1,
+     "audio": {
+      "src": "herlihy",
+      "from": 57.05,
+      "to": 66.0
+     },
+     "source": "ED HERLIHY · UNIVERSAL-INTERNATIONAL NEWS, DECEMBER 1961 · 'GUILTY! EICHMANN TO HANG'",
+     "shots": [
+      {
+       "dur": 5.0,
+       "film": "rl_verdict",
+       "from": 52,
+       "to": 57,
+       "source": "ED HERLIHY · UNIVERSAL-INTERNATIONAL NEWS, DECEMBER 1961 · 'GUILTY! EICHMANN TO HANG'"
+      },
+      {
+       "dur": 4.6,
+       "film": "rl_verdict",
+       "from": 65,
+       "to": 69.6,
+       "source": "ED HERLIHY · UNIVERSAL-INTERNATIONAL NEWS, DECEMBER 1961 · 'GUILTY! EICHMANN TO HANG'"
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "title": "Otto Eckmann",
+   "mode": "people",
+   "stamp": [
+    "1945"
+   ],
+   "sentences": [
+    "But in 1945, when the war ends, Eichmann is captured by the Americans, and they do not know who he is.",
+    "He has forged papers in the name of Otto Eckmann.",
+    "He is moved through several camps for SS officers.",
+    "When he realises that his identity has been discovered, he escapes from a work detail at Cham, in Germany.",
+    "Now he is Otto Heninger, and he keeps moving.",
+    "He ends up on the Lüneburg Heath, working in the forests.",
+    "Later he leases a small plot of land, and he stays there until 1950.",
+    "Meanwhile, at Nuremberg, the former commandant of Auschwitz, Rudolf Höss, gives damning evidence about him.",
+    "The man they are talking about is living on his small plot of land, under another name."
+   ],
+   "shots": [
+    {
+     "s": 1,
+     "film": "kl_ruins",
+     "from": 221,
+     "to": 225
+    },
+    {
+     "s": 2,
+     "film": "kl_await",
+     "from": 420,
+     "to": 424,
+     "note": "OTTO ECKMANN"
+    },
+    {
+     "s": 3,
+     "film": "menace",
+     "from": 72,
+     "to": 76
+    },
+    {
+     "s": 4,
+     "file": "Adolf Eichmann Zentralstelle Wien 1939.jpg",
+     "card": true,
+     "label": "EICHMANN'S OFFICE · VIENNA 1939"
+    },
+    {
+     "s": 5,
+     "film": "menace",
+     "from": 48,
+     "to": 52,
+     "note": "OTTO HENINGER"
+    },
+    {
+     "s": 6,
+     "film": "kl_await",
+     "from": 409,
+     "to": 412
+    },
+    {
+     "s": 7,
+     "film": "kl_ruins",
+     "from": 290,
+     "to": 294
+    },
+    {
+     "s": 8,
+     "film": "kl_sent",
+     "from": 40,
+     "to": 44,
+     "label": "NUREMBERG · 1946"
+    },
+    {
+     "s": 9,
+     "film": "kl_await",
+     "from": 377,
+     "to": 381
+    }
+   ]
+  },
+  {
+   "title": "The Bishop",
+   "mode": "people",
+   "stamp": [
+    "ROME"
+   ],
+   "sentences": [
+    "But in Rome, there is a bishop who wants to help men like him.",
+    "Alois Hudal is an Austrian, the rector of a seminary for German priests, and a Nazi sympathiser.",
+    "In December 1944, the Allies let the Vatican send a representative to the German-speaking internees in Italy.",
+    "The job goes to Hudal.",
+    "He uses it to help wanted war criminals escape.",
+    "Among them are Franz Stangl, the commandant of Treblinka, Erich Priebke, and Adolf Eichmann.",
+    "The Rome office of the Red Cross gives refugees travel documents, and in South America they are accepted as passports.",
+    "Hudal can get the blank forms.",
+    "In some cases, the signature of the Red Cross official is forged.",
+    "In 1948 he writes to the President of Argentina, Juan Perón, and asks for 5,000 visas."
+   ],
+   "shots": [
+    {
+     "s": 1,
+     "file": "The Infallible (Pope Pius XII) – Sept. 1945.jpg",
+     "label": "ROME · 1945"
+    },
+    {
+     "s": 2,
+     "file": "Alois Hudal Santa Maria dell'Anima ca 1940.jpg",
+     "card": true,
+     "name": "ALOIS HUDAL",
+     "role": "BISHOP, ROME"
+    },
+    {
+     "s": 3,
+     "film": "menace",
+     "from": 52,
+     "to": 56
+    },
+    {
+     "s": 4,
+     "film": "kl_ruins",
+     "from": 573,
+     "to": 577
+    },
+    {
+     "s": 5,
+     "film": "menace",
+     "from": 76,
+     "to": 80
+    },
+    {
+     "s": 6,
+     "file": "Franz Paul Stangl.jpg",
+     "name": "FRANZ STANGL",
+     "role": "COMMANDANT, TREBLINKA"
+    },
+    {
+     "s": 6,
+     "file": "Erich Priebke Red Cross photo.png",
+     "card": true
+    },
+    {
+     "s": 7,
+     "file": "Adolf Eichmann Red Cross photo.jpg",
+     "card": true
+    },
+    {
+     "s": 8,
+     "film": "kl_ruins",
+     "from": 300,
+     "to": 304
+    },
+    {
+     "s": 9,
+     "film": "kl_await",
+     "from": 432,
+     "to": 436
+    },
+    {
+     "s": 10,
+     "file": "Perón y Evita desde el balcón saludan a la multitud.jpg",
+     "note": "5,000 VISAS"
+    }
+   ],
+   "beats": [
+    {
+     "after": 5,
+     "quote": {
+      "text": "I thank God that He [allowed me] to visit and comfort many victims in their prisons and concentration camps and to help them escape with false identity papers.",
+      "name": "ALOIS HUDAL",
+      "role": "BISHOP, IN HIS MEMOIRS"
+     },
+     "shots": [
+      {
+       "dur": 5.0,
+       "film": "kl_await",
+       "from": 425,
+       "to": 430
+      },
+      {
+       "dur": 5.0,
+       "film": "kl_await",
+       "from": 465,
+       "to": 470
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "title": "The Franciscans",
+   "mode": "people",
+   "stamp": [
+    "SAN GIROLAMO"
+   ],
+   "sentences": [
+    "But Hudal is not the only one: a second network works from San Girolamo, a Croatian seminary in Rome.",
+    "It is run by a Croatian priest, Father Krunoslav Draganović.",
+    "At first it helps the Croatian Ustaše, and their leader, Ante Pavelić.",
+    "When a group is ready, Draganović phones a monsignor in Genoa with the number of berths needed on ships to South America.",
+    "It is an open secret in Rome.",
+    "In February 1947, an American agent reports that ten members of Pavelić's cabinet live in San Girolamo or in the Vatican itself.",
+    "The Americans are using the ratlines too.",
+    "Their Counterintelligence Corps shelters Klaus Barbie, the Gestapo chief known as the Butcher of Lyon.",
+    "Barbie gives them information, and in 1951 he flees to Bolivia with American help."
+   ],
+   "shots": [
+    {
+     "s": 1,
+     "file": "Haven van Genua en de omliggende bebouwing, Bestanddeelnr 255-0216.jpg",
+     "zoom": 1.4,
+     "x": 0.5,
+     "y": 0.5
+    },
+    {
+     "s": 2,
+     "film": "kl_ruins",
+     "from": 104.5,
+     "to": 108.5,
+     "note": "KRUNOSLAV DRAGANOVIĆ"
+    },
+    {
+     "s": 3,
+     "film": "kl_ruins",
+     "from": 557,
+     "to": 561
+    },
+    {
+     "s": 4,
+     "file": "Haven van Genua en de omliggende bebouwing vooraan links het schip de Kedmah, Bestanddeelnr 255-0217.jpg",
+     "zoom": 1.5,
+     "x": 0.35,
+     "y": 0.6,
+     "label": "GENOA"
+    },
+    {
+     "s": 5,
+     "file": "The Infallible (Pope Pius XII) – Sept. 1945.jpg",
+     "zoom": 1.4,
+     "x": 0.5,
+     "y": 0.3
+    },
+    {
+     "s": 6,
+     "film": "kl_ruins",
+     "from": 385,
+     "to": 389,
+     "note": "10 MINISTERS"
+    },
+    {
+     "s": 7,
+     "film": "kl_sent",
+     "from": 292,
+     "to": 296
+    },
+    {
+     "s": 8,
+     "file": "Klaus Barbie in uniform.jpg",
+     "reveal": [
+      0.6,
+      0.25
+     ],
+     "name": "KLAUS BARBIE",
+     "role": "GESTAPO CHIEF, LYON"
+    },
+    {
+     "s": 9,
+     "file": "Altmann Lima.jpg",
+     "label": "BARBIE AS 'KLAUS ALTMANN'"
+    }
+   ]
+  },
+  {
+   "title": "Perón's Argentina",
+   "mode": "people",
+   "stamp": [
+    "BUENOS AIRES"
+   ],
+   "sentences": [
+    "But the last stop is Buenos Aires, where Juan Perón is in power.",
+    "Already in May 1943, the SS officer Walter Schellenberg made a secret agreement with the Argentine military: Nazis would not be arrested in Argentina.",
+    "Perón's immigration commissioner is an avowed anti-Semite, and his intelligence chief is the son of a Nazi supporter.",
+    "They help European war criminals on their way to citizenship.",
+    "As many as 5,000 escape to Argentina.",
+    "Perón will later say that he helped as many Nazi officials as he could.",
+    "For him, the Nuremberg trials are a disgrace.",
+    "In July 1949, Josef Mengele, the doctor of Auschwitz, sails from Genoa with a passport as Helmut Gregor.",
+    "A year later, it is Eichmann's turn."
+   ],
+   "shots": [
+    {
+     "s": 1,
+     "film": "rl_peron",
+     "from": 6,
+     "to": 11,
+     "label": "JUAN PERÓN · 1953"
+    },
+    {
+     "s": 2,
+     "file": "Otto Skorzeny y Peron.jpg"
+    },
+    {
+     "s": 3,
+     "file": "Perón se dirige a la multitud.jpg"
+    },
+    {
+     "s": 4,
+     "file": "Avenida Corrientes y Esmeralda 1950.jpg",
+     "label": "BUENOS AIRES · 1950S"
+    },
+    {
+     "s": 5,
+     "file": "Av leandro alem bs as 1950s.jpg",
+     "note": "5,000"
+    },
+    {
+     "s": 6,
+     "file": "Perón montado a caballo.jpg",
+     "name": "JUAN PERÓN",
+     "role": "PRESIDENT OF ARGENTINA"
+    },
+    {
+     "s": 7,
+     "file": "Juan Domingo Perón en el estadio de Racing Club.jpg"
+    },
+    {
+     "s": 8,
+     "file": "Mengele2.jpg",
+     "card": true,
+     "name": "JOSEF MENGELE",
+     "role": "SS DOCTOR, AUSCHWITZ"
+    },
+    {
+     "s": 9,
+     "file": "Trolebus en av las heras y facultad derecho 1950.jpg"
+    }
+   ]
+  },
+  {
+   "title": "Ricardo Klement",
+   "mode": "action",
+   "stamp": [
+    "17 JUNE 1950"
+   ],
+   "sentences": [
+    "But first he needs papers, and in 1948, through Hudal's organisation, he gets a landing permit for Argentina.",
+    "The name on it is Ricardo Klement.",
+    "With it, he gets a Red Cross passport.",
+    "He crosses Europe, staying in monasteries that serve as safe houses.",
+    "On 17 June 1950, he sails from Genoa.",
+    "On 14 July, he arrives in Buenos Aires.",
+    "He first works for a government contractor in the province of Tucumán.",
+    "In 1952, his family joins him.",
+    "He holds a series of low-paid jobs, and then he finds work at Mercedes-Benz, where he rises to department head.",
+    "The family builds a house at 14 Garibaldi Street, and they move in during 1960.",
+    "In 1956, he gives long interviews to a Nazi journalist, Willem Sassen.",
+    "He admits that he knew that millions of Jews and others were being killed."
+   ],
+   "shots": [
+    {
+     "s": 1,
+     "file": "WP Eichmann Passport.jpg",
+     "label": "RED CROSS PASSPORT · 1950"
+    },
+    {
+     "s": 2,
+     "file": "WP Eichmann Passport.jpg",
+     "zoom": 1.8,
+     "x": 0.5,
+     "y": 0.2,
+     "note": "RICARDO KLEMENT"
+    },
+    {
+     "s": 3,
+     "file": "Adolf Eichmann Red Cross photo.jpg",
+     "card": true
+    },
+    {
+     "s": 4,
+     "film": "kl_ruins",
+     "from": 450,
+     "to": 454
+    },
+    {
+     "s": 5,
+     "file": "Haven van Genua en de omliggende bebouwing, Bestanddeelnr 255-0216.jpg",
+     "label": "GENOA · 1948"
+    },
+    {
+     "s": 6,
+     "map": {
+      "places": [
+       {
+        "label": "LÜNEBURG HEATH",
+        "lat": 53.1,
+        "lon": 10.2,
+        "side": "red"
+       },
+       {
+        "label": "GENOA",
+        "lat": 44.41,
+        "lon": 8.93,
+        "side": "red"
+       },
+       {
+        "label": "BUENOS AIRES",
+        "lat": -34.6,
+        "lon": -58.4,
+        "side": "red"
+       }
+      ],
+      "routes": [
+       [
+        0,
+        1,
+        "red",
+        0.1
+       ],
+       [
+        1,
+        2,
+        "red",
+        0.25
+       ]
+      ],
+      "pad": 4
+     }
+    },
+    {
+     "s": 7,
+     "file": "Av leandro alem bs as 1950s.jpg",
+     "zoom": 1.5,
+     "x": 0.4,
+     "y": 0.6
+    },
+    {
+     "s": 8,
+     "file": "Avenida Corrientes y Esmeralda 1950.jpg",
+     "zoom": 1.5,
+     "x": 0.6,
+     "y": 0.5
+    },
+    {
+     "s": 9,
+     "file": "Eichmann documento identità.jpg",
+     "card": true,
+     "label": "HIS ARGENTINE ID"
+    },
+    {
+     "s": 10,
+     "film": "rl_peron",
+     "from": 12,
+     "to": 15
+    },
+    {
+     "s": 11,
+     "film": "rl_peron",
+     "from": 15,
+     "to": 18
+    },
+    {
+     "s": 12,
+     "file": "Adolf Eichmann 1960.jpg"
+    }
+   ],
+   "beats": [
+    {
+     "after": 11,
+     "quote": {
+      "text": "I didn't care about the Jews deported to Auschwitz, whether they lived or died.",
+      "name": "ADOLF EICHMANN",
+      "role": "TO WILLEM SASSEN, 1956"
+     },
+     "shots": [
+      {
+       "dur": 5.0,
+       "file": "Adolf Eichmann, 1942 (cropped).jpg",
+       "zoom": 1.4,
+       "y": 0.3
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "title": "The Daughter",
+   "mode": "people",
+   "stamp": [
+    "1956"
+   ],
+   "sentences": [
+    "But in 1956, the daughter of Lothar Hermann, a German Jew in Argentina, begins dating a young man named Klaus Eichmann.",
+    "Klaus boasts about his father's Nazi past.",
+    "Sylvia Hermann goes to the house, and a man opens the door who says he is Klaus's uncle.",
+    "Then Klaus arrives, and calls him: Father.",
+    "Lothar Hermann writes to Fritz Bauer, a West German prosecutor.",
+    "Bauer does not trust the German police, and in 1957 he tells the head of Mossad, Isser Harel.",
+    "When Bauer asks the West German government to request his extradition, it refuses.",
+    "The Nazi hunter Simon Wiesenthal has heard the same thing: Eichmann is in Buenos Aires.",
+    "There are no recent photos of Eichmann, so Wiesenthal has detectives photograph his brother Otto, who looks like him.",
+    "On 1 March 1960, an Israeli interrogator, Zvi Aharoni, arrives in Buenos Aires.",
+    "After several weeks, he confirms it.",
+    "Argentina has always refused to send Nazis back for trial.",
+    "So the Prime Minister of Israel, David Ben-Gurion, decides that Eichmann must be captured."
+   ],
+   "shots": [
+    {
+     "s": 1,
+     "file": "Perón y Evita desde el balcón saludan a la multitud.jpg",
+     "zoom": 1.5,
+     "x": 0.5,
+     "y": 0.5,
+     "label": "BUENOS AIRES"
+    },
+    {
+     "s": 2,
+     "file": "Adolf Eichman in Ramle Prison1961.jpg",
+     "zoom": 1.5,
+     "x": 0.5,
+     "y": 0.25
+    },
+    {
+     "s": 3,
+     "film": "kl_await",
+     "from": 401,
+     "to": 405
+    },
+    {
+     "s": 4,
+     "file": "Adolf Eichmann 1960.jpg",
+     "zoom": 1.8,
+     "x": 0.5,
+     "y": 0.25,
+     "note": "FATHER"
+    },
+    {
+     "s": 5,
+     "film": "kl_sent",
+     "from": 300,
+     "to": 304
+    },
+    {
+     "s": 6,
+     "file": "Isser Harel.jpg",
+     "reveal": [
+      0.6,
+      0.25
+     ],
+     "name": "ISSER HAREL",
+     "role": "HEAD OF MOSSAD"
+    },
+    {
+     "s": 7,
+     "film": "kl_sent",
+     "from": 330,
+     "to": 334
+    },
+    {
+     "s": 8,
+     "file": "Simon Wiesenthal (1940-1945).jpg",
+     "name": "SIMON WIESENTHAL",
+     "role": "NAZI HUNTER"
+    },
+    {
+     "s": 9,
+     "film": "kl_await",
+     "from": 405,
+     "to": 409
+    },
+    {
+     "s": 10,
+     "film": "rl_peron",
+     "from": 0,
+     "to": 4,
+     "stamp": [
+      "1 MARCH 1960"
+     ]
+    },
+    {
+     "s": 11,
+     "film": "kl_await",
+     "from": 437,
+     "to": 441
+    },
+    {
+     "s": 12,
+     "film": "rl_peron",
+     "from": 22,
+     "to": 26
+    },
+    {
+     "s": 13,
+     "file": "David Ben-Gurion (D597-087).jpg",
+     "reveal": [
+      0.6,
+      0.25
+     ],
+     "name": "DAVID BEN-GURION",
+     "role": "PRIME MINISTER OF ISRAEL"
+    }
+   ]
+  },
+  {
+   "title": "Garibaldi Street",
+   "mode": "action",
+   "stamp": [
+    "11 MAY 1960"
+   ],
+   "sentences": [
+    "But on 11 May 1960, the eight-man team is waiting near Garibaldi Street, in San Fernando.",
+    "For days they have watched him come home by bus at the same time every evening.",
+    "To be sure, they compared the shape of his ears with the photos in his SS file.",
+    "That evening, he is not on his usual bus.",
+    "Half an hour later, he gets off another one.",
+    "Peter Malkin asks him, in Spanish, if he has a moment.",
+    "Eichmann tries to get away, two more agents come, and they wrestle him into a car, under a blanket.",
+    "For nine days he is held in a safe house.",
+    "Harel also tries to find Josef Mengele, to bring him back on the same flight, but Mengele has already moved.",
+    "On 20 May, near midnight, a Mossad anaesthetist sedates him.",
+    "The team has made him a fake Israeli passport and an El Al card, in the name of Zeev Zichroni.",
+    "The El Al Britannia takes off, refuels in Dakar, and on 22 May it lands in Israel.",
+    "The next afternoon, Ben-Gurion tells the Knesset.",
+    "Argentina takes the case to the United Nations Security Council, and in June the Council agrees that its sovereignty was violated."
+   ],
+   "shots": [
+    {
+     "s": 1,
+     "file": "David Ben-Gurion and the participants in the operation to capture Adolf Eichmann.jpg",
+     "label": "THE CAPTURE TEAM"
+    },
+    {
+     "s": 2,
+     "film": "rl_peron",
+     "from": 26,
+     "to": 30
+    },
+    {
+     "s": 3,
+     "file": "EichmannSSdoc.jpg",
+     "zoom": 1.4,
+     "note": "THE EARS"
+    },
+    {
+     "s": 4,
+     "file": "Trolebus en av las heras y facultad derecho 1950.jpg",
+     "zoom": 1.8,
+     "x": 0.6,
+     "y": 0.6
+    },
+    {
+     "s": 5,
+     "film": "rl_peron",
+     "from": 18,
+     "to": 21
+    },
+    {
+     "s": 6,
+     "file": "Питер Малкин 1960.jpg",
+     "reveal": [
+      0.6,
+      0.25
+     ],
+     "name": "PETER MALKIN",
+     "role": "MOSSAD AGENT"
+    },
+    {
+     "s": 7,
+     "file": "David Ben-Gurion and the participants in the operation to capture Adolf Eichmann.jpg",
+     "zoom": 1.5,
+     "x": 0.5,
+     "y": 0.4
+    },
+    {
+     "s": 8,
+     "file": "Flickr - Government Press Office (GPO) - Nazi war criminal Adolf Eichmann walking in yard of his cell in Ramle prison.jpg",
+     "zoom": 1.3,
+     "x": 0.5,
+     "y": 0.3
+    },
+    {
+     "s": 9,
+     "file": "WP Josef Mengele 1956.jpg",
+     "zoom": 1.3,
+     "x": 0.5,
+     "y": 0.4
+    },
+    {
+     "s": 10,
+     "file": "El Al Bristol Britannia and Alouette II.jpg",
+     "label": "EL AL BRITANNIA"
+    },
+    {
+     "s": 11,
+     "file": "El Al Bristol Britannia and Alouette II.jpg",
+     "zoom": 1.6,
+     "x": 0.4,
+     "y": 0.5,
+     "note": "ZEEV ZICHRONI"
+    },
+    {
+     "s": 12,
+     "map": {
+      "places": [
+       {
+        "label": "BUENOS AIRES",
+        "lat": -34.6,
+        "lon": -58.4,
+        "side": "blue"
+       },
+       {
+        "label": "DAKAR",
+        "lat": 14.7,
+        "lon": -17.45,
+        "side": "blue"
+       },
+       {
+        "label": "ISRAEL",
+        "lat": 32.0,
+        "lon": 34.9,
+        "side": "blue"
+       }
+      ],
+      "routes": [
+       [
+        0,
+        1,
+        "blue",
+        0.2
+       ],
+       [
+        1,
+        2,
+        "blue",
+        0.15
+       ]
+      ],
+      "pad": 4
+     }
+    },
+    {
+     "s": 13,
+     "file": "The first imprisonment order of Adolf Eichmann 1960-05-23.jpg",
+     "card": true
+    },
+    {
+     "s": 14,
+     "file": "Joodse jongemannen met keppeltjes staan voor een kiosk en houden een krant met d, Bestanddeelnr 255-1844.jpg",
+     "label": "TEL AVIV"
+    }
+   ],
+   "beats": [
+    {
+     "after": 7,
+     "shots": [
+      {
+       "dur": 3.0,
+       "film": "rl_peron",
+       "from": 16,
+       "to": 19.0
+      },
+      {
+       "dur": 3.0,
+       "film": "rl_peron",
+       "from": 28,
+       "to": 31.0
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "title": "The Glass Booth",
+   "mode": "people",
+   "stamp": [
+    "JERUSALEM"
+   ],
+   "sentences": [
+    "But it is in Jerusalem that the world finally sees his face, and the trial begins on 11 April 1961.",
+    "It is held in a hall called Beit Ha'am, and he sits inside a bulletproof glass booth.",
+    "Before the trial, a police officer, Avner Less, questions him every day for months, and the transcripts run to over 3,500 pages.",
+    "Less notes that he shows no remorse.",
+    "The prosecutor is Gideon Hausner, the Attorney General of Israel.",
+    "For 56 days, the prosecution presents its case, with 112 witnesses, many of them Holocaust survivors.",
+    "Eichmann says he had no choice: he was only following orders.",
+    "Hausner reads out what Eichmann said in 1945, that he would leap into his grave laughing.",
+    "Eichmann says he meant enemies of the Reich.",
+    "Later, before the judges, he admits that he meant the Jews.",
+    "The writer Hannah Arendt watches him, and calls what she sees the banality of evil.",
+    "On 15 December 1961, he is sentenced to death.",
+    "His appeal fails, and he is hanged a few minutes after midnight, on 1 June 1962.",
+    "His last words are reported to be: Long live Germany. Long live Argentina. Long live Austria.",
+    "His ashes are scattered in the Mediterranean Sea."
+   ],
+   "shots": [
+    {
+     "s": 1,
+     "file": "Beit HaAm on Jaffa Road (Derech Yafo), Jerusalem. 1948 (id.15297513).jpg",
+     "label": "BEIT HA'AM · JERUSALEM"
+    },
+    {
+     "s": 2,
+     "film": "rl_trial",
+     "from": 14,
+     "to": 18
+    },
+    {
+     "s": 3,
+     "file": "Adolf Eichman in Ramle Prison1961.jpg",
+     "label": "PRISON · 1961"
+    },
+    {
+     "s": 4,
+     "file": "Flickr - Government Press Office (GPO) - Nazi war criminal Adolf Eichmann walking in yard of his cell in Ramle prison.jpg"
+    },
+    {
+     "s": 5,
+     "film": "rl_trial",
+     "from": 73,
+     "to": 77,
+     "label": "GIDEON HAUSNER"
+    },
+    {
+     "s": 6,
+     "film": "rl_trial",
+     "from": 79,
+     "to": 83,
+     "note": "112 WITNESSES"
+    },
+    {
+     "s": 7,
+     "film": "rl_trial",
+     "from": 32,
+     "to": 36
+    },
+    {
+     "s": 8,
+     "film": "rl_verdict",
+     "from": 61,
+     "to": 65
+    },
+    {
+     "s": 9,
+     "film": "rl_trial",
+     "from": 83,
+     "to": 87
+    },
+    {
+     "s": 10,
+     "file": "Eichman Trial judges.jpg"
+    },
+    {
+     "s": 11,
+     "file": "Arendt in Jerusalem during Adolf Eichmann trial.jpg",
+     "name": "HANNAH ARENDT",
+     "role": "WRITER"
+    },
+    {
+     "s": 12,
+     "film": "rl_verdict",
+     "from": 52.5,
+     "to": 55.5,
+     "stamp": [
+      "15 DECEMBER 1961"
+     ]
+    },
+    {
+     "s": 12,
+     "file": "Adolf Eichmann is sentenced to death at the conclusion of the Eichmann Trial USHMM 65289.jpg"
+    },
+    {
+     "s": 13,
+     "file": "Flickr - Government Press Office (GPO) - The appeal of Nazi war criminal Adolf Eichmann.jpg"
+    },
+    {
+     "s": 14,
+     "film": "rl_verdict",
+     "from": 66,
+     "to": 70
+    },
+    {
+     "s": 15,
+     "file": "Eichmann ashes scattered at sea.jpg",
+     "card": true
+    }
+   ],
+   "beats": [
+    {
+     "after": 10,
+     "shots": [
+      {
+       "dur": 3.0,
+       "film": "rl_verdict",
+       "from": 28,
+       "to": 31.0
+      },
+      {
+       "dur": 3.0,
+       "film": "rl_verdict",
+       "from": 37,
+       "to": 40.0
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "title": "The Others",
+   "mode": "people",
+   "stamp": [
+    "THE OTHERS"
+   ],
+   "sentences": [
+    "But for the others, justice is late, or it never comes.",
+    "Franz Stangl works at Volkswagen in Brazil until 1967, and he is sentenced to life in 1970.",
+    "Klaus Barbie is sent to France in 1983, and dies in prison in Lyon.",
+    "Erich Priebke lives in Argentina for almost 50 years, until an American TV team finds him in 1994.",
+    "Bishop Hudal is forced to resign in 1952.",
+    "Josef Mengele moves to Paraguay, and then to Brazil.",
+    "In 1979 he drowns off the coast at Bertioga, and he is buried under a false name.",
+    "He is never tried.",
+    "Documents released in 2006 show that the CIA and West German intelligence had known for years where Eichmann was.",
+    "They did not act.",
+    "The ratlines were built so that these men could disappear, and for years, they did."
+   ],
+   "shots": [
+    {
+     "s": 1,
+     "film": "rl_verdict",
+     "from": 5,
+     "to": 8
+    },
+    {
+     "s": 2,
+     "file": "Franz Paul Stangl.jpg",
+     "zoom": 1.4,
+     "x": 0.5,
+     "y": 0.3,
+     "label": "FRANZ STANGL"
+    },
+    {
+     "s": 3,
+     "file": "Altmann Lima.jpg",
+     "zoom": 1.4
+    },
+    {
+     "s": 4,
+     "file": "Erich Priebke Red Cross photo.png",
+     "zoom": 1.3,
+     "label": "ERICH PRIEBKE AS 'OTTO PAPE'"
+    },
+    {
+     "s": 5,
+     "file": "Alois Hudal Santa Maria dell'Anima ca 1940.jpg",
+     "card": true
+    },
+    {
+     "s": 6,
+     "file": "WP Josef Mengele 1956.jpg",
+     "name": "JOSEF MENGELE",
+     "role": "ARGENTINE ID, 1956"
+    },
+    {
+     "s": 7,
+     "file": "Mengele2.jpg",
+     "zoom": 1.5,
+     "x": 0.5,
+     "y": 0.5
+    },
+    {
+     "s": 8,
+     "film": "rl_verdict",
+     "from": 6,
+     "to": 9,
+     "note": "NEVER TRIED"
+    },
+    {
+     "s": 9,
+     "file": "Aanplakbiljetten over de veroordeling van Karl Adolf Eichmann, Bestanddeelnr 255-1849.jpg"
+    },
+    {
+     "s": 10,
+     "film": "kl_sent",
+     "from": 340,
+     "to": 344
+    },
+    {
+     "s": 11,
+     "film": "rl_trial",
+     "from": 100,
+     "to": 105
+    }
+   ]
+  }
+ ]
+}
