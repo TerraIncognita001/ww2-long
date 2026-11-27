@@ -1518,6 +1518,8 @@ def make_video(d):
         fill_minutes(d, n)
         print("title:", d["title"])
     shots = plan(d, segs, films, got)
+    shots = [s for s in shots if s["dur"] >= 0.04]     # Nov 27 (Liberty): a 0.0 s photo became an empty s0131.mp4
+                                                       # and the concat stopped there: the picture ended at 8:32
     t_ = 0.0                                           # Nov 15: the shots must cover the timeline without a hole,
     for sh in shots:                                   # else the picture runs ahead of the sound from there on
         if abs(sh["start"] - t_) > 0.05:
@@ -1577,6 +1579,10 @@ def make_video(d):
            "-t", f"{total:.3f}", "-r", "30", "-c:v", "libx264", "-preset", env("L_FINAL_PRESET", "veryfast"),
            "-crf", "20", "-maxrate", "10M", "-bufsize", "20M", "-pix_fmt", "yuv420p", "-c:a", "copy",
            "-movflags", "+faststart", "final.mp4")
+    vlen = subprocess.run(["ffprobe", "-v", "error", "-select_streams", "v:0", "-show_entries", "stream=duration",
+                           "-of", "csv=p=0", str(W / "final.mp4")], capture_output=True, text=True).stdout.strip()
+    if not vlen or float(vlen) < total - 1.0:          # Nov 27: never upload a picture shorter than its sound
+        raise SystemExit(f"final.mp4: the picture is {vlen or '?'} s, the sound {total:.1f} s (a broken shot)")
     if not env("L_INTRO_ONLY"):                        # EARS (Nov 17): holes in the sound + earshot's listening
         import ears
         with stage("ears"):
