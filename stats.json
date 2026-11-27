@@ -627,6 +627,42 @@
    "title": "The Bishop Who Asked Perón for 5,000 Visas",
    "seconds": 14.1,
    "publish_at": "2026-11-28T05:00:00Z"
+  },
+  {
+   "id": "sTXfKsW9I0I",
+   "date": "2026-11-27",
+   "format": "long",
+   "title": "The ENTIRE History of the Tiger Tank in 11 Minutes",
+   "topic": "Tiger I",
+   "seconds": 706.4,
+   "words": 1698,
+   "tts": "edge",
+   "release": "2026-11-28T21:00:00Z",
+   "thumb": "ok",
+   "comment_due": {
+    "at": "2026-11-28T21:00:00Z",
+    "q": "Was the Tiger the best tank of the war, or a waste of Germany's steel and fuel?"
+   }
+  },
+  {
+   "id": "BM80OtKdgx4",
+   "date": "2026-11-27",
+   "format": "short",
+   "promo": true,
+   "long": "sTXfKsW9I0I",
+   "title": "One Tiger Tank Against a Whole British Column",
+   "seconds": 13.0,
+   "publish_at": "2026-11-28T21:30:00Z"
+  },
+  {
+   "id": "06QbE8Vw3eY",
+   "date": "2026-11-27",
+   "format": "short",
+   "promo": true,
+   "long": "sTXfKsW9I0I",
+   "title": "Why Porsche Lost the Tiger Tank",
+   "seconds": 13.3,
+   "publish_at": "2026-11-29T00:00:00Z"
   }
  ],
  "metrics": {},
