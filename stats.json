@@ -374,11 +374,7 @@
    "words": 1609,
    "tts": "edge",
    "release": "2026-11-25T21:00:00Z",
-   "thumb": "ok",
-   "comment_due": {
-    "at": "2026-11-25T21:00:00Z",
-    "q": "Were the kamikaze pilots heroes, victims, or both?"
-   }
+   "thumb": "ok"
   },
   {
    "id": "mRmxjFZPcj4",
@@ -474,11 +470,7 @@
    "words": 1483,
    "tts": "edge",
    "release": "2026-11-26T21:00:00Z",
-   "thumb": "ok",
-   "comment_due": {
-    "at": "2026-11-26T21:00:00Z",
-    "q": "Kelley found no Nazi illness, only ordinary men. Was he right?"
-   }
+   "thumb": "ok"
   },
   {
    "id": "qEfbHsKXK3A",
@@ -510,11 +502,7 @@
    "words": 1809,
    "tts": "edge",
    "release": "2026-11-26T02:00:00Z",
-   "thumb": "ok",
-   "comment_due": {
-    "at": "2026-11-26T02:00:00Z",
-    "q": "The Wilhelm Gustloff: whose fault was it, Petersen's lights, Marinesko's torpedoes, or Koch's orders?"
-   }
+   "thumb": "ok"
   },
   {
    "id": "3EvzwjjSpgo",
@@ -535,6 +523,42 @@
    "title": "373 Women in the Pool of the Wilhelm Gustloff",
    "seconds": 13.0,
    "publish_at": "2026-11-26T05:00:00Z"
+  },
+  {
+   "id": "1H7XCojwTds",
+   "date": "2026-11-27",
+   "format": "long",
+   "title": "The ENTIRE History of the Liberty Ships in 13 Minutes",
+   "topic": "Liberty ship",
+   "seconds": 789.5,
+   "words": 1877,
+   "tts": "edge",
+   "release": "2026-11-27T02:00:00Z",
+   "thumb": "ok",
+   "comment_due": {
+    "at": "2026-11-27T02:00:00Z",
+    "q": "Was the four-day ship a stunt, or the weapon that beat the U-boats?"
+   }
+  },
+  {
+   "id": "BBvYf9k6NAo",
+   "date": "2026-11-27",
+   "format": "short",
+   "promo": true,
+   "long": "1H7XCojwTds",
+   "title": "The Liberty Ship With a Secret in Her Holds",
+   "seconds": 12.1,
+   "publish_at": "2026-11-27T02:30:00Z"
+  },
+  {
+   "id": "CjyratFOud8",
+   "date": "2026-11-27",
+   "format": "short",
+   "promo": true,
+   "long": "1H7XCojwTds",
+   "title": "Why the Ships of World War II Broke in Half",
+   "seconds": 12.9,
+   "publish_at": "2026-11-27T05:00:00Z"
   }
  ],
  "metrics": {},
