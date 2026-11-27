@@ -1,0 +1,441 @@
+"""Operation Deadlight, Nov 26 (Andrii, Nov 24: genre 2, sea disasters; Fri 27.11 21:00 London): a hand story in the
+NEW FORMAT (CLAUDE.md, Nov 23): voice No. 3, Karl Dönitz's own voice at Nuremberg (final statement, 31 August 1946:
+'Ich halte diese Kriegführung für berechtigt...') as the speech after sentence 1, one open question (how does one
+U-boat end up in Chicago? answered in 'Away All Boarders' + 'The Boat That Got Away').
+Facts: the Wikipedia articles of STORY['sources'] (whole, sources/*.txt).
+Films: US Navy / NARA (public domain, via Internet Archive): NPC-7835 (U-249 surrenders at Weymouth), NPC-7962 and
+NPC-12118 (U-858), NPC-15660 (U-805), NPC-12119 (aerial), NPC-9050 / NPC-9052 (U-505 captured), 428-NPC-12746
+(U-505 inside), 428-NPC-5637 (U-505 arrives in Chicago, 1954); Universal Newsreel 'U-Boat Menace Ended' (1945).
+Run: python tools/stories/deadlight_build.py"""
+import json, pathlib
+
+IA = "https://archive.org/download/"
+WO = "(public domain, via Internet Archive)"
+
+# pictures (Wikimedia Commons; PD / PD-UKGov / CC0 / CC BY 2.0)
+HU55907 = "Operation Deadlight, November-december 1945 HU55907.jpg"
+KRAK = "The Polish Navy during the Second World War HU55913.jpg"
+KRAK1165 = "U-1165 ORP Krakowiak.jpg"
+KRAK2337 = "U-2337 ORP Krakowiak.jpg"
+FERRET = "HMS Ferret surrendered Uboats.jpg"
+LISA1 = "German U-boats Surrender on Lisahally.jpg"
+LISA2 = "German U-boats Surrender at Lisahally, Near Londonderry, Northern Ireland, 24 - 25 May 1945. A28895.jpg"
+LISA3 = "German U-boats Surrender at Lisahally, Near Londonderry, Northern Ireland, 24 - 25 May 1945. A28898.jpg"
+LISA4 = "German U-boats Surrender at Lisahally, Near Londonderry, Northern Ireland, 24 - 25 May 1945. A28899.jpg"
+WASH = "The Royal Navy during the Second World War A28897.jpg"
+U1009 = "U-1009 surrenders at Loch Eriboll Scotland 1945 IWM A 28521.jpg"
+U1305 = "German submarine U-1305 surrenders on 10 May 1945 (IWM A28522).jpg"
+U826 = "U-826 at Loch Eriboll Scotland after surrender 1945 IWM A 28531.jpg"
+U826E = "U-826 after surrender at Loch Eriboll Scotland 1945 IWM A 28532.jpg"
+U516 = "German submarine U-516 surrenders to HMS Cavendish (R15), 10 May 1945 (A 28552).jpg"
+U516B = "HMS Cavendish (R15) escorts the German submarine U-516, 10 May 1945 (IWM A28554).jpg"
+U532 = "German submarine U-532 entering Gladstone Dock, Liverpool (UK), on 17 May 1945 (IWM A28678).jpg"
+U255 = "German submarine U-255 underway in the Atlantic Ocean on 15 May 1945 (SUK14575).jpg"
+U534 = "U 534 under attack 5 May 1945.jpg"
+U858 = "U-858 at anchor off Cape May in May 1945, after being surrendered at sea (51694272929).jpg"
+U805 = "German submarine U-805 escorted by U.S. Navy ships off Portsmouth, New Hampshire, on 14 May 1945 (80-G-600574).jpg"
+PORTS4 = "Surrendered German submarines at Portmouth Navy Yard 1945.jpg"
+U234 = "U234 KptLt Fehler USS Sutton.jpg"
+GALLERY_U505 = "Captain Daniel V. Gallery, USN, on the bridge of the captured German submarine U-505 on 4 June 1944 (80-G-49176).jpg"
+GALLERY = "Daniel V. Gallery Portrait.jpg"
+GALLERY_DAVID = "Captain Daniel V. Gallery and Lieutenant Albert L. David aboard USS Guadalcanal (CVE-60), 1944.jpg"
+G_ALONG = "USS Guadalcanal (CVE-60) lying alongside captured U-505.jpg"
+U505_LOW = "Captured German submarine U-505 lies near USS Guadalcanal (CVE-60) on 4 June 1944 (80-G-49170).jpg"
+U505_TOW = "A U.S. Navy boarding party working to secure a tow line to the bow of the captured German submarine U-505, 4 June 1944 (80-G-49172).jpg"
+U505_AIR = "Grumman TBM Avenger of VC-8 flies over the captured German submarine U-505, 4 June 1944 (80-G-49168).jpg"
+U505_SALV = "U.S. Navy salvage crew working to save the captured German submarine U-505, 4 June 1944 (80-G-324313).jpg"
+U505_PILLS = "USS Pillsbury (DE-133) alongside the captured German submarine U-505 on 4 June 1944 (80-G-324310).jpg"
+U505_DC = "Depth charges explode near the German submarine U-505 in the Atlantic Ocean on 4 June 1944.jpg"
+U505_POW = "German prisoners of war from the captured submarine U-505 exercise on USS Guadalcanal (CVE-60), in June 1944.jpg"
+U505_FLAG = "U-505 Reichskriegsflagge handover.jpg"
+U505_CHI = "U505 outside Museum of Science and Industry Chicago circa 1956.tif"
+HORTON = "Admiral Sir Max K Horton A17422.jpg"
+HORTON_DERBY = "COMMANDER IN CHIEF WESTERN APPROACHES. 21 JUNE 1943, DERBY HOUSE. A17427.jpg"
+HORTON_OFF = "Admiral Sir Max K. Horton with His Naval Officers.jpg"
+D_YARD = "Karl Donitz among workers at the shipyard, December 1944.jpg"
+D_CREWS = "Admirał Karl Donitz podczas przemawiania do załóg okrętów wojennych (2-2603).jpg"
+D_MIC = "Admiral Karl Donitz giving a radio speech after the attempt on Adolf Hitler's life. 21 July 1944.jpg"
+D_ARREST = "The Second World War 1939 - 1945- Germany- Personalities BU6711.jpg"
+D_ARREST2 = "Nazi Personalities BU6713.jpg"
+TORO = "USS Toro (SS-422) torpedoes the surrendered German submarine U-530, 28 November 1945 (80-G-704667).jpg"
+NOTICE = "British Wireless Marine Service notice surrender U boats.jpg"
+
+D_SRC = "KARL DÖNITZ · NUREMBERG, 31 AUGUST 1946 · 'I CONSIDER THIS FORM OF WARFARE JUSTIFIED'"
+D_SRC2 = "KARL DÖNITZ · NUREMBERG, 31 AUGUST 1946 · 'I WOULD DO EXACTLY THE SAME AGAIN'"
+
+M_AREAS = {"places": [{"label": "LISAHALLY", "lat": 55.04, "lon": -7.27, "side": "blue"},
+                      {"label": "LOCH RYAN", "lat": 54.98, "lon": -5.05, "side": "blue"},
+                      {"label": "AREA XX", "lat": 56.1, "lon": -9.0, "side": "red"}],
+           "routes": [[0, 2, "blue", 0.15], [1, 2, "blue", -0.2]], "pad": 1.2}
+M_ARG = {"places": [{"label": "BERGEN", "lat": 60.39, "lon": 5.32, "side": "blue"},
+                    {"label": "MAR DEL PLATA", "lat": -38.0, "lon": -57.55, "side": "red"}],
+         "routes": [[0, 1, "blue", 0.25]], "pad": 4}
+
+
+def film(s, key, x, n=4, **k):
+    return {"s": s, "film": key, "from": x, "to": x + n, **k}
+
+
+def pic(s, f, **k):
+    return {"s": s, "file": f, **k}
+
+
+def beat(after, *shots):
+    return {"after": after, "shots": [{"dur": d, "film": f, "from": x, "to": x + d, **({"sfx": s} if s else {})}
+                                      for d, f, x, s in shots]}
+
+
+C = [
+ {"title": "", "mode": "action", "sentences": [
+  "On 10 May 1945, at Portland in England, a German submarine comes in from the sea, flying the black flag of surrender.",
+  "Of the 156 U-boats that surrender, the Royal Navy will sink 116 on purpose.",
+  "They belong to Grand Admiral Karl Dönitz, and for a few days he is the head of the German state.",
+  "So how does one of his U-boats end up in the middle of Chicago?",
+  "It all begins with an order called Rainbow."],
+  "shots": [
+   film(1, "dl_249", 85, 3.5, stamp=["PORTLAND"]),
+   film(1, "dl_249", 148, 3),
+   film(2, "dl_858", 40, 3, note="116 U-BOATS"),
+   film(2, "dl_cape", 133, 3),
+   pic(3, D_CREWS, zoom=1.9, x=0.62, y=0.3, name="KARL DÖNITZ", role="GRAND ADMIRAL, HEAD OF STATE"),
+   film(4, "dl_chi", 64, 4),
+   film(5, "menace", 32, 4)],
+  "beats": [{"after": 1, "audio": {"src": "doenitz", "from": 21.6, "to": 30.9}, "source": D_SRC, "shots": [
+   {"dur": 4.8, "file": D_MIC, "source": D_SRC},
+   {"dur": 4.6, "film": "dl_249", "from": 128, "to": 132.6, "source": D_SRC}]}]},
+
+ {"title": "Rainbow", "mode": "action", "stamp": ["MAY 1945"], "sentences": [
+  "But in May 1945, Dönitz still has about 470 U-boats, and he is committed that they should not be surrendered.",
+  "Hitler is dead, and he has named the admiral as the new head of state.",
+  "Some 170 of the boats are ready for battle, most of them in Norway.",
+  "The others lie in the ports of northern Germany and on the Baltic, and the British army is closing in.",
+  "So the navy starts to destroy what is left, before it can be captured.",
+  "On 2 May, 32 U-boats are scuttled at Travemünde.",
+  "On 3 May, 39 more go down, at Kiel and Hamburg.",
+  "But Dönitz also wants to end the war in the west, and Field Marshal Montgomery insists on one thing.",
+  "The German navy, with its U-boats, must be surrendered intact.",
+  "In the early hours of 5 May, the order is given: Regenbogen, Rainbow, the mass scuttling of the fleet.",
+  "Eight minutes later, it is countermanded.",
+  "Still, 87 boats are destroyed on that one day.",
+  "In one week, at least 195 U-boats are sunk by their own men."],
+  "shots": [
+   pic(1, D_YARD, label="KARL DÖNITZ · 1944"),
+   pic(2, D_CREWS, zoom=1.4, x=0.5, y=0.35),
+   film(3, "menace", 36, 4, note="170 READY"),
+   film(4, "menace", 4, 4),
+   pic(5, U534, label="U-534 · 5 MAY 1945"),
+   film(6, "menace", 12, 3, note="32 SCUTTLED"),
+   film(7, "menace", 17, 3),
+   film(8, "menace", 100, 4),
+   pic(9, NOTICE, card=True),
+   film(10, "menace", 40, 3, stamp=["1:34 A.M."], sfx="ov/morse_code"),
+   film(11, "dl_air", 36, 3, note="8 MINUTES"),
+   film(12, "menace", 21, 3, note="87 BOATS"),
+   film(13, "menace", 8, 4, note="195 SCUTTLED")],
+  "beats": [beat(11, (3.0, "dl_air", 44, "ov/morse_code"), (3.0, "menace", 190, None))]},
+
+ {"title": "Black Flags", "mode": "action", "stamp": ["8 MAY 1945"], "sentences": [
+  "But on 8 May 1945, Germany surrenders unconditionally, and the U-boats at sea must give themselves up.",
+  "At least 150 surrender, about a third of them at sea, and the rest in port, mostly in Norway.",
+  "At Loch Eriboll, in the north of Scotland, 33 of them formally surrender.",
+  "The British sailors there call it Loch Orrible, because of the weather.",
+  "In America, U-858 surrenders at Fort Miles, in Delaware.",
+  "It is the first foreign surrender on American soil since the War of 1812.",
+  "She was sent to cause havoc along the East Coast, and she has not sunk a single ship.",
+  "Two crews do not give up.",
+  "U-530 and U-977 sail all the way to Argentina.",
+  "U-977 arrives at Mar del Plata after 99 days at sea.",
+  "Soon there are legends that they carried Nazi leaders, even Hitler himself, to South America.",
+  "Both crews are handed over to the Americans."],
+  "shots": [
+   film(1, "dl_858", 320, 4),
+   film(2, "dl_cape", 146, 3, note="150 SURRENDER"),
+   pic(2, U516, label="U-516 · BLACK FLAG"),
+   pic(3, U1009, label="LOCH ERIBOLL · MAY 1945"),
+   pic(4, U826),
+   film(5, "dl_858", 268, 4, label="U-858 · MAY 1945"),
+   film(6, "dl_cape", 13, 4),
+   film(7, "dl_cape", 69, 4),
+   pic(8, U805),
+   {"s": 9, "map": M_ARG},
+   film(10, "dl_805", 4, 4, note="99 DAYS"),
+   film(11, "dl_805", 345, 4),
+   film(12, "dl_805", 161, 4)],
+  "beats": [beat(1, (3.0, "dl_858", 36, "ov/ocean_waves"), (3.0, "dl_cape", 185, None))]},
+
+ {"title": "Lisahally", "mode": "people", "stamp": ["LISAHALLY"], "sentences": [
+  "But it is at Lisahally, near Londonderry in Northern Ireland, that the U-boat fleet surrenders, on 14 May 1945.",
+  "About a dozen boats come alongside.",
+  "The surrender is taken by Admiral Sir Max Horton.",
+  "He was a British submariner himself, in the First World War.",
+  "Since 1942 he has commanded the Western Approaches, the British side of the Battle of the Atlantic.",
+  "That battle has cost the Allies 3,500 merchant ships.",
+  "The Germans have lost 783 U-boats.",
+  "About 30,000 U-boat sailors are dead, three quarters of all the men.",
+  "US, Canadian and Irish commanders watch the surrender.",
+  "Over the next weeks the other U-boats arrive, and they are tied up in rows.",
+  "Some are moved to Loch Ryan, in Scotland, to wait.",
+  "In August, Horton asks to retire, to make room for younger officers."],
+  "shots": [
+   pic(1, LISA1, label="LISAHALLY · 1945"),
+   pic(2, LISA2),
+   pic(3, HORTON, reveal=[0.6, 0.25], name="SIR MAX HORTON", role="ADMIRAL, WESTERN APPROACHES"),
+   pic(4, HORTON, zoom=1.5, x=0.5, y=0.3),
+   pic(5, HORTON_OFF),
+   film(6, "menace", 44, 3, note="3,500 SHIPS"),
+   film(7, "dl_cape", 24, 4, note="783 U-BOATS"),
+   film(8, "dl_805", 186, 4, note="30,000 DEAD"),
+   pic(9, LISA3),
+   pic(10, FERRET, label="LISAHALLY · JUNE 1945"),
+   pic(11, LISA4),
+   pic(12, WASH)]},
+
+ {"title": "The Deal", "mode": "people", "stamp": ["THIRTY BOATS"], "sentences": [
+  "But the Allies argue about the boats, and in the end they agree to keep thirty boats.",
+  "Ten go to Britain, ten to the United States, and ten to the Soviet Union.",
+  "Some are claimed as prizes, by Britain, France, Norway and the Soviet Union.",
+  "Four are in East Asia when Germany surrenders, and Japan takes them.",
+  "U-181 becomes the Japanese I-501.",
+  "The rest are to be scuttled, and the Royal Navy names the operation Deadlight.",
+  "The plan is to tow them out about 100 miles northwest of Ireland, to three areas called XX, YY and ZZ.",
+  "XX is the main scuttling area.",
+  "36 boats are to go to ZZ, as practice targets for aircraft.",
+  "YY is the reserve, where warships can sink them if the weather is good enough.",
+  "The rest are to be sunk with explosive charges, and by naval gunfire if that fails."],
+  "shots": [
+   pic(1, PORTS4, label="PORTSMOUTH NAVY YARD · 1945"),
+   pic(2, U858, note="10 + 10 + 10"),
+   pic(3, U532),
+   pic(4, U255),
+   pic(5, U234),
+   pic(6, FERRET, zoom=1.6, x=0.5, y=0.4, note="DEADLIGHT"),
+   {"s": 7, "map": M_AREAS},
+   pic(8, KRAK1165),
+   film(9, "dl_air", 145, 4, note="36 TARGETS"),
+   film(10, "dl_air", 230, 4),
+   pic(11, HU55907)]},
+
+ {"title": "Deadlight", "mode": "action", "stamp": ["17 NOVEMBER 1945"], "sentences": [
+  "But when the sinking begins, on 17 November 1945, many of the boats are in poor condition.",
+  "They have been moored for months in exposed harbours.",
+  "And the weather is bad.",
+  "56 boats sink before they ever reach the scuttling areas.",
+  "One of them is U-778.",
+  "On 4 December, she founders under tow, 16 nautical miles from Malin Head.",
+  "She goes down in about 70 metres of water.",
+  "The boats that do reach the areas are mostly sunk by gunfire, not by explosive charges.",
+  "U-249, the boat with the black flag, goes down on 13 December.",
+  "U-1009, which surrendered at Loch Eriboll, is sunk by naval gunfire three days later.",
+  "U-2506, one of the new Type XXI boats, never went on a single patrol.",
+  "She is sunk in January.",
+  "The last sinking is on 11 February 1946."],
+  "shots": [
+   pic(1, KRAK, label="TOWED TO SEA · NOVEMBER 1945"),
+   pic(2, LISA2, zoom=1.5, x=0.5, y=0.5),
+   film(3, "dl_air", 74, 3, sfx="storm_wind"),
+   pic(4, KRAK2337, note="56 LOST ON TOW"),
+   pic(5, KRAK1165, zoom=1.4, x=0.6, y=0.5),
+   film(6, "dl_air", 289, 3, stamp=["MALIN HEAD"]),
+   film(7, "dl_air", 121, 3, note="70 METRES"),
+   pic(8, TORO, label="A SURRENDERED U-BOAT IS SUNK · 1945"),
+   film(9, "dl_249", 200, 3),
+   pic(10, U1305),
+   pic(11, HU55907, zoom=1.4, x=0.5, y=0.4),
+   film(12, "dl_air", 249, 3),
+   film(13, "dl_805", 493, 4, stamp=["11 FEBRUARY 1946"])],
+  "beats": [beat(8, (3.0, "dl_air", 157, "explosion_far"), (3.0, "dl_air", 360, "ov/ocean_waves"))]},
+
+ {"title": "Away All Boarders", "mode": "action", "stamp": ["U-505"], "sentences": [
+  "But one U-boat is not on the list at all: U-505.",
+  "On 4 June 1944, off the coast of Africa, she meets an American task group under Captain Daniel Gallery.",
+  "Gallery has done something unusual: he has formed boarding parties, in case he ever gets the chance to capture a U-boat.",
+  "Depth charges shake U-505 so badly that her captain, Harald Lange, orders his crew to abandon ship.",
+  "They open some valves, but they leave the engines running.",
+  "The submarine circles at about seven knots, with no one on board.",
+  "It is the last time an American captain gives the order: Away all boarders!",
+  "Lieutenant Albert David leads an eight-man party down the conning tower.",
+  "They close the scuttling valves, disarm the demolition charges, and take the charts and codebooks.",
+  "U-505 is the first foreign warship captured by the US Navy on the high seas since the War of 1812.",
+  "David receives the Medal of Honor.",
+  "Admiral Ernest King is furious: if the Germans find out, they will change their codes.",
+  "So the capture is kept top secret, and her crew is held in isolation."],
+  "shots": [
+   film(1, "dl_505c", 125, 4),
+   pic(2, GALLERY, reveal=[0.6, 0.25], name="DANIEL GALLERY", role="CAPTAIN, USS GUADALCANAL"),
+   film(3, "dl_505", 52, 4),
+   pic(4, U505_DC, sfx="explosion_far"),
+   film(5, "dl_505i", 61, 3),
+   film(6, "dl_505c", 141, 4, note="7 KNOTS"),
+   film(7, "dl_505", 539.5, 4),
+   pic(8, GALLERY_DAVID, label="GALLERY AND DAVID · 1944"),
+   film(9, "dl_505i", 113, 4),
+   pic(10, U505_TOW, note="FIRST SINCE 1812"),
+   pic(11, U505_SALV),
+   film(12, "dl_505c", 78, 4),
+   pic(13, U505_POW)],
+  "beats": [beat(7, (3.0, "dl_505c", 150, "ov/ocean_waves"), (3.0, "dl_505c", 109, None))]},
+
+ {"title": "The Boat That Got Away", "mode": "people", "stamp": ["1946"], "sentences": [
+  "But in 1946, the US Navy plans to use U-505 as a target, for gunnery and torpedo practice until she sinks.",
+  "Gallery, now a rear admiral, is against it.",
+  "He tells his brother, a priest, Father John Gallery.",
+  "Father John asks the Museum of Science and Industry in Chicago if it would like a submarine.",
+  "Gallery argues that U-505 does not fall under Operation Deadlight, because she was captured in battle, not surrendered.",
+  "In September 1954, the government gives her to the museum.",
+  "The people of Chicago raise 250,000 dollars to bring her there.",
+  "Coast Guard tugboats tow her through the Great Lakes.",
+  "Nearly every removable part has been stripped from her.",
+  "So the museum asks the German makers for new ones, and Gallery says every company sends them free.",
+  "In 1964, at a reunion, Gallery gives Harald Lange back his binoculars.",
+  "One more boat survives: U-995, given to Norway, and in 1971 a museum ship at Laboe in Germany."],
+  "shots": [
+   pic(1, G_ALONG, label="U-505 · 1944"),
+   pic(2, GALLERY_U505),
+   pic(3, U505_FLAG),
+   film(4, "dl_chi", 89, 4, stamp=["CHICAGO"]),
+   film(5, "dl_chi", 237, 4),
+   film(6, "dl_chi", 73, 4, label="CHICAGO · 1954"),
+   film(7, "dl_chi", 245, 4, note="$250,000"),
+   film(8, "dl_chi", 286, 4),
+   film(9, "dl_505i", 145, 4),
+   film(10, "dl_505i", 257, 4),
+   film(11, "dl_chi", 298, 4),
+   pic(12, U505_CHI)]},
+
+ {"title": "Judgment", "mode": "people", "stamp": ["NUREMBERG"], "sentences": [
+  "But in Nuremberg, the man who built the U-boat fleet is on trial as a major war criminal.",
+  "Dönitz is accused of waging unrestricted submarine warfare, and of ordering his men not to rescue survivors.",
+  "Then evidence comes from an American admiral, Chester Nimitz.",
+  "The US Navy, he says, waged unrestricted submarine warfare against Japan from the day America entered the war.",
+  "The court finds Dönitz guilty of breaking the rules, but his sentence is not assessed on those grounds.",
+  "He gets ten years, for crimes against peace and against the laws of war.",
+  "He serves them in Spandau Prison, in Berlin, and he never says he was wrong.",
+  "More than 100 senior Allied officers write to him, to say the verdict was unfair.",
+  "He dies on Christmas Eve, 1980, at the age of 89, the last grand admiral of Germany."],
+  "shots": [
+   pic(1, D_ARREST, label="FLENSBURG · 23 MAY 1945"),
+   pic(2, D_ARREST2),
+   film(3, "dl_cape", 88, 4),
+   film(4, "dl_858", 470, 4),
+   pic(5, D_YARD, zoom=1.5, x=0.5, y=0.3),
+   pic(6, D_CREWS, zoom=1.2, y=0.3, note="10 YEARS"),
+   pic(7, D_MIC, zoom=1.3, x=0.4, y=0.4),
+   film(8, "dl_805", 133, 4),
+   pic(9, D_ARREST, zoom=1.4, x=0.5, y=0.4)],
+  "beats": [{"after": 7, "audio": {"src": "doenitz", "from": 32.9, "to": 36.5}, "source": D_SRC2, "shots": [
+   {"dur": 4.5, "file": D_MIC, "zoom": 1.15, "source": D_SRC2}]}]},
+
+ {"title": "The Graveyard", "mode": "people", "stamp": ["2001"], "sentences": [
+  "But in 2001, the nautical archaeologist Innes McCartney goes looking for the Deadlight boats.",
+  "He surveys fourteen wrecks, and finds several new sites.",
+  "U-778 is remarkably intact, and she lies in fairly shallow water.",
+  "The wrecks have become valuable for another reason.",
+  "Their steel was made before the atomic age, so it is not contaminated by radiation.",
+  "In the late 1990s, a firm wants to raise up to a hundred of them.",
+  "No salvage rights are given, after objections from Russia and the United States.",
+  "In 2007, Derry City Council plans to raise U-778 for a new maritime museum.",
+  "On 3 October 2007, an Irish diver, Michael Hanrahan, dies while filming the wreck.",
+  "Two years later, the project is cancelled, because of the cost.",
+  "They were built to empty the Atlantic, and the Atlantic is where they lie."],
+  "shots": [
+   film(1, "dl_air", 33, 4),
+   film(2, "dl_air", 98, 4, note="14 WRECKS"),
+   pic(3, KRAK2337, zoom=1.3),
+   film(4, "dl_805", 445, 4),
+   film(5, "dl_805", 20, 4),
+   pic(6, PORTS4, zoom=1.4, x=0.5, y=0.5),
+   film(7, "dl_805", 412, 4),
+   pic(8, LISA4, zoom=1.3),
+   film(9, "dl_air", 284, 4),
+   film(10, "dl_air", 228, 4),
+   film(11, "dl_air", 312, 5)]},
+]
+
+STORY = {
+ "priority": 10,
+ "format": "story",
+ "voice": "andrii",
+ "intro_beats": True,
+ "topic": "Operation Deadlight",
+ "sources": ["Operation Deadlight", "Operation Regenbogen (U-boat)", "Karl Dönitz", "German submarine U-505",
+             "Daniel V. Gallery", "Max Horton", "German submarine U-778", "German submarine U-249",
+             "German submarine U-858", "German submarine U-977", "German submarine U-530", "German submarine U-1009",
+             "German submarine U-2506", "German submarine U-995", "Battle of the Atlantic", "Londonderry Port",
+             "Loch Eriboll", "Innes McCartney"],
+ "title": "Operation Deadlight: Why Britain Sank 116 of Hitler's U-boats",
+ "question": "Should the Allies have kept the U-boats as museums and memorials, or was sinking them right?",
+ "summary": ("In May 1945 the German U-boat fleet surrendered. Of the 156 boats handed over, the Royal Navy towed 116 out "
+             "into the Atlantic northwest of Ireland and sank them in Operation Deadlight. This is the story of Dönitz's "
+             "Rainbow order, the black flags, the deal between the Allies, the boats that sank on the way, and U-505, "
+             "the one captured U-boat that ended up in Chicago."),
+ "tags": ["Operation Deadlight", "U-boat", "U-boats surrender 1945", "Karl Dönitz", "U-505", "Daniel Gallery",
+          "Max Horton", "Lisahally", "Battle of the Atlantic", "Operation Regenbogen", "U-977", "U-530", "U-778",
+          "Kriegsmarine", "sea disaster", "WW2 documentary", "World War 2", "history"],
+ "pronounce": {"Dönitz": "Durr-nits", "Regenbogen": "Ray-gen-bow-gen", "Travemünde": "Trah-veh-moon-deh",
+               "Lisahally": "Liss-a-hal-ly", "Eriboll": "Erry-boll", "Orrible": "Orrible",
+               "Mar del Plata": "Mar del Plah-ta", "Horton": "Hor-ton", "Lange": "Lahng-eh", "Laboe": "Lah-bur",
+               "Spandau": "Shpan-dow", "Nimitz": "Nim-its", "Hanrahan": "Han-ra-han", "McCartney": "Mc-Cart-nee",
+               "U-505": "U five-oh-five", "U-249": "U two-forty-nine", "U-858": "U eight-fifty-eight",
+               "U-530": "U five-thirty", "U-977": "U nine-seventy-seven", "U-778": "U seven-seventy-eight",
+               "U-1009": "U ten-oh-nine", "U-2506": "U twenty-five-oh-six", "U-995": "U nine-ninety-five",
+               "U-181": "U one-eighty-one", "I-501": "I five-oh-one", "XX": "X-X", "YY": "Y-Y", "ZZ": "Zed-Zed",
+               "Type XXI": "Type twenty-one"},
+ "films": {
+  "dl_249": {"url": IA + "NPC-7835/NPC-7835.mov", "mono": True, "crop": "1088:612:96:0",
+             "credit": "U-249 surrenders at Weymouth, May 1945: US Navy / NARA NPC-7835 " + WO},
+  "dl_858": {"url": IA + "NPC-7962/NPC-7962.mov", "mono": True, "crop": "1088:612:96:0",
+             "credit": "Surrender of U-858, May 1945: US Navy / NARA NPC-7962 " + WO},
+  "dl_cape": {"url": IA + "NPC-12118/NPC-12118.mov", "mono": True,
+              "credit": "U-858 at Cape May, May 1945: US Navy / NARA NPC-12118 " + WO},
+  "dl_air": {"url": IA + "NPC-12119/NPC-12119.mov", "mono": True,
+             "credit": "Aerial views, German submarine surrenders, May 1945: US Navy / NARA NPC-12119 " + WO},
+  "dl_805": {"url": IA + "NPC-15660/NPC-15660.mov", "mono": True,
+             "credit": "U-805 at Portsmouth, May 1945: US Navy / NARA NPC-15660 " + WO},
+  "dl_505": {"url": IA + "NPC-9050/NPC-9050.mov", "mono": True,
+             "credit": "Capture of U-505, 4 June 1944: US Navy / NARA NPC-9050 " + WO},
+  "dl_505c": {"url": IA + "NPC-9052/428-npc-9052%20Now%20it%20can%20be%20told%20(MN-5883)%20ca%2006-1944.mp4", "mono": True,
+              "credit": "Now It Can Be Told (1944): US Navy / NARA 428-NPC-9052 " + WO},
+  "dl_505i": {"url": IA + "428-npc-12746/428-npc-12746.mp4", "mono": True, "crop": "655:368:0:56",
+              "credit": "Examination of U-505, 1945: US Navy / NARA 428-NPC-12746 " + WO},
+  "dl_chi": {"url": IA + "NPC-5637/428-npc-5637%20Arrival%20Of%20U-505%20Captured%20German%20Sub%20Chicago%2006-26-1954.mp4",
+             "mono": True, "credit": "Arrival of U-505 in Chicago, 1954: US Navy / NARA 428-NPC-5637 " + WO},
+  "menace": {"url": IA + "1945-05-17_U-Boat_Menace_Ended/1945-05-17_U-Boat_Menace_Ended.mpeg", "mono": True,
+             "crop": "688:344:16:68", "credit": "U-Boat Menace Ended (17 May 1945): Universal Newsreel " + WO}},
+ "period_audio": {
+  "doenitz": {"file": "Doenitz Nuremberg final statement 1946.mp3",
+              "url": "https://commons.wikimedia.org/wiki/File:German_Defendant_Walter_Funk_Concludes_Final_Statement,_German_Defendant_Hjalmar_Schacht_Delivers_Final_Statement,_and_German_Defendant_Karl_Donitz_Begins_Final_Statement_-_DPLA_-_356cd62869f3bc0eaed874c270649ccf.mp3",
+              "speaker": "Karl Dönitz", "date": "31 AUGUST 1946",
+              "credit": "Karl Dönitz, final statement at the Nuremberg trial, 31 August 1946: International Military Tribunal / NARA via DPLA (Wikimedia Commons, public domain)",
+              "text": "Ich halte diese Kriegführung für berechtigt und habe nach meinem Gewissen gehandelt.",
+              "excerpt": "680-720 s of the Commons file"}},
+ "pre": [{"dur": 2.8, "film": "dl_249", "from": 70.0, "to": 73.0, "stamp": ["10 MAY", "1945"], "sfx": "ov/ship_horn"}],
+ "tone": [D_CREWS, D_YARD, D_MIC, HORTON, GALLERY],
+ "trims": {KRAK1165: [0.03, 0.14, 0.03, 0.04], KRAK2337: [0.02, 0.15, 0.02, 0.06]},
+ "thumb": {"file": FERRET},
+ "cover": {"file": FERRET, "x": 0.5, "y": 0.6, "zoom": 1.0, "color": False, "mono": True, "sizes": [120, 90],
+           "text": ["DEADLIGHT", "116 U-BOATS SCUTTLED"], "key": ["DEADLIGHT"],
+           "note": "the Royal Navy sank 116 surrendered U-boats on purpose"},
+ "promos": [
+  {"id": "deadlight_boarders", "chapter": 6,
+   "sentences": ["A German U-boat is sinking, and her crew has left her.",
+                 "Her engines are still running.",
+                 "Then the American captain gives an order nobody will give again: away all boarders!"],
+   "shots": [film(1, "dl_505c", 141, 4), film(2, "dl_505i", 61, 4), film(3, "dl_505", 539.5, 5)],
+   "top": "THE LAST ORDER|OF ITS KIND", "key": ["ORDER"],
+   "cta": {"kind": "redacted", "line": "HE ORDERED", "hidden": "AWAY ALL BOARDERS"}, "end": "WHAT DID HE ORDER?",
+   "name": "The Last Time the US Navy Said 'Away All Boarders': U-505"},
+  {"id": "deadlight_rainbow", "chapter": 1,
+   "sentences": ["On 5 May 1945, a code word goes out to Hitler's U-boats.",
+                 "It means that every crew must sink its own boat.",
+                 "And eight minutes later, Dönitz sends another order: it is called off."],
+   "shots": [film(1, "menace", 36, 4), film(2, "menace", 8, 4), film(3, "dl_air", 40, 5)],
+   "top": "HITLER'S LAST|U-BOAT ORDER", "key": ["U-BOAT"],
+   "cta": {"kind": "number", "big": "8", "line": "MINUTES LATER. WHAT CHANGED?"}, "end": "WHAT CHANGED?",
+   "name": "Operation Rainbow: Hitler's U-boats Ordered to Sink Themselves"}],
+ "chapters": C,
+}
+
+out = pathlib.Path(__file__).resolve().parents[2] / "stories" / "long" / "deadlight.json"
+out.write_bytes((json.dumps(STORY, ensure_ascii=False, indent=1) + "\n").encode("utf-8"))
+words = sum(len(s.split()) for c in C for s in c["sentences"])
+print(out, "| chapters", len(C), "| sentences", sum(len(c["sentences"]) for c in C), "| words", words)
