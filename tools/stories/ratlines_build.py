@@ -166,7 +166,7 @@ C = [
   "Their Counterintelligence Corps shelters Klaus Barbie, the Gestapo chief known as the Butcher of Lyon.",
   "Barbie gives them information, and in 1951 he flees to Bolivia with American help."],
   "shots": [
-   pic(1, GENOA2, zoom=1.4, x=0.5, y=0.5),
+   film(1, "kl_ruins", 300, 4),
    film(2, "kl_ruins", 104.5, 4, note="KRUNOSLAV DRAGANOVIĆ"),
    film(3, "kl_ruins", 557, 4),
    pic(4, GENOA1, zoom=1.5, x=0.35, y=0.6, label="GENOA"),
@@ -386,7 +386,7 @@ STORY = {
                  "crop": "392:220:0:28",
                  "credit": "Guilty! Eichmann to Hang (December 1961): Universal-International News / NARA (Wikimedia Commons, public domain)"},
   "rl_peron": {"url": FP + "El_Presidente_de_la_Naci%C3%B3n_Juan_D._Per%C3%B3n_manejando_un_autom%C3%B3vil_INSTITEC_Justicialista_Sport._A%C3%B1o_1953.webm",
-               "crop": "568:320:36:100",
+               "crop": "477:268:81:96",
                "credit": "President Juan D. Perón driving the Justicialista Sport, 1953 (Wikimedia Commons, public domain in Argentina)"},
   "kl_ruins": {"url": IA + "placeholder", "credit": "see the Kelley story"},
   "kl_sent": {"url": IA + "placeholder", "credit": "see the Kelley story"},

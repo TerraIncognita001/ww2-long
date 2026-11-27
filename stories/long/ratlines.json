@@ -88,7 +88,7 @@
   },
   "rl_peron": {
    "url": "https://commons.wikimedia.org/wiki/Special:FilePath/El_Presidente_de_la_Naci%C3%B3n_Juan_D._Per%C3%B3n_manejando_un_autom%C3%B3vil_INSTITEC_Justicialista_Sport._A%C3%B1o_1953.webm",
-   "crop": "568:320:36:100",
+   "crop": "477:268:81:96",
    "credit": "President Juan D. Perón driving the Justicialista Sport, 1953 (Wikimedia Commons, public domain in Argentina)"
   },
   "kl_ruins": {
@@ -557,10 +557,9 @@
    "shots": [
     {
      "s": 1,
-     "file": "Haven van Genua en de omliggende bebouwing, Bestanddeelnr 255-0216.jpg",
-     "zoom": 1.4,
-     "x": 0.5,
-     "y": 0.5
+     "film": "kl_ruins",
+     "from": 300,
+     "to": 304
     },
     {
      "s": 2,
