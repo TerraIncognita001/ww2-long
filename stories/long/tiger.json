@@ -1,0 +1,1615 @@
+{
+ "priority": 10,
+ "format": "entire",
+ "voice": "andrii",
+ "intro_beats": true,
+ "topic": "Tiger I",
+ "sources": [
+  "Tiger I",
+  "Tiger II",
+  "Michael Wittmann",
+  "Battle of Villers-Bocage",
+  "Tiger 131",
+  "Tigerfibel",
+  "Ferdinand Porsche",
+  "Otto Carius",
+  "Elefant",
+  "Operation Totalize"
+ ],
+ "title": "The ENTIRE History of the Tiger Tank in {N} Minutes",
+ "question": "Was the Tiger the best tank of the war, or a waste of Germany's steel and fuel?",
+ "summary": "From Porsche's copper-hungry rival and the Henschel works in Kassel to the swamps of Leningrad, Tiger 131, Kursk, Michael Wittmann at Villers-Bocage and the King Tigers blown up by their own crews, this is the whole story of the Tiger tank, told with archive film and the voice of the German newsreel of 1943.",
+ "tags": [
+  "Tiger tank",
+  "Tiger I",
+  "King Tiger",
+  "Tiger II",
+  "Michael Wittmann",
+  "Villers-Bocage",
+  "Tiger 131",
+  "Panzer",
+  "Kursk",
+  "Ferdinand Porsche",
+  "WW2 tanks",
+  "WW2 history",
+  "world war 2"
+ ],
+ "pronounce": {
+  "Villers-Bocage": "Vee-lair Bo-cahzh",
+  "Wittmann": "Vit-mun",
+  "Aders": "Ah-ders",
+  "Tigerfibel": "Tee-ger-fee-bel",
+  "Tebourba": "Teh-boor-bah",
+  "Oscroft": "Oss-croft",
+  "Kubinka": "Koo-bin-kah",
+  "Skorzeny": "Skor-tsay-nee",
+  "Peiper": "Pie-per",
+  "Gleize": "Glayz",
+  "Cambe": "Cahmb",
+  "Kassel": "Kass-el",
+  "Carius": "Kah-ree-us",
+  "Henschel": "Hen-shel",
+  "Heer": "Hair",
+  "Rastenburg": "Rass-ten-burg",
+  "Bovington": "Bovv-ing-ton",
+  "Totalize": "Toe-tal-ize",
+  "Beauvais": "Bo-vay"
+ },
+ "films": {
+  "tg_659": {
+   "url": "https://archive.org/download/19430421DieDeutscheWochenschauNr.65917min46s/1943-04-21%20-%20Die%20Deutsche%20Wochenschau%20Nr.%20659%20%2817min%2046s%29.mp4",
+   "mono": true,
+   "crop": "640:360:0:60",
+   "credit": "Die Deutsche Wochenschau 659 (April 1943) (public domain in the US as seized enemy property, via Internet Archive)"
+  },
+  "tg_666": {
+   "url": "https://archive.org/download/1943-06-09-Die-Deutsche-Wochenschau-666/1943-06-09-DieDeutscheWochenschauNr.66619m52s720x544.mkv",
+   "mono": true,
+   "crop": "690:388:15:75",
+   "credit": "Die Deutsche Wochenschau 666 (June 1943) (public domain in the US as seized enemy property, via Internet Archive)"
+  },
+  "tg_672": {
+   "url": "https://archive.org/download/1943-07-21-Die-Deutsche-Wochenschau-672/1943-07-21-DieDeutscheWochenschauNr.67223m24s720x544.mkv",
+   "mono": true,
+   "crop": "690:388:15:75",
+   "credit": "Die Deutsche Wochenschau 672 (July 1943) (public domain in the US as seized enemy property, via Internet Archive)"
+  },
+  "tg_674": {
+   "url": "https://archive.org/download/1943-08-04-Die-Deutsche-Wochenschau-674/1943-08-04-DieDeutscheWochenschauNr.67424m13s720x544.mkv",
+   "mono": true,
+   "crop": "690:388:15:75",
+   "credit": "Die Deutsche Wochenschau 674 (August 1943) (public domain in the US as seized enemy property, via Internet Archive)"
+  },
+  "tg_726": {
+   "url": "https://archive.org/download/1944-08-03-Die-Deutsche-Wochenschau-726/1944-08-03-DieDeutscheWochenschauNr.72618m45s720x544.mkv",
+   "mono": true,
+   "crop": "690:388:15:75",
+   "credit": "Die Deutsche Wochenschau 726 (August 1944) (public domain in the US as seized enemy property, via Internet Archive)"
+  },
+  "tg_729": {
+   "url": "https://archive.org/download/1944-08-23-Die-Deutsche-Wochenschau-729/1944-08-23-DieDeutscheWochenschauNr.72912m58s720x544.mkv",
+   "mono": true,
+   "crop": "690:388:15:75",
+   "credit": "Die Deutsche Wochenschau 729 (August 1944) (public domain in the US as seized enemy property, via Internet Archive)"
+  },
+  "tg_736": {
+   "url": "https://archive.org/download/1944-10-11-Die-Deutsche-Wochenschau-736/1944-10-11-DieDeutscheWochenschauNr.73612m53s720x544.mkv",
+   "mono": true,
+   "crop": "690:388:15:75",
+   "credit": "Die Deutsche Wochenschau 736 (October 1944) (public domain in the US as seized enemy property, via Internet Archive)"
+  },
+  "tg_747": {
+   "url": "https://archive.org/download/1945-01-04-Die-Deutsche-Wochenschau-747/1945-01-04-DieDeutscheWochenschauNr.74711m54s720x544.mkv",
+   "mono": true,
+   "crop": "690:388:15:75",
+   "credit": "Die Deutsche Wochenschau 747 (January 1945) (public domain in the US as seized enemy property, via Internet Archive)"
+  },
+  "tg_700": {
+   "url": "https://archive.org/download/NPC-16700/GERMAN%20WEEKS%20REVIEW%20ca%201940%20-%20ca%201945.mp4",
+   "mono": true,
+   "credit": "German Weekly Review (1944): NARA 428-NPC-16700 (public domain, via Internet Archive)"
+  },
+  "tg_adc": {
+   "url": "https://archive.org/download/111-adc-1347/111-adc-1347.mp4",
+   "mono": true,
+   "crop": "720:405:0:37",
+   "credit": "Mark VI tank knocked out, Italy (June 1944): US Army Signal Corps / NARA 111-ADC-1347 (public domain, via Internet Archive)"
+  }
+ },
+ "period_audio": {
+  "w666": {
+   "file": "Wochenschau 666 Tiger 1943.mp3",
+   "speaker": "Die Deutsche Wochenschau narrator",
+   "date": "JUNE 1943",
+   "credit": "Die Deutsche Wochenschau 666 (9 June 1943), narrator (public domain in the US as seized enemy property, via Internet Archive)",
+   "text": "Der Tiger, eine der stärksten Waffen unseres Heeres. (The Tiger, one of the strongest weapons of our army.)"
+  }
+ },
+ "pre": [
+  {
+   "dur": 2.8,
+   "film": "tg_729",
+   "from": 252,
+   "to": 254.8,
+   "stamp": [
+    "13 JUNE",
+    "1944"
+   ],
+   "sfx": "tank_gun"
+  }
+ ],
+ "whole": [
+  "Bundesarchiv Bild 183-2005-1017-525, Dr. Ferdinand Porsche.jpg",
+  "Wittmann Michael (2-368).jpg",
+  "Tigerfibel cover.jpg"
+ ],
+ "tone": [
+  "Bundesarchiv Bild 183-2005-1017-525, Dr. Ferdinand Porsche.jpg",
+  "Wittmann Michael (2-368).jpg"
+ ],
+ "trims": {
+  "Bundesarchiv Bild 101I-635-3966-07, Panzerfabrik in Deutschland.jpg": [
+   0,
+   0,
+   0,
+   0.06
+  ]
+ },
+ "thumb": {
+  "file": "German Tiger II tank passes American prisoners, 16 December 1944 (111-SC-198241).jpg"
+ },
+ "cover": {
+  "file": "German Tiger II tank passes American prisoners, 16 December 1944 (111-SC-198241).jpg",
+  "x": 0.5,
+  "y": 0.0,
+  "zoom": 1.1,
+  "color": false,
+  "text": [
+   "HISTORY OF THE",
+   "TIGER TANK",
+   "IN {N} MINUTES"
+  ],
+  "key": [
+   "TIGER",
+   "TANK"
+  ],
+  "sizes": [
+   96,
+   150,
+   96
+  ],
+  "mono": true
+ },
+ "promos": [
+  {
+   "id": "tiger_alone",
+   "chapter": 6,
+   "sentences": [
+    "A British column drives into a Norman town, and the people cheer.",
+    "A German tank commander has no time to gather his company.",
+    "So he makes his decision: he sets off alone, with one Tiger."
+   ],
+   "shots": [
+    {
+     "s": 1,
+     "file": "Bundesarchiv Bild 101I-738-0275-09A, Bei Villers-Bocage, getarnter Panzer VI (Tiger I).jpg"
+    },
+    {
+     "s": 2,
+     "film": "tg_729",
+     "from": 256,
+     "to": 260
+    },
+    {
+     "s": 3,
+     "file": "Bundesarchiv Bild 101I-299-1802-07, Nordfrankreich, Michael Wittmann auf Panzer VI (Tiger I).jpg",
+     "zoom": 1.3,
+     "x": 0.5,
+     "y": 0.3
+    }
+   ],
+   "top": "ONE TIGER|AGAINST A COLUMN",
+   "key": [
+    "TIGER"
+   ],
+   "cta": {
+    "kind": "number",
+    "big": "15",
+    "line": "MINUTES. WHAT DID ONE TIGER DO?"
+   },
+   "end": "WHAT DID ONE TIGER DO?",
+   "name": "One Tiger Tank Against a Whole British Column"
+  },
+  {
+   "id": "tiger_copper",
+   "chapter": 1,
+   "sentences": [
+    "Two engineers race to build Hitler a heavy tank by his birthday.",
+    "Both prototypes are shown to Hitler at his headquarters.",
+    "And one design loses because of a single metal: copper."
+   ],
+   "shots": [
+    {
+     "s": 1,
+     "file": "Bundesarchiv Bild 183-2005-1017-525, Dr. Ferdinand Porsche.jpg",
+     "zoom": 1.2,
+     "y": 0.3
+    },
+    {
+     "s": 2,
+     "file": "Bundesarchiv Bild 101III-Reprich-012-08, Wolfschanze, Hitler, Ley, Porsche und Göring.jpg",
+     "x": 0.55,
+     "y": 0.35
+    },
+    {
+     "s": 3,
+     "film": "tg_666",
+     "from": 912,
+     "to": 916
+    }
+   ],
+   "top": "WHY PORSCHE LOST|THE TIGER",
+   "key": [
+    "TIGER"
+   ],
+   "cta": {
+    "kind": "redacted",
+    "line": "PORSCHE LOSES BECAUSE OF",
+    "hidden": "COPPER"
+   },
+   "end": "WHY DID PORSCHE LOSE?",
+   "name": "Why Porsche Lost the Tiger Tank"
+  }
+ ],
+ "chapters": [
+  {
+   "title": "",
+   "mode": "action",
+   "sentences": [
+    "On 13 June 1944, at Villers-Bocage in Normandy, a single German tank comes out of cover and attacks a British column.",
+    "It is a Tiger, and at the height of its service, almost no Allied gun can get through its front armour.",
+    "Its commander is Michael Wittmann, and in Germany he is already a household name.",
+    "But if the Tiger is so strong, why do so many of them end up abandoned by their own crews?",
+    "It all begins with a shock, in the summer of 1941."
+   ],
+   "shots": [
+    {
+     "s": 1,
+     "film": "tg_726",
+     "from": 1002,
+     "to": 1005.4,
+     "stamp": [
+      "VILLERS-BOCAGE"
+     ]
+    },
+    {
+     "s": 1,
+     "film": "tg_729",
+     "from": 256,
+     "to": 259
+    },
+    {
+     "s": 2,
+     "film": "tg_674",
+     "from": 1204,
+     "to": 1208,
+     "note": "ALMOST NO GUN"
+    },
+    {
+     "s": 2,
+     "film": "tg_674",
+     "from": 1259,
+     "to": 1262,
+     "sfx": "tank_gun"
+    },
+    {
+     "s": 3,
+     "file": "Wittmann Michael (2-368).jpg",
+     "reveal": [
+      0.72,
+      0.3
+     ],
+     "name": "MICHAEL WITTMANN",
+     "role": "TIGER COMMANDER"
+    },
+    {
+     "s": 4,
+     "file": "Колонна немецких военнопленных проходит мимо танка «Тигр» на дороге в Белоруссии.jpg",
+     "x": 0.62,
+     "y": 0.2,
+     "label": "AN ABANDONED TIGER · 1944"
+    },
+    {
+     "s": 5,
+     "film": "tg_700",
+     "from": 552,
+     "to": 555.5
+    }
+   ],
+   "beats": [
+    {
+     "after": 1,
+     "audio": {
+      "src": "w666",
+      "from": 17.0,
+      "to": 20.7
+     },
+     "source": "DIE DEUTSCHE WOCHENSCHAU · NARRATOR, JUNE 1943",
+     "shots": [
+      {
+       "dur": 3.7,
+       "film": "tg_666",
+       "from": 907.0,
+       "to": 910.7,
+       "source": "DIE DEUTSCHE WOCHENSCHAU · NARRATOR, JUNE 1943"
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "title": "Copper",
+   "mode": "people",
+   "stamp": [
+    "JUNE 1941"
+   ],
+   "sentences": [
+    "But in June 1941, when Germany invades the Soviet Union, its tanks meet the Soviet T-34 and the heavy KV-1.",
+    "At Henschel, the designer Erwin Aders remembers the shock.",
+    "A month earlier, Henschel and Ferdinand Porsche were asked to design a heavy tank of 45 tonnes.",
+    "It is to carry an 8.8 centimetre gun, taken from the famous eighty-eight.",
+    "The prototypes are due on 20 April 1942, Hitler's 53rd birthday.",
+    "By August 1941, the ministry already has a name for the new tank: Tiger.",
+    "Porsche is the man behind the Volkswagen, and he has known Hitler for years.",
+    "Both prototypes carry the same turret, designed by Krupp, and both are shown to Hitler at Rastenburg.",
+    "But Porsche's tank has a petrol-electric drive, and it needs large amounts of copper, which Germany is short of.",
+    "Henschel wins.",
+    "Expecting the order, Porsche has already built 100 chassis.",
+    "Ninety-one of them become a tank destroyer without a turret, the Ferdinand, later called the Elefant."
+   ],
+   "shots": [
+    {
+     "s": 1,
+     "film": "tg_700",
+     "from": 540,
+     "to": 543
+    },
+    {
+     "s": 1,
+     "film": "tg_674",
+     "from": 1368,
+     "to": 1372,
+     "label": "A SOVIET TANK · 1943"
+    },
+    {
+     "s": 2,
+     "film": "tg_666",
+     "from": 900,
+     "to": 904,
+     "label": "A GERMAN TANK FACTORY"
+    },
+    {
+     "s": 3,
+     "file": "Bundesarchiv Bild 183-2005-1017-525, Dr. Ferdinand Porsche.jpg",
+     "reveal": [
+      0.75,
+      0.3
+     ],
+     "name": "FERDINAND PORSCHE",
+     "role": "ENGINEER"
+    },
+    {
+     "s": 4,
+     "file": "Bundesarchiv Bild 101I-022-2949-22, Russland, Panzerkanone.jpg",
+     "note": "8.8 CM"
+    },
+    {
+     "s": 5,
+     "film": "tg_666",
+     "from": 912,
+     "to": 916,
+     "note": "20 APRIL 1942"
+    },
+    {
+     "s": 6,
+     "file": "Bundesarchiv Bild 101I-635-3965-21, Panzerfabrik in Deutschland.jpg",
+     "label": "THE TIGER"
+    },
+    {
+     "s": 7,
+     "file": "Bundesarchiv Bild 183-2005-1017-525, Dr. Ferdinand Porsche.jpg",
+     "zoom": 1.3,
+     "y": 0.3
+    },
+    {
+     "s": 8,
+     "file": "Bundesarchiv Bild 101III-Reprich-012-08, Wolfschanze, Hitler, Ley, Porsche und Göring.jpg",
+     "x": 0.55,
+     "y": 0.35,
+     "label": "RASTENBURG · 1942"
+    },
+    {
+     "s": 9,
+     "file": "Bundesarchiv Bild 101I-635-3965-34, Panzerfabrik in Deutschland.jpg"
+    },
+    {
+     "s": 10,
+     "film": "tg_666",
+     "from": 916,
+     "to": 919
+    },
+    {
+     "s": 11,
+     "file": "Bundesarchiv Bild 101I-635-3966-07, Panzerfabrik in Deutschland.jpg",
+     "trim": [
+      0,
+      0,
+      0,
+      0.06
+     ],
+     "note": "100 CHASSIS"
+    },
+    {
+     "s": 12,
+     "file": "Bundesarchiv Bild 101III-Reprich-012-08, Wolfschanze, Hitler, Ley, Porsche und Göring.jpg",
+     "zoom": 1.5,
+     "x": 0.5,
+     "y": 0.35
+    }
+   ],
+   "beats": [
+    {
+     "after": 2,
+     "quote": {
+      "text": "There was great consternation when it was discovered that the Soviet tanks were superior to anything available to the Heer.",
+      "name": "ERWIN ADERS",
+      "role": "HENSCHEL DESIGNER"
+     },
+     "shots": [
+      {
+       "dur": 4.0,
+       "film": "tg_674",
+       "from": 1352,
+       "to": 1356
+      },
+      {
+       "dur": 4.0,
+       "film": "tg_700",
+       "from": 556,
+       "to": 560
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "title": "Kassel",
+   "mode": "people",
+   "stamp": [
+    "KASSEL"
+   ],
+   "sentences": [
+    "But when the Tiger goes into production in August 1942, in Kassel, Henschel builds only 25 a month.",
+    "A Tiger takes about twice as long to build as any other German tank of the time.",
+    "It weighs more than twice as much as a Panzer IV.",
+    "Its front armour is 100 millimetres thick, and around the gun it is 200.",
+    "It is too heavy for many small bridges, so the first Tigers can drive under water, through a snorkel.",
+    "Its road wheels overlap, and to change an inner one, the crew may have to take off up to nine others first.",
+    "One Tiger costs the price of almost three Panzer IVs.",
+    "The crews get a manual like no other, the Tigerfibel, with comic drawings and humorous poetry.",
+    "It claims that each Tiger costs 800,000 Reichsmarks and 300,000 hours of work.",
+    "But Hitler cannot wait, and he orders the Tiger into battle months earlier than planned."
+   ],
+   "shots": [
+    {
+     "s": 1,
+     "file": "Bundesarchiv Bild 146-1972-064-61, Kassel, Verladen eines Panzer VI \"Tiger I\".jpg",
+     "label": "KASSEL · 1942",
+     "note": "25 A MONTH"
+    },
+    {
+     "s": 2,
+     "file": "Bundesarchiv Bild 101I-635-3965-05, Panzerfabrik in Deutschland.jpg",
+     "label": "THE HENSCHEL FACTORY"
+    },
+    {
+     "s": 2,
+     "film": "tg_666",
+     "from": 904,
+     "to": 907
+    },
+    {
+     "s": 3,
+     "file": "SC 171655 - The track of a German Mark VI tank in comparison to a man's foot. Beja, Tunisia. 23 April, 1943. (52272131056).jpg",
+     "x": 0.55,
+     "y": 0.45,
+     "note": "TWICE A PANZER IV"
+    },
+    {
+     "s": 4,
+     "file": "Bundesarchiv Bild 101I-022-2935-24, Russland, Treffer an Panzer VI (Tiger I).jpg",
+     "note": "100 MM"
+    },
+    {
+     "s": 5,
+     "file": "German Heavy Tank Tiger I (PzKpfw VI) on Display in 1944.jpg",
+     "trim": [
+      0.04,
+      0.05,
+      0.04,
+      0.05
+     ]
+    },
+    {
+     "s": 6,
+     "file": "Bundesarchiv Bild 101I-635-3965-28, Panzerfabrik in Deutschland.jpg",
+     "label": "TIGER ROAD WHEELS"
+    },
+    {
+     "s": 6,
+     "film": "tg_666",
+     "from": 888,
+     "to": 892
+    },
+    {
+     "s": 7,
+     "file": "Bundesarchiv Bild 101I-635-3966-07, Panzerfabrik in Deutschland.jpg",
+     "zoom": 1.4,
+     "x": 0.5,
+     "y": 0.45,
+     "trim": [
+      0,
+      0,
+      0,
+      0.06
+     ],
+     "note": "3 PANZER IVS"
+    },
+    {
+     "s": 8,
+     "file": "Tigerfibel cover.jpg",
+     "label": "THE TIGERFIBEL · 1943"
+    },
+    {
+     "s": 9,
+     "file": "Tigerfibel cover.jpg",
+     "zoom": 1.5,
+     "x": 0.75,
+     "y": 0.65,
+     "note": "800,000 RM"
+    },
+    {
+     "s": 10,
+     "film": "tg_672",
+     "from": 818,
+     "to": 822
+    }
+   ]
+  },
+  {
+   "title": "Into the Swamp",
+   "mode": "action",
+   "stamp": [
+    "LENINGRAD"
+   ],
+   "sentences": [
+    "But on 23 September 1942, near Leningrad, the first four Tigers go into action, in swampy forest.",
+    "They can only move along roads and tracks, and the defence against them is far easier.",
+    "Pushed too hard, the transmission cannot handle the weight, and many break down.",
+    "One Tiger gets stuck in the swamp and has to be abandoned.",
+    "The Soviets capture it largely intact, and study it to prepare their answer.",
+    "But the Tigers that keep going are hard to stop.",
+    "Otto Carius will command Tigers on this front, and he remembers their armour.",
+    "After the war, he opens a pharmacy, and names it the Tiger Pharmacy."
+   ],
+   "shots": [
+    {
+     "s": 1,
+     "file": "Bundesarchiv Bild 146-1981-071-07A, Russland, Panzer VI \"Tiger I\".jpg",
+     "label": "THE LENINGRAD FRONT"
+    },
+    {
+     "s": 1,
+     "film": "tg_659",
+     "from": 440,
+     "to": 443
+    },
+    {
+     "s": 2,
+     "film": "tg_674",
+     "from": 1180,
+     "to": 1184
+    },
+    {
+     "s": 3,
+     "film": "tg_674",
+     "from": 1208,
+     "to": 1212
+    },
+    {
+     "s": 4,
+     "file": "Bundesarchiv Bild 101I-022-2926-11A, Russland, Abschleppen eines Tiger I.jpg",
+     "label": "A TIGER UNDER TOW · 1943"
+    },
+    {
+     "s": 5,
+     "file": "Советские танкисты на трофейном немецком танке «Тигр» 502-го тяжелого танкового батальона.jpg",
+     "label": "SOVIET TANKMEN ON A CAPTURED TIGER",
+     "note": "CAPTURED"
+    },
+    {
+     "s": 6,
+     "film": "tg_674",
+     "from": 1216,
+     "to": 1218.5
+    },
+    {
+     "s": 6,
+     "film": "tg_674",
+     "from": 1276,
+     "to": 1280,
+     "sfx": "tank_gun"
+    },
+    {
+     "s": 7,
+     "file": "Bundesarchiv Bild 101I-461-0212-12, Russland, Panzer VI (Tiger I).jpg",
+     "name": "OTTO CARIUS",
+     "role": "TIGER COMMANDER"
+    },
+    {
+     "s": 8,
+     "file": "Bundesarchiv Bild 101I-022-2949-05, Russland, Soldaten auf Panzer VI \"Tiger I\".jpg",
+     "zoom": 1.3,
+     "x": 0.5,
+     "y": 0.4
+    }
+   ],
+   "beats": [
+    {
+     "after": 7,
+     "quote": {
+      "text": "Again and again, we admired the quality of the steel on our tanks. It was hard without being brittle.",
+      "name": "OTTO CARIUS",
+      "role": "TIGER COMMANDER"
+     },
+     "shots": [
+      {
+       "dur": 3.5,
+       "file": "Bundesarchiv Bild 101I-022-2935-24, Russland, Treffer an Panzer VI (Tiger I).jpg",
+       "zoom": 1.3
+      },
+      {
+       "dur": 3.0,
+       "film": "tg_674",
+       "from": 1259,
+       "to": 1262,
+       "sfx": "tank_gun"
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "title": "Tiger 131",
+   "mode": "action",
+   "stamp": [
+    "TUNISIA"
+   ],
+   "sentences": [
+    "But in Tunisia, on 1 December 1942, three Tigers fight for the first time in Africa, in an olive grove near Tebourba.",
+    "Lee tanks hit them from only 80 to 100 metres, and the armour holds.",
+    "The first Tiger lost to an Allied gun goes on 20 January 1943, to British anti-tank guns.",
+    "On 24 April 1943, at a hill called Point 174, John Oscroft of the Sherwood Foresters is told to hit a Tiger with his anti-tank weapon.",
+    "He fires, and the round bounces off.",
+    "Then a shot from a Churchill tank jams the Tiger's turret, and the crew abandon it.",
+    "It is Tiger 131, and the British repair it with parts from other Tigers.",
+    "In Tunis, King George VI and Winston Churchill inspect it.",
+    "In England, the tests find that its armour steel is of exceptionally high quality.",
+    "In a British trial, its gun scores five hits in a row on a small target, from 1,200 yards.",
+    "Britain rushes its new 17-pounder gun to Africa, and later puts it in the Sherman Firefly.",
+    "In one fight, a single Firefly destroys three Tigers in 12 minutes."
+   ],
+   "shots": [
+    {
+     "s": 1,
+     "file": "Bundesarchiv Bild 101I-554-0872-35, Tunesien, Panzer VI (Tiger I).jpg",
+     "label": "TUNISIA · 1943"
+    },
+    {
+     "s": 1,
+     "map": {
+      "places": [
+       {
+        "label": "TUNIS",
+        "lat": 36.8,
+        "lon": 10.18,
+        "side": "red"
+       },
+       {
+        "label": "TEBOURBA",
+        "lat": 36.83,
+        "lon": 9.84,
+        "side": "red"
+       },
+       {
+        "label": "BÉJA",
+        "lat": 36.73,
+        "lon": 9.18,
+        "side": "blue"
+       }
+      ],
+      "routes": [
+       [
+        2,
+        1,
+        "blue",
+        0.2
+       ]
+      ],
+      "pad": 0.6
+     }
+    },
+    {
+     "s": 2,
+     "film": "tg_659",
+     "from": 916,
+     "to": 920,
+     "label": "LEE TANKS IN TUNISIA · 1943"
+    },
+    {
+     "s": 2,
+     "film": "tg_659",
+     "from": 928,
+     "to": 931,
+     "note": "80 METRES"
+    },
+    {
+     "s": 3,
+     "file": "Bundesarchiv Bild 101I-557-1018-28A, Tunesien, Panzer VI (Tiger I), US-Fahrzeug.jpg"
+    },
+    {
+     "s": 3,
+     "file": "Knocked-out German Tiger I tank at Béja, Tunisia, 23 April 1943 (111-SC-171649).jpg",
+     "label": "BÉJA, TUNISIA · APRIL 1943"
+    },
+    {
+     "s": 4,
+     "file": "The British Army in Tunisia 1943 NA2640.jpg",
+     "trim": [
+      0,
+      0,
+      0.1,
+      0.1
+     ],
+     "name": "JOHN OSCROFT",
+     "role": "SHERWOOD FORESTERS"
+    },
+    {
+     "s": 5,
+     "film": "tg_659",
+     "from": 872,
+     "to": 875,
+     "sfx": "explosion_close"
+    },
+    {
+     "s": 6,
+     "file": "Knocked-out German Tiger I tank at Béja, Tunisia, 23 April 1943 (111-SC-171649).jpg",
+     "zoom": 1.5,
+     "x": 0.4,
+     "y": 0.45
+    },
+    {
+     "s": 7,
+     "file": "The British Army in Tunisia 1943 NA2640.jpg",
+     "zoom": 1.4,
+     "x": 0.45,
+     "y": 0.5,
+     "trim": [
+      0,
+      0,
+      0.1,
+      0.1
+     ],
+     "note": "TIGER 131"
+    },
+    {
+     "s": 8,
+     "file": "The British Army in Tunisia 1943 NA3693.jpg",
+     "trim": [
+      0,
+      0,
+      0.1,
+      0.1
+     ],
+     "label": "TUNIS · 1943"
+    },
+    {
+     "s": 9,
+     "file": "The British Army in the United Kingdom 1939-45 H34426.jpg",
+     "trim": [
+      0,
+      0,
+      0.1,
+      0.1
+     ],
+     "label": "A CAPTURED TIGER IN LONDON · 1943"
+    },
+    {
+     "s": 10,
+     "file": "SC 171655 - The track of a German Mark VI tank in comparison to a man's foot. Beja, Tunisia. 23 April, 1943. (52272131056).jpg",
+     "zoom": 1.5,
+     "x": 0.4,
+     "y": 0.5,
+     "note": "5 HITS IN A ROW"
+    },
+    {
+     "s": 11,
+     "film": "tg_726",
+     "from": 1054,
+     "to": 1057
+    },
+    {
+     "s": 12,
+     "film": "tg_674",
+     "from": 1276,
+     "to": 1279.5,
+     "note": "3 TIGERS · 12 MINUTES"
+    }
+   ]
+  },
+  {
+   "title": "Citadel",
+   "mode": "action",
+   "stamp": [
+    "JULY 1943"
+   ],
+   "sentences": [
+    "But in July 1943, two Tiger battalions join Operation Citadel, the German attack at Kursk.",
+    "Michael Wittmann commands a platoon of four Tigers.",
+    "On their first day in battle, his crew is credited with eight tanks and seven anti-tank guns.",
+    "At one point, his Tiger survives a collision with a burning T-34.",
+    "But the operation fails, and the Germans go back on the defensive.",
+    "In the retreat, many broken-down Tigers have to be abandoned, because there is no time to repair them.",
+    "To tow one Tiger takes two or three heavy half-tracks, and there are not enough of them.",
+    "So crews tow with another Tiger, though it is forbidden, and it often wears out the second one too.",
+    "In the second half of 1943, on average only about a third of the Tigers are ready for action.",
+    "And the Soviets answer with bigger guns.",
+    "Their SU-152 can knock out a Tiger, and it is nicknamed the beast killer."
+   ],
+   "shots": [
+    {
+     "s": 1,
+     "film": "tg_672",
+     "from": 814,
+     "to": 818,
+     "stamp": [
+      "KURSK"
+     ]
+    },
+    {
+     "s": 1,
+     "film": "tg_672",
+     "from": 822,
+     "to": 825
+    },
+    {
+     "s": 2,
+     "file": "Bundesarchiv Bild 101III-Groenert-019-21, Schlacht um Kursk, Panzer VI (Tiger I).jpg",
+     "label": "KURSK · JULY 1943"
+    },
+    {
+     "s": 2,
+     "file": "Bundesarchiv Bild 101I-299-1802-07, Nordfrankreich, Michael Wittmann auf Panzer VI (Tiger I).jpg",
+     "name": "MICHAEL WITTMANN",
+     "role": "PLATOON COMMANDER"
+    },
+    {
+     "s": 3,
+     "film": "tg_672",
+     "from": 942,
+     "to": 946,
+     "note": "8 TANKS · 1 DAY"
+    },
+    {
+     "s": 4,
+     "film": "tg_674",
+     "from": 1408,
+     "to": 1411,
+     "sfx": "explosion_close"
+    },
+    {
+     "s": 5,
+     "film": "tg_672",
+     "from": 974,
+     "to": 978
+    },
+    {
+     "s": 6,
+     "file": "Bundesarchiv Bild 101III-Zschaeckel-206-35, Schlacht um Kursk, Panzer VI (Tiger I).jpg"
+    },
+    {
+     "s": 6,
+     "file": "Колонна немецких военнопленных проходит мимо танка «Тигр» на дороге в Белоруссии.jpg",
+     "zoom": 1.4,
+     "x": 0.7,
+     "y": 0.2
+    },
+    {
+     "s": 7,
+     "file": "Bundesarchiv Bild 101I-022-2926-11A, Russland, Abschleppen eines Tiger I.jpg",
+     "zoom": 1.3,
+     "x": 0.5,
+     "y": 0.5
+    },
+    {
+     "s": 8,
+     "file": "Bundesarchiv Bild 101I-022-2922-22, Russland, Reparatur Panzer VI \"Tiger I\".jpg",
+     "label": "REPAIRING A TIGER · 1943"
+    },
+    {
+     "s": 9,
+     "file": "Bundesarchiv Bild 101I-022-2949-05, Russland, Soldaten auf Panzer VI \"Tiger I\".jpg",
+     "note": "ONLY 1 IN 3"
+    },
+    {
+     "s": 10,
+     "film": "tg_700",
+     "from": 546,
+     "to": 549.5
+    },
+    {
+     "s": 11,
+     "film": "tg_700",
+     "from": 584,
+     "to": 588,
+     "sfx": "explosion_far"
+    }
+   ],
+   "beats": [
+    {
+     "after": 4,
+     "shots": [
+      {
+       "dur": 3.0,
+       "film": "tg_672",
+       "from": 854,
+       "to": 857.0,
+       "sfx": "explosion_far"
+      },
+      {
+       "dur": 3.0,
+       "film": "tg_672",
+       "from": 858,
+       "to": 861.0
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "title": "Villers-Bocage",
+   "mode": "action",
+   "stamp": [
+    "FEBRUARY 1944"
+   ],
+   "sentences": [
+    "But on 2 February 1944, Hitler himself gives Wittmann the Oak Leaves to his Knight's Cross.",
+    "By then he is credited with 117 tanks, though German tank kills are recorded for the whole unit.",
+    "In June 1944 the Allies land in Normandy, and his battalion drives to the front from Beauvais.",
+    "There are so many breakdowns on the way that his company has only six of its fourteen Tigers.",
+    "On the morning of 13 June, British tanks drive into Villers-Bocage, and the people come out to greet them.",
+    "Their lead squadron goes on to a ridge, and the carriers behind it park nose to tail along the road.",
+    "Wittmann has no time to gather his company, so he sets off with one tank.",
+    "At about 9 o'clock, his Tiger comes out onto the main road.",
+    "It knocks out the last tank on the ridge, and a Firefly catches fire and blocks the road.",
+    "Then he drives along the column, and the carriers burst into flames.",
+    "In the town, the British tanks try to reverse away, but they are too slow.",
+    "At the edge of the town, an anti-tank gun finally disables his Tiger.",
+    "In less than 15 minutes, up to 14 tanks are destroyed, most or all of them credited to him.",
+    "That afternoon, the Tigers that follow him into the town run into a British ambush, and several are lost.",
+    "But German propaganda gives all of it to Wittmann, with doctored photographs."
+   ],
+   "shots": [
+    {
+     "s": 1,
+     "file": "Bundesarchiv Bild 146-1989-099-15, Michael Wittmann und Adolf Hitler.jpg",
+     "label": "THE WOLF'S LAIR · 1944"
+    },
+    {
+     "s": 2,
+     "file": "Bundesarchiv Bild 101I-299-1802-08, Nordfrankreich, Michael Wittmann auf Panzer VI (Tiger I).jpg",
+     "note": "117 TANKS"
+    },
+    {
+     "s": 3,
+     "film": "tg_729",
+     "from": 198.5,
+     "to": 202.0,
+     "label": "NORMANDY · 1944"
+    },
+    {
+     "s": 3,
+     "film": "tg_729",
+     "from": 252,
+     "to": 255
+    },
+    {
+     "s": 4,
+     "file": "Bundesarchiv Bild 101I-299-1805-16, Nordfrankreich, Panzer VI (Tiger I).jpg",
+     "note": "6 OF 14"
+    },
+    {
+     "s": 5,
+     "file": "Bundesarchiv Bild 101I-738-0275-09A, Bei Villers-Bocage, getarnter Panzer VI (Tiger I).jpg",
+     "stamp": [
+      "8:30 A.M."
+     ]
+    },
+    {
+     "s": 6,
+     "film": "tg_726",
+     "from": 1012,
+     "to": 1016
+    },
+    {
+     "s": 7,
+     "file": "Bundesarchiv Bild 101I-299-1802-07, Nordfrankreich, Michael Wittmann auf Panzer VI (Tiger I).jpg",
+     "zoom": 1.4,
+     "x": 0.5,
+     "y": 0.3
+    },
+    {
+     "s": 8,
+     "file": "Bundesarchiv Bild 101I-738-0275-10A, Bei Villers-Bocage, Panzer VI (Tiger I).jpg",
+     "stamp": [
+      "9:00 A.M."
+     ]
+    },
+    {
+     "s": 9,
+     "film": "tg_729",
+     "from": 304,
+     "to": 307,
+     "sfx": "tank_gun"
+    },
+    {
+     "s": 9,
+     "film": "tg_729",
+     "from": 348,
+     "to": 351
+    },
+    {
+     "s": 10,
+     "film": "tg_729",
+     "from": 352,
+     "to": 354.5,
+     "sfx": "explosion_close"
+    },
+    {
+     "s": 11,
+     "file": "Bundesarchiv Bild 101I-494-3376-18A, Villers-Bocage, zerstörter Cromwell-Panzer.jpg",
+     "label": "VILLERS-BOCAGE · JUNE 1944"
+    },
+    {
+     "s": 12,
+     "file": "The British Army in Normandy 1944 B8635.jpg",
+     "trim": [
+      0,
+      0,
+      0.08,
+      0.08
+     ]
+    },
+    {
+     "s": 13,
+     "film": "tg_726",
+     "from": 1084,
+     "to": 1088,
+     "note": "14 TANKS · 15 MINUTES"
+    },
+    {
+     "s": 14,
+     "file": "The British Army in Normandy 1944 B8635.jpg",
+     "zoom": 1.4,
+     "x": 0.4,
+     "y": 0.6,
+     "trim": [
+      0,
+      0,
+      0.08,
+      0.08
+     ]
+    },
+    {
+     "s": 15,
+     "file": "Bundesarchiv Bild 101I-738-0275-10A, Bei Villers-Bocage, Panzer VI (Tiger I).jpg",
+     "zoom": 1.4,
+     "x": 0.4,
+     "y": 0.5
+    }
+   ],
+   "beats": [
+    {
+     "after": 7,
+     "quote": {
+      "text": "Instead I had to act quickly, as I had to assume that the enemy had already spotted me and would destroy me where I stood.",
+      "name": "MICHAEL WITTMANN",
+      "role": "13 JUNE 1944"
+     },
+     "shots": [
+      {
+       "dur": 4.0,
+       "film": "tg_729",
+       "from": 256,
+       "to": 260
+      },
+      {
+       "dur": 4.0,
+       "film": "tg_726",
+       "from": 1001.5,
+       "to": 1005.5
+      }
+     ]
+    },
+    {
+     "after": 12,
+     "shots": [
+      {
+       "dur": 2.5,
+       "film": "tg_729",
+       "from": 364,
+       "to": 366.5,
+       "sfx": "explosion_far"
+      },
+      {
+       "dur": 3.0,
+       "film": "tg_726",
+       "from": 1088,
+       "to": 1091.0
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "title": "The Last Attack",
+   "mode": "action",
+   "stamp": [
+    "8 AUGUST"
+   ],
+   "sentences": [
+    "But on 8 August 1944, south of Caen, the Allies launch Operation Totalize, and Wittmann leads seven Tigers in a counter-attack.",
+    "They cross open ground, towards the high ground.",
+    "British tanks wait for them in the woods, and Canadian tanks fire through holes knocked in the walls of a chateau.",
+    "Shells go through the upper hull of Wittmann's Tiger and set off the ammunition.",
+    "The fire blows off the turret, and none of the crew gets out.",
+    "German propaganda says he was killed by fighter-bombers.",
+    "After the war, at least four different Allied units are named as the ones that did it.",
+    "His crew are buried in an unmarked grave, and only in 1983 is it found.",
+    "Today they lie together at the German war cemetery at La Cambe."
+   ],
+   "shots": [
+    {
+     "s": 1,
+     "film": "tg_729",
+     "from": 340,
+     "to": 344,
+     "label": "NORMANDY · AUGUST 1944"
+    },
+    {
+     "s": 1,
+     "film": "tg_729",
+     "from": 560,
+     "to": 564
+    },
+    {
+     "s": 2,
+     "film": "tg_729",
+     "from": 368,
+     "to": 372
+    },
+    {
+     "s": 3,
+     "film": "tg_726",
+     "from": 1035,
+     "to": 1038,
+     "sfx": "tank_gun"
+    },
+    {
+     "s": 4,
+     "film": "tg_726",
+     "from": 1041,
+     "to": 1044,
+     "sfx": "explosion_massive"
+    },
+    {
+     "s": 5,
+     "file": "The British Army in Normandy 1944 B6140.jpg",
+     "trim": [
+      0,
+      0,
+      0.08,
+      0.08
+     ],
+     "label": "A DESTROYED TIGER · NORMANDY 1944"
+    },
+    {
+     "s": 6,
+     "film": "tg_672",
+     "from": 1166,
+     "to": 1168.5
+    },
+    {
+     "s": 7,
+     "file": "Wittmann Michael (2-368).jpg",
+     "zoom": 1.3,
+     "y": 0.3,
+     "note": "4 UNITS"
+    },
+    {
+     "s": 8,
+     "film": "tg_729",
+     "from": 372,
+     "to": 376,
+     "note": "1983"
+    },
+    {
+     "s": 9,
+     "file": "Bundesarchiv Bild 101I-299-1802-08, Nordfrankreich, Michael Wittmann auf Panzer VI (Tiger I).jpg",
+     "zoom": 1.3,
+     "x": 0.5,
+     "y": 0.3
+    }
+   ],
+   "beats": [
+    {
+     "after": 5,
+     "shots": [
+      {
+       "dur": 3.0,
+       "film": "tg_729",
+       "from": 352,
+       "to": 355.0,
+       "sfx": "explosion_far"
+      },
+      {
+       "dur": 3.0,
+       "film": "tg_726",
+       "from": 1108,
+       "to": 1111.0,
+       "sfx": "low_rumble"
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "title": "The King Tiger",
+   "mode": "action",
+   "stamp": [
+    "JULY 1944"
+   ],
+   "sentences": [
+    "But in July 1944, a new Tiger reaches Normandy: the Tiger II, which the Allies call the King Tiger.",
+    "It weighs almost 70 tonnes, and its front armour is up to 185 millimetres thick.",
+    "Its armour is sloped, like the Panther's, and its gun is even longer.",
+    "In practice, it hits a target the size of a tank at 1,000 metres every time.",
+    "But it has the same engine as the much lighter Tiger I, and it uses a lot of fuel, which Germany is short of.",
+    "In its first fight, one of them falls into a bomb crater and cannot be recovered.",
+    "In August, in Poland, a few T-34s ambush three of them, and their ammunition explodes.",
+    "The Soviets capture three working King Tigers, and at Kubinka they find the steel of lower quality than before.",
+    "In October, King Tigers help Otto Skorzeny's men take Budapest, which keeps Hungary on Germany's side.",
+    "But in the autumn, five bombing raids destroy 95 percent of the Henschel plant.",
+    "Instead of 1,500 King Tigers, only 492 are ever built."
+   ],
+   "shots": [
+    {
+     "s": 1,
+     "film": "tg_736",
+     "from": 726,
+     "to": 730
+    },
+    {
+     "s": 1,
+     "film": "tg_736",
+     "from": 732,
+     "to": 735
+    },
+    {
+     "s": 2,
+     "file": "Bundesarchiv Bild 146-1975-102-14A, Panzer VI (Tiger II, Königstiger).jpg",
+     "note": "70 TONNES"
+    },
+    {
+     "s": 3,
+     "film": "tg_736",
+     "from": 740,
+     "to": 744
+    },
+    {
+     "s": 4,
+     "film": "tg_736",
+     "from": 748,
+     "to": 752,
+     "note": "1,000 METRES"
+    },
+    {
+     "s": 5,
+     "film": "tg_736",
+     "from": 744,
+     "to": 747.5
+    },
+    {
+     "s": 6,
+     "file": "The Campaign in Normandy 1944 B8032.jpg",
+     "trim": [
+      0,
+      0,
+      0.08,
+      0.08
+     ],
+     "label": "NORMANDY · JULY 1944"
+    },
+    {
+     "s": 7,
+     "film": "tg_700",
+     "from": 404,
+     "to": 407.5
+    },
+    {
+     "s": 8,
+     "file": "The British Army in the Normandy Campaign 1944 B8947.jpg",
+     "trim": [
+      0,
+      0,
+      0.08,
+      0.08
+     ],
+     "label": "A CAPTURED KING TIGER"
+    },
+    {
+     "s": 9,
+     "file": "Bundesarchiv Bild 101I-680-8282A-16A, Budapest, Panzer VI (Königstiger).jpg",
+     "label": "BUDAPEST · OCTOBER 1944"
+    },
+    {
+     "s": 10,
+     "file": "Tiger II tank turret on a flatbed car at the Henschel & Sohn factory at Kassel, Germany, in 1945 (342-FH-3A21714-88032AC).jpg",
+     "label": "HENSCHEL, KASSEL · 1945",
+     "note": "95 PERCENT"
+    },
+    {
+     "s": 11,
+     "film": "tg_736",
+     "from": 756,
+     "to": 760,
+     "note": "ONLY 492"
+    }
+   ]
+  },
+  {
+   "title": "Abandoned",
+   "mode": "action",
+   "stamp": [
+    "ARDENNES"
+   ],
+   "sentences": [
+    "But in December 1944, in the Ardennes, at least 150 King Tigers go into the German offensive, nearly a third of all ever built.",
+    "Most of them are lost.",
+    "At La Gleize, the advance of Kampfgruppe Peiper is halted, and one of its King Tigers is abandoned there on 24 December.",
+    "In Hungary, one battalion loses 25 King Tigers in 166 days.",
+    "Only ten of them are knocked out by Soviet troops.",
+    "Thirteen are blown up by their own crews, usually so that they do not fall into enemy hands.",
+    "Another battalion loses 45 King Tigers in the east in the last months of the war, most of them destroyed by their own crews after breakdowns or for lack of fuel.",
+    "That is the Tiger's real enemy: not the guns, but breakdowns, mud and empty fuel tanks.",
+    "In all, only 1,347 Tiger Is and 492 Tiger IIs are built.",
+    "Together they destroy at least 8,100 enemy tanks, for the loss of 1,725 Tigers, many of them abandoned or broken down."
+   ],
+   "shots": [
+    {
+     "s": 1,
+     "film": "tg_747",
+     "from": 703,
+     "to": 708
+    },
+    {
+     "s": 1,
+     "film": "tg_747",
+     "from": 708,
+     "to": 711,
+     "note": "150 KING TIGERS"
+    },
+    {
+     "s": 2,
+     "file": "German Tiger II tank passes American prisoners, 16 December 1944 (111-SC-198241).jpg",
+     "label": "THE ARDENNES · DECEMBER 1944"
+    },
+    {
+     "s": 3,
+     "file": "Destroyed German Tiger II tank at Moinet, Belgium, 23 January 1945 (111-SC-199473).jpg",
+     "label": "BELGIUM · JANUARY 1945"
+    },
+    {
+     "s": 4,
+     "file": "Bundesarchiv Bild 101I-680-8282A-16A, Budapest, Panzer VI (Königstiger).jpg",
+     "zoom": 1.4,
+     "x": 0.5,
+     "y": 0.5,
+     "note": "25 IN 166 DAYS"
+    },
+    {
+     "s": 5,
+     "film": "tg_700",
+     "from": 592,
+     "to": 596
+    },
+    {
+     "s": 6,
+     "file": "Destroyed German Tiger II tank at Moinet, Belgium, 23 January 1945 (111-SC-199473).jpg",
+     "zoom": 1.5,
+     "x": 0.5,
+     "y": 0.5,
+     "note": "13 BLOWN UP"
+    },
+    {
+     "s": 7,
+     "file": "German Tiger II tank passes American prisoners, 16 December 1944 (111-SC-198241).jpg",
+     "zoom": 1.4,
+     "x": 0.45,
+     "y": 0.45
+    },
+    {
+     "s": 7,
+     "film": "tg_700",
+     "from": 684.5,
+     "to": 687.0
+    },
+    {
+     "s": 8,
+     "film": "tg_adc",
+     "from": 84,
+     "to": 88,
+     "label": "A KNOCKED-OUT TIGER · ITALY, 1944"
+    },
+    {
+     "s": 8,
+     "film": "tg_adc",
+     "from": 92,
+     "to": 96
+    },
+    {
+     "s": 9,
+     "film": "tg_736",
+     "from": 760,
+     "to": 764,
+     "note": "1,839 TIGERS"
+    },
+    {
+     "s": 10,
+     "film": "tg_736",
+     "from": 764,
+     "to": 768,
+     "note": "8,100 TANKS"
+    }
+   ],
+   "beats": [
+    {
+     "after": 3,
+     "shots": [
+      {
+       "dur": 3.0,
+       "film": "tg_747",
+       "from": 580,
+       "to": 583.0,
+       "sfx": "low_rumble"
+      },
+      {
+       "dur": 3.0,
+       "film": "tg_736",
+       "from": 752,
+       "to": 755.0
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "title": "The Last Tigers",
+   "mode": "people",
+   "stamp": [
+    "1945"
+   ],
+   "sentences": [
+    "But when the war ends in 1945, very few Tigers survive the scrapping that follows.",
+    "In the Soviet Union, dozens of captured Tigers are used as targets, and then melted down.",
+    "Tiger 131 goes to the Tank Museum at Bovington, in England, in 1951.",
+    "In 1990 the museum takes it apart, and in December 2003 it runs again, with the engine of the museum's King Tiger.",
+    "Later it appears in the film Fury, the first real Tiger in a feature film for decades.",
+    "In 2025, during maintenance, the crew finds a piece of battle shrapnel still wedged in one of its wheels.",
+    "Today, only nine Tiger I tanks survive.",
+    "The Tiger was built to break through, and it spent its war on the defensive."
+   ],
+   "shots": [
+    {
+     "s": 1,
+     "file": "Tiger II tank turret on a flatbed car at the Henschel & Sohn factory at Kassel, Germany, in 1945 (342-FH-3A21714-88032AC).jpg",
+     "zoom": 1.3,
+     "x": 0.5,
+     "y": 0.5
+    },
+    {
+     "s": 2,
+     "file": "Советские танкисты на трофейном немецком танке «Тигр» 502-го тяжелого танкового батальона.jpg",
+     "zoom": 1.3,
+     "x": 0.5,
+     "y": 0.5
+    },
+    {
+     "s": 3,
+     "file": "The British Army in the United Kingdom 1939-45 H34426.jpg",
+     "zoom": 1.3,
+     "x": 0.5,
+     "y": 0.55,
+     "trim": [
+      0,
+      0,
+      0.1,
+      0.1
+     ]
+    },
+    {
+     "s": 4,
+     "file": "German Heavy Tank Tiger I (PzKpfw VI) on Display in 1944.jpg",
+     "zoom": 1.3,
+     "x": 0.5,
+     "y": 0.5,
+     "trim": [
+      0.04,
+      0.05,
+      0.04,
+      0.05
+     ]
+    },
+    {
+     "s": 5,
+     "file": "The British Army in Tunisia 1943 NA3693.jpg",
+     "zoom": 1.4,
+     "x": 0.35,
+     "y": 0.5,
+     "trim": [
+      0,
+      0,
+      0.1,
+      0.1
+     ]
+    },
+    {
+     "s": 6,
+     "film": "tg_666",
+     "from": 889,
+     "to": 892
+    },
+    {
+     "s": 7,
+     "file": "Bundesarchiv Bild 101I-461-0212-12, Russland, Panzer VI (Tiger I).jpg",
+     "zoom": 1.3,
+     "x": 0.5,
+     "y": 0.5,
+     "note": "ONLY 9"
+    },
+    {
+     "s": 8,
+     "film": "tg_674",
+     "from": 1212,
+     "to": 1216
+    },
+    {
+     "s": 8,
+     "film": "tg_736",
+     "from": 766,
+     "to": 770
+    }
+   ]
+  }
+ ]
+}

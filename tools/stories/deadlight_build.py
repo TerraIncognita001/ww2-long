@@ -318,8 +318,8 @@ C = [
    film(3, "dl_cape", 88, 4),
    film(4, "dl_858", 470, 4),
    pic(5, D_YARD, zoom=1.5, x=0.5, y=0.3),
-   pic(6, D_CREWS, zoom=1.2, y=0.3, note="10 YEARS"),
-   pic(7, D_MIC, zoom=1.3, x=0.4, y=0.4),
+   pic(6, D_ARREST2, zoom=1.3, y=0.35, note="10 YEARS"),
+   film(7, "dl_858", 320, 4),
    film(8, "dl_805", 133, 4),
    pic(9, D_ARREST, zoom=1.4, x=0.5, y=0.4)],
   "beats": [{"after": 7, "audio": {"src": "doenitz", "from": 32.9, "to": 36.5}, "source": D_SRC2, "shots": [
