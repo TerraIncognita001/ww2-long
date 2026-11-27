@@ -534,11 +534,7 @@
    "words": 1877,
    "tts": "edge",
    "release": "2026-11-27T02:00:00Z",
-   "thumb": "ok",
-   "comment_due": {
-    "at": "2026-11-27T02:00:00Z",
-    "q": "Was the four-day ship a stunt, or the weapon that beat the U-boats?"
-   }
+   "thumb": "ok"
   },
   {
    "id": "BBvYf9k6NAo",
@@ -595,6 +591,42 @@
    "title": "Operation Rainbow: Hitler's U-boats Ordered to Sink Themselves",
    "seconds": 14.6,
    "publish_at": "2026-11-28T00:00:00Z"
+  },
+  {
+   "id": "TU3Ilg1ll-I",
+   "date": "2026-11-27",
+   "format": "long",
+   "title": "The Ratlines: How Adolf Eichmann Escaped to Argentina, and How He Was Caught",
+   "topic": "Ratlines (World War II)",
+   "seconds": 601.0,
+   "words": 1429,
+   "tts": "edge",
+   "release": "2026-11-28T02:00:00Z",
+   "thumb": "ok",
+   "comment_due": {
+    "at": "2026-11-28T02:00:00Z",
+    "q": "The CIA and West Germany knew where Eichmann was and did nothing. Should they have been held to account?"
+   }
+  },
+  {
+   "id": "ZigMuavfzbc",
+   "date": "2026-11-27",
+   "format": "short",
+   "promo": true,
+   "long": "TU3Ilg1ll-I",
+   "title": "How Mossad Made Sure It Was Eichmann",
+   "seconds": 12.7,
+   "publish_at": "2026-11-28T02:30:00Z"
+  },
+  {
+   "id": "WQuo_3RxEQY",
+   "date": "2026-11-27",
+   "format": "short",
+   "promo": true,
+   "long": "TU3Ilg1ll-I",
+   "title": "The Bishop Who Asked Perón for 5,000 Visas",
+   "seconds": 14.1,
+   "publish_at": "2026-11-28T05:00:00Z"
   }
  ],
  "metrics": {},
